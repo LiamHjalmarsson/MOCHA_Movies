@@ -1,5 +1,34 @@
 {
-    "users": [],
+    "users": [
+        {
+            "userID": 1,
+            "username": "sophie",
+            "firstName": "sophie",
+            "lastName": "sund",
+            "password": "hehhehej"
+        },
+        {
+            "userID": 2,
+            "username": "tuugg",
+            "firstName": "hejsa",
+            "lastName": "sund",
+            "password": "tjabbaa"
+        },
+        {
+            "userID": 3,
+            "username": "tjjaa",
+            "firstName": "hejsa",
+            "lastName": "sund",
+            "password": "tjabbaa"
+        },
+        {
+            "userID": 4,
+            "username": "sophie123",
+            "firstName": "sophie",
+            "lastName": "sund",
+            "password": "hejsanvej"
+        }
+    ],
     "reviews": [],
     "notifications": []
 }
