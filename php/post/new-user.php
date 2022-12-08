@@ -1,5 +1,4 @@
 <?php 
-require_once "../functions/functions.php";
 require_once "post.php";
 
 if(!isset($receivedData["username"], $receivedData["firstName"], $receivedData["lastName"], $receivedData["password"])){
@@ -44,7 +43,13 @@ $newUser = [
     "username" => $username,
     "firstName" => $firstName,
     "lastName" => $lastName,
-    "password" => $password
+    "password" => $password,
+    "imageLink" => "",
+    "reviewID" => [],
+    "following" => [],
+    "moviesToSee" => [],
+    "watchedMovies" => [],
+    "subscribedMovies" => []
 ];
 
 $data["users"][] = $newUser;
