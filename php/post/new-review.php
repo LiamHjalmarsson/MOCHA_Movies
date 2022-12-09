@@ -51,9 +51,11 @@ $newReview = [
 $data["reviews"][] = $newReview;
 
 // adding reviewID to users reviewID
+$nameOfPersonWhoReviewd = "";
 foreach($data["users"] as $index => $user){
     if($user["userID"] == $userID){
         $data["users"][$index]["reviewID"][] = $reviewID;
+        $nameOfPersonWhoReviewd = $user["firstName"];
     }
 }
 
@@ -72,7 +74,7 @@ foreach($data["users"] as $user){
             "notificationID" => $lastNotificationID + 1,
             "senderID" => $userID,
             "movieID" => $movieID,
-            "message" => "user with id $userID left a review on movie with movieID $movieID ($reviewText)",
+            "message" => "$nameOfPersonWhoReviewd left a review on movie with movieID $movieID [ $reviewText ]",
             "sendToUser" => $user["userID"],
             "seen" => false,
         ];
