@@ -23,9 +23,10 @@ foreach($data["users"] as $index => $user){
     if($user["userID"] == $userID){
         $data["users"][$index]["moviesToSee"][] = $movieToSee;
 
+        $userToSend = $data["users"][$index];
         $json = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents($filename, $json);
-        sendJSON($user);
+        sendJSON($userToSend);
     }
 }
 
