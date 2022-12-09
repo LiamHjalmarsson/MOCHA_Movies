@@ -1,6 +1,8 @@
 <?php 
     require_once "../functions/functions.php";
 
+    $contentType = $_SERVER["CONTENT_TYPE"];
+
     if ($requestMethod != "DELETE"){
         $error = ["error" => "Method not allowed hej"];
         sendJSON($error, 405);
