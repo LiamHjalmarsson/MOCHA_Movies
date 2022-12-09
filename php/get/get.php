@@ -73,7 +73,7 @@ if(isset($_GET["review"])){
 if(isset($_GET["notification"])){
     $userNotifs = [];
     foreach($notifs as $notif){
-        if($notif["userID"] == $_GET["notification"])
+        if($notif["sendToUser"] == $_GET["notification"])
         $userNotifs[] = $notif;
     }
 
