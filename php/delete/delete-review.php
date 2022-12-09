@@ -29,10 +29,19 @@
         sendJSON($error, 400);
     } else {
         $id = $receivedData["reviewID"];
-
+        foreach($users as $index => $user){
+            foreach($user["reviewID"] as $rIndex => $review){
+                if ($review == $id){
+                    array_splice($user["reviewID"], $rIndex, 1);
+                    $users[$index] = $user;
+                    $data["users"] = $users;
+                }
+            }
+        }
         foreach($reviews as $index => $review){
             if ($review["reviewID"] == $id){
                 array_splice($reviews, $index, 1);
+                $data["reviews"] = $reviews;
                 $json = json_encode($data, JSON_PRETTY_PRINT);
                 file_put_contents($filename, $json);
                 $message = ["reviewID" => "$id"];
