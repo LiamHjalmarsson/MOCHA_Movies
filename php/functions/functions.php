@@ -5,6 +5,7 @@ $filename = "../dataset.json";
 $data = [];
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
+$contentType = $_SERVER["CONTENT_TYPE"];
 
 
 if(file_exists($filename)){

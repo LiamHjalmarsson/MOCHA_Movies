@@ -30,12 +30,15 @@
         $movieID = $receivedData["moviesToSee"];
         $userID = $receivedData["userID"];
 
-        foreach($users as $user){
+        foreach($users as $uIndex => $user){
             if ($user["userID"] == $userID){
                 $moviesToSee = $user["moviesToSee"];
                 foreach($moviesToSee as $index => $movie){
                     if($movie == $movieID){
-                        array_splice($watchedMovies, $index, 1);
+                        array_splice($moviesToSee, $index, 1);
+                        $user["moviesToSee"] = $moviesToSee;
+                        $users[$uIndex] = $user;
+                        $data["users"] = $users;
                         $json = json_encode($data, JSON_PRETTY_PRINT);
                         file_put_contents($filename, $json);
                         sendJSON($user);
