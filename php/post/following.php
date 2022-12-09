@@ -23,10 +23,12 @@ $receiver = $receivedData["followingID"];
 // name of person who started to follow reveiver
 $nameOfPersonStartedFollowing = "";
 
+$userToSend = [];
 foreach($data["users"] as $index => $user){
     if($user["userID"] == $userID){
         $data["users"][$index]["following"][] = $receivedData["followingID"];
         $nameOfPersonStartedFollowing = $user["firstName"];
+        $userToSend = $data["users"][$index];
     }
 }
 
@@ -52,7 +54,8 @@ $data["notifications"][] = $notification;
 $jsonData = json_encode($data, JSON_PRETTY_PRINT);
 file_put_contents($filename, $jsonData);
 
-sendJSON($data);
+// sendBack the user who started following
+sendJSON($userToSend);
 
 
 
