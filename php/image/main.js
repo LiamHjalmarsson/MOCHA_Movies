@@ -23,19 +23,6 @@ function form_img_function () {
             let recourse = await response.json();
             console.log(recourse);
 
-            // let new_req = new Request(`http://localhost:8080/api/read-one.php?id=${recourse.id}`); 
-
-            // try {
-                // let response = await fetch(new_req);
-                
-                // let recourse = await response.json();
-
-                // get_album_information(recourse);
-
-            // } catch (error) {
-                // missing_data(error)
-            // }
-
         } catch (error) {
             console.log(error)
         }
