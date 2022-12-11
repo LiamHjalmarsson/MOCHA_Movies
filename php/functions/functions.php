@@ -6,7 +6,6 @@ $data = [];
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
-
 if(file_exists($filename)){
     $jsonData = file_get_contents($filename);
     $data = json_decode($jsonData, true);

@@ -14,28 +14,29 @@
             "subscribedMovies": []
         }
     ],
-    "reviews": [{
-        "reviewID": 1,
-        "userID": 1,
-        "movieID": 1,
-        "grade": 4,
-        "reviewText": "string"
-    }
-],
+    "reviews": [
+        {
+            "reviewID": 1,
+            "userID": 1,
+            "movieID": 1,
+            "grade": 4,
+            "reviewText": "string"
+        }
+    ],
     "notifications": [
         {
-        "notificationID": 1,
-        "senderID": 2,
-        "movieID": 1,
-        "message": "string",
-        "sendToUser": 1
+            "notificationID": 1,
+            "senderID": 2,
+            "movieID": 1,
+            "message": "string",
+            "sendToUser": 1
         },
         {
-        "notificationID": 2,
-        "senderID": 2,
-        "movieID": 1,
-        "message": "string",
-        "sendToUser": 3
+            "notificationID": 2,
+            "senderID": 2,
+            "movieID": 1,
+            "message": "string",
+            "sendToUser": 3
         }
-]
+    ]
 }
