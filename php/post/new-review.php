@@ -61,25 +61,27 @@ foreach($data["users"] as $index => $user){
 
 // create notification to each user that subcribe on movie
 foreach($data["users"] as $user){
-    if(in_array($movieID,$user["subscribedMovies"])){
-        
-        // get latest notificationID
-        $lastNotificationID = 0;
-        if(count($data["notifications"]) > 0){
-            $lastIndexNotification = count($data["notifications"]) - 1;
-            $lastNotificationID = $data["notifications"][$lastIndexNotification]["notificationID"]; 
-        }
-         
-        $notification = [
-            "notificationID" => $lastNotificationID + 1,
-            "senderID" => $userID,
-            "movieID" => $movieID,
-            "message" => "$nameOfPersonWhoReviewd left a review on movie with movieID $movieID [ $reviewText ]",
-            "sendToUser" => $user["userID"],
-            "seen" => false,
-        ];
-
-        $data["notifications"][] = $notification;
+    if($user["userID"] != $userID){
+        if(in_array($movieID,$user["subscribedMovies"])){
+            
+            // get latest notificationID
+            $lastNotificationID = 0;
+            if(count($data["notifications"]) > 0){
+                $lastIndexNotification = count($data["notifications"]) - 1;
+                $lastNotificationID = $data["notifications"][$lastIndexNotification]["notificationID"]; 
+            }
+             
+            $notification = [
+                "notificationID" => $lastNotificationID + 1,
+                "senderID" => $userID,
+                "movieID" => $movieID,
+                "message" => "$nameOfPersonWhoReviewd left a review on movie with movieID $movieID [ '$reviewText' ]",
+                "sendToUser" => $user["userID"],
+                "seen" => false,
+            ];
+    
+            $data["notifications"][] = $notification;
+    }
     }
 }
 

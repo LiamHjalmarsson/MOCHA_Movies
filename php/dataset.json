@@ -7,8 +7,15 @@
             "lastName": "Sundqvist",
             "password": "loggain123",
             "imageLink": "",
-            "reviewID": [],
-            "following": [2,3,4],
+            "reviewID": [
+                1,
+                2
+            ],
+            "following": [
+                2,
+                3,
+                4
+            ],
             "moviesToSee": [
                 9841,
                 301728,
@@ -52,8 +59,15 @@
             "lastName": "Bjorklind",
             "password": "enso123",
             "imageLink": "",
-            "reviewID": [],
-            "following": [1,3,4],
+            "reviewID": [
+                3,
+                5
+            ],
+            "following": [
+                1,
+                3,
+                4
+            ],
             "moviesToSee": [
                 238,
                 278,
@@ -78,7 +92,7 @@
                 429,
                 13,
                 122
-                ],
+            ],
             "subscribedMovies": [
                 761053,
                 769,
@@ -95,14 +109,64 @@
             "userID": 3,
             "username": "casulv",
             "firstName": "Caspian",
-            "lastName": "Ullmåne",
+            "lastName": "Ullm\u00e5ne",
             "password": "testpass",
             "imageLink": "",
             "reviewID": [],
-            "following": [1,2,4],
-            "moviesToSee": [],
-            "watchedMovies": [],
-            "subscribedMovies": [550,278,293660]
+            "following": [
+                1,
+                2,
+                4
+            ],
+            "moviesToSee": [
+                510,
+                620249,
+                598,
+                14537,
+                92321,
+                553512,
+                324857,
+                4935,
+                378064,
+                1891,
+                255709,
+                120,
+                18491,
+                620249,
+                157336
+            ],
+            "watchedMovies": [
+                423,
+                568300,
+                599,
+                244786,
+                121,
+                795607,
+                73,
+                567,
+                27205,
+                3782,
+                283566,
+                807,
+                652837,
+                20334
+            ],
+            "subscribedMovies": [
+                550,
+                278,
+                293660,
+                644479,
+                914,
+                361743,
+                128,
+                632632,
+                901,
+                274,
+                441130,
+                12493,
+                533514,
+                101
+            ]
         },
         {
             "userID": 4,
@@ -111,13 +175,120 @@
             "lastName": "Hjalmarsson",
             "password": "hundar321",
             "imageLink": "",
-            "reviewID": [],
-            "following": [1,2,3],
-            "moviesToSee": [],
-            "watchedMovies": [],
-            "subscribedMovies": []
+            "reviewID": [
+                4
+            ],
+            "following": [
+                1,
+                2,
+                3
+            ],
+            "moviesToSee": [
+                630566,
+                207,
+                3082,
+                635302,
+                447362,
+                25237,
+                527641,
+                335,
+                105
+            ],
+            "watchedMovies": [
+                38579,
+                30178,
+                9731,
+                9711,
+                305943,
+                295011,
+                14405,
+                22084,
+                10063,
+                369202,
+                13121
+            ],
+            "subscribedMovies": [
+                17825,
+                289153,
+                234212,
+                109099,
+                71469,
+                157544,
+                42888,
+                336445,
+                9714
+            ]
         }
     ],
-    "reviews": [],
-    "notifications": []
+    "reviews": [
+        {
+            "reviewID": 1,
+            "movieID": 38579,
+            "userID": 1,
+            "grade": 3,
+            "reviewText": "best movie ever"
+        },
+        {
+            "reviewID": 2,
+            "movieID": 9714,
+            "userID": 1,
+            "grade": 3,
+            "reviewText": "quite boring movie"
+        },
+        {
+            "reviewID": 3,
+            "movieID": 550,
+            "userID": 2,
+            "grade": 3,
+            "reviewText": "this movie was special"
+        },
+        {
+            "reviewID": 4,
+            "movieID": 769,
+            "userID": 4,
+            "grade": 3,
+            "reviewText": "like this movie very very very much"
+        },
+        {
+            "reviewID": 5,
+            "movieID": 9711,
+            "userID": 2,
+            "grade": 3,
+            "reviewText": "i love christmas movies more than this"
+        }
+    ],
+    "notifications": [
+        {
+            "notificationID": 1,
+            "senderID": 1,
+            "movieID": 9714,
+            "message": "Sophie left a review on movie with movieID 9714 [ quite boring movie ]",
+            "sendToUser": 4,
+            "seen": true
+        },
+        {
+            "notificationID": 2,
+            "senderID": 2,
+            "movieID": 550,
+            "message": "Tanja left a review on movie with movieID 550 [ this movie was special ]",
+            "sendToUser": 3,
+            "seen": true
+        },
+        {
+            "notificationID": 3,
+            "senderID": 4,
+            "movieID": 769,
+            "message": "Liam left a review on movie with movieID 769 [ like this movie very very very much ]",
+            "sendToUser": 2,
+            "seen": true
+        },
+        {
+            "notificationID": 4,
+            "senderID": 2,
+            "movieID": 9711,
+            "message": "Tanja left a review on movie with movieID 9711 [ 'i love christmas movies more than this' ]",
+            "sendToUser": 1,
+            "seen": true
+        }
+    ]
 }
