@@ -9,7 +9,7 @@ function form_img_function () {
         let formDATA = new FormData(form);
         formDATA.append("userID", 1);
 
-        let req = new Request("updateImage.php", {
+        let req = new Request("update-image.php", {
             method: "POST",
             body: formDATA
         });
