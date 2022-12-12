@@ -1,29 +1,10 @@
 <?php 
-    require_once "../functions/functions.php";
+    require_once "delete.php";
 
-    $contentType = $_SERVER["CONTENT_TYPE"];
+    $users = $data["users"];
+    $reviews = $data["reviews"];
+    $notifs = $data["notifications"];
 
-    if ($requestMethod != "DELETE"){
-        $error = ["error" => "Method not allowed hej"];
-        sendJSON($error, 405);
-    }
-
-    if($contentType != "application/json"){
-        $error = ["error" => "INVALID CONTENT TYPE"];
-        sendJSON($error, 400);
-    }
-
-    if(file_exists($filename)){
-        $json = file_get_contents($filename);
-        $data = json_decode($json, true);
-    
-        $users = $data["users"];
-        $reviews = $data["reviews"];
-        $notifs = $data["notifications"];
-    }
-
-    $receivedJsonData = file_get_contents("php://input");
-    $receivedData = json_decode($receivedJsonData, true);
 
     // If the correct movie ID and User ID is sent remove that movie from dataset.
     if(!isset($receivedData["subscribedMovies"], $receivedData["userID"])){

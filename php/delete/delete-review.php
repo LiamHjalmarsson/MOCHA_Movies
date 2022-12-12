@@ -1,29 +1,9 @@
 <?php 
-    require_once "../functions/functions.php";
+    require_once "delete.php";
 
-    $contentType = $_SERVER["CONTENT_TYPE"];
-
-    if ($requestMethod != "DELETE"){
-        $error = ["error" => "Method not allowed hej"];
-        sendJSON($error, 405);
-    }
-
-    if($contentType != "application/json"){
-        $error = ["error" => "INVALID CONTENT TYPE"];
-        sendJSON($error, 400);
-    }
-
-    if(file_exists($filename)){
-        $json = file_get_contents($filename);
-        $data = json_decode($json, true);
-    
-        $users = $data["users"];
-        $reviews = $data["reviews"];
-        $notifs = $data["notifications"];
-    }
-
-    $receivedJsonData = file_get_contents("php://input");
-    $receivedData = json_decode($receivedJsonData, true);
+    $users = $data["users"];
+    $reviews = $data["reviews"];
+    $notifs = $data["notifications"];
 
     // If reviewID is set delete that review and send back its id
     if(!isset($receivedData["reviewID"])){
