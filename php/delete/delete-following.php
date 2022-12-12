@@ -1,5 +1,5 @@
 <?php 
-    require_once "../functions/functions.php";
+    require_once "delete.php";
 
     $users = $data["users"];
     $reviews = $data["reviews"];
@@ -13,12 +13,15 @@
         $followingID = $receivedData["followingID"];
         $userID = $receivedData["userID"];
 
-        foreach($users as $user){
+        foreach($users as $uIndex => $user){
             if ($user["userID"] == $userID){
                 $following = $user["following"];
                 foreach($following as $index => $follow){
                     if($follow == $followingID){
                         array_splice($following, $index, 1);
+                        $user["following"] = $following;
+                        $users[$uIndex] = $user;
+                        $data["users"] = $users;
                         $json = json_encode($data, JSON_PRETTY_PRINT);
                         file_put_contents($filename, $json);
                         sendJSON($user);

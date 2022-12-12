@@ -2,41 +2,122 @@
     "users": [
         {
             "userID": 1,
-            "username": "sophie22",
-            "firstName": "sophie",
-            "lastName": "sund",
-            "password": "hej123",
+            "username": "sophiesundqvist",
+            "firstName": "Sophie",
+            "lastName": "Sundqvist",
+            "password": "loggain123",
             "imageLink": "",
             "reviewID": [],
-            "following": [],
+            "following": [2,3,4],
+            "moviesToSee": [
+                9841,
+                301728,
+                9876,
+                263472,
+                25018,
+                23966,
+                9612,
+                480042
+            ],
+            "watchedMovies": [
+                37430,
+                25853,
+                408381,
+                301337,
+                11284,
+                1792,
+                10845,
+                341392,
+                277368,
+                47964,
+                417830
+            ],
+            "subscribedMovies": [
+                38579,
+                30178,
+                9731,
+                9711,
+                305943,
+                295011,
+                14405,
+                22084,
+                10063,
+                369202
+            ]
+        },
+        {
+            "userID": 2,
+            "username": "tanjabjorklind",
+            "firstName": "Tanja",
+            "lastName": "Bjorklind",
+            "password": "enso123",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [1,3,4],
+            "moviesToSee": [
+                238,
+                278,
+                240,
+                851644,
+                424,
+                19404,
+                129,
+                555604,
+                389,
+                372058,
+                496243
+            ],
+            "watchedMovies": [
+                372754,
+                497,
+                155,
+                667257,
+                696374,
+                724089,
+                680,
+                429,
+                13,
+                122
+                ],
+            "subscribedMovies": [
+                761053,
+                769,
+                11216,
+                637,
+                346,
+                12477,
+                311,
+                539,
+                704264
+            ]
+        },
+        {
+            "userID": 3,
+            "username": "casulv",
+            "firstName": "Caspian",
+            "lastName": "Ullmåne",
+            "password": "testpass",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [1,2,4],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": [550,278,293660]
+        },
+        {
+            "userID": 4,
+            "username": "liamhjalmarsson",
+            "firstName": "Liam",
+            "lastName": "Hjalmarsson",
+            "password": "hundar321",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [1,2,3],
             "moviesToSee": [],
             "watchedMovies": [],
             "subscribedMovies": []
         }
     ],
-    "reviews": [
-        {
-            "reviewID": 1,
-            "userID": 1,
-            "movieID": 1,
-            "grade": 4,
-            "reviewText": "string"
-        }
-    ],
-    "notifications": [
-        {
-            "notificationID": 1,
-            "senderID": 2,
-            "movieID": 1,
-            "message": "string",
-            "sendToUser": 1
-        },
-        {
-            "notificationID": 2,
-            "senderID": 2,
-            "movieID": 1,
-            "message": "string",
-            "sendToUser": 3
-        }
-    ]
+    "reviews": [],
+    "notifications": []
 }
