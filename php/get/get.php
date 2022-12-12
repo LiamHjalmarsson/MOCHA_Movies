@@ -73,16 +73,13 @@ if(isset($_GET["review"])){
 if(isset($_GET["notification"])){
     $userNotifs = [];
     foreach($notifs as $notif){
-        if($notif["sendToUser"] == $_GET["notification"])
-        $userNotifs[] = $notif;
+        if($notif["sendToUser"] == $_GET["notification"]){
+            $userNotifs[] = $notif;
+        }
     }
 
-    if(count($userNotifs) > 0){
         sendJSON($userNotifs);
-    } else {
-        $error = ["error" => "No notifications for this user."];
-            sendJSON($error);
-    }
+
 }
 
 ?>
