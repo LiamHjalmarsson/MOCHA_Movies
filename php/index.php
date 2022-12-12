@@ -12,5 +12,6 @@
         <h1>Movies</h1>
     </main>
     <footer></footer>
+    <script src="../js/homepage.js"></script>
 </body>
 </html>
