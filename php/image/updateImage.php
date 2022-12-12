@@ -37,12 +37,29 @@ foreach ($data["users"] as $index => $user) {
         }
     
         if (move_uploaded_file($fiel_Source, $destination)) {
-            $data["users"][$index]["imageLink"] = $destination;
-            $imgInfo = $new_file_Name;
 
-            $json = json_encode($data, JSON_PRETTY_PRINT);
-            file_put_contents($filename, $json);
-            sendJSON($imgInfo);                    
+            if ($user["imageLink"] != "") {
+
+                $remove_Img = $data["users"][$index]["imageLink"];
+                unlink("$remove_Img");
+                
+                $data["users"][$index]["imageLink"] = $destination;
+                $imgInfo = $new_file_Name;
+    
+                $json = json_encode($data, JSON_PRETTY_PRINT);
+                file_put_contents($filename, $json);
+                sendJSON($imgInfo);      
+
+            } else {
+                
+                $data["users"][$index]["imageLink"] = $destination;
+                $imgInfo = $new_file_Name;
+    
+                $json = json_encode($data, JSON_PRETTY_PRINT);
+                file_put_contents($filename, $json);
+                sendJSON($imgInfo);      
+                              
+            }
         }
         
     }
