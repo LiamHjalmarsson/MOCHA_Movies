@@ -22,7 +22,7 @@ async function renderMoives (movies, counter) {
     //     movieGridContainer.append(createMovie(movie));
     // });
 
-    getMovies(movies, counter, movieGridContainer);
+    getMovies(movies, movieGridContainer);
 
     let btn = document.createElement("button");
     btn.classList.add("showMore");
@@ -39,14 +39,14 @@ async function renderMoives (movies, counter) {
         let popularResource = await popularResponse.json();
 
         // renderMoives(popularResource, counter);
-        getMovies(popularResource, counter, movieGridContainer);
+        getMovies(popularResource, movieGridContainer);
     });
 
     document.querySelector("main").append(movieGridContainer, btn);
 
 }
 
-function getMovies (movies, counter, movieGridContainer) {
+function getMovies (movies, movieGridContainer) {
 
     movies.results.forEach(movie => {
         movieGridContainer.append(createMovie(movie));
