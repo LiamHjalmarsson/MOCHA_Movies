@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    <form id="upload" action="updateImage.php" method="POST">
+    <form id="upload" action="update-image.php.php" method="POST">
         <input type="file" name="image">
         <button type="submit"> Upload </button>
     </form>

@@ -24,15 +24,13 @@ foreach ($data["users"] as $index => $user) {
             
         $destination = "uploades/$timestamp-$name_remove_space";
             
-        // bestäm kontroll för fil storlek 
-        if ($file_Size > 250000) {
-            $error = ["error" => "The size is to big $file_Size cant be bigger then 250000!"];
-            sendJSON($error, 402);
+        if ($file_Size > 50000) {
+            $error = ["error" => "The size is to big $file_Size cant be bigger then 50000!"];
+            sendJSON($error, 400);
         }
             
-        // bestäm vilka format som är okej att använda 
-        if ($file_Type != "image/jpeg" and $file_Type != "image/jpg") {
-            $error = ["error" => "The file format $file_Type is not allowed. Please us JPEG or JPG!"];
+        if ($file_Type != "image/jpeg" and $file_Type != "image/jpg" and $file_Type != "image/png") {
+            $error = ["error" => "The file format $file_Type is not allowed. Please us JPEG / JPG / PNG!"];
             sendJSON($error, 400);
         }
     
