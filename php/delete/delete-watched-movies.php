@@ -7,11 +7,11 @@
     
 
     // If the correct movie ID and User ID is sent remove that movie from dataset.
-    if(!isset($receivedData["watchedMovies"], $receivedData["userID"])){
+    if(!isset($receivedData["watchedMovie"], $receivedData["userID"])){
         $error = ["error" => "Bad request"];
         sendJSON($error, 400);
     } else {
-        $movieID = $receivedData["watchedMovies"];
+        $movieID = $receivedData["watchedMovie"];
         $userID = $receivedData["userID"];
 
         foreach($users as $uIndex => $user){

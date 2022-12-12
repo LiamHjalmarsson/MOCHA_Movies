@@ -1,16 +1,16 @@
 <?php 
     require_once "delete.php";
 
-        $users = $data["users"];
-        $reviews = $data["reviews"];
+    $users = $data["users"];
+    $reviews = $data["reviews"];
         $notifs = $data["notifications"];
 
         // If body does not contain key moviesToSee and userId send error
-    if(!isset($receivedData["moviesToSee"], $receivedData["userID"])){
+    if(!isset($receivedData["movieToSee"], $receivedData["userID"])){
         $error = ["error" => "Bad request"];
         sendJSON($error, 400);
     } else {
-        $movieID = $receivedData["moviesToSee"];
+        $movieID = $receivedData["movieToSee"];
         $userID = $receivedData["userID"];
 
         // Finds user and removes movie from array, updates user and json file
