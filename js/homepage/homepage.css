@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+}
+
+#toplistWrapper, #movieWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 600vw;
+}
+
+#movieWrapper {
+    margin-bottom: 10px;
+}
+
+.movieDiv {
+    margin-right: 6px;
+}
+#personWrapper {
+  display: flex;
+  flex-direction: row;
+  padding-left: 5px;
+}
+
+.personDiv,
+#addFriendDiv {
+  margin: 20px 7px;
+}
+
+.imgDiv {
+  border: 0.5px solid black;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+
+.nameDiv {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
