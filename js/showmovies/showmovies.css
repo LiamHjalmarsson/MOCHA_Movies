@@ -1,23 +1,22 @@
-.moivesMain {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-}
-
 #movieGridContainer {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
-     gap: 20px;
+     gap: 15px;
 }
 
 .movieCard {
-    height: 200px;
-    background-size: contain;
+    height: 270px;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+#btnBox {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
 .showMore {
-    margin: auto;
+
 }
