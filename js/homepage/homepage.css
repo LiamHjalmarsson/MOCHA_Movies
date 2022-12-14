@@ -1,23 +1,30 @@
 body {
   margin: 0;
 }
-
-#toplistWrapper, #movieWrapper {
+main {
+    width: 100vw;
+    overflow: hidden;
+}
+#toplistWrapper {
   display: flex;
   flex-direction: row;
-  width: 600vw;
+  /* width: 600vw; */
+  overflow: scroll;
+
 }
 
 #movieWrapper {
     margin-bottom: 10px;
+    margin-left: 3px;
+
 }
 
 .movieDiv {
     margin-right: 6px;
 }
 #personWrapper {
-  display: flex;
-  flex-direction: row;
+  /* display: flex; */
+  /* flex-direction: row; */
   padding-left: 5px;
 }
 
@@ -37,4 +44,30 @@ body {
   text-align: center;
   margin-top: 10px;
   font-size: 14px;
+}
+
+.personBox{
+    display:flex;
+    overflow: scroll;
+
+}
+
+.movieBox {
+    display: flex;
+    overflow: scroll;
+}
+
+.titleBox {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.movieDiv {
+height: 190px;
+min-width: 120px;
+}
+
+.toplistMovie {
+    height: 65vh;
+   min-width: 100vw;
 }
