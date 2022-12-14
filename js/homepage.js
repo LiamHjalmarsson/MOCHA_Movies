@@ -9,7 +9,32 @@ let user = {
   imageLink: '',
   reviewID: [],
   following: [2, 3, 4],
-  moviesToSee: [9841, 301728, 9876, 263472, 25018, 23966, 9612, 480042]
+  moviesToSee: [9841, 301728, 9876, 263472, 25018, 23966, 9612, 480042],
+  watchedMovies: [
+    37430,
+    25853,
+    408381,
+    301337,
+    11284,
+    1792,
+    10845,
+    341392,
+    277368,
+    47964,
+    417830
+  ],
+  subscribedMovies: [
+    38579,
+    30178,
+    9731,
+    9711,
+    305943,
+    295011,
+    14405,
+    22084,
+    10063,
+    369202
+  ]
 }
 
 async function renderFirstPage () {
@@ -63,6 +88,9 @@ async function renderFirstPage () {
     }
   }
   document.querySelector('main').append(topListWrapper, personWrapper)
+  firstPageUserMovie(user.subscribedMovies, 'Subscribed movie')
+  firstPageUserMovie(user.moviesToSee, 'Movies to see')
+  firstPageUserMovie(user.watchedMovies, 'Watch again')
 }
 
 async function createPersonDivs (followingID, personWrapper, addFriendDiv) {
@@ -103,4 +131,25 @@ function addFriendPage () {
 
 function firstPageField (field) {}
 
-function firstPageUserMovie (array, title) {}
+async function firstPageUserMovie (array, title) {
+  let movieWrapper = document.createElement('div')
+  movieWrapper.classList.add('movieWrapper')
+  movieWrapper.textContent = title
+  document.querySelector('main').append(movieWrapper)
+
+  for (let i = 0; i < 10; i++) {
+    let movieDiv = document.createElement('div')
+    let movieResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+    )
+    let movieResource = await movieResponse.json()
+
+    movieDiv.style.height = '230px'
+    movieDiv.style.width = '150px'
+
+    movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
+    movieDiv.style.backgroundSize = 'cover'
+
+    movieWrapper.append(movieDiv)
+  }
+}
