@@ -8,7 +8,7 @@ let user = {
   password: 'tanjiiisss123',
   imageLink: '',
   reviewID: [],
-  following: [2, 3, 4],
+  following: [1, 2, 3, 4],
   moviesToSee: [9841, 301728, 9876, 263472, 25018, 23966, 9612, 480042],
   watchedMovies: [
     37430,
@@ -48,21 +48,21 @@ async function renderFirstPage () {
   let topMoviesResource = await topMoviesResponse.json()
   let movies = topMoviesResource.results
 
-  let topListWrapper = document.createElement('div')
-  topListWrapper.id = 'topListWrapper'
+  let toplistWrapper = document.createElement('div')
+  toplistWrapper.id = 'toplistWrapper'
 
   for (let i = 0; i < 6; i++) {
-    let topListMovie = document.createElement('div')
-    topListMovie.classList.add('topListMovie')
+    let toplistMovie = document.createElement('div')
+    toplistMovie.classList.add('toplistMovie')
 
     // height and width just for test, will style in css later
-    topListMovie.style.height = '230px'
-    topListMovie.style.width = '150px'
+    toplistMovie.style.height = '65vh'
+    toplistMovie.style.width = '100vw'
 
-    topListMovie.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
-    topListMovie.style.backgroundSize = 'cover'
+    toplistMovie.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
+    toplistMovie.style.backgroundSize = 'cover'
 
-    topListWrapper.append(topListMovie)
+    toplistWrapper.append(toplistMovie)
   }
   // ---------------------------------------------
   // --------- people-i-follow-section ----------- grande function, kanske dela upp?
@@ -70,9 +70,12 @@ async function renderFirstPage () {
   let personWrapper = document.createElement('div')
   personWrapper.id = 'personWrapper'
 
+  // personWrapper.textContent = "Your friends"
+
   let addFriendDiv = document.createElement('div')
   addFriendDiv.id = 'addFriendDiv'
-  addFriendDiv.textContent = 'PLUUUUS, add a friend'
+  // addFriendDiv.classList.add('imgDiv')
+  addFriendDiv.textContent = '+'
   addFriendDiv.addEventListener('click', addFriendPage)
 
   // ---- follow less then 8 people? get all ------
@@ -87,7 +90,7 @@ async function renderFirstPage () {
       createPersonDivs(followingID, personWrapper, addFriendDiv)
     }
   }
-  document.querySelector('main').append(topListWrapper, personWrapper)
+  document.querySelector('main').append(toplistWrapper, personWrapper)
   firstPageUserMovie(user.subscribedMovies, 'Subscribed movie')
   firstPageUserMovie(user.moviesToSee, 'Movies to see')
   firstPageUserMovie(user.watchedMovies, 'Watch again')
@@ -105,12 +108,18 @@ async function createPersonDivs (followingID, personWrapper, addFriendDiv) {
   let personDiv = document.createElement('div')
   personDiv.classList.add('personDiv')
 
-  personDiv.textContent =
-    personIFollowResource.firstName + ' ' + personIFollowResource.lastName
-
+  let imgDiv = document.createElement("div")
+  imgDiv.classList.add("imgDiv")
+  let nameDiv = document.createElement("div")
+  nameDiv.classList.add("nameDiv")
+  
+  nameDiv.textContent =
+  personIFollowResource.firstName
+  
   personDiv.addEventListener('click', () => {
     followingProfile(followingID)
   })
+  personDiv.append(imgDiv, nameDiv)
   personWrapper.append(personDiv, addFriendDiv)
 }
 
@@ -133,19 +142,20 @@ function firstPageField (field) {}
 
 async function firstPageUserMovie (array, title) {
   let movieWrapper = document.createElement('div')
-  movieWrapper.classList.add('movieWrapper')
-  movieWrapper.textContent = title
+  movieWrapper.id = 'movieWrapper'
+  // movieWrapper.textContent = title
   document.querySelector('main').append(movieWrapper)
 
   for (let i = 0; i < 10; i++) {
     let movieDiv = document.createElement('div')
+    movieDiv.classList.add("movieDiv")
     let movieResponse = await fetch(
       `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
     )
     let movieResource = await movieResponse.json()
 
-    movieDiv.style.height = '230px'
-    movieDiv.style.width = '150px'
+    movieDiv.style.height = '190px'
+    movieDiv.style.width = '120px'
 
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
     movieDiv.style.backgroundSize = 'cover'
