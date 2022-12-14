@@ -13,6 +13,6 @@
         <h1>Movies</h1>
     </main>
     <footer></footer>
-    <script src="showmovies.js"></script>
+    <script src="showmovies.js"> </script>
 </body>
 </html>
