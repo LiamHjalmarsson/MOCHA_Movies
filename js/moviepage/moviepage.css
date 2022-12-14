@@ -1,0 +1,21 @@
+#movieContainer{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+    background-color: white;
+}
+
+#movieHeader {
+    height: 590px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#iconContainer {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
