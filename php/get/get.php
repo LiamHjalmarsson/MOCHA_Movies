@@ -5,14 +5,11 @@ if($requestMethod != "GET"){
     $error = ["error" => "Method not allowed"];
     sendJSON($error, 405);
 }    
-if(file_exists($filename)){
-    $json = file_get_contents($filename);
-    $data = json_decode($json, true);
 
-    $users = $data["users"];
-    $reviews = $data["reviews"];
-    $notifs = $data["notifications"];
-}
+$users = $data["users"];
+$reviews = $data["reviews"];
+$notifs = $data["notifications"];
+
 
 // Get user(users)
 if(isset($_GET["users"])){
