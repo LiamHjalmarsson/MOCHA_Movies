@@ -11,7 +11,7 @@ if(strlen($receivedData["username"]) < 4){
     sendJSON($error, 400);
 }
 
-if(strlen($receivedData["firstName"]) < 3 or strlen($receivedData["lastName"]) < 3){
+if(strlen($receivedData["firstName"]) < 2 or strlen($receivedData["lastName"]) < 2){
     $error = ["error" => "firstname and lastname need to have at least 2 characters"];
     sendJSON($error, 400);
 }
