@@ -21,7 +21,6 @@ export async function renderMovie (movie) {
     iconContainer.innerHTML = `<div> X </div> <div> Y </div> <div> O </div>`;
 
     let movieInformation = document.createElement("div");
-
     movieInformation.innerHTML = `
         <div> 
             <h3> Synopsis </h3> 
@@ -47,7 +46,6 @@ export async function renderMovie (movie) {
 
     let reviewContainer = document.createElement("div");
     reviewContainer.id = "reviewContainer";
-
     let reviewHeader = document.createElement("div");
     reviewHeader.textContent = `Reviews made on the movie`;
 
@@ -66,6 +64,10 @@ async function getActors (movie) {
     } else {
         for (let i = 0; i < 4; i++) {
             text += `${recourseCast.cast[i].name}, `;
+
+            if (i === 3) {
+                text += `${recourseCast.cast[i].name}. `;
+            }
         }
     }
     return text

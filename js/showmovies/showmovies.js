@@ -70,7 +70,6 @@ async function renderMoives (movies, counter, movieType) {
 
     let btnBox = document.createElement("div");
     btnBox.id = "btnBox";
-
     let btn = document.createElement("button");
     btn.classList.add("showMore");
     btn.textContent = "show more"
@@ -115,25 +114,6 @@ async function renderMyMovies (movies, counter) {
     document.querySelector("main").append(movieGridContainer, btn);
 
 }
-
-
-function getMyMovies(movies) {
-    
-    let requests = [];
-  
-    for (let ID of movies) {
-      requests.push(
-        fetch(
-          `https://api.themoviedb.org/3/movie/${ID}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
-        ).then(r => r.json())
-      );
-    }
-  
-    let response = Promise.all(requests);
-
-    return response;
-  }
-
   
 async function getMovies (movies, movieGridContainer) {
 
