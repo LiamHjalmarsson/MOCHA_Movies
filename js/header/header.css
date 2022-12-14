@@ -1,0 +1,37 @@
+
+.navContainer{
+    display: flex;
+    align-items: center;
+}
+
+.navContainer > div:nth-child(1){
+    flex-grow: 2;
+}
+
+.navContainer > div:nth-child(2){
+    display: flex;
+    justify-content: center;
+    flex-grow: 5;
+    font-size: 16pt;
+}
+
+.burgerMenu{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.burgerMenu > div{
+    height: 20vw;
+    display: flex;
+    align-items: center;
+}
+
+.material-symbols-outlined{
+    font-size: 35px;
+}
+
+.hide{
+    display: none;
+}
