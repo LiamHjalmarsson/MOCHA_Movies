@@ -1,3 +1,7 @@
+body{
+    margin: 0px;
+}
+
 .logIn {
     display: flex;
     flex-direction: column;
@@ -12,4 +16,8 @@
 .input{
     display: flex;
     flex-direction: column;
+}
+
+.input > input {
+    letter-spacing: 0.125em;
 }

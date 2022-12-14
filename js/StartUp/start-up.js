@@ -76,6 +76,8 @@ function logIn() {
   main.append(logInDiv);
 }
 
+logIn()
+
 function signUp() {
   let main = document.querySelector("main");
   main.innerHTML = "";
