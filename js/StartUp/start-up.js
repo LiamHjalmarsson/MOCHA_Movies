@@ -48,7 +48,7 @@ function logIn() {
     let usernameInput = document.querySelector(".Username");
     let passwordInput = document.querySelector(".Password");
     fetch(
-      `../../php/get/get.php/?un=${usernameInput.value}&pw=${passwordInput.value}`
+      `./php/get/get.php/?un=${usernameInput.value}&pw=${passwordInput.value}`
     )
       .then((r) => {
         if (r.ok) {
@@ -75,8 +75,6 @@ function logIn() {
 
   main.append(logInDiv);
 }
-
-logIn()
 
 function signUp() {
   let main = document.querySelector("main");
@@ -137,7 +135,7 @@ function signUp() {
 
     errorDiv.textContent = "";
 
-    fetch(`../../php/post/new-user.php/`, Options)
+    fetch(`./php/post/new-user.php/`, Options)
       .then((r) => r.json())
       .then((r) => {
         if (r.userID == undefined) {
