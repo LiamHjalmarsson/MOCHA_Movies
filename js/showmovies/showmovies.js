@@ -141,7 +141,7 @@ async function getMovies (movies, movieGridContainer) {
             for (let i = 0; i < 20; i++) {
     
                 counter++
-                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[counter]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`);
+                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[counter]}?api_key=${key}&language=en-US`);
                 let movieResource = await movieResponse.json()
     
                 movieGridContainer.append(createMovie(movieResource));
@@ -150,7 +150,7 @@ async function getMovies (movies, movieGridContainer) {
     
         } else {
             movies.forEach( async movie => {
-                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`);
+                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${key}&language=en-US`);
                 let movieResource = await movieResponse.json()
     
                 movieGridContainer.append(createMovie(movieResource));
