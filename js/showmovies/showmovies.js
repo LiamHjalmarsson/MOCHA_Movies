@@ -172,5 +172,5 @@ function filterbtn (movies, counter) {
 
 }
 
-// popular("popular");
-renderMyMovies(user_try.subscribedMovies, 0);
+popular("popular");
+// renderMyMovies(user_try.subscribedMovies, 0);
