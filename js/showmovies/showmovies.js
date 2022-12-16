@@ -54,7 +54,7 @@ const key = `e666c096bb904490508ada0b495d2d90`;
             341392,
             277368,
             47964,
-            417830
+            417830,        
         ]
       }
 
@@ -90,28 +90,15 @@ async function renderMoives (movies, counter, movieType) {
 
 
 async function renderMyMovies (movies, counter) {
-
     let movieGridContainer = document.createElement("div");
     movieGridContainer.id = "movieGridContainer";
+    document.querySelector("main").append(movieGridContainer);
 
-    getMovies (movies, movieGridContainer);
-
-    let btnBox = document.createElement("div");
-    btnBox.id = "btnBox";
-    let btn = document.createElement("button");
-    btn.classList.add("showMore");
-    btn.textContent = "show more"
-
-    btn.addEventListener("click", async () => {
-        getMovies(movies, movieGridContainer);
-    });
-
-    btnBox.appendChild(btn);
-    document.querySelector("main").append(movieGridContainer, btnBox);
-
+    getMovies(movies, movieGridContainer, counter);
 }
-  
-async function getMovies (movies, movieGridContainer) {
+
+
+async function getMovies (movies, movieGridContainer, counter) {
 
     if (movies.results) {
 
@@ -121,15 +108,24 @@ async function getMovies (movies, movieGridContainer) {
 
     } else if (movies) {
         
-        if (movies.length >= 20) {
+        if (movies.length >= 6) {
 
-            for (let i = 0; i < 20; i++) {
-    
-                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[i]}?api_key=${key}&language=en-US`);
+            for (let i = 0; i < 6; i++) {
+                counter++
+
+                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[counter]}?api_key=${key}&language=en-US`);
                 let movieResource = await movieResponse.json()
     
-                movieGridContainer.append(createMovie(movieResource));
+                console.log(movieResource);
+
+                if (movieResource.status_code != 34 ) {
+                    movieGridContainer.append(createMovie(movieResource));
+                } else {
+                    document.querySelector("button").textContent = "HELLO"
+                }
             }
+            
+            filterbtn(movies, counter);
     
         } else {
             movies.forEach( async movie => {
@@ -145,7 +141,6 @@ async function getMovies (movies, movieGridContainer) {
 
 }
 
-
 function createMovie (movie) {
     let movieCard = document.createElement("div");
     movieCard.classList.add("movieCard");
@@ -159,6 +154,23 @@ function createMovie (movie) {
 }
 
 
-popular("popular");
-// renderMyMovies(user_try.subscribedMovies, 0);
+function filterbtn (movies, counter) {
 
+        let btnBox = document.createElement("div");
+        btnBox.id = "btnBox";
+        let btn = document.createElement("button");
+        btn.classList.add("showMore");
+        btn.textContent = "show more"
+        
+        btn.addEventListener("click", () => {
+            document.querySelectorAll("main > #btnBox").forEach(btn => btn.remove());
+            renderMyMovies(movies, counter);
+        })
+        
+        btnBox.appendChild(btn);
+        document.querySelector("main").append(btnBox);
+
+}
+
+// popular("popular");
+renderMyMovies(user_try.subscribedMovies, 0);
