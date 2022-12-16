@@ -159,7 +159,7 @@ function signUp() {
 
 export function userLocalStorage(userObject) {
     localStorage.setItem("user", JSON.stringify(userObject));
-    let currentUser = localStorageGetItem("user");
+    let currentUser = JSON.parse(localStorageGetItem("user")) ;
 
   return currentUser;
 }
