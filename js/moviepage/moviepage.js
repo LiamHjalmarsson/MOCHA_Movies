@@ -90,13 +90,14 @@ async function getProduction (movie) {
 }
 
 function voterating (movie) {
-    return movie.vote_average = "" ? "There is no rating of this movie": movie.vote_average;
+    return movie.vote_average == "" ? "There is no rating of this movie": movie.vote_average;
 }
 
 function relaseYear (movie) {
-    return movie.release_date = "" ? "The year of when movie was realsed is missing": movie.release_date;
+    return movie.release_date == "" ? "The year of when movie was realsed is missing": movie.release_date;
 }
 
 function overview (movie) {
-    return movie.overview = "" ? "There is no description of this movie" : movie.overview;
+    console.log(movie)
+    return movie.overview == "" ? "There is no description of this movie" : movie.overview;
 }

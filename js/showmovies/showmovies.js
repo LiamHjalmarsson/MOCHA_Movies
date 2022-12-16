@@ -94,24 +94,20 @@ async function renderMyMovies (movies, counter) {
     let movieGridContainer = document.createElement("div");
     movieGridContainer.id = "movieGridContainer";
 
-    let moviesArray = [];
+    getMovies (movies, movieGridContainer);
 
-    getMyMovies(movies)
-        .then(r => r.forEach(e => moviesArray.push(e)))
-        .then(console.log)
-
-    // getMovies (movies, movieGridContainer);
-
-
+    let btnBox = document.createElement("div");
+    btnBox.id = "btnBox";
     let btn = document.createElement("button");
     btn.classList.add("showMore");
     btn.textContent = "show more"
 
     btn.addEventListener("click", async () => {
-
+        getMovies(movies, movieGridContainer);
     });
 
-    document.querySelector("main").append(movieGridContainer, btn);
+    btnBox.appendChild(btn);
+    document.querySelector("main").append(movieGridContainer, btnBox);
 
 }
   
@@ -129,12 +125,10 @@ async function getMovies (movies, movieGridContainer) {
 
             for (let i = 0; i < 20; i++) {
     
-                counter++
-                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[counter]}?api_key=${key}&language=en-US`);
+                let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[i]}?api_key=${key}&language=en-US`);
                 let movieResource = await movieResponse.json()
     
                 movieGridContainer.append(createMovie(movieResource));
-    
             }
     
         } else {
@@ -167,3 +161,4 @@ function createMovie (movie) {
 
 popular("popular");
 // renderMyMovies(user_try.subscribedMovies, 0);
+
