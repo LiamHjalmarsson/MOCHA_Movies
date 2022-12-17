@@ -170,6 +170,7 @@ function createFollow (recoursFollow, followingDiv) {
     followingDiv.append(img, name)
 }
 
+
 export function userLocalStorage(userObject) {
     localStorage.setItem("user", JSON.stringify(userObject));
     let currentUser = localStorage.getItem("user");
@@ -177,5 +178,5 @@ export function userLocalStorage(userObject) {
   return currentUser;
 }
 
-following();
+// following();
 // userFollowers();
