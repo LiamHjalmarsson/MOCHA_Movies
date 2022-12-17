@@ -1,0 +1,20 @@
+.followDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+
+.img {
+    background-color: gray;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.name {
+    flex-grow: 1;
+    text-align: center;
+}
