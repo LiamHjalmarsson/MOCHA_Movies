@@ -11,11 +11,7 @@
                 1,
                 2
             ],
-            "following": [
-                2,
-                3,
-                4
-            ],
+            "following": [],
             "moviesToSee": [
                 9841,
                 301728,
@@ -289,6 +285,38 @@
             "message": "Tanja left a review on movie with movieID 9711 [ 'i love christmas movies more than this' ]",
             "sendToUser": 1,
             "seen": true
+        },
+        {
+            "notificationID": 5,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 6,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 7,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 8,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
         }
     ]
 }
