@@ -41,20 +41,36 @@ async function userFollowers () {
     document.querySelector("main").append(followContainer);
 
     arrayFollowingMe.forEach(follow => {
-        followContainer.append(getFollows(follow, user));
+        followContainer.append(createFollow(follow, user));
     });
 
 }
 
-function getFollows (follow, user) {
+function createFollow (follow, user) {
     let followDiv = document.createElement("div");
     followDiv.classList.add("followDiv");
 
     let iFollow = user.following.filter(following => following === follow.userID);
 
-    createFollow(follow, followDiv);
-
+    let img = document.createElement("div");
+    img.classList.add("img")
+    let name = document.createElement("div");
+    name.classList.add("name");
     let icon = document.createElement("div");
+    
+    
+    if (follow.imageLink =! "") {
+        img.style.backgroundImage = ``;
+    } else {
+        img.style.color = `gray`;
+    }
+    
+    name.textContent = `${follow.firstName} ${follow.lastName}`;
+
+    name.addEventListener("click", () => {
+        // otherProfil(follow.userID)
+        console.log(follow)
+    })
 
     if (iFollow.length != 0) {
         icon.innerHTML = `<i class="fa-solid fa-minus"></i>`; 
@@ -77,7 +93,8 @@ function getFollows (follow, user) {
 
             userFollowers()
         }); 
-        followDiv.append(icon);
+
+        followDiv.append(img, name, icon);
 
     } else {
         icon.innerHTML = `<i class="fa-solid fa-plus"></i>`; 
@@ -101,7 +118,8 @@ function getFollows (follow, user) {
 
             userFollowers()
         });
-        followDiv.append(icon);
+
+        followDiv.append(img, name, icon);
     }
     
     return followDiv;
@@ -119,9 +137,26 @@ async function following () {
         document.querySelector("main").append(followingDiv);
         followingDiv.classList.add("followDiv");
 
-        createFollow(recoursFollow, followingDiv);
-
+        let img = document.createElement("div");
+        img.classList.add("img")
+        let name = document.createElement("div");
+        name.classList.add("name");
         let icon = document.createElement("div");
+
+        console.log(recoursFollow)
+        if (recoursFollow.imageLink =! "") {
+            img.style.backgroundImage = `url()`;
+        } else {
+            img.style.color = `gray`;
+        }
+        
+        name.textContent = `${recoursFollow.firstName} ${recoursFollow.lastName}`;
+
+        name.addEventListener("click", () => {
+            // otherProfil(recoursFollow.userID)
+            console.log(recoursFollow)
+        })
+
         icon.innerHTML = `<i class="fa-solid fa-minus"></i>`; 
         
         icon.addEventListener("click", async () => {
@@ -143,31 +178,10 @@ async function following () {
             following()
         }); 
 
-        followingDiv.append(icon);
+
+        followingDiv.append(img, name, icon);
 
     })
-}
-
-function createFollow (recoursFollow, followingDiv) {
-    
-    let img = document.createElement("div");
-    img.classList.add("img")
-    let name = document.createElement("div");
-    name.classList.add("name");
-
-    if (recoursFollow.imageLink =! "") {
-        img.style.backgroundImage = `url()`;
-    } else {
-        img.style.color = `gray`;
-    }
-    
-    name.textContent = `${recoursFollow.firstName} ${recoursFollow.lastName}`;
-
-    name.addEventListener("click", () => {
-        // otherProfil(recoursFollow.userID)
-        console.log(recoursFollow)
-    });
-    followingDiv.append(img, name)
 }
 
 export function userLocalStorage(userObject) {

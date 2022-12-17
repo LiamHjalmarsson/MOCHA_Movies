@@ -11,11 +11,7 @@
                 1,
                 2
             ],
-            "following": [
-                2,
-                3,
-                4
-            ],
+            "following": [],
             "moviesToSee": [
                 9841,
                 301728,
@@ -289,6 +285,238 @@
             "message": "Tanja left a review on movie with movieID 9711 [ 'i love christmas movies more than this' ]",
             "sendToUser": 1,
             "seen": true
+        },
+        {
+            "notificationID": 5,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 6,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 7,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 8,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
+        },
+        {
+            "notificationID": 9,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 10,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
+        },
+        {
+            "notificationID": 11,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 12,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
+        },
+        {
+            "notificationID": 13,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 14,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 15,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 16,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 17,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
+        },
+        {
+            "notificationID": 18,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 19,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 20,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 21,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 22,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 23,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 24,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
+        },
+        {
+            "notificationID": 25,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 26,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 27,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 28,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 29,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 30,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 31,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 32,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false
+        },
+        {
+            "notificationID": 33,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false
         }
     ]
 }
