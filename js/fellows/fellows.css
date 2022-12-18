@@ -18,3 +18,14 @@
     flex-grow: 1;
     text-align: center;
 }
+
+.inputBox {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.addInput {
+    margin: auto;
+    width: 90%;
+    padding: 5px;
+}

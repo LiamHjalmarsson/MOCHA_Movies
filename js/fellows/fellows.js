@@ -168,6 +168,8 @@ async function addFriend (counter) {
 
     });
 
+    searchInput(arrayNotFollowing, user);
+
     if (arrayNotFollowing.length != 0) {
 
         if (arrayNotFollowing.length >= 20) {
@@ -264,6 +266,31 @@ function createFollow (recoursFollow, followingDiv) {
         console.log(recoursFollow)
     });
     followingDiv.append(img, name)
+}
+
+function searchInput (arrayNotFollowing, user) {
+
+    let inputBox = document.createElement("div");
+    inputBox.classList.add("inputBox");
+    inputBox.innerHTML = ` <input class="addInput"> `;
+    document.querySelector("main").append(inputBox);
+
+    document.querySelector(".addInput").addEventListener("keyup", (e) => {
+        console.log(e.target.value);
+
+        document.querySelectorAll("main > .followDiv").forEach(div => div.remove());
+
+        arrayNotFollowing.forEach(follow => {
+
+            if (follow.firstName.toLowerCase().includes(e.target.value.toLowerCase()) 
+                || 
+                follow.username.toLowerCase().includes(e.target.value.toLowerCase())) {
+                // console.log(follow);
+                getAddFriend(user, follow);
+            }
+        })
+    });
+
 }
 
 
