@@ -148,6 +148,102 @@ async function following () {
     })
 }
 
+async function addFriend (counter) {
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
+    let recourseAllusers = await responseAllUsers.json();
+
+    let arrayNotFollowing = [];
+
+    recourseAllusers.forEach(recUser => {
+
+        let follow = user.following.find(follow => follow === recUser.userID);
+
+        if (follow == undefined) {
+            if (user.userID != recUser.userID) {
+                arrayNotFollowing.push(recUser);
+            }
+        }
+
+    });
+
+    if (arrayNotFollowing.length != 0) {
+
+        if (arrayNotFollowing.length >= 20) {
+
+            for (let i = 0; i < 20; i++) {
+                if (arrayNotFollowing[counter] != undefined) {
+                    getAddFriend(user, arrayNotFollowing[counter]);
+                    counter++
+                } 
+            }
+
+            filterbtn(counter);
+
+        } else {     
+            arrayNotFollowing.forEach(follow => {
+                getAddFriend(user, follow);
+            })
+        }
+    
+    } else {
+        document.querySelector("main").textContent = `You are following all that exists in the Database at the moment`;
+    }
+}
+
+function getAddFriend (user, arrayNotFollowing) {
+    let followDiv = document.createElement("div");
+    followDiv.classList.add("followDiv");
+    document.querySelector("main").append(followDiv);
+
+    createFollow(arrayNotFollowing, followDiv);
+
+    let icon = document.createElement("div");
+    icon.innerHTML = `<i class="fa-solid fa-plus"></i>`; 
+    followDiv.append(icon);
+
+    icon.addEventListener("click", async () => {
+
+        let responseAdd = await fetch(`../../php/post/following.php`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                userID: user.userID,
+                followingID: arrayNotFollowing.userID
+            })
+        })
+
+        let recourseAdd = await responseAdd.json();
+
+        userLocalStorage(recourseAdd);
+
+        document.querySelector("main").innerHTML = "";
+
+        addFriend();
+    });
+
+} 
+
+function filterbtn (counter) {
+
+    let btnBox = document.createElement("div");
+    btnBox.id = "btnBox";
+    let btn = document.createElement("button");
+    btn.classList.add("showMore");
+    btn.textContent = "show more"
+    
+    btn.addEventListener("click", () => {
+        document.querySelectorAll("main > #btnBox").forEach(btn => btn.remove());
+        addFriend(counter);
+    });
+    
+    btnBox.appendChild(btn);
+    document.querySelector("main").append(btnBox);
+
+}
+
+
 function createFollow (recoursFollow, followingDiv) {
     
     let img = document.createElement("div");
@@ -178,5 +274,6 @@ export function userLocalStorage(userObject) {
   return currentUser;
 }
 
-// following();
 // userFollowers();
+// following();
+// addFriend(0);
