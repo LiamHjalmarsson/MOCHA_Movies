@@ -3,7 +3,7 @@
 function createSearch(){
     let searchContainer = document.createElement("div")
     searchContainer.classList.add("search-container")
-    searchContainer.classList.add("hide")
+    // searchContainer.classList.add("hide")
 
     let searchNavContainer = document.createElement("div")
     searchNavContainer.classList.add("search-nav-container")
@@ -21,6 +21,7 @@ function createSearch(){
             buttonSearchMovie.classList.toggle("active")
             buttonSearchUser.classList.toggle("active")
             resultWrapper.classList.toggle("active-user-search")
+            document.querySelector(".search-field").value=""
             getMoviesToShow()
         }
     })
@@ -33,6 +34,7 @@ function createSearch(){
             buttonSearchUser.classList.toggle("active")
             buttonSearchMovie.classList.toggle("active")
             resultWrapper.classList.toggle("active-user-search")
+            document.querySelector(".search-field").value=""
             getUsersToShow()
         }
     })
