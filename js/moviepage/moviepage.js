@@ -98,6 +98,5 @@ function relaseYear (movie) {
 }
 
 function overview (movie) {
-    console.log(movie)
     return movie.overview == "" ? "There is no description of this movie" : movie.overview;
 }

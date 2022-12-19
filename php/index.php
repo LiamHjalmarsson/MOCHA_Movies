@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../js/homepage/homepage.css">
+    <link rel="stylesheet" href="../js/moviepage/moviepage.css">
+    <link rel="stylesheet" href="../js/showmovies/showmovies.css">
     <title>Document</title>
 </head>
 
@@ -16,7 +18,7 @@
         <!-- <h1>Movies</h1> -->
     </main>
     <footer></footer>
-    <script src="../js/homepage/homepage.js"></script>
+    <script type="module" src="../js/homepage/homepage.js"></script>
 </body>
 
 </html>
