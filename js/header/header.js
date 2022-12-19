@@ -1,4 +1,5 @@
 import{ renderNotification, createNotificationItem, createIcon, sendPatchRequestNotification } from "../notification.js/notification.js"
+// import{searchField, createSearch} from "../search/search.js"
 
 // this is to et user from DB should be from localStorage later?
 async function getUser(userID){
@@ -6,7 +7,7 @@ async function getUser(userID){
 
     let response = await fetch(rqstUser)
     let user = await response.json()
-    console.log(user)
+
     return user
 }
 
@@ -22,11 +23,13 @@ async function createNav(userID){
     nav.appendChild(navContainer)
 
     let burgerDiv = document.createElement("div")
+    burgerDiv.classList.add("burger-div")
     burgerDiv.innerHTML = '<span class="material-symbols-outlined">menu</span>'
+    let burger = createBurger(navContainer) 
+    main.appendChild(burger)
     burgerDiv.addEventListener("click", function(){
-        let burger = createBurger(navContainer)
-        main.appendChild(burger)
         navContainer.classList.toggle("hide")
+        burger.classList.toggle("hide")
     })
     navContainer.appendChild(burgerDiv)
 
@@ -48,7 +51,6 @@ async function createNav(userID){
         let newNotificationArray = await renderNotification(user)
         let stringNew = JSON.stringify(newNotificationArray)
         let stringOld = JSON.stringify(arrayOfNotifications)
-        console.log(newNotificationArray)
         if(stringNew != stringOld){
             createNotificationItem(newNotificationArray)
             arrayOfNotifications = newNotificationArray
@@ -64,9 +66,10 @@ async function createNav(userID){
 
 function createBurger(navContainer){
     // need to add functions to each element in this array
+    
     let arrayOfItems = [
         {
-            title: "Search", 
+            title: "Search",
         },
         {
             title: "Toplist",
@@ -87,8 +90,9 @@ function createBurger(navContainer){
             title: "About/contact",
         },
     ]
-
+    
     let burger = document.createElement("div")
+    burger.classList.add("hide")
     burger.classList.add("burgerMenu")
 
     let cross = document.createElement("div")
@@ -104,6 +108,10 @@ function createBurger(navContainer){
     arrayOfItems.forEach(element =>{
         let burgerItem = document.createElement("div")
         burgerItem.innerHTML = `<h1>${element.title}</h1>`
+        burgerItem.addEventListener("click", ()=>{
+            navContainer.classList.toggle("hide")
+            burger.classList.toggle("hide")
+        })
         burger.appendChild(burgerItem)
     })
 
