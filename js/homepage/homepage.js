@@ -174,7 +174,9 @@ async function firstPageField (field) {
     let popularMovies = movieResource.results
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
     movieDiv.style.backgroundSize = 'cover'
-
+    movieDiv.addEventListener('click', () => {
+      renderMovie(movieResource.results[i]);
+    })
     movieBox.append(movieDiv)
   }
 }
@@ -196,7 +198,6 @@ async function firstPageUserMovie (array, title) {
       `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
     )
     let movieResource = await movieResponse.json()
-
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
     movieDiv.style.backgroundSize = 'cover'
     movieDiv.addEventListener('click', () => {
