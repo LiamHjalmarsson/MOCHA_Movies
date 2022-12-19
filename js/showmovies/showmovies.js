@@ -182,4 +182,4 @@ function filterbtn (movies, movieGridContainer, counter) {
 }
 
 // popular("popular");
-renderMyMovies(user_try.subscribedMovies);
+// renderMyMovies(user_try.subscribedMovies);
