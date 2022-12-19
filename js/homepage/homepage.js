@@ -1,4 +1,7 @@
 'use strict'
+import { renderMovie } from "../moviepage/moviepage.js";
+import { renderMovies, renderMyMovies } from "../showmovies/showmovies.js";
+
 // will get user from localStorage, so this user is just for testing
 let user = {
   userID: 1,
@@ -36,6 +39,8 @@ let user = {
     369202
   ]
 }
+
+localStorage.setItem("user", JSON.stringify(user));
 
 async function renderFirstPage () {
   // get user from localStorage;
@@ -99,7 +104,7 @@ async function createPersonDivs (followingID, personBox, addFriendDiv) {
 
   // for each followingID, fetch person and create div
   let personIFollowResponse = await fetch(
-    `http://localhost:8888/php/get/get.php/?users=${followingID}`
+    `../php/get/get.php/?users=${followingID}`
   )
   let personIFollowResource = await personIFollowResponse.json()
 
@@ -135,13 +140,9 @@ function addFriendPage () {
   console.log('test test, add new friend')
 }
 
-function renderMovie (movieId) {
-  console.log(movieId)
-}
-
-function renderMovies (array, counter, movieType) {
-  console.log(array, counter, movieType)
-}
+// function renderMovies (array, counter, movieType) {
+//   console.log(array, counter, movieType)
+// }
 
 // -----------------------------------------
 
@@ -161,7 +162,10 @@ async function firstPageField (field) {
   let movieResource = await movieResponse.json()
 
   titleBox.addEventListener('click', () => {
-    renderMovies(movieResource.results, 1, field)
+    window.scrollTo({
+      top: 0,
+    });
+    renderMovies(movieResource, 1, field);
   })
 
   for (let i = 0; i < 10; i++) {
@@ -196,7 +200,7 @@ async function firstPageUserMovie (array, title) {
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
     movieDiv.style.backgroundSize = 'cover'
     movieDiv.addEventListener('click', () => {
-      renderMovie(movieResource.id)
+      renderMovie(movieResource);
     })
 
     movieBox.append(movieDiv)
@@ -204,9 +208,9 @@ async function firstPageUserMovie (array, title) {
   }
   // skickar med 10 filmer här, vi kan göra en till loop som loopar 20 gånger om vi vill ha 20 filmer direkt härifrån.
   // annars kan vi bara hämta 10 till inne i renderMovies sen!
-  // titleBox.addEventListener("click", () => {
-  //   renderMovies(movieArray)
-  // })
+  titleBox.addEventListener("click", () => {
+    renderMyMovies(movieArray)
+  })
 }
 
 // if elementclass = true, gör det som står innan kolon, om false , gör det efter kolon

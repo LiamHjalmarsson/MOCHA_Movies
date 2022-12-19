@@ -2,14 +2,14 @@ import { renderMovie } from "../moviepage/moviepage.js";
 
 const key = `e666c096bb904490508ada0b495d2d90`; 
 
-//******************** REMOVE 
+// //******************** REMOVE 
 
-    async function popular (movieType) {
-        let popularResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType}?api_key=${key}&language=en-US&page=1`);    
-        let popularResource = await popularResponse.json();
+//     async function popular (movieType) {
+//         let popularResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType}?api_key=${key}&language=en-US&page=1`);    
+//         let popularResource = await popularResponse.json();
 
-        await renderMoives(popularResource, 1, movieType);
-    }
+//         await renderMoives(popularResource, 1, movieType);
+//     }
 
     let user_try = {
         userID: 1,
@@ -58,11 +58,22 @@ const key = `e666c096bb904490508ada0b495d2d90`;
         ]
       }
 
-// ***************/
+// // ***************/
 
 // three parameters movies = array, counter = counter, movieType = "string" (popoular/top_rated etc)
-async function renderMoives (movies, counter, movieType) {
-    
+export async function renderMovies (movies, counter, movieType) {
+
+    let renderMoviesWrapper = document.createElement("div");
+    document.querySelector("main").append(renderMoviesWrapper);
+    renderMoviesWrapper.id = "renderMoviesWrapper";
+    renderMoviesWrapper.innerHTML = `<h1> ${movieType} movies </h1>`;
+
+        // ta bort bara för försök
+        document.querySelector("h1").addEventListener("click", () => {
+            document.querySelector("#renderMoviesWrapper").remove();
+        })
+    //
+
     let movieGridContainer = document.createElement("div");
     movieGridContainer.id = "movieGridContainer";
 
@@ -77,24 +88,25 @@ async function renderMoives (movies, counter, movieType) {
     btn.addEventListener("click", async () => {
         counter++;
 
-        let popularResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType}?api_key=${key}&language=en-US&page=${counter}`);    
+        // console.log(movies, counter, movieType);
+        let popularResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`);    
         let popularResource = await popularResponse.json();
 
         getMovies(popularResource, movieGridContainer);
     });
 
     btnBox.appendChild(btn);
-    document.querySelector("main").append(movieGridContainer, btnBox);
+    renderMoviesWrapper.append(movieGridContainer, btnBox);
 
 }
 
 
-async function renderMyMovies (movies, counter) {
+export async function renderMyMovies (movies) {
     let movieGridContainer = document.createElement("div");
     movieGridContainer.id = "movieGridContainer";
     document.querySelector("main").append(movieGridContainer);
 
-    getMovies(movies, movieGridContainer, counter);
+    getMovies(movies, movieGridContainer, 0);
 }
 
 
@@ -107,35 +119,32 @@ async function getMovies (movies, movieGridContainer, counter) {
         });
 
     } else if (movies) {
-        
-        if (movies.length >= 6) {
 
-            for (let i = 0; i < 6; i++) {
+        if (movies.length >= 20) {
+
+            for (let i = 0; i < 20; i++) {
                 counter++
 
                 let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[counter]}?api_key=${key}&language=en-US`);
                 let movieResource = await movieResponse.json()
     
-                console.log(movieResource);
-
                 if (movieResource.status_code != 34 ) {
                     movieGridContainer.append(createMovie(movieResource));
-                } else {
-                    document.querySelector("button").textContent = "HELLO"
                 }
+
             }
             
-            filterbtn(movies, counter);
+            filterbtn(movies, movieGridContainer, counter);
     
         } else {
+
             movies.forEach( async movie => {
                 let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${key}&language=en-US`);
                 let movieResource = await movieResponse.json()
     
                 movieGridContainer.append(createMovie(movieResource));
-    
             });
-    
+
         }
     }
 
@@ -145,7 +154,7 @@ function createMovie (movie) {
     let movieCard = document.createElement("div");
     movieCard.classList.add("movieCard");
     movieCard.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
-    
+
     movieCard.addEventListener("click", () => {
         renderMovie(movie);
     });
@@ -154,7 +163,7 @@ function createMovie (movie) {
 }
 
 
-function filterbtn (movies, counter) {
+function filterbtn (movies, movieGridContainer, counter) {
 
         let btnBox = document.createElement("div");
         btnBox.id = "btnBox";
@@ -164,7 +173,7 @@ function filterbtn (movies, counter) {
         
         btn.addEventListener("click", () => {
             document.querySelectorAll("main > #btnBox").forEach(btn => btn.remove());
-            renderMyMovies(movies, counter);
+            getMovies(movies, movieGridContainer, counter);
         })
         
         btnBox.appendChild(btn);
@@ -172,5 +181,5 @@ function filterbtn (movies, counter) {
 
 }
 
-popular("popular");
-// renderMyMovies(user_try.subscribedMovies, 0);
+// popular("popular");
+renderMyMovies(user_try.subscribedMovies);
