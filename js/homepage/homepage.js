@@ -8,10 +8,33 @@ let user = {
   password: 'tanjiiisss123',
   imageLink: '',
   reviewID: [],
-  following: [1, 2, 3, 4],
+  following: [1, 2, 3, 4, 1, 2, 3, 4, 1],
   moviesToSee: [9841, 301728, 9876, 263472, 25018, 23966, 9612, 480042],
-  watchedMovies: [37430, 25853, 408381, 301337, 11284, 1792, 10845, 341392, 277368, 47964, 417830],
-  subscribedMovies: [38579, 30178, 9731, 9711, 305943, 295011, 14405, 22084, 10063, 369202]
+  watchedMovies: [
+    37430,
+    25853,
+    408381,
+    301337,
+    11284,
+    1792,
+    10845,
+    341392,
+    277368,
+    47964,
+    417830
+  ],
+  subscribedMovies: [
+    38579,
+    30178,
+    9731,
+    9711,
+    305943,
+    295011,
+    14405,
+    22084,
+    10063,
+    369202
+  ]
 }
 
 async function renderFirstPage () {
@@ -19,11 +42,13 @@ async function renderFirstPage () {
   // let user = localStorage.getItem("user");
 
   // ---------- top-movie-section ---------------
-  let topMoviesResponse = await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1')
+  let topMoviesResponse = await fetch(
+    'https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1'
+  )
   let topMoviesResource = await topMoviesResponse.json()
-  
+
   let toplistWrapper = createElementWithClassOrID(false, 'toplistWrapper')
-  
+
   for (let i = 0; i < 6; i++) {
     let toplistMovie = createElementWithClassOrID('toplistMovie')
     let movies = topMoviesResource.results
@@ -42,8 +67,9 @@ async function renderFirstPage () {
   titleBox.textContent = 'Your friends'
   personWrapper.append(titleBox, personBox)
 
-  let addFriendDiv = createElementWithClassOrID('imgDiv', 'toplistMovie')
-  addFriendDiv.textContent = '+'
+  let addFriendDiv = createElementWithClassOrID('imgDiv', 'addfriendDiv')
+  addFriendDiv.innerHTML =
+    '<span class="material-symbols-outlined">person_add</span>'
   addFriendDiv.addEventListener('click', addFriendPage)
 
   // ---- follow less then 8 people? get all ------
@@ -54,7 +80,6 @@ async function renderFirstPage () {
     }
 
     // --- else, get 8 ppl i follow ---------------
-
   } else {
     for (let j = 0; j < 8; j++) {
       let followingID = user.following[j]
@@ -73,12 +98,21 @@ async function createPersonDivs (followingID, personBox, addFriendDiv) {
   // (addFriendDiv), to be able to put the addFriendDiv last
 
   // for each followingID, fetch person and create div
-  let personIFollowResponse = await fetch(`http://localhost:8888/php/get/get.php/?users=${followingID}`)
+  let personIFollowResponse = await fetch(
+    `http://localhost:8888/php/get/get.php/?users=${followingID}`
+  )
   let personIFollowResource = await personIFollowResponse.json()
 
   let personDiv = createElementWithClassOrID('personDiv')
   let imgDiv = createElementWithClassOrID('imgDiv')
   let nameDiv = createElementWithClassOrID('nameDiv')
+
+  if (personIFollowResource.imageLink != '') {
+    imgDiv.style.backgroundImage = `url${personIFollowResource.imageLink})`
+    imgDiv.style.backgroundSize = 'cover'
+  } else {
+    imgDiv.innerHTML = '<span class="material-symbols-outlined">person</span>'
+  }
 
   nameDiv.textContent = personIFollowResource.firstName
 
@@ -101,6 +135,14 @@ function addFriendPage () {
   console.log('test test, add new friend')
 }
 
+function renderMovie (movieId) {
+  console.log(movieId)
+}
+
+function renderMovies (array, counter, movieType) {
+  console.log(array, counter, movieType)
+}
+
 // -----------------------------------------
 
 async function firstPageField (field) {
@@ -109,16 +151,22 @@ async function firstPageField (field) {
   let movieWrapper = createElementWithClassOrID(false, 'movieWrapper')
 
   titleBox.textContent = field + ' ' + 'movies'
-  
+
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
 
-  let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${field.toLowerCase()}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1`)
+  let movieResponse = await fetch(
+    `https://api.themoviedb.org/3/movie/${field.toLowerCase()}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1`
+  )
   let movieResource = await movieResponse.json()
-  
+
+  titleBox.addEventListener('click', () => {
+    renderMovies(movieResource.results, 1, field)
+  })
+
   for (let i = 0; i < 10; i++) {
     let movieDiv = createElementWithClassOrID('movieDiv')
-    
+
     let popularMovies = movieResource.results
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
     movieDiv.style.backgroundSize = 'cover'
@@ -136,18 +184,29 @@ async function firstPageUserMovie (array, title) {
 
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
-
+  let movieArray = []
   for (let i = 0; i < 10; i++) {
     let movieDiv = createElementWithClassOrID('movieDiv')
 
-    let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`)
+    let movieResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+    )
     let movieResource = await movieResponse.json()
 
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
     movieDiv.style.backgroundSize = 'cover'
+    movieDiv.addEventListener('click', () => {
+      renderMovie(movieResource.id)
+    })
 
     movieBox.append(movieDiv)
+    movieArray.push(movieResource)
   }
+  // skickar med 10 filmer här, vi kan göra en till loop som loopar 20 gånger om vi vill ha 20 filmer direkt härifrån.
+  // annars kan vi bara hämta 10 till inne i renderMovies sen!
+  // titleBox.addEventListener("click", () => {
+  //   renderMovies(movieArray)
+  // })
 }
 
 // if elementclass = true, gör det som står innan kolon, om false , gör det efter kolon
@@ -158,6 +217,6 @@ function createElementWithClassOrID (
 ) {
   let createdElement = document.createElement(element)
   elementclass ? createdElement.classList.add(elementclass) : false
-  createdElement.id = id
+  id ? createdElement.setAttribute('id', id) : null
   return createdElement
 }
