@@ -152,10 +152,6 @@ function addFriendPage () {
   console.log('test test, add new friend')
 }
 
-// function renderMovies (array, counter, movieType) {
-//   console.log(array, counter, movieType)
-// }
-
 // -----------------------------------------
 
 async function firstPageField (field) {
@@ -227,8 +223,6 @@ async function firstPageUserMovie (array, title, path) {
 
 
   }
-  // skickar med 10 filmer här, vi kan göra en till loop som loopar 20 gånger om vi vill ha 20 filmer direkt härifrån.
-  // annars kan vi bara hämta 10 till inne i renderMovies sen!
   titleBox.addEventListener("click", () => {
     renderMyMovies(movieArray, 10, path)
   })
