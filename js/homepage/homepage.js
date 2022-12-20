@@ -190,6 +190,7 @@ async function firstPageField (field) {
     movieDiv.addEventListener('click', () => {
       renderMovie(movieResource.results[i]);
     });
+
     movieBox.append(movieDiv)
   }
 }
@@ -223,6 +224,7 @@ async function firstPageUserMovie (array, title, path) {
       movieBox.append(movieDiv)
       movieArray.push(movieResource)
     }
+
 
   }
   // skickar med 10 filmer här, vi kan göra en till loop som loopar 20 gånger om vi vill ha 20 filmer direkt härifrån.

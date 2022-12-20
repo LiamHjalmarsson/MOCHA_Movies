@@ -230,4 +230,3 @@ function createMovie (movie) {
 //         btnBox.appendChild(btn);
 //         document.querySelector("#renderMoviesWrapper").append(btnBox);
 
-// }
