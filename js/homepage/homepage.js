@@ -36,11 +36,23 @@ let user = {
     14405,
     22084,
     10063,
-    369202
+    369202,
+    37430,
+    25853,
+    408381,
+    301337,
+    11284,
+    1792,
+    10845,
+    341392,
+    277368,
+    47964,
+    417830,
+    9841
   ]
 }
 
-localStorage.setItem("user", JSON.stringify(user));
+// localStorage.setItem("user", JSON.stringify(user));
 
 async function renderFirstPage () {
   // get user from localStorage;
@@ -93,10 +105,10 @@ async function renderFirstPage () {
   }
   document.querySelector('main').append(toplistWrapper, personWrapper)
 
-  firstPageUserMovie(user.subscribedMovies, 'Subscribed movie')
-  firstPageUserMovie(user.moviesToSee, 'Movies to see')
+  firstPageUserMovie(user.subscribedMovies, 'Subscribed movie', "subscribedMovies")
+  firstPageUserMovie(user.moviesToSee, 'Movies to see', "moviesToSee")
   firstPageField('Popular')
-  firstPageUserMovie(user.watchedMovies, 'Watch again')
+  firstPageUserMovie(user.watchedMovies, 'Watch again', "watchedMovies")
 }
 
 async function createPersonDivs (followingID, personBox, addFriendDiv) {
@@ -172,14 +184,17 @@ async function firstPageField (field) {
     let movieDiv = createElementWithClassOrID('movieDiv')
 
     let popularMovies = movieResource.results
+
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
     movieDiv.style.backgroundSize = 'cover'
-
+    movieDiv.addEventListener('click', () => {
+      renderMovie(movieResource.results[i]);
+    });
     movieBox.append(movieDiv)
   }
 }
 
-async function firstPageUserMovie (array, title) {
+async function firstPageUserMovie (array, title, path) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID(false, 'movieWrapper')
@@ -197,19 +212,23 @@ async function firstPageUserMovie (array, title) {
     )
     let movieResource = await movieResponse.json()
 
-    movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
-    movieDiv.style.backgroundSize = 'cover'
-    movieDiv.addEventListener('click', () => {
-      renderMovie(movieResource);
-    })
+    // controls if there is a recourse or not 
+    if (movieResource.status_code != 34) {
+      movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
+      movieDiv.style.backgroundSize = 'cover'
+      movieDiv.addEventListener('click', () => {
+        renderMovie(movieResource);
+      })
 
-    movieBox.append(movieDiv)
-    movieArray.push(movieResource)
+      movieBox.append(movieDiv)
+      movieArray.push(movieResource)
+    }
+
   }
   // skickar med 10 filmer här, vi kan göra en till loop som loopar 20 gånger om vi vill ha 20 filmer direkt härifrån.
   // annars kan vi bara hämta 10 till inne i renderMovies sen!
   titleBox.addEventListener("click", () => {
-    renderMyMovies(movieArray)
+    renderMyMovies(movieArray, 10, path)
   })
 }
 
