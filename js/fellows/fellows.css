@@ -29,3 +29,8 @@
     width: 90%;
     padding: 5px;
 }
+
+#btnBox {
+    display: flex;
+    justify-content: center;
+}

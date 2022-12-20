@@ -148,16 +148,20 @@ async function following () {
     })
 }
 
+function renderAddFreind () {
+    let followWrapper = document.createElement("div");
+    followWrapper.id = "followWrapper";
+    document.querySelector("main").append(followWrapper);
+    addFriend(0);
+}
+
 async function addFriend (counter) {
     let user = JSON.parse(localStorage.getItem("user"));
-
     let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
     let recourseAllusers = await responseAllUsers.json();
-
     let arrayNotFollowing = [];
 
     recourseAllusers.forEach(recUser => {
-
         let follow = user.following.find(follow => follow === recUser.userID);
 
         if (follow == undefined) {
@@ -165,23 +169,34 @@ async function addFriend (counter) {
                 arrayNotFollowing.push(recUser);
             }
         }
-
     });
 
     searchInput(arrayNotFollowing, user);
 
     if (arrayNotFollowing.length != 0) {
+        if (arrayNotFollowing.length >= 1) {
 
-        if (arrayNotFollowing.length >= 20) {
-
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 1; i++) {
                 if (arrayNotFollowing[counter] != undefined) {
                     getAddFriend(user, arrayNotFollowing[counter]);
-                    counter++
+                    counter++;
                 } 
             }
 
-            filterbtn(counter);
+            let btnBox = document.createElement("div");
+            btnBox.id = "btnBox";
+            let btn = document.createElement("button");
+            btn.classList.add("showMore");
+            btn.textContent = "show more";
+            
+            btn.addEventListener("click", () => {
+                document.querySelectorAll("main > #btnBox").forEach(btn => btn.remove());
+                document.querySelector(".inputBox").remove();
+                addFriend(counter);
+            });
+            
+            btnBox.appendChild(btn);
+            document.querySelector("main").append(btnBox);
 
         } else {     
             arrayNotFollowing.forEach(follow => {
@@ -190,14 +205,14 @@ async function addFriend (counter) {
         }
     
     } else {
-        document.querySelector("main").textContent = `You are following all that exists in the Database at the moment`;
+        document.querySelector("#followWrapper").textContent = `You are following all that exists in the Database at the moment`;
     }
 }
 
 function getAddFriend (user, arrayNotFollowing) {
     let followDiv = document.createElement("div");
     followDiv.classList.add("followDiv");
-    document.querySelector("main").append(followDiv);
+    document.querySelector("#followWrapper").append(followDiv);
 
     createFollow(arrayNotFollowing, followDiv);
 
@@ -206,7 +221,6 @@ function getAddFriend (user, arrayNotFollowing) {
     followDiv.append(icon);
 
     icon.addEventListener("click", async () => {
-
         let responseAdd = await fetch(`../../php/post/following.php`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -214,42 +228,19 @@ function getAddFriend (user, arrayNotFollowing) {
                 userID: user.userID,
                 followingID: arrayNotFollowing.userID
             })
-        })
+        });
 
         let recourseAdd = await responseAdd.json();
-
         userLocalStorage(recourseAdd);
-
-        document.querySelector("main").innerHTML = "";
-
+        document.querySelector("main > .inputBox").remove();
+        document.querySelector("#followWrapper").innerHTML = "";
         addFriend();
     });
-
 } 
 
-function filterbtn (counter) {
-
-    let btnBox = document.createElement("div");
-    btnBox.id = "btnBox";
-    let btn = document.createElement("button");
-    btn.classList.add("showMore");
-    btn.textContent = "show more"
-    
-    btn.addEventListener("click", () => {
-        document.querySelectorAll("main > #btnBox").forEach(btn => btn.remove());
-        addFriend(counter);
-    });
-    
-    btnBox.appendChild(btn);
-    document.querySelector("main").append(btnBox);
-
-}
-
-
 function createFollow (recoursFollow, followingDiv) {
-    
     let img = document.createElement("div");
-    img.classList.add("img")
+    img.classList.add("img");
     let name = document.createElement("div");
     name.classList.add("name");
 
@@ -260,32 +251,28 @@ function createFollow (recoursFollow, followingDiv) {
     }
     
     name.textContent = `${recoursFollow.firstName} ${recoursFollow.lastName}`;
-
     name.addEventListener("click", () => {
         // otherProfil(recoursFollow.userID)
         console.log(recoursFollow)
     });
-    followingDiv.append(img, name)
+
+    followingDiv.append(img, name);
 }
 
 function searchInput (arrayNotFollowing, user) {
-
     let inputBox = document.createElement("div");
     inputBox.classList.add("inputBox");
     inputBox.innerHTML = ` <input class="addInput"> `;
-    document.querySelector("main").append(inputBox);
+    document.querySelector("main").insertBefore(inputBox, document.querySelector("#followWrapper"));
 
     document.querySelector(".addInput").addEventListener("keyup", (e) => {
-        console.log(e.target.value);
-
-        document.querySelectorAll("main > .followDiv").forEach(div => div.remove());
+        document.querySelectorAll("#followWrapper > .followDiv").forEach(div => div.remove());
 
         arrayNotFollowing.forEach(follow => {
 
             if (follow.firstName.toLowerCase().includes(e.target.value.toLowerCase()) 
                 || 
                 follow.username.toLowerCase().includes(e.target.value.toLowerCase())) {
-                // console.log(follow);
                 getAddFriend(user, follow);
             }
         })
@@ -294,6 +281,7 @@ function searchInput (arrayNotFollowing, user) {
 }
 
 
+// ta bort ersätt med export från topp 
 export function userLocalStorage(userObject) {
     localStorage.setItem("user", JSON.stringify(userObject));
     let currentUser = localStorage.getItem("user");
@@ -303,4 +291,4 @@ export function userLocalStorage(userObject) {
 
 // userFollowers();
 // following();
-// addFriend(0);
+renderAddFreind();
