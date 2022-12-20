@@ -1,6 +1,6 @@
 "use strict"
 
-function createSearch(){
+export function createSearch(){
     let searchContainer = document.createElement("div")
     searchContainer.classList.add("search-container")
     // searchContainer.classList.add("hide")
@@ -52,7 +52,7 @@ function createSearch(){
 }
 
 
-function searchField(){
+export function searchField(){
     let searchFieldContainer = document.createElement("div")
     searchFieldContainer.classList.add("search-field-container")
 

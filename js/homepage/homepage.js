@@ -1,6 +1,7 @@
 'use strict'
 import { renderMovie } from "../moviepage/moviepage.js";
 import { renderMovies, renderMyMovies } from "../showmovies/showmovies.js";
+import { createNav } from "../header/header.js";
 
 // will get user from localStorage, so this user is just for testing
 let user = {
@@ -57,6 +58,8 @@ let user = {
 async function renderFirstPage () {
   // get user from localStorage;
   // let user = localStorage.getItem("user");
+
+  createNav(user.userID)
 
   // ---------- top-movie-section ---------------
   let topMoviesResponse = await fetch(
@@ -173,7 +176,7 @@ async function firstPageField (field) {
     window.scrollTo({
       top: 0,
     });
-    renderMovies(movieResource, 1, field);
+    renderMovies(1, field, movieResource);
   })
 
   for (let i = 0; i < 10; i++) {

@@ -14,6 +14,5 @@
     <nav></nav>
     <main></main>
     <script type="module" src="header.js"></script>
-    <script src="../search/search.js"></script>
 </body>
 </html>

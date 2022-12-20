@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../js/homepage/homepage.css">
     <link rel="stylesheet" href="../js/moviepage/moviepage.css">
     <link rel="stylesheet" href="../js/showmovies/showmovies.css">
+    <link rel="stylesheet" href="../js/header/header.css">
+    <link rel="stylesheet" href="../js/search/search.css">
     <title>Document</title>
 </head>
 
