@@ -108,7 +108,7 @@ export async function renderMovies (counter, movieType, movies) {
 
 export async function renderMyMovies (movies, counter, type) {
   let renderMoviesWrapper = document.createElement('div');
-  document.querySelector('main').append(renderMo;
+  document.querySelector('main').append(renderMoviesWrapper);
   renderMoviesWrapper.innerHTML = `<h1> movies </h1>`;
 
   // ta bort bara för försök
