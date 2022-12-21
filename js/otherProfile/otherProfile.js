@@ -1,3 +1,5 @@
+import { navigationBack } from "../navigationBack/navigationBack.js";
+
 // remove user later, and use user from local storage
 // let user = {
 //   userID: 1,
@@ -17,6 +19,10 @@
 
   let otherProfileWrapper = createElementWithClassOrID(false,'otherProfileWrapper')
   document.querySelector('main').append(otherProfileWrapper)
+
+    // ta bort bara för försök
+    // navigation to close and other information 
+      otherProfileWrapper.append(navigationBack(otherProfileWrapper, otherUserResource.firstName));
 
   let otherProfileImg = createElementWithClassOrID(false, 'otherProfileImg')
   if (otherUserResource.imageLink != '') {

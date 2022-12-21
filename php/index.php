@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="../js/search/search.css">
     <link rel="stylesheet" href="../js/otherProfile/otherProfile.css">
     <link rel="stylesheet" href="../js/fellows/fellows.css">
+
+    <!--  navigation is to be removde if we want, just to be able to see better -->
+    <link rel="stylesheet" href="../js/navigationBack/navigationBack.css">
     <title>Document</title>
 </head>
 
