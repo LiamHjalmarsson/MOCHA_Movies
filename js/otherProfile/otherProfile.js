@@ -45,8 +45,8 @@
     otherProfileWrapper.append(otherProfileNotAllowed)
   } else {
     console.log('du följer personen :) ')
-    let otherPersonMovieBox = createElementWithClassOrID(true, true, otherPersonMovieBox)
-    otherProfileWrapper.append(otherPersonMovieBox)
+    // let otherPersonMovieBox = createElementWithClassOrID(otherPersonMovieBox)
+    // otherProfileWrapper.append(otherPersonMovieBox)
   }
 }
 

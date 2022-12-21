@@ -148,10 +148,13 @@ async function following () {
     })
 }
 
-function renderAddFreind () {
+export function renderAddFreind () {
+    let followContainer = document.createElement("div");
+    followContainer.id = "followContainer";
+    document.querySelector("main").append(followContainer);
     let followWrapper = document.createElement("div");
     followWrapper.id = "followWrapper";
-    document.querySelector("main").append(followWrapper);
+    followContainer.append(followWrapper);
     addFriend(0);
 }
 
@@ -190,13 +193,13 @@ async function addFriend (counter) {
             btn.textContent = "show more";
             
             btn.addEventListener("click", () => {
-                document.querySelectorAll("main > #btnBox").forEach(btn => btn.remove());
+                document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
                 document.querySelector(".inputBox").remove();
                 addFriend(counter);
             });
             
             btnBox.appendChild(btn);
-            document.querySelector("main").append(btnBox);
+            document.querySelector("#followContainer").append(btnBox);
 
         } else {     
             arrayNotFollowing.forEach(follow => {
@@ -232,7 +235,7 @@ function getAddFriend (user, arrayNotFollowing) {
 
         let recourseAdd = await responseAdd.json();
         userLocalStorage(recourseAdd);
-        document.querySelector("main > .inputBox").remove();
+        document.querySelector("#followContainer > .inputBox").remove();
         document.querySelector("#followWrapper").innerHTML = "";
         addFriend();
     });
@@ -262,7 +265,7 @@ function searchInput (arrayNotFollowing, user) {
     let inputBox = document.createElement("div");
     inputBox.classList.add("inputBox");
     inputBox.innerHTML = ` <input class="addInput"> `;
-    document.querySelector("main").insertBefore(inputBox, document.querySelector("#followWrapper"));
+    document.querySelector("#followContainer").insertBefore(inputBox, document.querySelector("#followWrapper"));
 
     document.querySelector(".addInput").addEventListener("keyup", (e) => {
         document.querySelectorAll("#followWrapper > .followDiv").forEach(div => div.remove());
@@ -279,7 +282,6 @@ function searchInput (arrayNotFollowing, user) {
 
 }
 
-
 // ta bort ersätt med export från topp 
 export function userLocalStorage(userObject) {
     localStorage.setItem("user", JSON.stringify(userObject));
@@ -288,6 +290,6 @@ export function userLocalStorage(userObject) {
   return currentUser;
 }
 
-userFollowers();
+// userFollowers();
 // following();
 // renderAddFreind();

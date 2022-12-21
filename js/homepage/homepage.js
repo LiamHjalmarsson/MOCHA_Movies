@@ -2,6 +2,8 @@
 import { renderMovie } from "../moviepage/moviepage.js";
 import { renderMovies, renderMyMovies } from "../showmovies/showmovies.js";
 import { createNav } from "../header/header.js";
+import { otherUser } from "../otherProfile/otherProfile.js";
+import { renderAddFreind } from "../fellows/fellows.js";
 
 // will get user from localStorage, so this user is just for testing
 let user = {
@@ -57,7 +59,7 @@ let user = {
 
 async function renderFirstPage () {
   // get user from localStorage;
-  // let user = localStorage.getItem("user");
+  // let user = JSON.parse(localStorage.getItem("user"));
 
   // document.querySelector("nav").append(createNav(user.userID));
   createNav(user.userID);
@@ -91,7 +93,9 @@ async function renderFirstPage () {
   let addFriendDiv = createElementWithClassOrID('imgDiv', 'addfriendDiv')
   addFriendDiv.innerHTML =
     '<span class="material-symbols-outlined">person_add</span>'
-  addFriendDiv.addEventListener('click', addFriendPage)
+  addFriendDiv.addEventListener('click', () => {
+      renderAddFreind();
+  })
 
   // ---- follow less then 8 people? get all ------
 
@@ -138,7 +142,7 @@ async function createPersonDivs (followingID, personBox, addFriendDiv) {
   nameDiv.textContent = personIFollowResource.firstName
 
   personDiv.addEventListener('click', () => {
-    followingProfile(followingID)
+    otherUser(followingID);
   })
 
   personDiv.append(imgDiv, nameDiv)

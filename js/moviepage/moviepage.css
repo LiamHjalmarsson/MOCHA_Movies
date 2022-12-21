@@ -8,7 +8,6 @@
 
 #movieHeader {
     height: 590px;
-    background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -18,4 +17,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.movieInformation > div {
+    padding: 0px 30px;
 }

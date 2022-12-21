@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #renderMoviesWrapper {
     position: fixed;
     top: 0;
@@ -10,7 +15,7 @@
 #movieGridContainer {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
-     gap: 15px;
+     gap: 10px;
 }
 
 .movieCard {

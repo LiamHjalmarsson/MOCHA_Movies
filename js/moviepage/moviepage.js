@@ -21,6 +21,7 @@ export async function renderMovie (movie) {
     iconContainer.innerHTML = `<div> X </div> <div> Y </div> <div> O </div>`;
 
     let movieInformation = document.createElement("div");
+    movieInformation.classList.add("movieInformation");
     movieInformation.innerHTML = `
         <div> 
             <h3> Synopsis </h3> 
@@ -47,10 +48,11 @@ export async function renderMovie (movie) {
     let reviewContainer = document.createElement("div");
     reviewContainer.id = "reviewContainer";
     let reviewHeader = document.createElement("div");
-    reviewHeader.textContent = `Reviews made on the movie`;
+    reviewHeader.innerHTML = `<h3> Reviews made on the movie </h3>`;
 
-    reviewContainer.append(reviewHeader) // ska lägga till reviews function med movie id reviews(movie.id)
-    movieContainer.append(movieHeader, iconContainer, movieInformation, reviewHeader);
+    reviewContainer.append(reviewHeader); // ska lägga till reviews function med movie id reviews(movie.id)
+    movieInformation.append(reviewContainer);
+    movieContainer.append(movieHeader, iconContainer, movieInformation);
     document.querySelector("body").append(movieContainer);
 }
 
