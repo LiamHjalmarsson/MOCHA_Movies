@@ -6,60 +6,60 @@ import { otherUser } from "../otherProfile/otherProfile.js";
 import { renderAddFreind } from "../fellows/fellows.js";
 
 // will get user from localStorage, so this user is just for testing
-let user = {
-  userID: 1,
-  username: 'tanjis',
-  firstName: 'Tanja',
-  lastName: 'Bjorklind',
-  password: 'tanjiiisss123',
-  imageLink: '',
-  reviewID: [],
-  following: [1, 2, 3, 4, 1, 2, 3, 4, 1],
-  moviesToSee: [9841, 301728, 9876, 263472, 25018, 23966, 9612, 480042],
-  watchedMovies: [
-    37430,
-    25853,
-    408381,
-    301337,
-    11284,
-    1792,
-    10845,
-    341392,
-    277368,
-    47964,
-    417830
-  ],
-  subscribedMovies: [
-    38579,
-    30178,
-    9731,
-    9711,
-    305943,
-    295011,
-    14405,
-    22084,
-    10063,
-    369202,
-    37430,
-    25853,
-    408381,
-    301337,
-    11284,
-    1792,
-    10845,
-    341392,
-    277368,
-    47964,
-    417830,
-    9841
-  ]
-}
+// let user = {
+//   userID: 1,
+//   username: 'tanjis',
+//   firstName: 'Tanja',
+//   lastName: 'Bjorklind',
+//   password: 'tanjiiisss123',
+//   imageLink: '',
+//   reviewID: [],
+//   following: [1, 2, 3, 4, 1, 2, 3, 4, 1],
+//   moviesToSee: [9841, 301728, 9876, 263472, 25018, 23966, 9612, 480042],
+//   watchedMovies: [
+//     37430,
+//     25853,
+//     408381,
+//     301337,
+//     11284,
+//     1792,
+//     10845,
+//     341392,
+//     277368,
+//     47964,
+//     417830
+//   ],
+//   subscribedMovies: [
+//     38579,
+//     30178,
+//     9731,
+//     9711,
+//     305943,
+//     295011,
+//     14405,
+//     22084,
+//     10063,
+//     369202,
+//     37430,
+//     25853,
+//     408381,
+//     301337,
+//     11284,
+//     1792,
+//     10845,
+//     341392,
+//     277368,
+//     47964,
+//     417830,
+//     9841
+//   ]
+// }
 
 // localStorage.setItem("user", JSON.stringify(user));
 
 async function renderFirstPage () {
   // get user from localStorage;
-  // let user = JSON.parse(localStorage.getItem("user"));
+  let user = JSON.parse(localStorage.getItem("user"));
 
   // document.querySelector("nav").append(createNav(user.userID));
   createNav(user.userID);

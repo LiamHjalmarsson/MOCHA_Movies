@@ -1,9 +1,15 @@
+import { navigationBack } from "../navigationBack/navigationBack.js";
+ 
 const key = `e666c096bb904490508ada0b495d2d90`; 
 
 export async function renderMovie (movie) {
 
     let movieContainer = document.createElement("div");
     movieContainer.id = "movieContainer";
+
+    // ta bort bara för försök
+    // navigation to close and other information 
+    movieContainer.append(navigationBack(movieContainer, movie.original_title));
 
     let movieHeader = document.createElement("div");
     movieHeader.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;

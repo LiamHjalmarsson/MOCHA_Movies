@@ -1,4 +1,5 @@
 "use strict"
+import { navigationBack } from "../navigationBack/navigationBack.js";
 
 import { renderMovie } from '../moviepage/moviepage.js';
 import { otherUser } from "../otherProfile/otherProfile.js";
@@ -6,6 +7,10 @@ import { otherUser } from "../otherProfile/otherProfile.js";
 export function createSearch(){
     let searchContainer = document.createElement("div")
     searchContainer.classList.add("search-container")
+
+    // ta bort bara för försök
+    // navigation to close and other information 
+        searchContainer.append(navigationBack(searchContainer));
 
     // Appennd directly esaier then to do it on header
         document.querySelector("main").append(searchContainer);

@@ -1,4 +1,5 @@
 import { renderMovie } from '../moviepage/moviepage.js';
+import { navigationBack } from "../navigationBack/navigationBack.js";
 
 const key = `e666c096bb904490508ada0b495d2d90`;
 
@@ -8,13 +9,10 @@ export async function renderMovies (counter, movieType, movies) {
   let renderMoviesWrapper = document.createElement('div');
   document.querySelector('main').append(renderMoviesWrapper);
   renderMoviesWrapper.id = 'renderMoviesWrapper';
-  renderMoviesWrapper.innerHTML = `<h1> ${movieType} movies </h1>`;
 
   // ta bort bara för försök
-  // för tillfället döljer nav diven detta. 
-  document.querySelector('h1').addEventListener('click', () => {
-    document.querySelector('#renderMoviesWrapper').remove();
-  })
+    // navigation to close and other information 
+    renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, movieType));
   //
 
   let movieGridContainer = document.createElement('div');
@@ -52,12 +50,11 @@ export async function renderMyMovies (counter, type, movies) {
   let renderMoviesWrapper = document.createElement('div');
   document.querySelector('main').append(renderMoviesWrapper);
   renderMoviesWrapper.id = 'renderMoviesWrapper';
-  renderMoviesWrapper.innerHTML = `<h1> movies </h1>`;
+  
 
   // ta bort bara för försök
-  document.querySelector('h1').addEventListener('click', () => {
-    document.querySelector('#renderMoviesWrapper').remove();
-  });
+    // navigation to close and other information 
+    renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, type));
 
 
   let movieGridContainer = document.createElement('div');
