@@ -1,16 +1,16 @@
 // remove user later, and use user from local storage
-let user = {
-  userID: 1,
-  username: 'tanjis',
-  firstName: 'Tanja',
-  lastName: 'Bjorklind',
-  password: 'tanjiiisss123',
-  imageLink: '',
-  reviewID: [],
-  following: [2, 3, 4, 2, 3, 4]
-}
+// let user = {
+//   userID: 1,
+//   username: 'tanjis',
+//   firstName: 'Tanja',
+//   lastName: 'Bjorklind',
+//   password: 'tanjiiisss123',
+//   imageLink: '',
+//   reviewID: [],
+//   following: [2, 3, 4, 2, 3, 4]
+// }
 
-async function otherUser (otherUserID) {
+ export async function otherUser (otherUserID) {
   let otherUserResponse = await fetch(`../../php/get/get.php/?users=${otherUserID}`)
   let otherUserResource = await otherUserResponse.json()
 
@@ -29,7 +29,7 @@ async function otherUser (otherUserID) {
   let otherProfileName = createElementWithClassOrID(false, 'otherProfileName')
   otherProfileName.textContent = `${otherUserResource.firstName + ' ' + otherUserResource.lastName}`
 
-  let otherProfileNotAllowed = createElementWithClassOrID(false,'otherProfileNotAllowed')
+  let otherProfileNotAllowed = createElementWithClassOrID(false, 'otherProfileNotAllowed')
   otherProfileNotAllowed.innerHTML = `
     <p>You are not following this account</p>
     <p>Follow this account to see its watched movies as well as movies the person wants to watch</p>
@@ -37,19 +37,17 @@ async function otherUser (otherUserID) {
   otherProfileWrapper.append(otherProfileImg, otherProfileName)
 
   // get user from localStorage;
-  // let user = localStorage.getItem("user");
+  let user = JSON.parse(localStorage.getItem("user"));
   
   if (!user.following.includes(otherUserID)) {
     console.log('du följer inte personen')
     otherProfileWrapper.append(otherProfileNotAllowed)
   } else {
     console.log('du följer personen :) ')
-    let otherPersonMovieBox = createElementWithClassOrID(otherPersonMovieBox)
+    let otherPersonMovieBox = createElementWithClassOrID(true, true, otherPersonMovieBox)
     otherProfileWrapper.append(otherPersonMovieBox)
   }
 }
-
-otherUser(1)
 
 function createElementWithClassOrID (
   elementclass = false,
