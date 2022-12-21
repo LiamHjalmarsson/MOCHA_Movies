@@ -1,3 +1,11 @@
+#followContainer {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
 .followDiv {
     display: flex;
     flex-direction: row;
