@@ -11,6 +11,7 @@
 // }
 
  export async function otherUser (otherUserID) {
+  console.log(otherUserID)
   let otherUserResponse = await fetch(`../../php/get/get.php/?users=${otherUserID}`)
   let otherUserResource = await otherUserResponse.json()
 

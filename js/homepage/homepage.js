@@ -59,7 +59,8 @@ async function renderFirstPage () {
   // get user from localStorage;
   // let user = localStorage.getItem("user");
 
-  createNav(user.userID)
+  // document.querySelector("nav").append(createNav(user.userID));
+  createNav(user.userID);
 
   // ---------- top-movie-section ---------------
   let topMoviesResponse = await fetch(
@@ -227,7 +228,7 @@ async function firstPageUserMovie (array, title, path) {
 
   }
   titleBox.addEventListener("click", () => {
-    renderMyMovies(movieArray, 10, path)
+    renderMyMovies(10, path, movieArray)
   })
 }
 

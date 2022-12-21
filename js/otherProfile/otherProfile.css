@@ -25,5 +25,6 @@
 
 .material-symbols-outlined {
   font-size: 40px;
-  margin-top: 30px;
+  /* denna krockar med header class och homePageClass */
+  /* margin-top: 30px; */
 }

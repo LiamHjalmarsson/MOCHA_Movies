@@ -4,8 +4,8 @@ import {
   createIcon,
   sendPatchRequestNotification
 } from '../notification.js/notification.js'
-import { renderMovies } from '../showmovies/showmovies.js'
-// import { searchField, createSearch } from "../search/search.js"
+import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
+import { searchField, createSearch } from "../search/search.js"
 
 // this is to et user from DB should be from localStorage later?
 async function getUser (userID) {
@@ -16,6 +16,7 @@ async function getUser (userID) {
 
   return user
 }
+
 export async function createNav (userID) {
   let user = await getUser(userID)
 
@@ -30,7 +31,10 @@ export async function createNav (userID) {
   burgerDiv.classList.add('burger-div')
   burgerDiv.innerHTML = '<span class="material-symbols-outlined">menu</span>'
   let burger = createBurger(navContainer)
-  main.appendChild(burger)
+
+    main.appendChild(burger)
+    // nav.appendChild(burger)
+
   burgerDiv.addEventListener('click', function () {
     navContainer.classList.toggle('hide')
     burger.classList.toggle('hide')
@@ -70,25 +74,30 @@ function createBurger (navContainer) {
 
   let arrayOfItems = [
     {
-      title: 'Search'
+      title: 'Search',
+      function: () => { createSearch() }
     },
     {
-      title: 'Toplist'
+      title: 'Toplist',
+      function: () => { renderMovies(1, "top_rated")}
     },
     {
       title: 'Popular',
+      function: () => { renderMovies(1, "popular")}
     },
     {
-      title: 'Movies'
+      title: 'Movies',
     },
     {
-      title: 'Watched Movies'
+      title: 'Watched Movies',
+      function: () => { renderMyMovies(0, "watchedMovies")}
     },
     {
-      title: 'Want to see'
+      title: 'Want to see',
+      function: () => { renderMyMovies(0, "moviesToSee")}
     },
     {
-      title: 'About/contact'
+      title: 'About/contact',
     }
   ]
 
@@ -110,6 +119,7 @@ function createBurger (navContainer) {
     burgerItem.addEventListener('click', () => {
       navContainer.classList.toggle('hide')
       burger.classList.toggle('hide')
+      element.function();
     })
     burger.appendChild(burgerItem)
   })
@@ -132,7 +142,8 @@ function createNotification (user) {
     }
   })
 
-  let main = document.querySelector('main')
+    let main = document.querySelector('main')
+    // let main = document.querySelector('nav')
   main.appendChild(notificationItemBox)
 
   return notificationIcon

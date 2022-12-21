@@ -1,8 +1,15 @@
 "use strict"
 
+import { renderMovie } from '../moviepage/moviepage.js';
+import { otherUser } from "../otherProfile/otherProfile.js";
+
 export function createSearch(){
     let searchContainer = document.createElement("div")
     searchContainer.classList.add("search-container")
+
+    // Appennd directly esaier then to do it on header
+        document.querySelector("main").append(searchContainer);
+        // document.querySelector("nav").append(searchContainer);
     // searchContainer.classList.add("hide")
 
     let searchNavContainer = document.createElement("div")
@@ -48,7 +55,7 @@ export function createSearch(){
     searchContainer.appendChild(searchFieldContainer)
     searchContainer.appendChild(resultWrapper)
     
-   return searchContainer
+//    return searchContainer
 }
 
 
@@ -101,6 +108,9 @@ function createMovies(array){
         let movieDiv = document.createElement("div")
         movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${element.poster_path})`
         // add click event to each element who call on function that take you to specifik moviePage
+            movieDiv.addEventListener("click", () => { 
+                renderMovie(element);
+            });
         resultWrapper.appendChild(movieDiv)
     
     });
@@ -114,10 +124,17 @@ function createUser(array, searchWord){
     array.forEach(user =>{
         if(user.username.includes(searchWord)){
             let userDiv = document.createElement("div")
+
             if(user.imageLink == ""){
                 userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
             }
             userDiv.innerHTML += user.username
+
+            // click on user to get to there page 
+            userDiv.addEventListener("click", () => {
+                otherUser(user.userID);
+            });
+
             userWrapper.appendChild(userDiv)
         }
     })
@@ -140,12 +157,15 @@ function getUsersToShow(){
                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
             }
             userDiv.innerHTML += `<p>${user.username}</p>`
+            userDiv.addEventListener("click", () => {
+                otherUser(user.userID);
+            });
             userWrapper.appendChild(userDiv)
         })
     })
 }
 
-document.querySelector("main").appendChild(createSearch())
+// document.querySelector("main").appendChild(createSearch())
 
 
 

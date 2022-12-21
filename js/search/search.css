@@ -1,5 +1,14 @@
-body{
+/* body{
     margin: 0;
+} */
+
+/* to overlapp everything and display on top */
+.search-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+    background-color: white;
 }
 
 .search-nav-container{
