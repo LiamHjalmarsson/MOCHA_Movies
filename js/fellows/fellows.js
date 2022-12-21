@@ -1,5 +1,5 @@
 // import { userLocalStorage } from "../StartUp/start-up.js"
-
+import { otherUser } from "../otherProfile/otherProfile.js";
 // async function getUser(userID){
 //     let rqstUser = new Request(`../../php/get/get.php?users=${userID}`)
 
@@ -252,8 +252,7 @@ function createFollow (recoursFollow, followingDiv) {
     
     name.textContent = `${recoursFollow.firstName} ${recoursFollow.lastName}`;
     name.addEventListener("click", () => {
-        // otherProfil(recoursFollow.userID)
-        console.log(recoursFollow)
+        otherUser(recoursFollow.userID);
     });
 
     followingDiv.append(img, name);
@@ -289,6 +288,6 @@ export function userLocalStorage(userObject) {
   return currentUser;
 }
 
-// userFollowers();
+userFollowers();
 // following();
-renderAddFreind();
+// renderAddFreind();

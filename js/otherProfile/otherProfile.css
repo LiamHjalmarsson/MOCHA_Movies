@@ -1,8 +1,14 @@
 #otherProfileWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
+
 #otherProfileNotAllowed {
   display: flex;
   flex-direction: column;
