@@ -60,5 +60,3 @@ function getMyMovies(array) {
   let response = Promise.all(requests);
   return response;
 }
-
-document.querySelector("button").addEventListener("click", myMoviesToSee);
