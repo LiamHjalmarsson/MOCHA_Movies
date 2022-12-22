@@ -28,3 +28,30 @@
   /* denna krockar med header class och homePageClass */
   /* margin-top: 30px; */
 }
+
+.chooseMovieContainer {
+display: flex;
+width: 100vw;
+}
+
+.toSeeBtn, .watchedBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.resultContainer{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 5px;
+  width: 100vw;
+  overflow: scroll;
+}
+
+.resultContainer > div {
+    background-size: cover;
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
