@@ -121,5 +121,7 @@ function logOut() {
 
 function subscribedMovies(movie){
     let subscribeBox = documen.createElement("div")
-    let user = JSON.parse(localStorage.getItem("user")); 
+    let user = JSON.parse(localStorage.getItem("user"));
+    
+    
 }
