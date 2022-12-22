@@ -48,18 +48,14 @@ export async function renderMovies (counter, movieType, movies) {
 
 export async function renderMyMovies (counter, type, movies) {
   let renderMoviesWrapper = document.createElement('div');
-  document.querySelector('main').append(renderMoviesWrapper);
   renderMoviesWrapper.id = 'renderMoviesWrapper';
   
-
   // ta bort bara för försök
     // navigation to close and other information 
     renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, type));
 
-
   let movieGridContainer = document.createElement('div');
   movieGridContainer.id = 'movieGridContainer';
-  renderMoviesWrapper.append(movieGridContainer);
 
   let user = JSON.parse(localStorage.getItem('user'));
 
@@ -85,8 +81,15 @@ export async function renderMyMovies (counter, type, movies) {
 
   } else {
 
-    movies.forEach(moive => {
-      document.querySelector('#movieGridContainer').append(createMovie(moive));
+    movies.forEach( async movie => {
+      if (typeof movie === "number") {
+        let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`)
+        let movieResource = await movieResponse.json();
+        document.querySelector(".resultContainer").append(createMovie(movieResource));
+        renderMoviesWrapper.remove();
+      } else {
+        movieGridContainer.append(createMovie(movie));
+      }
     });
 
     if (user[type].length > 10) {
@@ -97,11 +100,9 @@ export async function renderMyMovies (counter, type, movies) {
         let movieResource = await movieResponse.json()
 
         if (movieResource.status_code != 34) {
-          document.querySelector('#movieGridContainer').append(createMovie(movieResource));
+          movieGridContainer.append(createMovie(movieResource));
         }
-
       }
-
     }
   }
 
@@ -118,8 +119,11 @@ export async function renderMyMovies (counter, type, movies) {
     })
   
     btnBox.appendChild(btn);
-    document.querySelector('#renderMoviesWrapper').append(btnBox);
+    renderMoviesWrapper.append(btnBox);
   }
+
+  renderMoviesWrapper.append(movieGridContainer);
+  document.querySelector('main').append(renderMoviesWrapper);
 }
 
 async function getMovies (movies, counter, type) {
