@@ -22,3 +22,48 @@
 .movieInformation > div {
     padding: 0px 30px;
 }
+
+#review-container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+    background-color: rgba(0, 0, 0, 0.448);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#review-box{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+#review-box > div:first-child{
+    margin: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#review-input{
+    height: 40px;
+    margin-top: 20px;
+}
+
+#button-wrapper{
+    display: flex;
+}
+
+#button-wrapper > div{
+    border: 1px solid black;
+    margin: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}

@@ -9,7 +9,9 @@
             "imageLink": "",
             "reviewID": [
                 1,
-                2
+                2,
+                6,
+                7
             ],
             "following": [],
             "moviesToSee": [
@@ -45,7 +47,9 @@
                 14405,
                 22084,
                 10063,
-                369202
+                369202,
+                555604,
+                436270
             ]
         },
         {
@@ -251,6 +255,20 @@
             "userID": 2,
             "grade": 3,
             "reviewText": "i love christmas movies more than this"
+        },
+        {
+            "reviewID": 6,
+            "movieID": 76600,
+            "userID": 1,
+            "grade": 5,
+            "reviewText": "Svinbra"
+        },
+        {
+            "reviewID": 7,
+            "movieID": 76600,
+            "userID": 1,
+            "grade": 5,
+            "reviewText": "otrolig film"
         }
     ],
     "notifications": [

@@ -1,4 +1,5 @@
 import { navigationBack } from "../navigationBack/navigationBack.js";
+import { createMovieIcons } from "./movieIcons.js";
  
 const key = `e666c096bb904490508ada0b495d2d90`; 
 
@@ -21,10 +22,13 @@ export async function renderMovie (movie) {
         })
     //
 
-    let iconContainer = document.createElement("div");
-    iconContainer.id = "iconContainer";
-    // iconContainer.append(subscribedMovies(movie), moviesToSee(movie), watchedMovies(movie));
-    iconContainer.innerHTML = `<div> X </div> <div> Y </div> <div> O </div>`;
+    // let iconContainer = document.createElement("div");
+    // iconContainer.id = "iconContainer";
+    // createMovieIcons(movie)
+    // // iconContainer.append(subscribedMovies(movie), moviesToSee(movie), watchedMovies(movie));
+    // iconContainer.innerHTML = `<div> X </div> <div> Y </div> <div> O </div>`;
+
+    let iconContainer = createMovieIcons(movie)
 
     let movieInformation = document.createElement("div");
     movieInformation.classList.add("movieInformation");
