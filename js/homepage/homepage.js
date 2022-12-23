@@ -7,8 +7,11 @@ import { renderAddFreind } from "../fellows/fellows.js";
 
 // localStorage.setItem("user", JSON.stringify(user));
 
-async function renderFirstPage () {
-  let user = JSON.parse(localStorage.getItem("user"));
+
+
+export async function renderFirstPage (user) {
+  // let user = JSON.parse(localStorage.getItem("user"));
+ 
 
   // document.querySelector("nav").append(createNav(user.userID));
   createNav(user.userID);
@@ -100,7 +103,7 @@ async function createPersonDivs (followingID, personBox, addFriendDiv) {
 
 // ----- testing, delete this later --------
 
-renderFirstPage()
+// renderFirstPage()
 
 function followingProfile (followingID) {
   console.log(followingID)

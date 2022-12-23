@@ -1,5 +1,5 @@
 import { navigationBack } from '../navigationBack/navigationBack.js'
-import { renderMyMovies } from '../showmovies/showmovies.js'
+// import { renderMyMovies } from '../showmovies/showmovies.js'
 import { renderMovie } from '../moviepage/moviepage.js';
 import { createElementWithClassOrID } from '../homepage/homepage.js'
 
@@ -59,7 +59,9 @@ export async function otherUser (otherUserID) {
     // ------------------------------------------------------
 
     let resultContainer = createElementWithClassOrID('resultContainer')
-    renderMyMovies(0, "moviesToSee", otherUserResource.moviesToSee);
+    // kommenterade bort nedan och anävnder fetchMovies istället för blir porblem med klicken // sophie
+    // renderMyMovies(0, "moviesToSee", otherUserResource.moviesToSee);
+    fetchMovies(otherUserResource.moviesToSee)
 
     toSeeBtn.textContent = 'Movies To See'
     toSeeBtn.classList.add('active')
@@ -68,7 +70,9 @@ export async function otherUser (otherUserID) {
         toSeeBtn.classList.toggle('active')
         watchedBtn.classList.toggle('active')
         resultContainer.innerHTML = '';
-        renderMyMovies(0, "moviesToSee", otherUserResource.moviesToSee);
+        // kommenterade bort nedan och anävnder fetchMovies istället för blir porblem med klicken // sophie
+        // renderMyMovies(0, "moviesToSee", otherUserResource.moviesToSee);
+        fetchMovies(otherUserResource.moviesToSee)
       }
     })
 
@@ -78,7 +82,9 @@ export async function otherUser (otherUserID) {
         watchedBtn.classList.toggle('active')
         toSeeBtn.classList.toggle('active')
         resultContainer.innerHTML = '';
-        renderMyMovies(0, "moviesToSee", otherUserResource.watchedMovies);
+        fetchMovies(otherUserResource.watchedMovies)
+        // kommenterade bort nedan och anävnder fetchMovies istället för blir porblem med klicken // sophie
+        // renderMyMovies(0, "moviesToSee", otherUserResource.watchedMovies);
       }
     })
     otherProfileWrapper.append(resultContainer)
@@ -90,36 +96,39 @@ export async function otherUser (otherUserID) {
 // Denna funktion är temporär, vi har andra funktioner som gör detta, t.ex "renderMyMovies", men ville inte ändra i någon annans just nu.
 // Hämtar just nu bara 20, vet inte om vi vill ha ett sånt stopp, annars kan vi ju bara köra forEach. 
 
-// async function fetchMovies (otherUserMovies) {
-//   let movieArray = []
-//   for (let i = 0; i < 20; i++) {
-//     if (otherUserMovies[i] != undefined) {
-//       let movieResponse = await fetch(
-//         `https://api.themoviedb.org/3/movie/${otherUserMovies[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
-//       )
-//       let movieResource = await movieResponse.json()
-//       movieArray.push(movieResource)
-//     }
-//   }
-//   createMovieBox(movieArray)
-// }
+// sophie här, tycker dessa är bra! vi kan nog inte använda renderMyMovies för det blir problem med vad som visas och hur det visas i main
+// använd dessa sålänge o behöver vi effektivisera så gör vi det sen
+
+async function fetchMovies (otherUserMovies) {
+  let movieArray = []
+  for (let i = 0; i < 20; i++) {
+    if (otherUserMovies[i] != undefined) {
+      let movieResponse = await fetch(
+        `https://api.themoviedb.org/3/movie/${otherUserMovies[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+      )
+      let movieResource = await movieResponse.json()
+      movieArray.push(movieResource)
+    }
+  }
+  createMovieBox(movieArray)
+}
 
 // --------------------------------------------------------
 
 // Denna funktion är också temporär, såg att Sophie har en precis likadan i Search.js, så vi kan försöka använda samma!
 
-// function createMovieBox (movieArray) {
-//   let resultContainer = document.querySelector('.resultContainer')
-//   resultContainer.innerHTML = ''
+function createMovieBox (movieArray) {
+  let resultContainer = document.querySelector('.resultContainer')
+  resultContainer.innerHTML = ''
 
-//   movieArray.forEach(element => {
-//     let movieDiv = document.createElement('div')
-//     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${element.poster_path})`
-//     movieDiv.addEventListener('click', () => {
-//       renderMovie(element);
-//     })
-//     resultContainer.appendChild(movieDiv)
-//   })
-// }
+  movieArray.forEach(element => {
+    let movieDiv = document.createElement('div')
+    movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${element.poster_path})`
+    movieDiv.addEventListener('click', () => {
+      renderMovie(element);
+    })
+    resultContainer.appendChild(movieDiv)
+  })
+}
 
 // --------------------------------------------------------

@@ -86,9 +86,6 @@ function createBurger (navContainer) {
       function: () => { renderMovies(1, "popular")}
     },
     {
-      title: 'Movies',
-    },
-    {
       title: 'Watched Movies',
       function: () => { renderMyMovies(0, "watchedMovies")}
     },
