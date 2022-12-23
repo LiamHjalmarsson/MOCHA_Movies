@@ -1,6 +1,8 @@
 "use strict";
+import { renderFirstPage } from "../homepage/homepage.js";
 
-function logIn() {
+
+ export function logIn() {
   let main = document.querySelector("main");
   main.innerHTML = "";
 
@@ -48,7 +50,7 @@ function logIn() {
     let usernameInput = document.querySelector(".Username");
     let passwordInput = document.querySelector(".Password");
     fetch(
-      `./php/get/get.php/?un=${usernameInput.value}&pw=${passwordInput.value}`
+      `../php/get/get.php/?un=${usernameInput.value}&pw=${passwordInput.value}`
     )
       .then((r) => {
         if (r.ok) {
@@ -62,8 +64,7 @@ function logIn() {
         if (r.userID == undefined) {
         } else {
           logInDiv.remove();
-          // createNav(r)
-          // renderFirstpage(r)
+          renderFirstPage(r)
           localStorage.setItem("user", JSON.stringify(r));
         }
       });
@@ -163,3 +164,5 @@ export function userLocalStorage(userObject) {
 
   return currentUser;
 }
+
+logIn()
