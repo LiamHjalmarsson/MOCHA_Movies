@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../js/search/search.css">
     <link rel="stylesheet" href="../js/otherProfile/otherProfile.css">
     <link rel="stylesheet" href="../js/fellows/fellows.css">
+    <link rel="stylesheet" href="../js/startup/logIn.css">
 
     <!--  navigation is to be removde if we want, just to be able to see better -->
     <link rel="stylesheet" href="../js/navigationBack/navigationBack.css">
@@ -26,6 +27,7 @@
         <!-- <h1>Movies</h1> -->
     </main>
     <footer></footer>
+    <script type="module" src="../js/startUp/start-up.js"></script>
     <script type="module" src="../js/homepage/homepage.js"></script>
 </body>
 
