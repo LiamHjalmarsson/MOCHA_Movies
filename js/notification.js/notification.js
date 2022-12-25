@@ -1,3 +1,6 @@
+import { renderMovie } from "../moviepage/moviepage.js";
+import { otherUser } from "../otherProfile/otherProfile.js";
+
 // user are we about to get from local storage, while waiting for that here it's used as a parameter instead
 export async function renderNotification (user){
     let arrayOfNotifictions = []
@@ -15,9 +18,27 @@ export function createNotificationItem(array){
     let notificationItemBox = document.querySelector(".notification-box")
     notificationItemBox.innerHTML=""
 
-    array.forEach(notification =>{
+    array.forEach(async (notification) =>{
         let notificationItem = document.createElement("div")
-        notificationItem.innerHTML = notification.message
+        if(notification.movieID == ""){
+            // här om vi vill att man ska kunna ta sig till profil ta reda på användaren
+            notificationItem.innerHTML = notification.message
+            notificationItem.addEventListener("click", function(){
+                otherUser(notification.senderID)
+            })
+        }else{
+            let movieResource =  await getMovie(notification.movieID)
+            let movieTitle = movieResource.original_title
+
+            let senderUser = await getUser(notification.senderID)
+            let senderName = senderUser.firstName
+            notificationItem.innerHTML = `${senderName} left a review on movie: "${movieTitle} ${notification.message}"`
+            notificationItem.addEventListener("click", async function(){
+                renderMovie(movieResource)
+            
+            })
+
+        }
 
         if(notification.seen == false){
             notificationItem.style.color = "red"
@@ -52,4 +73,21 @@ export async function sendPatchRequestNotification(user){
     let resourse = await response.json()
 
     console.log(resourse)
+}
+
+
+async function getMovie(movieID){
+    let rqst = new Request(`https://api.themoviedb.org/3/movie/${movieID}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`)
+    let response = await fetch(rqst)
+    let resource = await response.json()
+
+    return resource
+}
+
+async function getUser(senderID){
+    let rqst = new Request(`../../php/get/get.php?users=${senderID}`)
+    let response = await fetch(rqst)
+    let resource = await response.json()
+
+    return resource
 }
