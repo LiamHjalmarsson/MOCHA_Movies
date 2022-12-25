@@ -96,10 +96,17 @@ nav{
     color: white;
     padding: 20px;
     background-color: black;
+    max-height: 30vh;
+    overflow: scroll;
 }
 
 .notification-box > div{
     background-color: #3b3a3a;
     padding: 20px;
     border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.notification-box > div:hover{
+    cursor: pointer;
 }
