@@ -4,12 +4,20 @@ body {
 main {
   width: 100vw;
   overflow: hidden;
+  background-color: rgb(9, 9, 9);
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 #toplistWrapper {
   display: flex;
   flex-direction: row;
   /* width: 600vw; */
   overflow: scroll;
+}
+
+#toplistWrapper > div{
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 #movieWrapper {
@@ -61,8 +69,12 @@ main {
 }
 
 .titleBox {
-  margin: 20px 0px;
+  margin: 30px 0px 0px;
   padding: 5px;
+}
+
+.titleBox:hover{
+  cursor: pointer;
 }
 
 .movieDiv {

@@ -42,7 +42,7 @@ export async function createNav (userID) {
   navContainer.appendChild(burgerDiv)
 
   let titleDiv = document.createElement('div')
-  let title = document.createElement('h1')
+  let title = document.createElement('p')
   title.innerHTML = 'MochaMovies'
   titleDiv.appendChild(title)
   navContainer.appendChild(titleDiv)
@@ -112,7 +112,7 @@ function createBurger (navContainer) {
 
   arrayOfItems.forEach(element => {
     let burgerItem = document.createElement('div')
-    burgerItem.innerHTML = `<h1>${element.title}</h1>`
+    burgerItem.innerHTML = `<p>${element.title}</p>`
     burgerItem.addEventListener('click', () => {
       navContainer.classList.toggle('hide')
       burger.classList.toggle('hide')
@@ -132,22 +132,28 @@ function createNotification (user) {
   notificationItemBox.classList.add('notification-box')
   notificationItemBox.classList.add('hide')
 
+  let navContainer = document.querySelector(".navContainer")
+
   notificationIcon.addEventListener('click', function () {
     notificationItemBox.classList.toggle('hide')
+    navContainer.style.backgroundColor= "black"
     if (notificationItemBox.classList.contains('hide')) {
       sendPatchRequestNotification(user)
+      navContainer.style.backgroundColor = "rgba(0, 0, 0, 0.163)"
+
     }
   })
 
-    let main = document.querySelector('main')
+    let nav = document.querySelector('nav')
     // let main = document.querySelector('nav')
-  main.appendChild(notificationItemBox)
+  nav.appendChild(notificationItemBox)
 
   return notificationIcon
 }
 
 function createProfile (user) {
   let profileIcon = document.createElement('div')
+  profileIcon.classList.add("profile-div")
   profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
 
   if (user.imageLink != '') {

@@ -8,7 +8,7 @@
     top: 0;
     bottom: 0;
     overflow: scroll;
-    background-color: white;
+    background-color: black;
 }
 
 .search-nav-container{
@@ -23,6 +23,7 @@
     align-items: center;
     border: 1px solid black;
     padding: 10px;
+    margin: 10px;
 }
 
 .search-field-container{
@@ -47,6 +48,14 @@
     align-items: center;
 }
 
+.search-user-button:hover{
+    cursor: pointer;
+}
+
+.search-movie-button:hover{
+    cursor: pointer;
+}
+
 .active{
     background-color: gray;
 }
@@ -61,7 +70,9 @@
     display: flex;
     justify-content: flex-start;
     font-size: 14pt;
-    border: 1px solid gray;
+    border: 1px solid rgb(78, 78, 78);
+    margin-left:10px;
+    margin-right: 10px;
 }
 
 .active-user-search > div > span{
