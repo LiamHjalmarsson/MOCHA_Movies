@@ -66,11 +66,14 @@ main {
 .movieBox {
   display: flex;
   overflow: scroll;
+  margin-left: 6px;
 }
 
 .titleBox {
-  margin: 30px 0px 0px;
   padding: 5px;
+  padding-top: 30px;
+  font-family: 'Mukta', sans-serif;
+  color: #c3c2c2;
 }
 
 .titleBox:hover{

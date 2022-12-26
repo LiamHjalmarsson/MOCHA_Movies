@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="../js/otherProfile/otherProfile.css">
     <link rel="stylesheet" href="../js/fellows/fellows.css">
     <link rel="stylesheet" href="../js/startup/logIn.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet"> 
 
     <!--  navigation is to be removde if we want, just to be able to see better -->
     <link rel="stylesheet" href="../js/navigationBack/navigationBack.css">
