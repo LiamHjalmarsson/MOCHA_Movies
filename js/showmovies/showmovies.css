@@ -8,7 +8,7 @@ body {
     top: 0;
     bottom: 0;
     overflow: scroll;
-    background-color: white;
+    background-color: black;
     width: 100%;
 }
 
@@ -31,6 +31,3 @@ body {
     justify-content: center;
 }
 
-.showMore {
-
-}

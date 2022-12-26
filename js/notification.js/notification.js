@@ -70,9 +70,9 @@ export async function sendPatchRequestNotification(user){
     let rqst = new Request("../../php/patch/change-notification.php")
     let option = {method: "PATCH", body: JSON.stringify({userID: user.userID }), headers: {"Content-Type": "application/json"}}
     let response = await fetch(rqst,option)
-    let resourse = await response.json()
+    let resource = await response.json()
 
-    console.log(resourse)
+    return resource
 }
 
 
