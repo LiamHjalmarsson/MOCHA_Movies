@@ -48,12 +48,13 @@ if(isset($_GET["movieReviews"])){
             $movieReviews[] = $review;
         }
     }
-    if(count($movieReviews) > 0){
-        sendJSON($movieReviews);
-    } else {
-        $error = ["error" => "There are no reviews for this movie."];
-            sendJSON($error);
-    }
+    // if(count($movieReviews) > 0){
+    //     sendJSON($movieReviews);
+    // } else {
+    //     $error = ["error" => "There are no reviews for this movie."];
+    //         sendJSON($error, 404);
+    // }
+    sendJSON($movieReviews);
 }
 
 if(isset($_GET["review"])){

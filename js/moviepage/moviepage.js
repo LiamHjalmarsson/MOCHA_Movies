@@ -13,7 +13,7 @@ export async function renderMovie (movie) {
     movieContainer.append(navigationBack(movieContainer, movie.original_title));
 
     let movieHeader = document.createElement("div");
-    movieHeader.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
+    movieHeader.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)),url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
     movieHeader.id = "movieHeader";
 
     // Remove 
@@ -38,7 +38,7 @@ export async function renderMovie (movie) {
             <p> ${overview(movie)} </p> 
         </div> 
         <div>
-            <h3> Relase: year </h3>
+            <h3> Relase year </h3>
             <p> ${relaseYear(movie)} </p>
         </div>
         <div>
@@ -122,32 +122,43 @@ async function getReviews(movie){
 
     let rqst = new Request(`../../php/get/get.php?movieReviews=${movie.id}`)
     let response = await fetch(rqst)
+    console.log(response)
     let resource = await response.json()
 
     // lägg till if sats om arrayen är tom
+    console.log(resource)
 
-    resource.forEach(async (review) =>{
+    if(resource.length < 1){
         let reviewItem = document.createElement("div")
         reviewItem.classList.add("review-item")
-
-        let rqstReviewPerson = new Request(`../../php/get/get.php?users=${review.userID}`)
-        let userResponse = await fetch(rqstReviewPerson)
-        let userResource = await userResponse.json()
-
-        let personImg = ""
-
-        if(userResource.imageLink == ""){
-            personImg = `<span class="material-symbols-outlined">person</span>`
-        }else{
-            personImg = document.createElement("span")
-            personImg.backgroundImage = `url(${userResource.imageLink})`
-        }
-
-        reviewItem.innerHTML = `
-            <p>${personImg}${userResource.username}<p>
-            <p>${review.grade}/5   "${review.reviewText}"</p>`
+        reviewItem.innerHTML="There are no reviews on this movie" 
         reviewBox.appendChild(reviewItem)
-    })
+    }else{
+        resource.forEach(async (review) =>{
+            let reviewItem = document.createElement("div")
+            reviewItem.classList.add("review-item")
+    
+            let rqstReviewPerson = new Request(`../../php/get/get.php?users=${review.userID}`)
+            let userResponse = await fetch(rqstReviewPerson)
+            let userResource = await userResponse.json()
+    
+            let personImg = ""
+    
+            if(userResource.imageLink == ""){
+                personImg = `<span class="material-symbols-outlined">person</span>`
+            }else{
+                personImg = document.createElement("span")
+                personImg.backgroundImage = `url(${userResource.imageLink})`
+            }
+    
+            reviewItem.innerHTML = `
+                <p>${personImg}${userResource.username}<p>
+                <p>${review.grade}/5   "${review.reviewText}"</p>`
+            reviewBox.appendChild(reviewItem)
+        })
+
+    }
+
 
     return reviewBox
 

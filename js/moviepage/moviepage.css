@@ -5,40 +5,58 @@
     overflow: scroll;
     background-color: #151515;
     color: white;
+    font-family: 'Mukta', sans-serif;
 }
 
 #movieHeader {
     height: 590px;
     background-size: contain;
     background-repeat: no-repeat;
+    border-radius: 10px;
 }
 
 #iconContainer {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    padding-bottom: 20px;
     height: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #151515;
+    background-image: linear-gradient(to top, rgb(15, 15, 20,0.01), rgb(0, 0, 0));
 }
 
 .movieInformation > div {
     padding: 0px 30px;
 }
 
-#review-container{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    overflow: scroll;
-    background-color: rgba(0, 0, 0, 0.448);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.movieInformation > div > h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 13pt;
 }
 
-#review-box{
+.movieInformation > div > p {
+    margin-top: 0px;
+}
+
+#reviewContainer{
+    /* position: fixed; */
+    /* top: 0;
+    bottom: 0; */
+    overflow: scroll;
+    /* background-color: rgba(0, 0, 0, 0.448); */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+/* #review-box{
     background-color: white;
     border-radius: 10px;
     padding: 20px;
@@ -47,7 +65,7 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
-}
+} */
 
 #review-box > div:first-child{
     margin: 40px;
@@ -81,7 +99,8 @@
 
 .review-item{
     border-radius: 10px;
-    padding: 10px;
+    margin-bottom: 10px;
+    padding: 5px 15px 5px 15px;
     background-color: #404040;
 }
 

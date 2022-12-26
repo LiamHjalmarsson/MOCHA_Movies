@@ -6,7 +6,8 @@ nav{
 .navContainer{
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.163);
+    background-color: rgba(0, 0, 0, 0.05);
+    background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0));
 }
 
 .burger-div{

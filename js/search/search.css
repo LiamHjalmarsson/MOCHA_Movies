@@ -8,22 +8,22 @@
     top: 0;
     bottom: 0;
     overflow: scroll;
-    background-color: black;
+    background-color: #151515;
 }
 
 .search-nav-container{
     display: flex;
-    width: 100vw;
+    margin: 10px;
 }
 
 .search-nav-container > div{
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    border: 1px solid black;
+    border: 1px solid #525050;
+    border-radius: 5px;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
 }
 
 .search-field-container{
@@ -37,7 +37,8 @@
 .search-result-wrapper{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 5px;
+    gap: 10px;
+    margin: 15px;
 }
 
 .search-result-wrapper > div{
@@ -57,7 +58,7 @@
 }
 
 .active{
-    background-color: gray;
+    background-color: rgb(96, 96, 96);
 }
 
 .active-user-search{

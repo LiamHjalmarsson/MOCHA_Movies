@@ -27,8 +27,8 @@ export async function renderFirstPage (user) {
   for (let i = 0; i < 6; i++) {
     let toplistMovie = createElementWithClassOrID('toplistMovie')
     let movies = topMoviesResource.results
-    toplistMovie.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
-    toplistMovie.style.backgroundSize = 'cover'
+    toplistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
+    toplistMovie.style.backgroundSize = 'contain'
 
     toplistWrapper.append(toplistMovie)
   }
@@ -50,6 +50,9 @@ export async function renderFirstPage (user) {
   })
 
   // ---- follow less then 8 people? get all ------
+  if(user.following.length < 1){
+    personBox.appendChild(addFriendDiv)
+  }
 
   if (user.following.length <= 8) {
     for (let followingID of user.following) {
@@ -86,7 +89,7 @@ async function createPersonDivs (followingID, personBox, addFriendDiv) {
 
   if (personIFollowResource.imageLink != '') {
     imgDiv.style.backgroundImage = `url${personIFollowResource.imageLink})`
-    imgDiv.style.backgroundSize = 'cover'
+    imgDiv.style.backgroundSize = 'contain'
   } else {
     imgDiv.innerHTML = '<span class="material-symbols-outlined">person</span>'
   }
@@ -142,7 +145,7 @@ async function firstPageField (field) {
     let popularMovies = movieResource.results
 
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
-    movieDiv.style.backgroundSize = 'cover'
+    movieDiv.style.backgroundSize = 'contain'
     movieDiv.addEventListener('click', () => {
       renderMovie(movieResource.results[i]);
     });
@@ -172,7 +175,7 @@ async function firstPageUserMovie (array, title, path) {
     // controls if there is a recourse or not 
     if (movieResource.status_code != 34) {
       movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
-      movieDiv.style.backgroundSize = 'cover'
+      movieDiv.style.backgroundSize = 'contain'
       movieDiv.addEventListener('click', () => {
         renderMovie(movieResource);
       })
