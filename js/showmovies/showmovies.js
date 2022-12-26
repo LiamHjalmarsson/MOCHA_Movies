@@ -15,6 +15,7 @@ export async function renderMovies (counter, movieType, movies) {
     renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, movieType));
   //
 
+
   let movieGridContainer = document.createElement('div');
   movieGridContainer.id = 'movieGridContainer';
   renderMoviesWrapper.append(movieGridContainer);
@@ -30,17 +31,39 @@ export async function renderMovies (counter, movieType, movies) {
 
   let btnBox = document.createElement('div');
   btnBox.id = 'btnBox';
-  let btn = document.createElement('button');
+  let btn = document.createElement('div');
+  btn.innerHTML=`<span class="material-symbols-outlined">keyboard_double_arrow_down</span>`
   btn.classList.add('showMore');
-  btn.textContent = 'show more';
+  // btn.textContent = 'show more';
 
-  btn.addEventListener('click', async () => {
+  // this is a function that observe btn, if whole btn is fully vissible on screen dvs, (btnEntrie.isIntersecting == true) then more movies will load to page
+  let observer = new IntersectionObserver(async (entries) =>{
+    let btnEntrie = entries[0]
+
+    if (!btnEntrie.isIntersecting) return
     counter++;
     let moviesResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`);
     let moviesResource = await moviesResponse.json();
 
     getMovies(moviesResource);
+  },
+  {
+    // threshold is used to observe if btn is fully vissible on screen, 1 = 100%  
+    threshold: 1
   })
+
+  observer.observe(btn)
+
+  // jag avkommentera nedan o ersatte med ovan
+  //////
+  // btn.addEventListener('click', async () => {
+  //   counter++;
+  //   let moviesResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`);
+  //   let moviesResource = await moviesResponse.json();
+
+  //   getMovies(moviesResource);
+  // })
+  ////////
 
   btnBox.appendChild(btn);
   renderMoviesWrapper.append(btnBox);
