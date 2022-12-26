@@ -36,16 +36,18 @@ nav{
     width: 100vw;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: fixed;
     background-color: #2c2b2b;
     font-size: 16pt;
-    padding: 20px;
+    right: 0px;
+    transition: 0.5s;
 }
 
 .burgerMenu > div{
     height: 20vw;
     display: flex;
     align-items: center;
+    padding-left: 25px;
 }
 
 .burgerMenu > div:hover{
@@ -60,8 +62,9 @@ nav{
     font-size: 30px;
 }
 
-.hide{
-    display: none;
+.hideBurger{
+    position: fixed;
+    right: 500px;
 }
 
 .burger-div > .material-symbols-outlined{
@@ -98,6 +101,9 @@ nav{
     background-color: black;
     max-height: 30vh;
     overflow: scroll;
+    transition: 1s;
+    position: relative;
+    top: 0;
 }
 
 .notification-box > div{
@@ -109,4 +115,9 @@ nav{
 
 .notification-box > div:hover{
     cursor: pointer;
+}
+
+.hideNotifications{
+    position: fixed;
+    top: -500px;
 }

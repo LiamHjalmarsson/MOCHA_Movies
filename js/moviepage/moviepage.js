@@ -60,7 +60,10 @@ export async function renderMovie (movie) {
     let reviewHeader = document.createElement("div");
     reviewHeader.innerHTML = `<h3> Reviews made on the movie </h3>`;
 
-    reviewContainer.append(reviewHeader); // ska lägga till reviews function med movie id reviews(movie.id)
+    reviewContainer.append(reviewHeader); 
+    let reviewBox = await getReviews(movie)
+    reviewContainer.appendChild(reviewBox)
+
     movieInformation.append(reviewContainer);
     movieContainer.append(movieHeader, iconContainer, movieInformation);
     document.querySelector("body").append(movieContainer);
@@ -111,4 +114,41 @@ function relaseYear (movie) {
 
 function overview (movie) {
     return movie.overview == "" ? "There is no description of this movie" : movie.overview;
+}
+
+async function getReviews(movie){
+    let reviewBox = document.createElement("div")
+    reviewBox.classList.add("review-box")
+
+    let rqst = new Request(`../../php/get/get.php?movieReviews=${movie.id}`)
+    let response = await fetch(rqst)
+    let resource = await response.json()
+
+    // lägg till if sats om arrayen är tom
+
+    resource.forEach(async (review) =>{
+        let reviewItem = document.createElement("div")
+        reviewItem.classList.add("review-item")
+
+        let rqstReviewPerson = new Request(`../../php/get/get.php?users=${review.userID}`)
+        let userResponse = await fetch(rqstReviewPerson)
+        let userResource = await userResponse.json()
+
+        let personImg = ""
+
+        if(userResource.imageLink == ""){
+            personImg = `<span class="material-symbols-outlined">person</span>`
+        }else{
+            personImg = document.createElement("span")
+            personImg.backgroundImage = `url(${userResource.imageLink})`
+        }
+
+        reviewItem.innerHTML = `
+            <p>${personImg}${userResource.username}<p>
+            <p>${review.grade}/5   "${review.reviewText}"</p>`
+        reviewBox.appendChild(reviewItem)
+    })
+
+    return reviewBox
+
 }
