@@ -36,8 +36,8 @@ export async function createNav (userID) {
     // nav.appendChild(burger)
 
   burgerDiv.addEventListener('click', function () {
-    navContainer.classList.toggle('hide')
-    burger.classList.toggle('hide')
+    // navContainer.classList.toggle('hide')
+    burger.classList.toggle('hideBurger')
   })
   navContainer.appendChild(burgerDiv)
 
@@ -99,14 +99,14 @@ function createBurger (navContainer) {
   ]
 
   let burger = document.createElement('div')
-  burger.classList.add('hide')
+  burger.classList.add('hideBurger')
   burger.classList.add('burgerMenu')
 
   let cross = document.createElement('div')
   cross.innerHTML = '<span class="material-symbols-outlined">close</span>'
   cross.addEventListener('click', function () {
-    burger.classList.toggle('hide')
-    navContainer.classList.toggle('hide')
+    burger.classList.toggle('hideBurger')
+    // navContainer.classList.toggle('hide')
   })
   burger.appendChild(cross)
 
@@ -130,14 +130,14 @@ function createNotification (user) {
 
   let notificationItemBox = document.createElement('div')
   notificationItemBox.classList.add('notification-box')
-  notificationItemBox.classList.add('hide')
+  notificationItemBox.classList.add('hideNotifications')
 
   let navContainer = document.querySelector(".navContainer")
 
   notificationIcon.addEventListener('click', function () {
-    notificationItemBox.classList.toggle('hide')
+    notificationItemBox.classList.toggle('hideNotifications')
     navContainer.style.backgroundColor= "black"
-    if (notificationItemBox.classList.contains('hide')) {
+    if (notificationItemBox.classList.contains('hideNotifications')) {
       sendPatchRequestNotification(user)
       navContainer.style.backgroundColor = "rgba(0, 0, 0, 0.163)"
 

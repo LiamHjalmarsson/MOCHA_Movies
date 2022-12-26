@@ -3,7 +3,8 @@
     top: 0;
     bottom: 0;
     overflow: scroll;
-    background-color: white;
+    background-color: #151515;
+    color: white;
 }
 
 #movieHeader {
@@ -13,6 +14,8 @@
 }
 
 #iconContainer {
+    margin-top: 20px;
+    margin-bottom: 20px;
     height: 50px;
     display: flex;
     justify-content: space-around;
@@ -66,4 +69,23 @@
     margin: 10px;
     padding: 8px;
     border-radius: 5px;
+}
+
+.review-box{
+    max-height: 200px;
+    background: #242424;
+    padding: 20px;
+    overflow: scroll;
+    border-radius: 5px;
+}
+
+.review-item{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #404040;
+}
+
+.review-item > p:first-child{
+    display: flex;
+    align-items: center;
 }
