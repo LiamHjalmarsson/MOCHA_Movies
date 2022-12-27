@@ -1,39 +1,19 @@
 // import { userLocalStorage } from "../StartUp/start-up.js"
 import { otherUser } from "../otherProfile/otherProfile.js";
-// async function getUser(userID){
-//     let rqstUser = new Request(`../../php/get/get.php?users=${userID}`)
-
-//     let response = await fetch(rqstUser)
-//     let user = await response.json()
-//     console.log(user)
-//     return user
-// }
-
-// async function u () {
-//     let user = await getUser(1);
-//     localStorage.setItem("user", JSON.stringify(user))
-// }
-
-// u();
+import { navigationBack } from "../navigationBack/navigationBack.js";
 
 async function userFollowers () {
     let user = JSON.parse(localStorage.getItem("user"));
 
     let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
     let recourseAllusers = await responseAllUsers.json();
-
     let arrayFollowingMe = [];
 
     recourseAllusers.forEach(rescourseUser => {
-
         let following = rescourseUser.following.find(id => id === user.userID);
-
         if (following != undefined) {
-
             arrayFollowingMe.push(rescourseUser);
-
         }
-
     });
 
     let followContainer = document.createElement("div");
@@ -43,7 +23,6 @@ async function userFollowers () {
     arrayFollowingMe.forEach(follow => {
         followContainer.append(getFollows(follow, user));
     });
-
 }
 
 function getFollows (follow, user) {
@@ -103,7 +82,6 @@ function getFollows (follow, user) {
         });
         followDiv.append(icon);
     }
-    
     return followDiv;
 }
 
@@ -152,9 +130,11 @@ export function renderAddFreind () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
+    followContainer.append(navigationBack(followContainer, "original_title"));
     let followWrapper = document.createElement("div");
     followWrapper.id = "followWrapper";
     followContainer.append(followWrapper);
+
     addFriend(0);
 }
 
@@ -166,7 +146,6 @@ async function addFriend (counter) {
 
     recourseAllusers.forEach(recUser => {
         let follow = user.following.find(follow => follow === recUser.userID);
-
         if (follow == undefined) {
             if (user.userID != recUser.userID) {
                 arrayNotFollowing.push(recUser);
@@ -177,9 +156,9 @@ async function addFriend (counter) {
     searchInput(arrayNotFollowing, user);
 
     if (arrayNotFollowing.length != 0) {
-        if (arrayNotFollowing.length >= 1) {
+        if (arrayNotFollowing.length >= 2) {
 
-            for (let i = 0; i < 1; i++) {
+            for (let i = 0; i < 2; i++) {
                 if (arrayNotFollowing[counter] != undefined) {
                     getAddFriend(user, arrayNotFollowing[counter]);
                     counter++;
@@ -236,8 +215,9 @@ function getAddFriend (user, arrayNotFollowing) {
         let recourseAdd = await responseAdd.json();
         userLocalStorage(recourseAdd);
         document.querySelector("#followContainer > .inputBox").remove();
+        document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
         document.querySelector("#followWrapper").innerHTML = "";
-        addFriend();
+        addFriend(0);
     });
 } 
 
@@ -253,7 +233,7 @@ function createFollow (recoursFollow, followingDiv) {
         img.style.color = `gray`;
     }
     
-    name.textContent = `${recoursFollow.firstName} ${recoursFollow.lastName}`;
+    name.textContent = `${recoursFollow.username}`;
     name.addEventListener("click", () => {
         otherUser(recoursFollow.userID);
     });
@@ -268,18 +248,27 @@ function searchInput (arrayNotFollowing, user) {
     document.querySelector("#followContainer").insertBefore(inputBox, document.querySelector("#followWrapper"));
 
     document.querySelector(".addInput").addEventListener("keyup", (e) => {
-        document.querySelectorAll("#followWrapper > .followDiv").forEach(div => div.remove());
+        if (e.target.value.length <= 0) {
+            document.querySelector("#followContainer > .inputBox").remove();
+            document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+            document.querySelector("#followWrapper").innerHTML = "";
+            addFriend(0)
+        } else {
+            document.querySelectorAll("#followWrapper > .followDiv").forEach(div => div.remove());
 
-        arrayNotFollowing.forEach(follow => {
+            arrayNotFollowing.forEach(follow => {
 
-            if (follow.firstName.toLowerCase().includes(e.target.value.toLowerCase()) 
-                || 
-                follow.username.toLowerCase().includes(e.target.value.toLowerCase())) {
-                getAddFriend(user, follow);
-            }
-        })
+                if (follow.firstName.toLowerCase().includes(e.target.value.toLowerCase()) 
+                    || 
+                    follow.username.toLowerCase().includes(e.target.value.toLowerCase())) {
+                        getAddFriend(user, follow);
+                } else {
+                    document.querySelector("#followWrapper").innerHTML = `<p class="nan"> No user found </p>`;
+                    document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+                }
+            });
+        }
     });
-
 }
 
 // ta bort ersätt med export från topp 
