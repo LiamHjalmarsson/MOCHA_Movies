@@ -9,8 +9,8 @@
 }
 
 #movieHeader {
-    height: 590px;
-    background-size: contain;
+    height: 550px;
+    background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
 }
