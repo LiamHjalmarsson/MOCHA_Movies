@@ -75,7 +75,7 @@ foreach($data["users"] as $user){
                 "notificationID" => $lastNotificationID + 1,
                 "senderID" => $userID,
                 "movieID" => $movieID,
-                "message" => "[ '$reviewText' ]",
+                "message" => "$reviewText",
                 "sendToUser" => $user["userID"],
                 "seen" => false,
             ];

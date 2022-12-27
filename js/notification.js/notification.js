@@ -18,34 +18,71 @@ export function createNotificationItem(array){
     let notificationItemBox = document.querySelector(".notification-box")
     notificationItemBox.innerHTML=""
 
-    array.forEach(async (notification) =>{
-        let notificationItem = document.createElement("div")
-        if(notification.movieID == ""){
-            // här om vi vill att man ska kunna ta sig till profil ta reda på användaren
-            notificationItem.innerHTML = notification.message
-            notificationItem.addEventListener("click", function(){
-                otherUser(notification.senderID)
-            })
-        }else{
-            let movieResource =  await getMovie(notification.movieID)
-            let movieTitle = movieResource.original_title
+    let unseenNoti = document.createElement("div")
+    unseenNoti.classList.add("unseen-notification-box")
+    let titleUnseen = document.createElement("div")
+    titleUnseen.innerHTML = "New happenings"
+    unseenNoti.appendChild(titleUnseen)
 
+    let seenNoti = document.createElement("div")
+    seenNoti.classList.add("seen-notification-box")
+    let titleSeen = document.createElement("div")
+    titleSeen.innerHTML = "Previous happenings"
+    seenNoti.append(titleSeen)
+
+    if(array.length == 0){
+        notificationItemBox.innerHTML = `<div>You have no happenings</div>`
+    }else{
+        array.forEach(async (notification) =>{
+            let notificationItem = document.createElement("div")
+            notificationItem.classList.add("notification-item")
+    
             let senderUser = await getUser(notification.senderID)
             let senderName = senderUser.firstName
-            notificationItem.innerHTML = `${senderName} left a review on movie: "${movieTitle} ${notification.message}"`
-            notificationItem.addEventListener("click", async function(){
-                renderMovie(movieResource)
             
-            })
+            let userImg = ""
+            if(senderUser.imageLink == ""){
+                userImg = `<span class="material-symbols-outlined">person</span>`
+            }else{
+                userImg = document.createElement("span")
+                userImg.backgroundImage = `url(${senderUser.imageLink})`
+            }
+    
+            if(notification.movieID == ""){
+                // här om vi vill att man ska kunna ta sig till profil ta reda på användaren
+                notificationItem.innerHTML = `<div>${userImg}</div><div>${notification.message}</div>`
+                notificationItem.addEventListener("click", function(){
+                    otherUser(notification.senderID)
+                })
+            }else{
+                let movieResource =  await getMovie(notification.movieID)
+                let movieTitle = movieResource.original_title
+                // let movieImgDiv = document.createElement("div")
+                // movieImgDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
+                let imgSrc = `https://image.tmdb.org/t/p/original/${movieResource.poster_path}`
+    
+                notificationItem.innerHTML = `
+                    <div>${userImg}</div>
+                    <div>${senderName} left a review on movie "${movieTitle}": <span>${notification.message}</span></div>
+                    <img src=${imgSrc}></img>`
+                // notificationItem.appendChild(movieImgDiv)
+                notificationItem.addEventListener("click", async function(){
+                    renderMovie(movieResource)
+                })
+            }
+    
+            if(notification.seen == false){
+                // notificationItem.style.color = "red"
+                unseenNoti.appendChild(notificationItem)
+            }else{
+                seenNoti.appendChild(notificationItem)
+            }
+        })
 
-        }
-
-        if(notification.seen == false){
-            notificationItem.style.color = "red"
-        }
-
-        notificationItemBox.appendChild(notificationItem)
-    })
+        notificationItemBox.append(unseenNoti)
+        notificationItemBox.append(seenNoti)
+    }
+    
 }
 
 export function createIcon(array){
