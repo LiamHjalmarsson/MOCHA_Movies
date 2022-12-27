@@ -21,6 +21,7 @@ body {
 
 .movieCard {
     height: 270px;
+    cursor: pointer;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

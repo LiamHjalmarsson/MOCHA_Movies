@@ -7,17 +7,14 @@ export function navigationBack (remove, path) {
     let navigationBack = document.createElement("div");
     navigationBack.id = "navigationBack";
 
-    // navigationBack.innerHTML = `
-    // <div> X </div>
-    // <div> ${path} </div>
-    // <div> n </div>
-    // <div> u </div>
-    // `
     let arrowBack = document.createElement("div")
-    arrowBack.innerHTML=`<span class="material-symbols-outlined">chevron_left</span>`
+    arrowBack.innerHTML=`<span class="material-symbols-outlined">chevron_left</span>`;
+    // lagt till namn / filmens title i naven då man inte ser namnet på vissa filmer, antingen låtter vi detta ligga här  
+    // eller så placerar vi det någon annans stans i filmens information 
+    let name = document.createElement("div");
+    name.innerHTML = `${path}`;
     let profile = createProfile(user)
-    navigationBack.append(arrowBack)
-    navigationBack.append(profile)
+    navigationBack.append(arrowBack, name, profile)
 
     navigationBack.addEventListener("click", () => {
         remove.remove();
