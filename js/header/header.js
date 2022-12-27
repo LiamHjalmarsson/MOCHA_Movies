@@ -151,15 +151,24 @@ function createNotification (user) {
   return notificationIcon
 }
 
-function createProfile (user) {
+export function createProfile (user) {
   let profileIcon = document.createElement('div')
   profileIcon.classList.add("profile-div")
-  profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
+  // profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
 
-  if (user.imageLink != '') {
-    profileIcon.innerHTML = ''
-    // here add image link and style with background img
+  // if (user.imageLink != '') {
+  //   profileIcon.innerHTML = ''
+  //   // here add image link and style with background img
+  // }
+
+  if(user.imageLink == ""){
+      profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
+  }else{
+      let userImg = document.createElement("span")
+      userImg.backgroundImage = `url(${user.imageLink})`
+      profileIcon.append(userImg)
   }
+
 
   profileIcon.addEventListener('click', function () {
     // in this section click should call on function userProfile

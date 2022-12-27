@@ -1,7 +1,18 @@
 #navigationBack {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    justify-content: space-between;
+    padding: 10px;
     background-color: rgba(0, 0, 0, 0.05);
-    background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0)); 
+    background-image: linear-gradient(to bottom, rgb(15, 15, 15, 0.6), rgba(15, 15, 15, 0)); 
+    position: fixed;
+    width: 100vw;
+}
+
+#navigationBack > div{
+    padding: 10px;
+    padding-right: 30px;
+}
+
+#navigationBack > div:hover{
+    cursor: pointer;
 }

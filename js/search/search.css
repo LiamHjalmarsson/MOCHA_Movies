@@ -12,6 +12,7 @@
 }
 
 .search-nav-container{
+    padding-top: 60px;
     display: flex;
     margin: 10px;
 }
