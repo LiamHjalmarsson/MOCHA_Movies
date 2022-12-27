@@ -227,10 +227,10 @@ function createFollow (recoursFollow, followingDiv) {
     let name = document.createElement("div");
     name.classList.add("name");
 
-    if (recoursFollow.imageLink =! "") {
+    if (recoursFollow.imageLink != "") {
         img.style.backgroundImage = `url()`;
     } else {
-        img.style.color = `gray`;
+        img.innerHTML = `<span class="material-symbols-outlined">person</span>`
     }
     
     name.textContent = `${recoursFollow.username}`;
