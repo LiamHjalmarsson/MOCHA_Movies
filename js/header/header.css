@@ -107,11 +107,40 @@ nav{
     top: 0;
 }
 
-.notification-box > div{
-    background-color: #3b3a3a;
-    padding: 20px;
+.unseen-notification-box, .seen-notification-box{
+    min-height: 80px;
+}
+
+.unseen-notification-box >div:first-child{
+    font-size: 14pt;
+    margin-bottom: 16px;
+    margin-left: 7px;
+}
+
+.seen-notification-box >div:first-child{
+    font-size: 14pt;
+    margin-bottom: 16px;
+    margin-left: 7px;
+}
+
+.notification-item{
+    /* background-color: #3b3a3a; */
     border-radius: 10px;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    font-size: 11pt;
+}
+
+.notification-item > img{
+    width: 35px;
+    margin-left: 10px;
+}
+
+.notification-item > div:first-child  > .material-symbols-outlined{
+    color: rgb(145, 145, 145);
+    margin-right: 10px;
 }
 
 .notification-box > div:hover{
