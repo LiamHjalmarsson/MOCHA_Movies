@@ -8,6 +8,7 @@ main {
   color: white;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 #toplistWrapper {
   display: flex;
   flex-direction: row;
@@ -83,6 +84,7 @@ main {
 .movieDiv {
   height: 190px;
   min-width: 120px;
+  cursor: pointer;
 }
 
 .toplistMovie {

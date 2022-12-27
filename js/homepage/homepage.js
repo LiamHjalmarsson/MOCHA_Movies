@@ -29,6 +29,7 @@ export async function renderFirstPage (user) {
     let movies = topMoviesResource.results
     toplistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
     toplistMovie.style.backgroundSize = 'contain'
+    toplistMovie.style.backgroundRepeat = "no-repeat"
 
     toplistWrapper.append(toplistMovie)
   }
