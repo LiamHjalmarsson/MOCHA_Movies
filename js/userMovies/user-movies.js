@@ -1,8 +1,8 @@
 "use strict";
-
+import { createMovie } from "../showmovies/showmovies.js";
 let main = document.querySelector("main");
 
-function myMoviesToSee() {
+export function myMoviesToSee() {
   let user = JSON.parse(localStorage.getItem("user"));
 
   let movieIDs = user.moviesToSee;
@@ -16,7 +16,7 @@ function myMoviesToSee() {
   return movies;
 }
 
-function myWatchedMovies() {
+export function myWatchedMovies() {
   let user = JSON.parse(localStorage.getItem("user"));
 
   let movieIDs = user.watchedMovies;
@@ -31,7 +31,7 @@ function myWatchedMovies() {
   return movies;
 }
 
-function mySubscribedMovies() {
+export function mySubscribedMovies() {
   let user = JSON.parse(localStorage.getItem("user"));
 
   let movieIDs = user.subscribedMovies;
