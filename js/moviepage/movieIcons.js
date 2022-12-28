@@ -127,9 +127,7 @@ function popUpReview(user, movie){
     let titleDiv = document.createElement("div")
     titleDiv.innerHTML = `Do you want to leave a review on "${movie.original_title}"?`
 
-    let gradeDiv = document.createElement("input")
-    gradeDiv.setAttribute("type", "number")
-    gradeDiv.setAttribute("placeholder", "grade 1-5")
+    let gradeDiv = makeGradeStars()
 
     let reviewDiv = document.createElement("input")
     reviewDiv.setAttribute("type", "text")
@@ -145,7 +143,7 @@ function popUpReview(user, movie){
     let buttonSubmit = document.createElement("div")
     buttonSubmit.innerHTML = "Send"
     buttonSubmit.addEventListener("click", function(){
-        let inputGrade = parseInt(gradeDiv.value)
+        let inputGrade = parseInt(gradeDiv.firstChild.firstChild.value)
         let inputText = reviewDiv.value
         console.log(inputGrade)
         console.log(inputText)
@@ -195,3 +193,50 @@ function fetchReview(user, movie, inputGrade, inputText){
         fetchAddMovie(user, movie, "watched-movies", "watchedMovie")
     })
 }
+
+function makeGradeStars() {
+    let gradeContainer = document.createElement("div");
+    gradeContainer.classList.add("grade");
+    let starsContainer = document.createElement("div");
+    starsContainer.classList.add("stars");
+    
+    let slidecontainer = document.createElement("div");
+    slidecontainer.classList.add("slidecontainer");
+    let slideInput = document.createElement("input");
+    slideInput.type = "range";
+    slideInput.min = 0;
+    slideInput.max = 5;
+    slideInput.value = 0;
+    slideInput.id = "myRange";
+    
+    slidecontainer.append(slideInput);
+    
+    for (let i = 0; i < 5; i++) {
+      let star = document.createElement("div");
+      star.innerHTML = '<span class="material-symbols-rounded">star_rate</span>';
+      star.classList.add("star");
+      starsContainer.append(star);
+    }
+    slideInput.addEventListener("mousemove", () => {
+      let stars = Array.from(document.querySelectorAll(".star"));
+      let thisIndex = document.getElementById("myRange").value;
+      stars.forEach((e) => {
+        e.firstChild.textContent = "star_rate";
+        e.firstChild.classList.remove("fill");
+      });
+      
+      for (let i = 0; i < thisIndex; i++) {
+        if (thisIndex - i == 0.5) {
+          stars[i].firstChild.textContent = "star_half";
+          stars[i].firstChild.classList.add("fill");
+        } else {
+          stars[i].firstChild.textContent = "star";
+          stars[i].firstChild.classList.add("fill");
+        }
+      }
+    });
+    
+    gradeContainer.append(slidecontainer);
+    gradeContainer.append(starsContainer);
+    return gradeContainer;
+  }
