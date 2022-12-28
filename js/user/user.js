@@ -1,6 +1,5 @@
 import { navigationBack } from "../navigationBack/navigationBack.js";
 import { following, userFollowers } from "../fellows/fellows.js";
-import { createMovie } from "../showmovies/showmovies.js";
 import { myMoviesToSee, mySubscribedMovies, myWatchedMovies } from "../userMovies/user-movies.js";
 ("use strict");
 function userProfile() {
