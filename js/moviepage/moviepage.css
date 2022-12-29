@@ -16,8 +16,6 @@
 }
 
 #iconContainer {
-    /* margin-top: 20px; */
-    /* margin-bottom: 20px; */
     padding-bottom: 20px;
     height: 50px;
     display: flex;
@@ -25,6 +23,12 @@
     align-items: center;
     background-color: #151515;
     background-image: linear-gradient(to top, rgb(15, 15, 20,0.01), rgb(0, 0, 0));
+}
+
+#iconContainer > div:hover {
+    cursor: pointer;
+    transition: color 0.2s;
+    color: orange;
 }
 
 .movieInformation > div {
