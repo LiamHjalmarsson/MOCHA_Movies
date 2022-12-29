@@ -9,6 +9,21 @@
     width: 100vw;
 }
 
+.backArrow:before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    background: #fff;
+    transform-origin: left;
+    transform: translate(17px, 18px) scale(0); 
+    transition: .2s;
+}
+
+#navigationBack > div:first-child:hover .backArrow:before {
+    transform: translate(17px, 18px) scale(1); 
+}
+
 #navigationBack > div{
     padding: 10px;
     padding-right: 30px;
