@@ -2,7 +2,7 @@
 import { otherUser } from "../otherProfile/otherProfile.js";
 import { navigationBack } from "../navigationBack/navigationBack.js";
 
-async function userFollowers () {
+export async function userFollowers () {
     let user = JSON.parse(localStorage.getItem("user"));
 
     let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
@@ -85,7 +85,7 @@ function getFollows (follow, user) {
     return followDiv;
 }
 
-async function following () {
+export async function following () {
     let user = JSON.parse(localStorage.getItem("user"));
     
     user.following.forEach( async follow => {

@@ -28,7 +28,7 @@ export async function renderFirstPage (user) {
     let toplistMovie = createElementWithClassOrID('toplistMovie')
     let movies = topMoviesResource.results
     toplistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
-    toplistMovie.style.backgroundSize = 'contain'
+    toplistMovie.style.backgroundSize = 'cover'
     toplistMovie.style.backgroundRepeat = "no-repeat"
 
     toplistWrapper.append(toplistMovie)
@@ -146,7 +146,7 @@ async function firstPageField (field) {
     let popularMovies = movieResource.results
 
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
-    movieDiv.style.backgroundSize = 'contain'
+    movieDiv.style.backgroundSize = 'cover'
     movieDiv.addEventListener('click', () => {
       renderMovie(movieResource.results[i]);
     });
@@ -176,7 +176,7 @@ async function firstPageUserMovie (array, title, path) {
     // controls if there is a recourse or not 
     if (movieResource.status_code != 34) {
       movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
-      movieDiv.style.backgroundSize = 'contain'
+      movieDiv.style.backgroundSize = 'cover'
       movieDiv.addEventListener('click', () => {
         renderMovie(movieResource);
       })
@@ -203,3 +203,5 @@ export function createElementWithClassOrID (
   id ? createdElement.setAttribute('id', id) : null
   return createdElement
 }
+
+// userProfile()

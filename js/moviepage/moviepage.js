@@ -17,9 +17,9 @@ export async function renderMovie (movie) {
     movieHeader.id = "movieHeader";
 
     // Remove 
-        movieHeader.addEventListener("click", () => {
-            movieContainer.remove();
-        })
+        // movieHeader.addEventListener("click", () => {
+        //     movieContainer.remove();
+        // })
     //
 
     // let iconContainer = document.createElement("div");
@@ -27,6 +27,10 @@ export async function renderMovie (movie) {
     // createMovieIcons(movie)
     // // iconContainer.append(subscribedMovies(movie), moviesToSee(movie), watchedMovies(movie));
     // iconContainer.innerHTML = `<div> X </div> <div> Y </div> <div> O </div>`;
+
+    let titleContainer = document.createElement("div")
+    titleContainer.classList.add("titleContainer")
+    titleContainer.innerHTML = movie.original_title
 
     let iconContainer = createMovieIcons(movie)
 
@@ -65,7 +69,7 @@ export async function renderMovie (movie) {
     reviewContainer.appendChild(reviewBox)
 
     movieInformation.append(reviewContainer);
-    movieContainer.append(movieHeader, iconContainer, movieInformation);
+    movieContainer.append(movieHeader, titleContainer, iconContainer, movieInformation);
     document.querySelector("body").append(movieContainer);
 }
 

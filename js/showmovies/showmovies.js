@@ -187,7 +187,7 @@ async function getMovies (movies, counter, type) {
   }
 }
 
-function createMovie (movie) {
+export function createMovie (movie) {
   let movieCard = document.createElement('div');
   movieCard.classList.add('movieCard');
 

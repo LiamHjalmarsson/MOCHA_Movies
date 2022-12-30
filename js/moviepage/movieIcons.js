@@ -2,8 +2,6 @@ import { renderMovie } from "./moviepage.js";
 
 export function createMovieIcons(movie){
     let user = JSON.parse(localStorage.getItem("user"));
-    console.log(user)
-    console.log(movie)
 
     let iconContainer = document.createElement("div");
     iconContainer.id = "iconContainer";
@@ -213,10 +211,11 @@ function makeGradeStars() {
     
     for (let i = 0; i < 5; i++) {
       let star = document.createElement("div");
-      star.innerHTML = '<span class="material-symbols-rounded">star_rate</span>';
+      star.innerHTML = '<span class="material-symbols-outlined">star</span>';
       star.classList.add("star");
       starsContainer.append(star);
     }
+    
     slideInput.addEventListener("mousemove", () => {
       let stars = Array.from(document.querySelectorAll(".star"));
       let thisIndex = document.getElementById("myRange").value;
