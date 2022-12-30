@@ -16,12 +16,11 @@ body {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 10px;
-     margin: 10px;
+     margin: 15px;
 }
 
 .movieCard {
     height: 190px;
-    width: 110px;
     cursor: pointer;
     background-size: cover;
     background-position: center;
