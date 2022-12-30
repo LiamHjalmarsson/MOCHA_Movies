@@ -8,12 +8,14 @@ export function userProfile() {
   userProfile.id="user-profile"
   let logOutDiv = document.createElement("div");
   let logOutButton = document.createElement("button");
+
+  userProfile.classList.add("userProfile")
   
   logOutDiv.classList.add("logOut");
   logOutButton.textContent = "Log Out";
   
   logOutButton.addEventListener("click", logOut);
-  navigationBack(userProfile, "logOut");
+  document.querySelector("nav").append(navigationBack(userProfile, "logOut"));
   
   logOutDiv.append(logOutButton);
   userProfile.append(informationUserProfile());
@@ -43,6 +45,10 @@ function informationUserProfile() {
   let profileImg = document.createElement("div");
   let textDiv = document.createElement("div");
   let changeProfileButton = document.createElement("button");
+
+  infoProfile.classList.add("user")
+
+  profileImg.classList.add("profilePicture")
 
   changeProfileButton.textContent = "Change Profile"
 
@@ -74,7 +80,7 @@ function changeProfileInformation() {
 
 function buttonsUserProfile() {
   let containerButtons = document.createElement("div");
-
+containerButtons.classList.add("buttons")
   let array = [
     { name: "following", function: following },
     { name: "Followers", function: userFollowers },
@@ -99,6 +105,9 @@ function logOut() {
   let buttons = document.createElement("div");
   let cancelButton = document.createElement("button");
   let logOutButton = document.createElement("button");
+
+  popUp.classList.add("logOut")
+  buttons.classList.add("logOutButtons")
 
   text.textContent = "Are you sure you want to log out?";
 

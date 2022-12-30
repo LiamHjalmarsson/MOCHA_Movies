@@ -1,0 +1,62 @@
+body {
+    background-color: black;
+    color: white
+}
+
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.user > button {
+    background-color: turquoise;
+    color: black;
+    border-radius: 5px;
+}
+
+.profilePicture{
+    border: 2px solid white;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons > button {
+    height: 45px;
+}
+
+.buttons > :first-child{
+    margin-bottom: 20px;
+}
+
+.logOut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.logOutButtons {
+    display: flex;
+    gap: 10px;
+}
