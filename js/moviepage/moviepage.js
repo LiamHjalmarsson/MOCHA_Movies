@@ -8,25 +8,11 @@ export async function renderMovie (movie) {
     let movieContainer = document.createElement("div");
     movieContainer.id = "movieContainer";
 
-    // ta bort bara för försök
-    // navigation to close and other information 
     movieContainer.append(navigationBack(movieContainer, movie.original_title));
 
     let movieHeader = document.createElement("div");
     movieHeader.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)),url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
     movieHeader.id = "movieHeader";
-
-    // Remove 
-        // movieHeader.addEventListener("click", () => {
-        //     movieContainer.remove();
-        // })
-    //
-
-    // let iconContainer = document.createElement("div");
-    // iconContainer.id = "iconContainer";
-    // createMovieIcons(movie)
-    // // iconContainer.append(subscribedMovies(movie), moviesToSee(movie), watchedMovies(movie));
-    // iconContainer.innerHTML = `<div> X </div> <div> Y </div> <div> O </div>`;
 
     let titleContainer = document.createElement("div")
     titleContainer.classList.add("titleContainer")
@@ -70,7 +56,7 @@ export async function renderMovie (movie) {
 
     movieInformation.append(reviewContainer);
     movieContainer.append(movieHeader, titleContainer, iconContainer, movieInformation);
-    document.querySelector("body").append(movieContainer);
+    document.querySelector("main").append(movieContainer);
 }
 
 async function getActors (movie) {
@@ -126,11 +112,7 @@ async function getReviews(movie){
 
     let rqst = new Request(`../../php/get/get.php?movieReviews=${movie.id}`)
     let response = await fetch(rqst)
-    console.log(response)
     let resource = await response.json()
-
-    // lägg till if sats om arrayen är tom
-    console.log(resource)
 
     if(resource.length < 1){
         let reviewItem = document.createElement("div")
@@ -160,10 +142,6 @@ async function getReviews(movie){
                 <p>${review.grade}/5   "${review.reviewText}"</p>`
             reviewBox.appendChild(reviewItem)
         })
-
     }
-
-
     return reviewBox
-
 }

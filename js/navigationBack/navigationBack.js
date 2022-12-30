@@ -18,6 +18,10 @@ export function navigationBack (remove, path) {
 
     arrowBack.addEventListener("click", () => {
         remove.remove();
+
+        if (document.querySelector("#review-container")) {
+            document.querySelector("#review-container").remove();
+        }
     });
 
     return navigationBack

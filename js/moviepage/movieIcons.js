@@ -11,11 +11,17 @@ export function createMovieIcons(movie){
     if(user.subscribedMovies.includes(movie.id)){
         subscribeMovieDiv.innerHTML=`<span class="material-symbols-outlined">notifications_active</span>`
         subscribeMovieDiv.addEventListener("click", function(){
-            fetchDeleteMovie(user,movie,"delete-subscribed-movies", "subscribedMovie")
+            fetchDeleteMovie(user,movie,"delete-subscribed-movies", "subscribedMovie");
+            setTimeout(() => {
+                document.querySelector("main > #movieContainer").remove();
+            }, 500);
         })
     }else{
         subscribeMovieDiv.addEventListener("click", function(){
             fetchAddMovie(user,movie, "subscribed-movies", "subscribedMovie")
+            setTimeout(() => {
+                document.querySelector("main > #movieContainer").remove();
+            }, 500);
         })
     }
     
@@ -26,10 +32,16 @@ export function createMovieIcons(movie){
         wantToSeeDiv.innerHTML = `<span class="material-symbols-outlined">bookmark_added</span>`
         wantToSeeDiv.addEventListener("click", function(){
             fetchDeleteMovie(user,movie, "delete-movies-to-see","movieToSee")
+            setTimeout(() => {
+                document.querySelector("main > #movieContainer").remove();
+            }, 500);
         })
     }else{
         wantToSeeDiv.addEventListener("click", function(){
             fetchAddMovie(user, movie, "movies-to-see", "movieToSee")
+            setTimeout(() => {
+                document.querySelector("main > #movieContainer").remove();
+            }, 500);
         })
     }
 
@@ -39,6 +51,9 @@ export function createMovieIcons(movie){
         haveSeenDiv.innerHTML = `<span class="material-symbols-outlined">done_all</span>`
         haveSeenDiv.addEventListener("click", function(){
             fetchDeleteMovie(user,movie, "delete-watched-movies", "watchedMovie" )
+            setTimeout(() => {
+                document.querySelector("main > #movieContainer").remove();
+            }, 500);
         })
     }else{
         haveSeenDiv.addEventListener("click", function(){
@@ -153,6 +168,10 @@ function popUpReview(user, movie){
         }else{
             fetchReview(user, movie, inputGrade, inputText)
             inputMessage.innerHTML = "Review posted"
+            setTimeout(() => {
+                document.querySelector("main > #movieContainer").remove();
+                document.querySelector("main > #review-container").remove();
+            }, 500);
         }
     })
     // buttonSubmit ska anropa fetchDeleteMovie(user, movie, phpFile, movieForm) och även fetchReview som inte är skapad
@@ -163,13 +182,17 @@ function popUpReview(user, movie){
     buttonSkip.addEventListener("click", function(){
         reviewContainer.style.display="none"
         fetchAddMovie(user, movie, "watched-movies", "watchedMovie")
+        setTimeout(() => {
+            document.querySelector("main > #movieContainer").remove();
+            document.querySelector("main > #review-container").remove();
+        }, 500);
     })
     buttonWrapper.appendChild(buttonSkip)
 
     reviewBox.append(titleDiv, gradeDiv,reviewDiv,inputMessage, buttonWrapper)
     reviewContainer.append(reviewBox)
 
-    document.querySelector("body").append(reviewContainer);
+    document.querySelector("main").append(reviewContainer);
 }
 
 function fetchReview(user, movie, inputGrade, inputText){

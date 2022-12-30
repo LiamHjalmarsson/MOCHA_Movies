@@ -34,7 +34,7 @@
 #iconContainer > div:hover {
     cursor: pointer;
     transition: color 0.2s;
-    color: orange;
+    color: #3699db;
 }
 
 .movieInformation > div {
@@ -67,16 +67,16 @@
 }
 
 #review-box{
-    background-color: white;
+    background-color: #151515;
     border-radius: 10px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0px 10px;
     position: fixed;
-    top: 400px;
+    bottom: 0;
 }
 
 #review-box > div:first-child{
@@ -104,6 +104,7 @@
 .review-box{
     max-height: 200px;
     background: #242424;
+    color: white;
     padding: 20px;
     overflow: scroll;
     border-radius: 5px;
@@ -114,6 +115,7 @@
     margin-bottom: 10px;
     padding: 5px 15px 5px 15px;
     background-color: #404040;
+    color: white;
 }
 
 .review-item > p:first-child{
@@ -142,6 +144,9 @@
 .grade {
     position: relative;
     height: 27px;
+    /* width: 100%; */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 .stars{
@@ -151,5 +156,11 @@
 .slidecontainer {
     position: absolute;
     opacity: 0;
+    /* width: 90%; */
     z-index: 5;
 }
+
+/* .slidecontainer > input {
+    width: 90%;
+    height: 40px;
+} */

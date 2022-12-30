@@ -14,13 +14,14 @@ body {
 
 #movieGridContainer {
      display: grid;
-     grid-template-columns: repeat(2, 1fr);
+     grid-template-columns: repeat(3, 1fr);
      gap: 10px;
      margin: 10px;
 }
 
 .movieCard {
-    height: 270px;
+    height: 190px;
+    width: 110px;
     cursor: pointer;
     background-size: cover;
     background-position: center;
