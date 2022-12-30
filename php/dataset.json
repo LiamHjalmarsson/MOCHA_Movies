@@ -68,16 +68,14 @@
             "reviewID": [
                 3,
                 5,
-                8
+                8,
+                9
             ],
             "following": [
                 1,
-                3,
-                4
+                3
             ],
             "moviesToSee": [
-                238,
-                278,
                 240,
                 851644,
                 424,
@@ -86,7 +84,9 @@
                 555604,
                 389,
                 372058,
-                496243
+                496243,
+                899112,
+                769
             ],
             "watchedMovies": [
                 372754,
@@ -99,18 +99,21 @@
                 429,
                 13,
                 122,
-                238
+                238,
+                769
             ],
             "subscribedMovies": [
                 761053,
-                769,
                 11216,
                 637,
                 346,
                 12477,
                 311,
                 539,
-                704264
+                704264,
+                899112,
+                769,
+                769
             ]
         },
         {
@@ -284,6 +287,13 @@
             "userID": 2,
             "grade": 4,
             "reviewText": "hej s\u00e5\u00e5\u00e5 s\u00e5 bra"
+        },
+        {
+            "reviewID": 9,
+            "movieID": 769,
+            "userID": 2,
+            "grade": 4,
+            "reviewText": "hej hoopp svinbra"
         }
     ],
     "notifications": [
@@ -349,7 +359,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 9,
@@ -365,7 +375,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 11,
@@ -373,7 +383,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 12,
@@ -389,7 +399,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 14,
@@ -397,7 +407,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 15,
@@ -413,7 +423,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 17,
@@ -421,7 +431,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 18,
@@ -445,7 +455,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 21,
@@ -469,7 +479,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 24,
@@ -493,7 +503,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 27,
@@ -509,7 +519,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 29,
@@ -525,7 +535,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 31,
@@ -541,7 +551,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 33,
