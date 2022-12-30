@@ -9,19 +9,21 @@ main {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-#toplistWrapper {
+#popularWrapper {
   display: flex;
+  height: 65vh;
   flex-direction: row;
+  position: relative;
   /* width: 600vw; */
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
-#toplistWrapper > div{
+/* #popularWrapper > div{
   margin-left: 2px;
   margin-right: 2px;
-}
+} */
 
-#movieWrapper {
+.movieWrapper {
   margin-bottom: 10px;
   margin-left: 3px;
 }
@@ -87,9 +89,12 @@ main {
   cursor: pointer;
 }
 
-.toplistMovie {
+.popularMovie {
+  position: absolute;
   height: 65vh;
   min-width: 100vw;
+  left: 0px;
+  transition: left 1s;
 }
 
 .material-symbols-outlined {

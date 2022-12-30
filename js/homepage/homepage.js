@@ -1,38 +1,62 @@
 'use strict'
-import { renderMovie } from "../moviepage/moviepage.js";
-import { renderMovies, renderMyMovies } from "../showmovies/showmovies.js";
-import { createNav } from "../header/header.js";
-import { otherUser } from "../otherProfile/otherProfile.js";
-import { renderAddFreind } from "../fellows/fellows.js";
+import { renderMovie } from '../moviepage/moviepage.js'
+import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
+import { createNav } from '../header/header.js'
+import { otherUser } from '../otherProfile/otherProfile.js'
+import { renderAddFreind } from '../fellows/fellows.js'
 
 // localStorage.setItem("user", JSON.stringify(user));
 
-
-
 export async function renderFirstPage (user) {
-  // let user = JSON.parse(localStorage.getItem("user"));
- 
+  createNav(user.userID)
 
-  // document.querySelector("nav").append(createNav(user.userID));
-  createNav(user.userID);
-
-  // ---------- top-movie-section ---------------
-  let topMoviesResponse = await fetch(
-    'https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1'
+  // ---------- popular-movie-section ---------------
+  let popularMoviesResponse = await fetch(
+    'https://api.themoviedb.org/3/movie/popular?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1'
   )
-  let topMoviesResource = await topMoviesResponse.json()
+  let popularMoviesResource = await popularMoviesResponse.json()
 
-  let toplistWrapper = createElementWithClassOrID(false, 'toplistWrapper')
-
+  let popularWrapper = createElementWithClassOrID(false, 'popularWrapper')
+  let counter = 0
   for (let i = 0; i < 6; i++) {
-    let toplistMovie = createElementWithClassOrID('toplistMovie')
-    let movies = topMoviesResource.results
-    toplistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
-    toplistMovie.style.backgroundSize = 'cover'
-    toplistMovie.style.backgroundRepeat = "no-repeat"
+    let popularMovie = createElementWithClassOrID('popularMovie')
+    let movies = popularMoviesResource.results
+    popularMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
+    popularMovie.style.backgroundSize = 'cover'
+    popularMovie.style.backgroundRepeat = 'no-repeat'
+    // console.log(counter)
+    popularMovie.style.left = `${counter}vw`
+    popularMovie.addEventListener('click', () => {
+      renderMovie(movies[i])
+    })
 
-    toplistWrapper.append(toplistMovie)
+    counter += 100
+    popularWrapper.append(popularMovie)
   }
+  setInterval(() => {
+    document.querySelectorAll('.popularMovie').forEach(div => {
+      div.style.transition = '1s'
+      let divWithVW = div.style.left
+      let withoutVW = divWithVW.slice(0, -2)
+      let newNr = withoutVW - 100
+      console.log(newNr)
+      div.style.left = newNr + 'vw'
+
+      let arrayOfDivs = document.querySelectorAll('.popularMovie')
+      let lastDiv = arrayOfDivs[arrayOfDivs.length - 1]
+      console.log(lastDiv)
+      console.log(lastDiv.style.left)
+      let c = 0
+      if (lastDiv.style.left == '-100vw') {
+        for (let j = 0; j < 6; j++) {
+          arrayOfDivs[j].style.left = `${c}vw`
+          arrayOfDivs[j].style.transition = 'ease-in 1s'
+          c += 100
+          console.log('bytförfan')
+        }
+      }
+    })
+  }, 3000)
   // ---------------------------------------------
   // --------- people-i-follow-section -----------
 
@@ -47,11 +71,11 @@ export async function renderFirstPage (user) {
   addFriendDiv.innerHTML =
     '<span class="material-symbols-outlined">person_add</span>'
   addFriendDiv.addEventListener('click', () => {
-      renderAddFreind();
+    renderAddFreind()
   })
 
   // ---- follow less then 8 people? get all ------
-  if(user.following.length < 1){
+  if (user.following.length < 1) {
     personBox.appendChild(addFriendDiv)
   }
 
@@ -67,12 +91,16 @@ export async function renderFirstPage (user) {
       createPersonDivs(followingID, personBox, addFriendDiv)
     }
   }
-  document.querySelector('main').append(toplistWrapper, personWrapper)
+  document.querySelector('main').append(popularWrapper, personWrapper)
 
-  firstPageUserMovie(user.subscribedMovies, 'Subscribed movie', "subscribedMovies")
-  firstPageUserMovie(user.moviesToSee, 'Movies to see', "moviesToSee")
-  firstPageField('Popular')
-  firstPageUserMovie(user.watchedMovies, 'Watch again', "watchedMovies")
+  firstPageUserMovie(
+    user.subscribedMovies,
+    'Subscribed movie',
+    'subscribedMovies'
+  )
+  firstPageUserMovie(user.moviesToSee, 'Movies to see', 'moviesToSee')
+  firstPageField('Top_rated')
+  firstPageUserMovie(user.watchedMovies, 'Watch again', 'watchedMovies')
 }
 
 async function createPersonDivs (followingID, personBox, addFriendDiv) {
@@ -98,7 +126,7 @@ async function createPersonDivs (followingID, personBox, addFriendDiv) {
   nameDiv.textContent = personIFollowResource.firstName
 
   personDiv.addEventListener('click', () => {
-    otherUser(followingID);
+    otherUser(followingID)
   })
 
   personDiv.append(imgDiv, nameDiv)
@@ -121,9 +149,12 @@ function addFriendPage () {
 async function firstPageField (field) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
-  let movieWrapper = createElementWithClassOrID(false, 'movieWrapper')
+  let movieWrapper = createElementWithClassOrID('movieWrapper')
 
-  titleBox.textContent = field + ' ' + 'movies'
+  if (field.includes('_')) {
+    let titleFieldName = field.replace('_', ' ')
+    titleBox.textContent = `${titleFieldName} movies`
+  }
 
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
@@ -135,9 +166,9 @@ async function firstPageField (field) {
 
   titleBox.addEventListener('click', () => {
     window.scrollTo({
-      top: 0,
-    });
-    renderMovies(1, field, movieResource);
+      top: 0
+    })
+    renderMovies(1, field, movieResource)
   })
 
   for (let i = 0; i < 10; i++) {
@@ -148,8 +179,8 @@ async function firstPageField (field) {
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
     movieDiv.style.backgroundSize = 'cover'
     movieDiv.addEventListener('click', () => {
-      renderMovie(movieResource.results[i]);
-    });
+      renderMovie(movieResource.results[i])
+    })
 
     movieBox.append(movieDiv)
   }
@@ -158,7 +189,7 @@ async function firstPageField (field) {
 async function firstPageUserMovie (array, title, path) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
-  let movieWrapper = createElementWithClassOrID(false, 'movieWrapper')
+  let movieWrapper = createElementWithClassOrID('movieWrapper')
 
   titleBox.textContent = title
 
@@ -173,21 +204,19 @@ async function firstPageUserMovie (array, title, path) {
     )
     let movieResource = await movieResponse.json()
 
-    // controls if there is a recourse or not 
+    // controls if there is a recourse or not
     if (movieResource.status_code != 34) {
       movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
       movieDiv.style.backgroundSize = 'cover'
       movieDiv.addEventListener('click', () => {
-        renderMovie(movieResource);
+        renderMovie(movieResource)
       })
 
       movieBox.append(movieDiv)
       movieArray.push(movieResource)
     }
-
-
   }
-  titleBox.addEventListener("click", () => {
+  titleBox.addEventListener('click', () => {
     renderMyMovies(10, path, movieArray)
   })
 }
@@ -203,5 +232,3 @@ export function createElementWithClassOrID (
   id ? createdElement.setAttribute('id', id) : null
   return createdElement
 }
-
-// userProfile()
