@@ -123,7 +123,7 @@ function signUp() {
     let passwordInput = document.querySelector(".Password");
     let firstNameInput = document.querySelector(".FirstName");
     let lastNameInput = document.querySelector(".LastName");
-    let Options = {
+    let options = {
       method: "POST",
       body: JSON.stringify({
         username: usernameInput.value,
@@ -136,7 +136,7 @@ function signUp() {
 
     errorDiv.textContent = "";
 
-    fetch(`./php/post/new-user.php/`, Options)
+    fetch(`../../php/post/new-user.php/`, options)
       .then((r) => r.json())
       .then((r) => {
         if (r.userID == undefined) {
