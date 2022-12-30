@@ -12,22 +12,22 @@ import { renderAddFreind } from "../fellows/fellows.js";
 export async function renderFirstPage (user) {
   createNav(user.userID);
 
-  // ---------- top-movie-section ---------------
-  let topMoviesResponse = await fetch(
-    'https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1'
+  // ---------- popular-movie-section ---------------
+  let popularMoviesResponse = await fetch(
+    'https://api.themoviedb.org/3/movie/popular?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1'
   )
-  let topMoviesResource = await topMoviesResponse.json()
+  let popularMoviesResource = await popularMoviesResponse.json()
 
-  let toplistWrapper = createElementWithClassOrID(false, 'toplistWrapper')
+  let popularlistWrapper = createElementWithClassOrID(false, 'popularlistWrapper')
 
   for (let i = 0; i < 6; i++) {
-    let toplistMovie = createElementWithClassOrID('toplistMovie')
-    let movies = topMoviesResource.results
-    toplistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
-    toplistMovie.style.backgroundSize = 'cover'
-    toplistMovie.style.backgroundRepeat = "no-repeat"
+    let popularlistMovie = createElementWithClassOrID('popularlistMovie')
+    let movies = popularMoviesResource.results
+    popularlistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
+    popularlistMovie.style.backgroundSize = 'cover'
+    popularlistMovie.style.backgroundRepeat = "no-repeat"
 
-    toplistWrapper.append(toplistMovie)
+    popularlistWrapper.append(popularlistMovie)
   }
   // ---------------------------------------------
   // --------- people-i-follow-section -----------
@@ -63,7 +63,7 @@ export async function renderFirstPage (user) {
       createPersonDivs(followingID, personBox, addFriendDiv)
     }
   }
-  document.querySelector('main').append(toplistWrapper, personWrapper)
+  document.querySelector('main').append(popularlistWrapper, personWrapper)
 
   firstPageUserMovie(user.subscribedMovies, 'Subscribed movie', "subscribedMovies")
   firstPageUserMovie(user.moviesToSee, 'Movies to see', "moviesToSee")

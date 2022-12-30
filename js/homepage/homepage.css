@@ -9,14 +9,14 @@ main {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-#toplistWrapper {
+#popularlistWrapper {
   display: flex;
   flex-direction: row;
   /* width: 600vw; */
   overflow: scroll;
 }
 
-#toplistWrapper > div{
+#popularlistWrapper > div{
   margin-left: 2px;
   margin-right: 2px;
 }
@@ -87,7 +87,7 @@ main {
   cursor: pointer;
 }
 
-.toplistMovie {
+.popularlistMovie {
   height: 65vh;
   min-width: 100vw;
 }
