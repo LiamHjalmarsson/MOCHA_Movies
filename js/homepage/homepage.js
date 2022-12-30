@@ -10,10 +10,6 @@ import { renderAddFreind } from "../fellows/fellows.js";
 
 
 export async function renderFirstPage (user) {
-  // let user = JSON.parse(localStorage.getItem("user"));
- 
-
-  // document.querySelector("nav").append(createNav(user.userID));
   createNav(user.userID);
 
   // ---------- top-movie-section ---------------
@@ -71,7 +67,7 @@ export async function renderFirstPage (user) {
 
   firstPageUserMovie(user.subscribedMovies, 'Subscribed movie', "subscribedMovies")
   firstPageUserMovie(user.moviesToSee, 'Movies to see', "moviesToSee")
-  firstPageField('Popular')
+  firstPageField('Top_rated')
   firstPageUserMovie(user.watchedMovies, 'Watch again', "watchedMovies")
 }
 
@@ -123,7 +119,11 @@ async function firstPageField (field) {
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID(false, 'movieWrapper')
 
-  titleBox.textContent = field + ' ' + 'movies'
+if (field.includes("_")){
+    let titleFieldName = field.replace("_", " ")
+    titleBox.textContent = `${titleFieldName} movies`
+}
+
 
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
