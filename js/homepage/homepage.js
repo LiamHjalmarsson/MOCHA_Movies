@@ -26,6 +26,9 @@ export async function renderFirstPage (user) {
     popularlistMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
     popularlistMovie.style.backgroundSize = 'cover'
     popularlistMovie.style.backgroundRepeat = "no-repeat"
+    popularlistMovie.addEventListener("click", () => {
+      renderMovie(movies[i]);
+    })
 
     popularlistWrapper.append(popularlistMovie)
   }
