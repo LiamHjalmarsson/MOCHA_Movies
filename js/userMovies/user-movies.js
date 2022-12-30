@@ -1,4 +1,3 @@
-"use strict";
 import { createMovie } from "../showmovies/showmovies.js";
 let main = document.querySelector("main");
 

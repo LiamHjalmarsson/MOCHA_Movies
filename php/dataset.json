@@ -13,7 +13,9 @@
                 6,
                 7
             ],
-            "following": [],
+            "following": [
+                4
+            ],
             "moviesToSee": [
                 9841,
                 301728,
@@ -35,7 +37,10 @@
                 341392,
                 277368,
                 47964,
-                417830
+                417830,
+                30178,
+                9731,
+                9876
             ],
             "subscribedMovies": [
                 38579,
@@ -49,7 +54,8 @@
                 10063,
                 369202,
                 555604,
-                436270
+                436270,
+                238
             ]
         },
         {
@@ -61,7 +67,8 @@
             "imageLink": "",
             "reviewID": [
                 3,
-                5
+                5,
+                8
             ],
             "following": [
                 1,
@@ -91,7 +98,8 @@
                 680,
                 429,
                 13,
-                122
+                122,
+                238
             ],
             "subscribedMovies": [
                 761053,
@@ -269,6 +277,13 @@
             "userID": 1,
             "grade": 5,
             "reviewText": "otrolig film"
+        },
+        {
+            "reviewID": 8,
+            "movieID": 238,
+            "userID": 2,
+            "grade": 4,
+            "reviewText": "hej s\u00e5\u00e5\u00e5 s\u00e5 bra"
         }
     ],
     "notifications": [
@@ -527,6 +542,22 @@
             "message": "Sophie started to follow you",
             "sendToUser": 2,
             "seen": false
+        },
+        {
+            "notificationID": 33,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 4,
+            "seen": false
+        },
+        {
+            "notificationID": 34,
+            "senderID": 2,
+            "movieID": 238,
+            "message": "hej s\u00e5\u00e5\u00e5 s\u00e5 bra",
+            "sendToUser": 1,
+            "seen": true
         }
     ]
 }

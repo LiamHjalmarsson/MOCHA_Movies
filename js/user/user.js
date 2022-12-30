@@ -1,9 +1,11 @@
 import { navigationBack } from "../navigationBack/navigationBack.js";
 import { following, userFollowers } from "../fellows/fellows.js";
 import { myMoviesToSee, mySubscribedMovies, myWatchedMovies } from "../userMovies/user-movies.js";
-("use strict");
-function userProfile() {
+import {logIn} from "../StartUp/start-up.js";
+
+export function userProfile() {
   let userProfile = document.createElement("div");
+  userProfile.id="user-profile"
   let logOutDiv = document.createElement("div");
   let logOutButton = document.createElement("button");
   
@@ -17,10 +19,8 @@ function userProfile() {
   userProfile.append(informationUserProfile());
   userProfile.append(buttonsUserProfile());
   userProfile.append(logOutDiv);
-  document.querySelector("main").append(userProfile);
+  document.querySelector("main").appendChild(userProfile)
 }
-userProfile()
-
 // async function navigationWithBack(popUp) {
 //   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -33,7 +33,6 @@ userProfile()
 //     popUp.classList.toggle("hide");
 //     popUp.innerHTML = "";
 //   });
-
 //   nav.append(arrowDiv);
 //   nav.append(await renderNotification(user));
 //   nav.append(createProfile(user));
@@ -110,6 +109,8 @@ function logOut() {
 
   logOutButton.textContent = "Log Out";
   logOutButton.addEventListener("click", () => {
+    document.querySelector("nav").innerHTML=""
+    document.querySelector("main").innerHTML=""
     localStorage.clear();
     logIn();
   });

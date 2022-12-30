@@ -15,6 +15,12 @@
     border-radius: 10px;
 }
 
+.titleContainer {
+   background-color: black;
+   padding-bottom: 30px;
+   text-align:center ;
+}
+
 #iconContainer {
     padding-bottom: 20px;
     height: 50px;
@@ -60,7 +66,7 @@
     justify-content: center; */
 }
 
-/* #review-box{
+#review-box{
     background-color: white;
     border-radius: 10px;
     padding: 20px;
@@ -68,8 +74,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
-} */
+    margin: 10px;
+    position: fixed;
+    top: 400px;
+}
 
 #review-box > div:first-child{
     margin: 40px;
@@ -113,13 +121,13 @@
     align-items: center;
 }
 
-.material-symbols-rounded.fill{
+.material-symbols-outlined.fill{
     font-variation-settings: 'FILL' 1;
     color: gold;
 }
 
 
-.material-symbols-rounded {
+.material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
@@ -137,9 +145,7 @@
 }
 
 .stars{
-    position: absolute;
     gap: 12px;
-    top: 0px;
 }
 
 .slidecontainer {

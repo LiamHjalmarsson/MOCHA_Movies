@@ -6,6 +6,7 @@ import {
 } from '../notification.js/notification.js'
 import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
 import { searchField, createSearch } from "../search/search.js"
+import {userProfile} from "../user/user.js"
 
 // this is to et user from DB should be from localStorage later?
 async function getUser (userID) {
@@ -171,8 +172,7 @@ export function createProfile (user) {
 
 
   profileIcon.addEventListener('click', function () {
-    // in this section click should call on function userProfile
-    console.log('hej')
+    userProfile()
   })
 
   return profileIcon

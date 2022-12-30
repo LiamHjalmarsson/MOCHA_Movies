@@ -32,6 +32,8 @@
     <footer></footer>
     <script type="module" src="../js/startUp/start-up.js"></script>
     <script type="module" src="../js/homepage/homepage.js"></script>
+    <script type="module" src="../js/user/user.js"></script>
+    
 </body>
 
 </html>
