@@ -39,20 +39,20 @@ export async function renderFirstPage (user) {
       let divWithVW = div.style.left
       let withoutVW = divWithVW.slice(0, -2)
       let newNr = withoutVW - 100
-      console.log(newNr)
+      // console.log(newNr)
       div.style.left = newNr + 'vw'
 
       let arrayOfDivs = document.querySelectorAll('.popularMovie')
       let lastDiv = arrayOfDivs[arrayOfDivs.length - 1]
-      console.log(lastDiv)
-      console.log(lastDiv.style.left)
+      // console.log(lastDiv)
+      // console.log(lastDiv.style.left)
       let c = 0
       if (lastDiv.style.left == '-100vw') {
         for (let j = 0; j < 6; j++) {
           arrayOfDivs[j].style.left = `${c}vw`
           arrayOfDivs[j].style.transition = 'ease-in 1s'
           c += 100
-          console.log('bytförfan')
+          // console.log('bytförfan')
         }
       }
     })

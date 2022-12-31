@@ -196,14 +196,32 @@
             ],
             "moviesToSee": [
                 630566,
-                207,
                 3082,
                 635302,
                 447362,
                 25237,
                 527641,
                 335,
-                105
+                105,
+                207,
+                238,
+                278,
+                240,
+                424,
+                497,
+                76600,
+                899112,
+                436270,
+                19995,
+                680,
+                13,
+                122,
+                120,
+                157336,
+                121,
+                807,
+                361743,
+                155
             ],
             "watchedMovies": [
                 38579,
@@ -216,7 +234,8 @@
                 22084,
                 10063,
                 369202,
-                13121
+                13121,
+                289153
             ],
             "subscribedMovies": [
                 17825,
@@ -227,8 +246,248 @@
                 157544,
                 42888,
                 336445,
-                9714
+                9714,
+                207,
+                238,
+                278,
+                240,
+                424,
+                497,
+                76600,
+                899112,
+                436270,
+                19995,
+                680,
+                13,
+                122,
+                120,
+                157336,
+                121,
+                807,
+                361743,
+                155
             ]
+        },
+        {
+            "userID": 5,
+            "username": "CamilleP",
+            "firstName": "Camille",
+            "lastName": "Petit",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 6,
+            "username": "Thunder",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 7,
+            "username": "MovieLover",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 8,
+            "username": "EliteMovie",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 9,
+            "username": "Watcher",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 10,
+            "username": "LFM",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 11,
+            "username": "Streamer",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 12,
+            "username": "OskarO",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 13,
+            "username": "TheName",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 14,
+            "username": "Hunder",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 15,
+            "username": "Horror",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 16,
+            "username": "ActionIstheBest",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 17,
+            "username": "ComedyElite",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 18,
+            "username": "Skr\u00e4ck",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 19,
+            "username": "\u00c5nger",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 20,
+            "username": "seeItAll",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
+        },
+        {
+            "userID": 21,
+            "username": "DaBest",
+            "firstName": "Oskar",
+            "lastName": "Otensson",
+            "password": "dogs123456",
+            "imageLink": "",
+            "reviewID": [],
+            "following": [],
+            "moviesToSee": [],
+            "watchedMovies": [],
+            "subscribedMovies": []
         }
     ],
     "reviews": [
@@ -335,7 +594,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 6,
@@ -351,7 +610,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 8,
@@ -447,7 +706,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 20,
@@ -471,7 +730,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 23,
@@ -495,7 +754,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 26,
@@ -559,7 +818,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 34,

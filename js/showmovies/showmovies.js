@@ -176,14 +176,16 @@ async function getMovies (movies, counter, type) {
   } else {
     // below is only for the renderMyMovies
     if (movies) {
+
         if (movies[counter] != undefined) {
+
           let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movies[counter]}?api_key=${key}&language=en-US`);
           let movieResource = await movieResponse.json()
 
           if (movieResource.status_code != 34) {
             movieGridContainer.append(createMovie(movieResource));
           }
-        }
+        } else {document.querySelectorAll("#btnBox").forEach(btn => btn.remove());}
       }
     }
   }

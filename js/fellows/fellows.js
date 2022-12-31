@@ -278,7 +278,3 @@ export function userLocalStorage(userObject) {
 
   return currentUser;
 }
-
-// userFollowers();
-// following();
-// renderAddFreind();

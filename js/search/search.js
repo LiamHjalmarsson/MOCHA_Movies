@@ -22,6 +22,8 @@ export function createSearch(counter = 0){
     buttonSearchMovie.classList.add("active")
     buttonSearchMovie.innerHTML="Search movie"
     buttonSearchMovie.addEventListener("click", function(){
+        document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
+
         if(!buttonSearchMovie.classList.contains("active")){
             buttonSearchMovie.classList.toggle("active")
             buttonSearchUser.classList.toggle("active")
@@ -36,7 +38,6 @@ export function createSearch(counter = 0){
     buttonSearchUser.innerHTML="Search user"
     buttonSearchUser.addEventListener("click", function(){
         document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
-        resultWrapper.innerHTML = "";
 
         if(!buttonSearchUser.classList.contains("active")){
             buttonSearchUser.classList.toggle("active")
@@ -83,7 +84,7 @@ export function searchField(){
 function searchMovies(searchWord){
     let buttonSearchMovie = document.querySelector(".search-movie-button")
     let buttonSearchUser = document.querySelector(".search-user-button")
-    console.log(searchWord)
+    // console.log(searchWord)
 
     if(buttonSearchMovie.classList.contains("active")){
         if(searchWord == ""){
@@ -96,6 +97,7 @@ function searchMovies(searchWord){
         }
     }else if(buttonSearchUser.classList.contains("active")){
         if(searchWord == ""){
+            document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
             getUsersToShow()
         }else{
             let rqst = new Request("../../php/get/get.php?users")
@@ -109,14 +111,15 @@ function createMovies(array){
     let resultWrapper = document.querySelector(".search-result-wrapper")
     
     array.forEach(element => {
-        let movieDiv = document.createElement("div")
-        movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${element.poster_path})`
-        // add click event to each element who call on function that take you to specifik moviePage
-            movieDiv.addEventListener("click", () => { 
-                renderMovie(element);
-            });
-        resultWrapper.appendChild(movieDiv)
-    
+        if (element.poster_path != null) {
+            let movieDiv = document.createElement("div")
+            movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${element.poster_path})`
+            // add click event to each element who call on function that take you to specifik moviePage
+                movieDiv.addEventListener("click", () => { 
+                    renderMovie(element);
+                });
+            resultWrapper.appendChild(movieDiv)
+        }
     });
 }
 
@@ -174,33 +177,67 @@ function getMoviesToShow(counter){
     document.querySelector(".search-container").append(btnBox);
 }
 
-function getUsersToShow(){
+function getUsersToShow(counter = -1){
     let userWrapper = document.querySelector(".search-result-wrapper")
-    userWrapper.innerHTML=""
+    userWrapper.innerHTML="";
     let singdIn = JSON.parse(localStorage.getItem("user"));
 
     let rqst = new Request("../../php/get/get.php?users")
     fetch(rqst).then(r => r.json()).then(recourse => {
 
-        recourse.forEach(user =>{
-            let userDiv = document.createElement("div")
+        if (recourse.length > 20) {
+            let btnBox = document.createElement('div');
+            btnBox.id = 'btnBox';
+            let btn = document.createElement('div');
+            btn.innerHTML=`<span class="material-symbols-outlined">keyboard_double_arrow_down</span>`;
+            btn.classList.add('showMore');
+          
+            let observer = new IntersectionObserver(async (entries) =>{
+                let btnEntrie = entries[0];
+            
+                if (!btnEntrie.isIntersecting) return
+                for (let i = 0; i < 10; i++) {
+                    counter++
 
-        if (singdIn.username != user.username) {
-            if(user.imageLink == ""){
-                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
+                    let userDiv = document.createElement("div")
+
+                    if (recourse[counter] != undefined) {
+
+                        if (singdIn.username != recourse[counter].username) {
+                       
+                            recourse.sort((a, b) => {
+                                if ( a.username.toLowerCase() > b.username.toLowerCase()  ) {
+                                  return 1;
+                                } else if ( a.username.toLowerCase()  < b.username.toLowerCase()  ) {
+                                    return -1;
+                                }
+                                return 0
+                              });
+
+                            if(recourse[counter].imageLink == ""){
+                                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
+                            }
+
+                            userDiv.innerHTML += `<p>${recourse[counter].username}</p>`
+                            userDiv.addEventListener("click", () => {
+                                otherUser(recourse[counter].userID);
+                            });
+                            userWrapper.appendChild(userDiv)
+                        }
+                    } else {
+                        document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
+                    }
                 }
-                userDiv.innerHTML += `<p>${user.username}</p>`
-                userDiv.addEventListener("click", () => {
-                    otherUser(user.userID);
-                });
-                userWrapper.appendChild(userDiv)
-            }
-        })
+            },
+            {
+                threshold: 1
+            });
+            
+            observer.observe(btn);
+          
+            btnBox.appendChild(btn);
+        
+            document.querySelector(".search-container").append(btnBox);
+        }
     })
 }
-
-// document.querySelector("main").appendChild(createSearch())
-
-
-
-
