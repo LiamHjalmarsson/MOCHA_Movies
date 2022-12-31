@@ -1,0 +1,48 @@
+#allMoviesWrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+    background-color: black;
+    width: 100%;
+}
+
+
+.allMoviesContainer{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+    width: 100vw;
+    overflow: scroll;
+  }
+
+.allMoviesContainer > div{
+    background-size: cover;
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#filterContainer{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 90px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    position: relative;
+    font-family: 'Mukta', sans-serif;
+}
+
+select{
+    font-size: 12pt;
+    width: 95px;
+    padding: 3px;
+    border-radius: 10px;
+    border: 0px;
+    background: #1e608f;
+    font-family: 'Mukta', sans-serif;
+    color: #c3c2c2;
+    padding-left: 10px;
+}
