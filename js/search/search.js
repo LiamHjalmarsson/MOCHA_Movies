@@ -183,19 +183,19 @@ function getUsersToShow(){
     fetch(rqst).then(r => r.json()).then(recourse => {
 
         recourse.forEach(user =>{
-           let userDiv = document.createElement("div")
+            let userDiv = document.createElement("div")
 
-           if (singdIn.username != user.username) {
-                if(user.imageLink == ""){
-                    userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
-                    }
-                    userDiv.innerHTML += `<p>${user.username}</p>`
-                    userDiv.addEventListener("click", () => {
-                        otherUser(user.userID);
-                    });
-                    userWrapper.appendChild(userDiv)
+        if (singdIn.username != user.username) {
+            if(user.imageLink == ""){
+                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
                 }
-            })
+                userDiv.innerHTML += `<p>${user.username}</p>`
+                userDiv.addEventListener("click", () => {
+                    otherUser(user.userID);
+                });
+                userWrapper.appendChild(userDiv)
+            }
+        })
     })
 }
 
