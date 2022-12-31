@@ -10,11 +10,7 @@ export async function renderMovies (counter, movieType, movies) {
   document.querySelector('main').append(renderMoviesWrapper);
   renderMoviesWrapper.id = 'renderMoviesWrapper';
 
-  // ta bort bara för försök
-    // navigation to close and other information 
-    renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, movieType));
-  //
-
+  renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, movieType));
 
   let movieGridContainer = document.createElement('div');
   movieGridContainer.id = 'movieGridContainer';
@@ -151,8 +147,10 @@ export async function renderMyMovies (counter, type, movies) {
   
       if (!btnEntrie.isIntersecting) return
 
+      // console.log(user[type].length)
       for (let i = 0; i < 20; i++) {
         counter++
+        // console.log(counter)
         getMovies(user[type], counter, type);
       }
     },

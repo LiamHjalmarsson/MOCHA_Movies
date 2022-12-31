@@ -4,25 +4,18 @@ import { navigationBack } from "../navigationBack/navigationBack.js";
 import { renderMovie } from '../moviepage/moviepage.js';
 import { otherUser } from "../otherProfile/otherProfile.js";
 
-export function createSearch(){
+export function createSearch(counter = 0){
     let searchContainer = document.createElement("div")
     searchContainer.classList.add("search-container")
 
-    // ta bort bara för försök
-    // navigation to close and other information 
-        searchContainer.append(navigationBack(searchContainer));
-
-    // Appennd directly esaier then to do it on header
-        document.querySelector("main").append(searchContainer);
-        // document.querySelector("nav").append(searchContainer);
-    // searchContainer.classList.add("hide")
+    searchContainer.append(navigationBack(searchContainer));
+    document.querySelector("main").append(searchContainer);
 
     let searchNavContainer = document.createElement("div")
     searchNavContainer.classList.add("search-nav-container")
     
     let resultWrapper = document.createElement("div")
     resultWrapper.classList.add("search-result-wrapper")
-    getMoviesToShow()
 
     let buttonSearchMovie = document.createElement("div")
     buttonSearchMovie.classList.add("search-movie-button")
@@ -34,7 +27,7 @@ export function createSearch(){
             buttonSearchUser.classList.toggle("active")
             resultWrapper.classList.toggle("active-user-search")
             document.querySelector(".search-field").value=""
-            getMoviesToShow()
+            getMoviesToShow(0)
         }
     })
 
@@ -42,6 +35,9 @@ export function createSearch(){
     buttonSearchUser.classList.add("search-user-button")
     buttonSearchUser.innerHTML="Search user"
     buttonSearchUser.addEventListener("click", function(){
+        document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
+        resultWrapper.innerHTML = "";
+
         if(!buttonSearchUser.classList.contains("active")){
             buttonSearchUser.classList.toggle("active")
             buttonSearchMovie.classList.toggle("active")
@@ -59,6 +55,8 @@ export function createSearch(){
     searchContainer.appendChild(searchNavContainer)
     searchContainer.appendChild(searchFieldContainer)
     searchContainer.appendChild(resultWrapper)
+
+    getMoviesToShow(counter)
     
 //    return searchContainer
 }
@@ -89,10 +87,12 @@ function searchMovies(searchWord){
 
     if(buttonSearchMovie.classList.contains("active")){
         if(searchWord == ""){
-            getMoviesToShow()
+            document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
+            getMoviesToShow(0)
         }else{
+            document.querySelector(".search-result-wrapper").innerHTML = ``;
             let rqst = new Request(`https://api.themoviedb.org/3/search/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&query=${searchWord}&page=1&include_adult=false`)
-            fetch(rqst).then(r => r.json()).then(recourse => createMovies(recourse.results))
+            fetch(rqst).then(r => r.json()).then(recourse => createMovies(recourse.results));
         }
     }else if(buttonSearchUser.classList.contains("active")){
         if(searchWord == ""){
@@ -107,7 +107,6 @@ function searchMovies(searchWord){
 
 function createMovies(array){
     let resultWrapper = document.querySelector(".search-result-wrapper")
-    resultWrapper.innerHTML=""
     
     array.forEach(element => {
         let movieDiv = document.createElement("div")
@@ -125,7 +124,7 @@ function createUser(array, searchWord){
     let userWrapper = document.querySelector(".search-result-wrapper")
     userWrapper.innerHTML=""
 
-    console.log(array)
+    // console.log(array)
     array.forEach(user =>{
         if(user.username.includes(searchWord)){
             let userDiv = document.createElement("div")
@@ -145,9 +144,34 @@ function createUser(array, searchWord){
     })
 }
 
-function getMoviesToShow(){
-    let rqst = new Request(`https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=499 `)
-    fetch(rqst).then(r => r.json()).then(recourse => createMovies(recourse.results))
+function getMoviesToShow(counter){
+    document.querySelector(".search-result-wrapper").innerHTML = ``;
+
+    let btnBox = document.createElement('div');
+    btnBox.id = 'btnBox';
+    let btn = document.createElement('div');
+    btn.innerHTML=`<span class="material-symbols-outlined">keyboard_double_arrow_down</span>`;
+    btn.classList.add('showMore');
+  
+    let observer = new IntersectionObserver(async (entries) =>{
+        let btnEntrie = entries[0];
+    
+        if (!btnEntrie.isIntersecting) return
+        counter++;
+        let moviesResponse = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=${counter}`);
+        let moviesResource = await moviesResponse.json();
+    
+        createMovies(moviesResource.results);
+      },
+      {
+        threshold: 1
+      });
+    
+    observer.observe(btn);
+  
+    btnBox.appendChild(btn);
+
+    document.querySelector(".search-container").append(btnBox);
 }
 
 function getUsersToShow(){
@@ -157,19 +181,20 @@ function getUsersToShow(){
 
     let rqst = new Request("../../php/get/get.php?users")
     fetch(rqst).then(r => r.json()).then(recourse => {
-        recourse.forEach(user =>{
-           let userDiv = document.createElement("div")
 
-           if (singdIn.username != user.username) {
-               if(user.imageLink == ""){
-                   userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
+        recourse.forEach(user =>{
+            let userDiv = document.createElement("div")
+
+        if (singdIn.username != user.username) {
+            if(user.imageLink == ""){
+                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
                 }
                 userDiv.innerHTML += `<p>${user.username}</p>`
                 userDiv.addEventListener("click", () => {
                     otherUser(user.userID);
                 });
                 userWrapper.appendChild(userDiv)
-           }
+            }
         })
     })
 }
