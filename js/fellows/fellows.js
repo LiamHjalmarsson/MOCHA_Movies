@@ -73,11 +73,8 @@ function getFollows (follow, user) {
             })
 
             let recourseAdd = await responseAdd.json();
-
             userLocalStorage(recourseAdd);
-
             document.querySelector("main").innerHTML = "";
-
             userFollowers()
         });
         followDiv.append(icon);
@@ -131,19 +128,17 @@ export function renderAddFreind () {
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
     followContainer.append(navigationBack(followContainer, "original_title"));
-    let followWrapper = document.createElement("div");
-    followWrapper.id = "followWrapper";
-    followContainer.append(followWrapper);
 
     addFriend(0);
 }
 
 async function addFriend (counter) {
+
     let user = JSON.parse(localStorage.getItem("user"));
     let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
     let recourseAllusers = await responseAllUsers.json();
     let arrayNotFollowing = [];
-
+    
     recourseAllusers.forEach(recUser => {
         let follow = user.following.find(follow => follow === recUser.userID);
         if (follow == undefined) {
@@ -153,39 +148,61 @@ async function addFriend (counter) {
         }
     });
 
+    arrayNotFollowing.sort((a, b) => {
+        if (a.username.toLowerCase() > b.username.toLowerCase()) {
+          return 1;
+        } else if (a.username.toLowerCase() < b.username.toLowerCase()) {
+            return -1;
+        }
+        return 0
+      });
+
     searchInput(arrayNotFollowing, user);
 
+    let followWrapper = document.createElement("div");
+    followWrapper.id = "followWrapper";
+    followContainer.append(followWrapper);
+
+
     if (arrayNotFollowing.length != 0) {
-        if (arrayNotFollowing.length >= 2) {
 
-            for (let i = 0; i < 2; i++) {
-                if (arrayNotFollowing[counter] != undefined) {
-                    getAddFriend(user, arrayNotFollowing[counter]);
+        if (arrayNotFollowing.length > 5) {
+            
+            let btnBox = document.createElement('div');
+            btnBox.id = 'btnBox';
+            let btn = document.createElement('div');
+            btn.innerHTML=`<span class="material-symbols-outlined">keyboard_double_arrow_down</span>`;
+            btn.classList.add('showMore');
+            
+            let observer = new IntersectionObserver(async (entries) => { 
+                let btnEntrie = entries[0];
+                if (!btnEntrie.isIntersecting) return
+
+                for (let i = 0; i < 10; i++) {
                     counter++;
-                } 
-            }
 
-            let btnBox = document.createElement("div");
-            btnBox.id = "btnBox";
-            let btn = document.createElement("button");
-            btn.classList.add("showMore");
-            btn.textContent = "show more";
-            
-            btn.addEventListener("click", () => {
-                document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-                document.querySelector(".inputBox").remove();
-                addFriend(counter);
+                    if (arrayNotFollowing[counter] != undefined) {
+
+                    getAddFriend(user, arrayNotFollowing[counter]);
+
+                    }
+                }
+            }, 
+            {
+                threshold: 1
             });
-            
-            btnBox.appendChild(btn);
-            document.querySelector("#followContainer").append(btnBox);
 
+            observer.observe(btn);
+          
+            btnBox.appendChild(btn);
+        
+            document.querySelector("#followContainer").append(btnBox);
+            
         } else {     
             arrayNotFollowing.forEach(follow => {
                 getAddFriend(user, follow);
             })
         }
-    
     } else {
         document.querySelector("#followWrapper").textContent = `You are following all that exists in the Database at the moment`;
     }
@@ -245,26 +262,22 @@ function searchInput (arrayNotFollowing, user) {
     let inputBox = document.createElement("div");
     inputBox.classList.add("inputBox");
     inputBox.innerHTML = ` <input class="addInput"> `;
-    document.querySelector("#followContainer").insertBefore(inputBox, document.querySelector("#followWrapper"));
+    // document.querySelector("#followContainer").insertBefore(inputBox, document.querySelector("#followWrapper"));
+    document.querySelector("#followContainer").append(inputBox);
 
     document.querySelector(".addInput").addEventListener("keyup", (e) => {
         if (e.target.value.length <= 0) {
             document.querySelector("#followContainer > .inputBox").remove();
             document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-            document.querySelector("#followWrapper").innerHTML = "";
+            document.querySelector("#followWrapper").remove();
             addFriend(0)
         } else {
             document.querySelectorAll("#followWrapper > .followDiv").forEach(div => div.remove());
+            document.querySelector("#followWrapper").innerHTML = "";
 
             arrayNotFollowing.forEach(follow => {
-
-                if (follow.firstName.toLowerCase().includes(e.target.value.toLowerCase()) 
-                    || 
-                    follow.username.toLowerCase().includes(e.target.value.toLowerCase())) {
-                        getAddFriend(user, follow);
-                } else {
-                    document.querySelector("#followWrapper").innerHTML = `<p class="nan"> No user found </p>`;
-                    document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+                if (follow.username.toLowerCase().includes(e.target.value.toLowerCase())) {
+                    getAddFriend(user, follow);
                 }
             });
         }

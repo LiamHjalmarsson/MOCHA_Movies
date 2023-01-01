@@ -205,9 +205,9 @@ function getUsersToShow(counter = -1){
                         if (singdIn.username != recourse[counter].username) {
                        
                             recourse.sort((a, b) => {
-                                if ( a.username.toLowerCase() > b.username.toLowerCase()  ) {
+                                if (a.username.toLowerCase() > b.username.toLowerCase()) {
                                   return 1;
-                                } else if ( a.username.toLowerCase()  < b.username.toLowerCase()  ) {
+                                } else if (a.username.toLowerCase() < b.username.toLowerCase()) {
                                     return -1;
                                 }
                                 return 0
