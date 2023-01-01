@@ -181,3 +181,13 @@ export function createProfile (user) {
 
   return profileIcon
 }
+
+window.addEventListener("scroll", function(){
+  if(this.scrollY > 50){
+    this.document.querySelector(".navContainer").style.backgroundColor= "#151515"
+  }else{
+    if(this.scrollY < 50){
+      this.document.querySelector(".navContainer").style.backgroundColor = "rgba(0, 0, 0, 0.05)"
+    }
+  }
+})

@@ -1,6 +1,7 @@
 nav{
     position: fixed;
     width: 100vw;
+    z-index: 1;
 }
 
 .navContainer{
@@ -8,6 +9,7 @@ nav{
     align-items: center;
     background-color: rgba(0, 0, 0, 0.05);
     background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0));
+    transition: 1s;
 }
 
 .burger-div{
@@ -38,10 +40,12 @@ nav{
     display: flex;
     flex-direction: column;
     position: fixed;
-    background-color: #2c2b2b;
     font-size: 16pt;
     right: 0px;
     transition: 0.5s;
+    z-index: 2;
+    background-color: rgb(15, 15, 15);
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .burgerMenu > div{
