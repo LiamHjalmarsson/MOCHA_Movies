@@ -8,7 +8,7 @@ export async function renderMovie (movie) {
     let movieContainer = document.createElement("div");
     movieContainer.id = "movieContainer";
 
-    movieContainer.append(navigationBack(movieContainer, movie.original_title));
+    movieContainer.append(navigationBack(movieContainer, movie.title));
 
     let movieHeader = document.createElement("div");
     movieHeader.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)),url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
@@ -16,7 +16,7 @@ export async function renderMovie (movie) {
 
     let titleContainer = document.createElement("div")
     titleContainer.classList.add("titleContainer")
-    titleContainer.innerHTML = movie.original_title
+    titleContainer.innerHTML = movie.title
 
     let iconContainer = createMovieIcons(movie)
 
@@ -128,18 +128,53 @@ async function getReviews(movie){
             let userResponse = await fetch(rqstReviewPerson)
             let userResource = await userResponse.json()
     
-            let personImg = ""
+            let personImg = document.createElement("div")
     
             if(userResource.imageLink == ""){
-                personImg = `<span class="material-symbols-outlined">person</span>`
+                personImg.innerHTML = `<span class="material-symbols-outlined">person</span>`
             }else{
-                personImg = document.createElement("span")
-                personImg.backgroundImage = `url(${userResource.imageLink})`
+                let imgBox = document.createElement("span")
+                imgBox.backgroundImage = `url(${userResource.imageLink})`
+                personImg.append(imgBox)
             }
+
+            let givenGrade = review.grade
+
+            console.log(givenGrade)
+
+            let starsContainer = document.createElement("div");
+            starsContainer.classList.add("stars")
+            for (let i = 0; i < 5; i++) {
+                let star = document.createElement("div");
+                star.innerHTML = '<span class="material-symbols-outlined">star</span>';
+                star.classList.add("star");
+                starsContainer.append(star);
+
+                if(i < givenGrade){
+                    console.log("gul")
+                    star.firstChild.classList.add("fill")
+                }
+              }
+
+            let userName = document.createElement("p")
+            userName.innerHTML = userResource.username
+
+            let reviewName = document.createElement("div")
+            reviewName.classList.add("review-name")
+            
+            reviewName.append(personImg,userName)
+
+            let reviewText = document.createElement("div")
+            reviewText.innerHTML = review.reviewText
+
+
+            reviewItem.append(reviewName,starsContainer, reviewText)
+
+            
     
-            reviewItem.innerHTML = `
-                <p>${personImg}${userResource.username}<p>
-                <p>${review.grade}/5   "${review.reviewText}"</p>`
+            // reviewItem.innerHTML += `
+            //     <p>${personImg}${userResource.username}<p>
+            //     <p>"${review.reviewText}"</p>`
             reviewBox.appendChild(reviewItem)
         })
     }

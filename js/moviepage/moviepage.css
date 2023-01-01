@@ -6,6 +6,7 @@
     background-color: #151515;
     color: white;
     font-family: 'Mukta', sans-serif;
+    z-index: 4;
 }
 
 #movieHeader {
@@ -19,6 +20,8 @@
    background-color: black;
    padding-bottom: 30px;
    text-align:center ;
+   font-family: 'Righteous', cursive;
+   font-size: 14pt;
 }
 
 #iconContainer {
@@ -66,6 +69,14 @@
     justify-content: center; */
 }
 
+#review-container{
+    position: fixed;
+    z-index: 5;
+    height: 100vh;
+    top: 0;
+    background-color: #0000008f;
+}
+
 #review-box{
     background-color: #151515;
     border-radius: 10px;
@@ -75,8 +86,9 @@
     justify-content: center;
     align-items: center;
     margin: 0px 10px;
-    position: fixed;
+    position: relative;
     bottom: 0;
+    top: 40%;
 }
 
 #review-box > div:first-child{
@@ -114,14 +126,37 @@
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 5px 15px 5px 15px;
-    background-color: #404040;
     color: white;
 }
 
-.review-item > p:first-child{
+.review-name{
+    display: flex;
+}
+
+.review-name > p{
+    margin: 0;
+}
+
+.review-name > div:first-child >.material-symbols-outlined{
+    font-size: 30px;
+}
+
+.review-item > .stars{
+    gap: 4px;
+}
+
+.review-item > .stars > .star > .material-symbols-outlined{
+    font-size: 20px;
+}
+
+/* .review-item > p:first-child > .material-symbols-outlined{
+    font-size: 30pt;
+} */
+
+/* .review-item > p:first-child{
     display: flex;
     align-items: center;
-}
+} */
 
 .material-symbols-outlined.fill{
     font-variation-settings: 'FILL' 1;
