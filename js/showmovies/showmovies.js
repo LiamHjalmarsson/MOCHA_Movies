@@ -87,14 +87,15 @@ export async function renderMyMovies (counter, type, movies) {
         let movieResource = await movieResponse.json();
   
         if (movieResource.status_code != 34) {
-          document.querySelector('#movieGridContainer').append(createMovie(movieResource));
+          movieGridContainer.append(createMovie(movieResource));
         } 
       }
     } else {
       user[type].forEach(async id => {
         let movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`);
         let movieResource = await movieResponse.json();
-        document.querySelector('#movieGridContainer').append(createMovie(movieResource));
+        
+        movieGridContainer.append(createMovie(movieResource));
       });
     }
 

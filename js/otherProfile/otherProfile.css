@@ -7,6 +7,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  overflow: scroll;
+  z-index: 3;
 }
 
 #otherProfileNotAllowed {
@@ -46,12 +48,13 @@
   flex-grow: 1;
   padding: 15px;
 }
+
 .resultContainer{
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 5px;
-  width: 100vw;
-  overflow: scroll;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 90%;
+  margin: 15px;
 }
 
 .resultContainer > div {

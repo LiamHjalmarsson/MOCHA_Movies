@@ -59,19 +59,16 @@ export async function otherUser (otherUserID) {
     // ------------------------------------------------------
 
     let resultContainer = createElementWithClassOrID('resultContainer')
-    // kommenterade bort nedan och anävnder fetchMovies istället för blir porblem med klicken // sophie
-    // renderMyMovies(0, "moviesToSee", otherUserResource.moviesToSee);
     fetchMovies(otherUserResource.moviesToSee)
 
     toSeeBtn.textContent = 'Movies To See'
     toSeeBtn.classList.add('active')
     toSeeBtn.addEventListener('click', () => {
       if (!toSeeBtn.classList.contains('active')) {
+        document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
         toSeeBtn.classList.toggle('active')
         watchedBtn.classList.toggle('active')
         resultContainer.innerHTML = '';
-        // kommenterade bort nedan och anävnder fetchMovies istället för blir porblem med klicken // sophie
-        // renderMyMovies(0, "moviesToSee", otherUserResource.moviesToSee);
         fetchMovies(otherUserResource.moviesToSee)
       }
     })
@@ -79,12 +76,11 @@ export async function otherUser (otherUserID) {
     watchedBtn.textContent = 'Watched Movies'
     watchedBtn.addEventListener('click', () => {
       if (!watchedBtn.classList.contains('active')) {
+        document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
         watchedBtn.classList.toggle('active')
         toSeeBtn.classList.toggle('active')
         resultContainer.innerHTML = '';
         fetchMovies(otherUserResource.watchedMovies)
-        // kommenterade bort nedan och anävnder fetchMovies istället för blir porblem med klicken // sophie
-        // renderMyMovies(0, "moviesToSee", otherUserResource.watchedMovies);
       }
     })
     otherProfileWrapper.append(resultContainer)
@@ -99,17 +95,63 @@ export async function otherUser (otherUserID) {
 // sophie här, tycker dessa är bra! vi kan nog inte använda renderMyMovies för det blir problem med vad som visas och hur det visas i main
 // använd dessa sålänge o behöver vi effektivisera så gör vi det sen
 
-async function fetchMovies (otherUserMovies) {
+async function fetchMovies (otherUserMovies, counter = 0) {
   let movieArray = []
+
   for (let i = 0; i < 20; i++) {
-    if (otherUserMovies[i] != undefined) {
+    counter++;
+    if (otherUserMovies[counter] != undefined) {
       let movieResponse = await fetch(
-        `https://api.themoviedb.org/3/movie/${otherUserMovies[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+        `https://api.themoviedb.org/3/movie/${otherUserMovies[counter]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
       )
       let movieResource = await movieResponse.json()
       movieArray.push(movieResource)
     }
   }
+
+  if (otherUserMovies.length > 20) {
+    let btnBox = document.createElement('div');
+    btnBox.id = 'btnBox';
+    let btn = document.createElement('div');
+    btn.innerHTML=`<span class="material-symbols-outlined">keyboard_double_arrow_down</span>`;
+    btn.classList.add('showMore');
+  
+    let observer = new IntersectionObserver(async (entries) =>{
+        let btnEntrie = entries[0];
+    
+        if (!btnEntrie.isIntersecting) return
+
+        for (let j = 0; j < 20; j++) {
+          counter++;
+
+          if (otherUserMovies[counter] != undefined) {
+            let movieResponse = await fetch(
+              `https://api.themoviedb.org/3/movie/${otherUserMovies[counter]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+            )
+            let movieResource = await movieResponse.json()
+            let movieDiv = document.createElement('div')
+            movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
+            movieDiv.addEventListener('click', () => {
+              renderMovie(movieResource);
+            })
+            document.querySelector('.resultContainer').appendChild(movieDiv)
+          } else {
+            document.querySelectorAll("#btnBox").forEach(btn => btn.remove());
+          }
+        }
+    
+      },
+      {
+        threshold: 1
+      });
+    
+    observer.observe(btn);
+  
+    btnBox.appendChild(btn);
+
+    document.querySelector("#otherProfileWrapper").append(btnBox);
+  }
+
   createMovieBox(movieArray)
 }
 
