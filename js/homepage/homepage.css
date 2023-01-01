@@ -30,6 +30,7 @@ main {
 .movieDiv {
   margin-right: 6px;
 }
+
 #personWrapper {
   /* display: flex; */
   /* flex-direction: row; */
@@ -81,6 +82,16 @@ main {
 
 .titleBox:hover{
   cursor: pointer;
+}
+
+.personDiv {
+
+}
+
+.remove {
+  opacity: 1;
+  -webkit-transition: opacity 1000ms linear;
+  transition: opacity 1000ms linear;
 }
 
 .movieDiv {

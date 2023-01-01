@@ -95,13 +95,16 @@ export async function renderFirstPage (user) {
 
   setInterval(() => {
     let updateUser = JSON.parse(localStorage.getItem("user"));
-    
+
     if (updateUser.following.length < 1) {
       personBox.appendChild(addFriendDiv)
     }
 
     if (updateUser.following.length <= 8) {
-      document.querySelectorAll(".personBox > .personDiv").forEach(div => div.remove());
+      document.querySelectorAll(".personBox > .personDiv").forEach(div => { 
+        div.classList.add("remove");
+        setTimeout(() => div.remove(), 1000);
+      });
       for (let followingID of updateUser.following) {
         createPersonDivs(followingID, personBox, addFriendDiv)
       }
