@@ -6,6 +6,7 @@
     background-color: #151515;
     color: white;
     font-family: 'Mukta', sans-serif;
+    z-index: 4;
 }
 
 #movieHeader {
@@ -19,6 +20,8 @@
    background-color: black;
    padding-bottom: 30px;
    text-align:center ;
+   font-family: 'Righteous', cursive;
+   font-size: 14pt;
 }
 
 #iconContainer {
