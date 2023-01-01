@@ -128,18 +128,53 @@ async function getReviews(movie){
             let userResponse = await fetch(rqstReviewPerson)
             let userResource = await userResponse.json()
     
-            let personImg = ""
+            let personImg = document.createElement("div")
     
             if(userResource.imageLink == ""){
-                personImg = `<span class="material-symbols-outlined">person</span>`
+                personImg.innerHTML = `<span class="material-symbols-outlined">person</span>`
             }else{
-                personImg = document.createElement("span")
-                personImg.backgroundImage = `url(${userResource.imageLink})`
+                let imgBox = document.createElement("span")
+                imgBox.backgroundImage = `url(${userResource.imageLink})`
+                personImg.append(imgBox)
             }
+
+            let givenGrade = review.grade
+
+            console.log(givenGrade)
+
+            let starsContainer = document.createElement("div");
+            starsContainer.classList.add("stars")
+            for (let i = 0; i < 5; i++) {
+                let star = document.createElement("div");
+                star.innerHTML = '<span class="material-symbols-outlined">star</span>';
+                star.classList.add("star");
+                starsContainer.append(star);
+
+                if(i < givenGrade){
+                    console.log("gul")
+                    star.firstChild.classList.add("fill")
+                }
+              }
+
+            let userName = document.createElement("p")
+            userName.innerHTML = userResource.username
+
+            let reviewName = document.createElement("div")
+            reviewName.classList.add("review-name")
+            
+            reviewName.append(personImg,userName)
+
+            let reviewText = document.createElement("div")
+            reviewText.innerHTML = review.reviewText
+
+
+            reviewItem.append(reviewName,starsContainer, reviewText)
+
+            
     
-            reviewItem.innerHTML = `
-                <p>${personImg}${userResource.username}<p>
-                <p>${review.grade}/5   "${review.reviewText}"</p>`
+            // reviewItem.innerHTML += `
+            //     <p>${personImg}${userResource.username}<p>
+            //     <p>"${review.reviewText}"</p>`
             reviewBox.appendChild(reviewItem)
         })
     }
