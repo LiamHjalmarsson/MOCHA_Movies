@@ -8,7 +8,7 @@ export async function renderMovie (movie) {
     let movieContainer = document.createElement("div");
     movieContainer.id = "movieContainer";
 
-    movieContainer.append(navigationBack(movieContainer, movie.original_title));
+    movieContainer.append(navigationBack(movieContainer, movie.title));
 
     let movieHeader = document.createElement("div");
     movieHeader.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)),url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
@@ -16,7 +16,7 @@ export async function renderMovie (movie) {
 
     let titleContainer = document.createElement("div")
     titleContainer.classList.add("titleContainer")
-    titleContainer.innerHTML = movie.original_title
+    titleContainer.innerHTML = movie.title
 
     let iconContainer = createMovieIcons(movie)
 
