@@ -84,7 +84,6 @@ export function searchField(){
 function searchMovies(searchWord){
     let buttonSearchMovie = document.querySelector(".search-movie-button")
     let buttonSearchUser = document.querySelector(".search-user-button")
-    // console.log(searchWord)
 
     if(buttonSearchMovie.classList.contains("active")){
         if(searchWord == ""){
