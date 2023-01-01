@@ -63,6 +63,7 @@ main {
 .personBox {
   display: flex;
   overflow: scroll;
+  height: 125px;
 }
 
 .movieBox {

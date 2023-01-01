@@ -233,7 +233,7 @@ function getAddFriend (user, arrayNotFollowing) {
         userLocalStorage(recourseAdd);
         document.querySelector("#followContainer > .inputBox").remove();
         document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-        document.querySelector("#followWrapper").innerHTML = "";
+        document.querySelector("#followWrapper").remove();
         addFriend(0);
     });
 } 

@@ -75,6 +75,7 @@ export async function renderFirstPage (user) {
   })
 
   // ---- follow less then 8 people? get all ------
+
   if (user.following.length < 1) {
     personBox.appendChild(addFriendDiv)
   }
@@ -91,6 +92,29 @@ export async function renderFirstPage (user) {
       createPersonDivs(followingID, personBox, addFriendDiv)
     }
   }
+
+  setInterval(() => {
+    let updateUser = JSON.parse(localStorage.getItem("user"));
+    
+    if (updateUser.following.length < 1) {
+      personBox.appendChild(addFriendDiv)
+    }
+
+    if (updateUser.following.length <= 8) {
+      document.querySelectorAll(".personBox > .personDiv").forEach(div => div.remove());
+      for (let followingID of updateUser.following) {
+        createPersonDivs(followingID, personBox, addFriendDiv)
+      }
+  
+    } else {
+      document.querySelectorAll(".personBox > .personDiv").forEach(div => div.remove());
+      for (let j = 0; j < 8; j++) {
+        let followingID = updateUser.following[j]
+        createPersonDivs(followingID, personBox, addFriendDiv)
+      }
+    }
+  }, 3000)
+
   document.querySelector('main').append(popularWrapper, personWrapper)
 
   firstPageUserMovie(
