@@ -80,7 +80,7 @@ export function createNotificationItem(array){
         })
 
         notificationItemBox.append(unseenNoti)
-        notificationItemBox.append(seenNoti)
+        notificationItemBox.prepend(seenNoti)
     }
     
 }
