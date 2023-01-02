@@ -123,7 +123,9 @@
             "lastName": "Ullm\u00e5ne",
             "password": "testpass",
             "imageLink": "",
-            "reviewID": [],
+            "reviewID": [
+                10
+            ],
             "following": [
                 1,
                 2,
@@ -160,7 +162,8 @@
                 283566,
                 807,
                 652837,
-                20334
+                20334,
+                490
             ],
             "subscribedMovies": [
                 550,
@@ -402,7 +405,7 @@
             "userID": 15,
             "username": "Horror",
             "firstName": "Celine",
-            "lastName": "Håkansson",
+            "lastName": "H\u00e5kansson",
             "password": "studier",
             "imageLink": "",
             "reviewID": [],
@@ -442,7 +445,7 @@
             "username": "Skr\u00e4ck",
             "firstName": "Bertil",
             "lastName": "Otensson",
-            "password": "hösten123",
+            "password": "h\u00f6sten123",
             "imageLink": "",
             "reviewID": [],
             "following": [],
@@ -467,7 +470,7 @@
             "userID": 20,
             "username": "seeItAll",
             "firstName": "Filip",
-            "lastName": "Pässon",
+            "lastName": "P\u00e4sson",
             "password": "Filmer3",
             "imageLink": "",
             "reviewID": [],
@@ -553,6 +556,13 @@
             "userID": 2,
             "grade": 4,
             "reviewText": "hej hoopp svinbra"
+        },
+        {
+            "reviewID": 10,
+            "movieID": 490,
+            "userID": 3,
+            "grade": 4,
+            "reviewText": "One of the best movies of its time, the religious representation and depiction of the black plague in the scandinavias is unrivaled."
         }
     ],
     "notifications": [
@@ -602,7 +612,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 7,
@@ -626,7 +636,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 10,
@@ -650,7 +660,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 13,
@@ -674,7 +684,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 16,
@@ -698,7 +708,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 19,
@@ -722,7 +732,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 22,
@@ -746,7 +756,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 25,
@@ -770,7 +780,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 28,
@@ -786,7 +796,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 30,
@@ -802,7 +812,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false
+            "seen": true
         },
         {
             "notificationID": 32,

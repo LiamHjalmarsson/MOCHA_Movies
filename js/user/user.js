@@ -1,27 +1,32 @@
 import { navigationBack } from "../navigationBack/navigationBack.js";
 import { following, userFollowers } from "../fellows/fellows.js";
-import { myMoviesToSee, mySubscribedMovies, myWatchedMovies } from "../userMovies/user-movies.js";
-import {logIn} from "../StartUp/start-up.js";
+import { renderFirstPage } from "../homepage/homepage.js";
+import {
+  myMoviesToSee,
+  mySubscribedMovies,
+  myWatchedMovies,
+} from "../userMovies/user-movies.js";
+import { logIn } from "../StartUp/start-up.js";
 
 export function userProfile() {
   let userProfile = document.createElement("div");
-  userProfile.id="user-profile"
+  userProfile.id = "user-profile";
   let logOutDiv = document.createElement("div");
   let logOutButton = document.createElement("button");
 
-  userProfile.classList.add("userProfile")
-  
+  userProfile.classList.add("userProfile");
+
   logOutDiv.classList.add("logOut");
   logOutButton.textContent = "Log Out";
-  
+
   logOutButton.addEventListener("click", logOut);
   document.querySelector("nav").append(navigationBack(userProfile, "logOut"));
-  
+
   logOutDiv.append(logOutButton);
   userProfile.append(informationUserProfile());
   userProfile.append(buttonsUserProfile());
   userProfile.append(logOutDiv);
-  document.querySelector("main").appendChild(userProfile)
+  document.querySelector("main").appendChild(userProfile);
 }
 // async function navigationWithBack(popUp) {
 //   let user = JSON.parse(localStorage.getItem("user"));
@@ -46,11 +51,11 @@ function informationUserProfile() {
   let textDiv = document.createElement("div");
   let changeProfileButton = document.createElement("button");
 
-  infoProfile.classList.add("user")
+  infoProfile.classList.add("user");
 
-  profileImg.classList.add("profilePicture")
+  profileImg.classList.add("profilePicture");
 
-  changeProfileButton.textContent = "Change Profile"
+  changeProfileButton.textContent = "Change Profile";
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -80,7 +85,7 @@ function changeProfileInformation() {
 
 function buttonsUserProfile() {
   let containerButtons = document.createElement("div");
-containerButtons.classList.add("buttons")
+  containerButtons.classList.add("buttons");
   let array = [
     { name: "following", function: following },
     { name: "Followers", function: userFollowers },
@@ -106,8 +111,8 @@ function logOut() {
   let cancelButton = document.createElement("button");
   let logOutButton = document.createElement("button");
 
-  popUp.classList.add("logOut")
-  buttons.classList.add("logOutButtons")
+  popUp.classList.add("logOut");
+  buttons.classList.add("logOutButtons");
 
   text.textContent = "Are you sure you want to log out?";
 
@@ -118,8 +123,8 @@ function logOut() {
 
   logOutButton.textContent = "Log Out";
   logOutButton.addEventListener("click", () => {
-    document.querySelector("nav").innerHTML=""
-    document.querySelector("main").innerHTML=""
+    document.querySelector("nav").innerHTML = "";
+    document.querySelector("main").innerHTML = "";
     localStorage.clear();
     logIn();
   });
@@ -218,3 +223,12 @@ async function reviews(movieID) {
 //   popUp.append(gradeContainer);
 //   document.querySelector("main").append(popUp);
 // }
+
+let storage = JSON.parse(localStorage.getItem("user"));
+
+if (storage == null) {
+  logIn()
+} else {
+  renderFirstPage(storage)
+}
+
