@@ -93,31 +93,6 @@ export async function renderFirstPage (user) {
     }
   }
 
-  setInterval(() => {
-    let updateUser = JSON.parse(localStorage.getItem("user"));
-
-    if (updateUser.following.length < 1) {
-      personBox.appendChild(addFriendDiv)
-    }
-
-    if (updateUser.following.length <= 8) {
-      document.querySelectorAll(".personBox > .personDiv").forEach(div => { 
-        div.classList.add("remove");
-        setTimeout(() => div.remove(), 1000);
-      });
-      for (let followingID of updateUser.following) {
-        createPersonDivs(followingID, personBox, addFriendDiv)
-      }
-  
-    } else {
-      document.querySelectorAll(".personBox > .personDiv").forEach(div => div.remove());
-      for (let j = 0; j < 8; j++) {
-        let followingID = updateUser.following[j]
-        createPersonDivs(followingID, personBox, addFriendDiv)
-      }
-    }
-  }, 3000)
-
   document.querySelector('main').append(popularWrapper, personWrapper)
 
   firstPageUserMovie(
@@ -130,7 +105,7 @@ export async function renderFirstPage (user) {
   firstPageUserMovie(user.watchedMovies, 'Watch again', 'watchedMovies')
 }
 
-async function createPersonDivs (followingID, personBox, addFriendDiv) {
+export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   // (addFriendDiv), to be able to put the addFriendDiv last
 
   // for each followingID, fetch person and create div
