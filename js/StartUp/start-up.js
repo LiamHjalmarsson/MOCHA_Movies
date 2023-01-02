@@ -1,8 +1,7 @@
 "use strict";
 import { renderFirstPage } from "../homepage/homepage.js";
 
-
- export function logIn() {
+export function logIn() {
   let main = document.querySelector("main");
   main.innerHTML = "";
 
@@ -64,7 +63,7 @@ import { renderFirstPage } from "../homepage/homepage.js";
         if (r.userID == undefined) {
         } else {
           logInDiv.remove();
-          renderFirstPage(r)
+          renderFirstPage(r);
           localStorage.setItem("user", JSON.stringify(r));
         }
       });
@@ -159,10 +158,8 @@ function signUp() {
 }
 
 export function userLocalStorage(userObject) {
-    localStorage.setItem("user", JSON.stringify(userObject));
-    let currentUser = JSON.parse(localStorageGetItem("user")) ;
+  localStorage.setItem("user", JSON.stringify(userObject));
+  let currentUser = JSON.parse(localStorageGetItem("user"));
 
   return currentUser;
 }
-
-logIn()
