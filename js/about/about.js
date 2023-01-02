@@ -1,4 +1,4 @@
-import { navigationBack } from "../navigationBack/navigationBack.js"
+import { navigationBack } from '../navigationBack/navigationBack.js'
 
 export function createAbout () {
   let aboutWrapper = document.createElement('div')
