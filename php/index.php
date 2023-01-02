@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../js/otherProfile/otherProfile.css">
     <link rel="stylesheet" href="../js/fellows/fellows.css">
     <link rel="stylesheet" href="../js/startup/logIn.css">
+    <link rel="stylesheet" href="./about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet"> 
@@ -33,6 +34,8 @@
     <script type="module" src="../js/startUp/start-up.js"></script>
     <script type="module" src="../js/homepage/homepage.js"></script>
     <script type="module" src="../js/user/user.js"></script>
+    <script type="module" src="./about.js"></script>
+
     
 </body>
 

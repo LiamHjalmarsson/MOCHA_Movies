@@ -1,0 +1,48 @@
+#aboutWrapper {
+display: flex;
+flex-direction: column;
+height: 100vh;
+align-items: center;
+}
+
+#developerContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 30px;
+  margin-top: 20px;
+}
+
+.developerDiv {
+    height: 130px;
+    width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pictureDiv {
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+}
+.nameDiv {
+    text-align: center;
+    font-family: mukta;
+}
+
+#titleDiv > h1, #titleDiv > h2{
+    text-align: center;
+    font-family: mukta;
+    margin: 5px;
+}
+
+#titleDiv {
+    margin-top: 20px;
+}
+
+#infoAboutBox > p{
+text-align: center;
+margin: 30px 20px;
+font-family: mukta;
+line-height: 22px;
+}

@@ -18,13 +18,12 @@ export async function renderFirstPage (user) {
 
   let popularWrapper = createElementWithClassOrID(false, 'popularWrapper')
   let counter = 0
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 10; i++) {
     let popularMovie = createElementWithClassOrID('popularMovie')
     let movies = popularMoviesResource.results
     popularMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
     popularMovie.style.backgroundSize = 'cover'
     popularMovie.style.backgroundRepeat = 'no-repeat'
-    // console.log(counter)
     popularMovie.style.left = `${counter}vw`
     popularMovie.addEventListener('click', () => {
       renderMovie(movies[i])
@@ -39,20 +38,16 @@ export async function renderFirstPage (user) {
       let divWithVW = div.style.left
       let withoutVW = divWithVW.slice(0, -2)
       let newNr = withoutVW - 100
-      console.log(newNr)
       div.style.left = newNr + 'vw'
 
       let arrayOfDivs = document.querySelectorAll('.popularMovie')
       let lastDiv = arrayOfDivs[arrayOfDivs.length - 1]
-      console.log(lastDiv)
-      console.log(lastDiv.style.left)
       let c = 0
       if (lastDiv.style.left == '-100vw') {
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < 10; j++) {
           arrayOfDivs[j].style.left = `${c}vw`
           arrayOfDivs[j].style.transition = 'ease-in 1s'
           c += 100
-          console.log('bytförfan')
         }
       }
     })

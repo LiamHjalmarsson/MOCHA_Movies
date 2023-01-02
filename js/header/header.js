@@ -7,6 +7,8 @@ import {
 import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
 import { searchField, createSearch } from "../search/search.js"
 import {userProfile} from "../user/user.js"
+import { createAbout } from "../about/about.js";
+
 
 // this is to et user from DB should be from localStorage later?
 async function getUser (userID) {
@@ -96,6 +98,7 @@ function createBurger (navContainer) {
     },
     {
       title: 'About/contact',
+      function: () => { createAbout()}
     }
   ]
 

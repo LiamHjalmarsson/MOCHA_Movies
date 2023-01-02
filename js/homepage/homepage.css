@@ -10,9 +10,9 @@ main {
 }
 
 #popularWrapper {
-  display: flex;
+  /* display: flex; */
   height: 65vh;
-  flex-direction: row;
+  /* flex-direction: row; */
   position: relative;
   /* width: 600vw; */
   /* overflow: scroll; */
@@ -95,6 +95,7 @@ main {
   min-width: 100vw;
   left: 0px;
   transition: left 1s;
+  top: 0px;
 }
 
 .material-symbols-outlined {
