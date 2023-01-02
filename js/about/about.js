@@ -1,11 +1,14 @@
-// import { createElementWithClassOrID } from '../homepage/homepage.js'
+import { navigationBack } from "../navigationBack/navigationBack.js"
 
-function createAbout () {
+export function createAbout () {
+  let aboutWrapper = document.createElement('div')
+  aboutWrapper.id = 'aboutWrapper'
+  aboutWrapper.append(navigationBack(aboutWrapper))
+
   let titleDiv = document.createElement('div')
   titleDiv.id = 'titleDiv'
   titleDiv.innerHTML = `
-<h2>ABOUT</h2>
-<h1>MOCHAMOVIES</h1>`
+<h1>About us</h1>`
 
   let developerContainer = document.createElement('div')
   developerContainer.id = 'developerContainer'
@@ -27,19 +30,17 @@ function createAbout () {
     developerDiv.append(pictureDiv, nameDiv)
     developerContainer.append(developerDiv)
   })
-  let aboutWrapper = document.createElement('div')
-  aboutWrapper.id = 'aboutWrapper'
 
-  let infoAboutBox = document.createElement("div")
-    infoAboutBox.id = "infoAboutBox"
-    infoAboutBox.innerHTML = `
+  let infoAboutBox = document.createElement('div')
+  infoAboutBox.id = 'infoAboutBox'
+  infoAboutBox.innerHTML = `
     <p> 
     MochaMovies was started upon the idea of combining love of movie and social media. We at MochaMovies wanted to create a simple way for people to interact and discuss movies of all genres. We hope you enjoy our site and use it to connect with people of differing opinion and get the enjoyment of movies as we do!
-    </p>`
+    </p>
+    <p>Borde vi kanske skriva ngt om contact?</p>`
   aboutWrapper.append(titleDiv, developerContainer, infoAboutBox)
 
   document.querySelector('main').append(aboutWrapper)
 }
 
-
-createAbout()
+// createAbout()
