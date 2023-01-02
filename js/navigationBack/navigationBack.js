@@ -12,7 +12,8 @@ export function navigationBack (remove, path) {
   // eller så placerar vi det någon annans stans i filmens information
 
   let name = document.createElement('div')
-
+  name.classList.add("nameInNav")
+  console.log(path)
   switch (path) {
     case 'top_rated':
       name.innerHTML = 'Top rated movies'
@@ -27,7 +28,7 @@ export function navigationBack (remove, path) {
       name.innerHTML = 'Movies to see'
       break
     default:
-        name.innerHTML = `MochaMovies`
+        name.innerHTML = path ? path : ""
       break
   }
 

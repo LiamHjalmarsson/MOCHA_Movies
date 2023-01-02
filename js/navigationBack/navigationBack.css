@@ -32,3 +32,9 @@
 #navigationBack > div:hover{
     cursor: pointer;
 }
+
+.nameInNav {
+    font-family: Nunito Sans, sans-serif;
+    font-weight: bolder;
+
+}
