@@ -235,27 +235,24 @@ function makeGradeStars() {
     for (let i = 0; i < 5; i++) {
       let star = document.createElement("div");
       star.innerHTML = '<span class="material-symbols-outlined">star</span>';
-      star.classList.add("star");
+      star.classList.add("gradeStar");
       starsContainer.append(star);
     }
     
     slideInput.addEventListener("mousemove", () => {
-      let stars = Array.from(document.querySelectorAll(".star"));
-      let thisIndex = document.getElementById("myRange").value;
+      let stars = Array.from(document.querySelectorAll(".gradeStar"));
+      let thisIndex = parseInt(document.getElementById("myRange").value);
+
       stars.forEach((e) => {
-        e.firstChild.textContent = "star_rate";
+        e.firstChild.textContent = "star";
         e.firstChild.classList.remove("fill");
       });
       
       for (let i = 0; i < thisIndex; i++) {
-        if (thisIndex - i == 0.5) {
-          stars[i].firstChild.textContent = "star_half";
-          stars[i].firstChild.classList.add("fill");
-        } else {
           stars[i].firstChild.textContent = "star";
           stars[i].firstChild.classList.add("fill");
         }
-      }
+      
     });
     
     gradeContainer.append(slidecontainer);

@@ -191,11 +191,12 @@
 .slidecontainer {
     position: absolute;
     opacity: 0;
-    /* width: 90%; */
-    z-index: 5;
+    width: 100%;
+    left: -20px;
 }
 
-/* .slidecontainer > input {
-    width: 90%;
+.slidecontainer > input {
+    width: 100%;
     height: 40px;
-} */
+    z-index: 5;
+}
