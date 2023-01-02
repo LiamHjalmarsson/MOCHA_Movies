@@ -70,7 +70,7 @@ main {
 .movieBox {
   display: flex;
   overflow: scroll;
-  margin-left: 6px;
+  margin:0 10px;
 }
 
 .titleBox {
@@ -97,6 +97,7 @@ main {
 .movieDiv {
   height: 190px;
   min-width: 120px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
