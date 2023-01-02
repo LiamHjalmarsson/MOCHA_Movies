@@ -20,11 +20,16 @@ export async function userFollowers () {
 
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
-    document.querySelector("main").append(followContainer);
-
+    followContainer.append(navigationBack(followContainer, "follow"))
+    
+    let wrapper = document.createElement("div")
+    wrapper.classList.add("following-wrapper")
     arrayFollowingMe.forEach(follow => {
-        followContainer.append(getFollows(follow, user));
+        wrapper.append(getFollows(follow, user));
     });
+    
+    followContainer.append(wrapper)
+    document.querySelector("main").append(followContainer);
 }
 
 function getFollows (follow, user) {
@@ -89,18 +94,25 @@ function getFollows (follow, user) {
 
 export async function following () {
     let user = JSON.parse(localStorage.getItem("user"));
+
+    let followingContainer = document.createElement("div")
+    followingContainer.id = "following-container"
+    followingContainer.append(navigationBack(followingContainer, "following"))
+
+    let followingWrapper = document.createElement("div")
+    followingWrapper.classList.add("following-wrapper")
     
     user.following.forEach( async follow => {
-
         let responseFollow = await fetch(`../../php/get/get.php?users=${follow}`);
         let recoursFollow = await responseFollow.json();
 
         let followingDiv = document.createElement("div");
-        document.querySelector("main").append(followingDiv);
+        followingWrapper.append(followingDiv)
+        
         followingDiv.classList.add("followDiv");
-
+        
         createFollow(recoursFollow, followingDiv);
-
+        
         let icon = document.createElement("div");
         icon.innerHTML = `<i class="fa-solid fa-minus"></i>`; 
         
@@ -113,19 +125,20 @@ export async function following () {
                     followingID: recoursFollow.userID
                 })
             })
-
+            
             // updateFreindList = setTimeout(updateFreinds, 100);
             // document.querySelector(".personBox").innerHTML = "";
-
+            
             let recourseDelete = await responseDelete.json();
             userLocalStorage(recourseDelete);
             document.querySelector("main").innerHTML = "";
             following();
         }); 
-
+        
         followingDiv.append(icon);
-
     })
+    followingContainer.appendChild(followingWrapper)
+    document.querySelector("main").append(followingContainer);
 }
 
 export function renderAddFreind () {

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../js/fellows/fellows.css">
     <link rel="stylesheet" href="../js/startup/logIn.css">
     <link rel="stylesheet" href="../js/allMovies/allMovies.css">
+    <link rel="stylesheet" href="../js/user/user-profile.css">
     <link rel="stylesheet" href="../js/about/about.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
