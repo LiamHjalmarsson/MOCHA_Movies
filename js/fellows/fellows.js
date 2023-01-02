@@ -1,6 +1,8 @@
-// import { userLocalStorage } from "../StartUp/start-up.js"
 import { otherUser } from "../otherProfile/otherProfile.js";
 import { navigationBack } from "../navigationBack/navigationBack.js";
+import { createPersonDivs, createElementWithClassOrID } from "../homepage/homepage.js";
+
+let updateFreindList;
 
 export async function userFollowers () {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -72,10 +74,13 @@ function getFollows (follow, user) {
                 })
             })
 
+            // updateFreindList = setTimeout(updateFreinds, 100);
+            // document.querySelector(".personBox").innerHTML = "";
+
             let recourseAdd = await responseAdd.json();
             userLocalStorage(recourseAdd);
             document.querySelector("main").innerHTML = "";
-            userFollowers()
+            userFollowers();
         });
         followDiv.append(icon);
     }
@@ -109,13 +114,13 @@ export async function following () {
                 })
             })
 
+            // updateFreindList = setTimeout(updateFreinds, 100);
+            // document.querySelector(".personBox").innerHTML = "";
+
             let recourseDelete = await responseDelete.json();
-
             userLocalStorage(recourseDelete);
-
             document.querySelector("main").innerHTML = "";
-
-            following()
+            following();
         }); 
 
         followingDiv.append(icon);
@@ -130,6 +135,41 @@ export function renderAddFreind () {
     followContainer.append(navigationBack(followContainer, "original_title"));
 
     addFriend(0);
+}
+
+function updateFreinds () {
+
+    let addFriendDiv = createElementWithClassOrID('imgDiv', 'addfriendDiv');
+    addFriendDiv.innerHTML =
+      '<span class="material-symbols-outlined">person_add</span>';
+    addFriendDiv.addEventListener('click', () => {
+      renderAddFreind();
+    });
+
+    let updateUser = JSON.parse(localStorage.getItem("user"));
+    let personBox = document.querySelector(".personBox");
+
+    if (updateUser.following.length < 1) {
+    personBox.appendChild(addFriendDiv);
+    }
+
+    if (updateUser.following.length <= 8) {
+        document.querySelectorAll(".personBox > div").forEach(div => { 
+        div.classList.add("remove");
+        setTimeout(() => div.remove(), 1000);
+    });
+    for (let followingID of updateUser.following) {
+        createPersonDivs(followingID, personBox, addFriendDiv);
+    }
+
+    } else {
+        document.querySelectorAll(".personBox > div").forEach(div => div.remove());
+        for (let j = 0; j < 8; j++) {
+            let followingID = updateUser.following[j];
+            createPersonDivs(followingID, personBox, addFriendDiv);
+        }
+    }
+
 }
 
 async function addFriend (counter) {
@@ -162,7 +202,6 @@ async function addFriend (counter) {
     let followWrapper = document.createElement("div");
     followWrapper.id = "followWrapper";
     followContainer.append(followWrapper);
-
 
     if (arrayNotFollowing.length != 0) {
 
@@ -229,6 +268,9 @@ function getAddFriend (user, arrayNotFollowing) {
             })
         });
 
+        updateFreindList = setTimeout(updateFreinds, 100);
+        document.querySelector(".personBox").innerHTML = "";
+        
         let recourseAdd = await responseAdd.json();
         userLocalStorage(recourseAdd);
         document.querySelector("#followContainer > .inputBox").remove();
@@ -236,6 +278,7 @@ function getAddFriend (user, arrayNotFollowing) {
         document.querySelector("#followWrapper").remove();
         addFriend(0);
     });
+
 } 
 
 function createFollow (recoursFollow, followingDiv) {
