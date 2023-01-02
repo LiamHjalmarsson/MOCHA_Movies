@@ -1,7 +1,7 @@
-body {
+/* body {
     margin: 0;
     padding: 0;
-}
+} */
 
 #renderMoviesWrapper {
     position: fixed;
@@ -17,8 +17,8 @@ body {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
      gap: 10px;
-     margin: 15px;
-     padding-top: 60px;
+     margin: 10px;
+     padding-top: 70px;
 }
 
 .movieCard {
