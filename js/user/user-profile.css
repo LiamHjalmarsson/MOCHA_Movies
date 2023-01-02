@@ -3,31 +3,49 @@ body {
     color: white
 }
 
-.userProfile {
+
+
+#user-profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 35px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: #151515;
+    width: 100vw;
+    font-family: 'Mukta', sans-serif;
 }
 
 .user {
+    padding-top: 15vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
 }
 
+.user > div:nth-child(2){
+    font-size: 16pt;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 .user > button {
-    background-color: turquoise;
     color: black;
-    border-radius: 5px;
+    border: 0px solid;
+    padding: 5px 10px;
+    border-radius: 3px;
 }
 
 .profilePicture{
     border: 2px solid white;
     border-radius: 50%;
-    height: 55px;
-    width: 55px;
+    height: 100px;
+    width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,11 +59,10 @@ body {
 }
 
 .buttons > button {
-    height: 45px;
-}
-
-.buttons > :first-child{
-    margin-bottom: 20px;
+    padding: 20px;
+    border: 0px solid black;
+    border-radius: 3px;
+    font-size: 11pt;
 }
 
 .logOut {
@@ -54,6 +71,26 @@ body {
     align-items: center;
     gap: 10px;
     margin-top: 10px;
+}
+
+.logOut > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popUp-logOut{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #151515;
+    justify-content: center;
 }
 
 .logOutButtons {

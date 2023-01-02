@@ -6,21 +6,23 @@ import {
   mySubscribedMovies,
   myWatchedMovies,
 } from "../userMovies/user-movies.js";
+import { renderMyMovies } from '../showmovies/showmovies.js'
 import { logIn } from "../StartUp/start-up.js";
+import { renderAddFreind } from '../fellows/fellows.js'
 
 export function userProfile() {
   let userProfile = document.createElement("div");
   userProfile.id = "user-profile";
   let logOutDiv = document.createElement("div");
-  let logOutButton = document.createElement("button");
+  let logOutButton = document.createElement("div");
 
-  userProfile.classList.add("userProfile");
+  // userProfile.classList.add("userProfile");
 
   logOutDiv.classList.add("logOut");
-  logOutButton.textContent = "Log Out";
+  logOutButton.innerHTML = `<span class="material-symbols-outlined">logout</span><div>Log out</div>`;
 
   logOutButton.addEventListener("click", logOut);
-  document.querySelector("nav").append(navigationBack(userProfile, "logOut"));
+  userProfile.append(navigationBack(userProfile, "logOut"));
 
   logOutDiv.append(logOutButton);
   userProfile.append(informationUserProfile());
@@ -87,11 +89,12 @@ function buttonsUserProfile() {
   let containerButtons = document.createElement("div");
   containerButtons.classList.add("buttons");
   let array = [
-    { name: "following", function: following },
+    { name: "Following", function: following },
     { name: "Followers", function: userFollowers },
-    { name: "watched Movies", function: myWatchedMovies },
-    { name: "Want To See Movies", function: myMoviesToSee },
-    { name: "Subscribed Movies", function: mySubscribedMovies },
+    { name: "Watched Movies", function: () => renderMyMovies(0,"watchedMovies") },
+    { name: "Want To See", function: () => renderMyMovies(0, "moviesToSee") },
+    { name: "Subscribed Movies", function:() => renderMyMovies(0, "subscribedMovies") },
+    { name: "Add Friend", function:() => renderAddFreind() }
   ];
 
   for (let button of array) {
@@ -111,7 +114,7 @@ function logOut() {
   let cancelButton = document.createElement("button");
   let logOutButton = document.createElement("button");
 
-  popUp.classList.add("logOut");
+  popUp.classList.add("popUp-logOut");
   buttons.classList.add("logOutButtons");
 
   text.textContent = "Are you sure you want to log out?";
