@@ -39,12 +39,15 @@ $userID = $receivedData["userID"];
 $grade = $receivedData["grade"];
 $reviewText = $receivedData["reviewText"];
 
+date_default_timezone_set("Europe/Stockholm");
+
 $newReview = [
     "reviewID" => $reviewID,
     "movieID" => $movieID,
     "userID" => $userID,
     "grade" => $grade,
-    "reviewText" => $reviewText
+    "reviewText" => $reviewText,
+    "date" => date('Y-m-d H:i:s')
 ];
 
 // adding review to review array
