@@ -5,10 +5,9 @@
     background-color: #151515;
     color: white;
     width: 100%;
-    height: 100%;
     overflow: scroll;
     font-family: 'Mukta', sans-serif;
-    z-index: 3;
+    z-index: 4;
 }
 
 .inputBox {
@@ -29,26 +28,32 @@
 }
 
 #following-container{
-    height: 100vh;
-    width: 100vw;
     position: fixed;
     top: 0;
-    z-index: 4;
+    bottom: 0;
     background-color: #151515;
+    color: white;
+    width: 100%;
+    overflow: scroll;
+    font-family: 'Mukta', sans-serif;
+    z-index: 4;
 }
 
-.following-wrapper{
-    padding-top: 80px;
+.followWrapper{
     display: flex;
     flex-direction: column;
-    padding-top: 80px;
+    gap: 10px;
+    margin: 15px;
 }
 
 .followDiv {
+    height: 80px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    padding: 20px;
-    margin: 5px;
+    padding: 10px;
+    font-size: 14pt;
+    border: 1px solid rgb(78, 78, 78);
 }
 
 .img {
@@ -64,6 +69,7 @@
 }
 
 #btnBox {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
 }
