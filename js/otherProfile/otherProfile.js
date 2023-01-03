@@ -18,7 +18,7 @@ export async function otherUser (otherUserID) {
   // ta bort bara för försök
   // navigation to close and other information / LIAM
   otherProfileWrapper.append(
-    navigationBack(otherProfileWrapper, otherUserResource.firstName)
+    navigationBack(otherProfileWrapper)
   )
   // --------------- profile image on other persons profile ----------------
 

@@ -22,7 +22,7 @@ export function userProfile() {
   logOutButton.innerHTML = `<span class="material-symbols-outlined">logout</span><div>Log out</div>`;
 
   logOutButton.addEventListener("click", logOut);
-  userProfile.append(navigationBack(userProfile, "logOut"));
+  userProfile.append(navigationBack(userProfile));
 
   logOutDiv.append(logOutButton);
   userProfile.append(informationUserProfile());
