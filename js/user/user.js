@@ -81,7 +81,90 @@ function informationUserProfile() {
 
 function changeProfileInformation() {
   let popUp = document.createElement("div");
+  popUp.append(navigationBack(popUp))
+  popUp.classList.add("changeProfile")
 
+  let profileImg = document.createElement("div");
+  profileImg.classList.add("profilePicture");
+
+  let textDiv = document.createElement("div");
+  let imageChange = document.createElement("div");
+
+  imageChange.textContent = "Change profile image"
+
+  let user = JSON.parse(localStorage.getItem("user"));
+  
+  imageChange.addEventListener("click", () => changeImage(user))
+
+  if (user.imageLink == "") {
+    profileImg.innerHTML =
+      '<span class="material-symbols-outlined">person</span>';
+  } else {
+    profileImg.style.backgroundImage = `url(${user.imageLink})`;
+  }
+
+  textDiv.textContent = `${user.firstName} ${user.lastName}`;
+
+  popUp.append(textDiv, profileImg, imageChange);
+  
+
+  document.querySelector("main").append(popUp);
+}
+
+function changeImage(user){
+  let popUp = document.createElement("div");
+  popUp.append(navigationBack(popUp))
+  popUp.classList.add("changeProfile")
+  let profileImg = document.createElement("div");
+  profileImg.classList.add("profilePicture");
+  if (user.imageLink == "") {
+    profileImg.innerHTML =
+      '<span class="material-symbols-outlined">person</span>';
+  } else {
+    profileImg.style.backgroundImage = `url(${user.imageLink})`;
+  }
+  popUp.append(profileImg);
+
+  let form = document.createElement("form")
+  form.action = "../../php/image/update-image.php"
+  form.method = "post"
+  form.enctype = "multipart/form-data"
+
+  let userInput = document.createElement("input")
+  userInput.name = "userID"
+  userInput.value = user.userID
+  let inputFile = document.createElement("input")
+  inputFile.type = "file"
+  inputFile.name = "fileToUpload"
+
+  let submitInput = document.createElement("button")
+
+  submitInput.textContent = "Upload Image"
+
+  submitInput.addEventListener("click", (event) => {
+    event.preventDefault()
+    event.stopPropagation()
+    let userImage = inputFile.files[0];
+    let formData = new FormData()
+
+    formData.append("image", userImage)
+
+    console.log(formData);
+
+    let options = {method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: JSON.stringify({"image": formData, userID: user.userID})}
+
+    try{
+    fetch("../../php/image/update-image.php", options)
+    // .then(r => r.json())
+    // .then(r => console.log(r))
+    }catch (e){
+      console.log(e);
+    }
+
+  })
+
+  form.append(inputFile, submitInput)
+  popUp.append(form)
   document.querySelector("main").append(popUp);
 }
 
@@ -89,19 +172,28 @@ function buttonsUserProfile() {
   let containerButtons = document.createElement("div");
   containerButtons.classList.add("buttons");
   let array = [
-    { name: "Following", function: following },
-    { name: "Followers", function: userFollowers },
-    { name: "Watched Movies", function: () => renderMyMovies(0,"watchedMovies") },
-    { name: "Want To See", function: () => renderMyMovies(0, "moviesToSee") },
-    { name: "Subscribed Movies", function:() => renderMyMovies(0, "subscribedMovies") },
-    { name: "Add Friend", function:() => renderAddFreind() }
+    { name: "Following", function: following, icon: "none" },
+    { name: "Followers", function: userFollowers, icon: "none" },
+    { name: "Watched Movies", function: () => renderMyMovies(0,"watchedMovies"), icon: "done_all" },
+    { name: "Want To See", function: () => renderMyMovies(0, "moviesToSee"), icon: "bookmark_added" },
+    { name: "Subscribed Movies", function:() => renderMyMovies(0, "subscribedMovies"), icon: "notifications" },
+    { name: "Add Friend", function:() => renderAddFreind(), icon: "person_add" }
   ];
-
+  
   for (let button of array) {
     let movieButton = document.createElement("button");
+    let iconButtons = document.createElement("div")
+    if (button.icon != "none"){
+      let span = document.createElement("span")
+      span.classList.add("material-symbols-outlined")
+      span.textContent = button.icon
+      iconButtons.append(span)
+      movieButton.classList.add("iconButton")
+    }
     movieButton.textContent = button.name;
     movieButton.addEventListener("click", button.function);
-    containerButtons.append(movieButton);
+    iconButtons.append(movieButton)
+    containerButtons.append(iconButtons);
   }
 
   return containerButtons;
