@@ -42,7 +42,7 @@
     <script type="module" src="../js/startUp/start-up.js"></script>
     <script type="module" src="../js/homepage/homepage.js"></script>
     <script type="module" src="../js/user/user.js"></script>
-    <script src="../js/about/about.js"></script>
+    <script type="module" src="../js/about/about.js"></script>
 
     
 </body>

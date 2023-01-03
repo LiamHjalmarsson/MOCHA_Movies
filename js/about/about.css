@@ -7,7 +7,7 @@
   position: fixed;
   top: 0px;
   bottom: 0px;
-  background-color: black;
+  background-color: rgb(15, 15, 15);
   z-index: 3;
   overflow: hidden;
 }
@@ -44,7 +44,7 @@
 }
 
 #titleDiv {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 #infoAboutBox > p {

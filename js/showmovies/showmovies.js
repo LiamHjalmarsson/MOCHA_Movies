@@ -64,18 +64,17 @@ export async function renderMovies (counter, movieType, movies) {
   btnBox.appendChild(btn);
   renderMoviesWrapper.append(btnBox);
 }
-
 export async function renderMyMovies (counter, type, movies) {
   let renderMoviesWrapper = document.createElement('div');
   renderMoviesWrapper.id = 'renderMoviesWrapper';
-
+  
   renderMoviesWrapper.append(navigationBack(renderMoviesWrapper, type));
-
+  
   let movieGridContainer = document.createElement('div');
   movieGridContainer.id = 'movieGridContainer';
-
+  
   let user = JSON.parse(localStorage.getItem('user'));
-
+  
   // if statment to controll if movies is undefined when called 
   if (movies == undefined) {
 

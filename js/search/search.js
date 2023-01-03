@@ -8,7 +8,7 @@ export function createSearch(counter = 0){
     let searchContainer = document.createElement("div")
     searchContainer.classList.add("search-container")
 
-    searchContainer.append(navigationBack(searchContainer));
+    searchContainer.append(navigationBack(searchContainer, "Search"));
     document.querySelector("main").append(searchContainer);
 
     let searchNavContainer = document.createElement("div")

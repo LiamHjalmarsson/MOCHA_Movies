@@ -10,6 +10,8 @@ nav{
     background-color: rgba(0, 0, 0, 0.05);
     background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0));
     transition: 1s;
+    font-family: Nunito Sans, sans-serif;
+    font-weight: bolder;
 }
 
 .burger-div{
