@@ -1,43 +1,42 @@
 import { navigationBack } from '../navigationBack/navigationBack.js'
+import { createElementWithClassOrID } from '../homepage/homepage.js'
 
 export function createAbout () {
-  let aboutWrapper = document.createElement('div')
-  aboutWrapper.id = 'aboutWrapper'
+  let aboutWrapper = createElementWithClassOrID(false, 'aboutWrapper')
   aboutWrapper.append(navigationBack(aboutWrapper))
 
-  let titleDiv = document.createElement('div')
-  titleDiv.id = 'titleDiv'
-  titleDiv.innerHTML = `
-<h1>About us</h1>`
+  let titleDiv = createElementWithClassOrID(false, 'titleDiv')
+  titleDiv.innerHTML = '<h1>About us</h1>'
 
-  let developerContainer = document.createElement('div')
-  developerContainer.id = 'developerContainer'
+  let developerContainer = createElementWithClassOrID(
+    false,
+    'developerContainer'
+  )
 
-  let developers = ['Sophie', 'Caspian', 'Tanja', 'Liam']
+  let developers = [
+    { name: 'Sophie Sundqvist', imgLink: 'sophie' },
+    { name: 'Caspian Ulvmåne', imgLink: 'caspian' },
+    { name: 'Tanja Björklind', imgLink: 'tanja' },
+    { name: 'Liam Hjalmarsson', imgLink: 'liam' }
+  ]
   developers.forEach(developer => {
-    let developerDiv = document.createElement('div')
-    developerDiv.classList.add('developerDiv')
+    let developerDiv = createElementWithClassOrID('developerDiv')
 
-    let pictureDiv = document.createElement('div')
-    pictureDiv.classList.add('pictureDiv')
-    pictureDiv.style.backgroundImage = `url(../../images/${developer.toLowerCase()}.jpg)`
+    let pictureDiv = createElementWithClassOrID('pictureDiv')
+    pictureDiv.style.backgroundImage = `url(../../images/${developer.imgLink}.jpg)`
     pictureDiv.style.backgroundSize = 'cover'
 
-    let nameDiv = document.createElement('div')
-    nameDiv.classList.add('nameDiv')
-    nameDiv.textContent = developer
+    let nameDiv = createElementWithClassOrID('nameDiv')
+    nameDiv.textContent = developer.name
 
     developerDiv.append(pictureDiv, nameDiv)
     developerContainer.append(developerDiv)
   })
 
-  let infoAboutBox = document.createElement('div')
-  infoAboutBox.id = 'infoAboutBox'
+  let infoAboutBox = createElementWithClassOrID(false, 'infoAboutBox')
   infoAboutBox.innerHTML = `
-    <p> 
-    MochaMovies was started upon the idea of combining love of movie and social media. We at MochaMovies wanted to create a simple way for people to interact and discuss movies of all genres. We hope you enjoy our site and use it to connect with people of differing opinion and get the enjoyment of movies as we do!
-    </p>
-    <p>Borde vi kanske skriva ngt om contact?</p>`
+  <p>MochaMovies was started with the idea of combining the love of film and social media. We at MochaMovies wanted to create an application where people easily can interact and discuss movies of all genres. </p><p>In this application you can follow and be followed by your friends and easily see which films they have seen as well as the films they want to see. You can also see people's ratings and reviews. Hope you like our site as much as we do!</p>
+    <p>mochamovies@doesnotexist.se</p>`
   aboutWrapper.append(titleDiv, developerContainer, infoAboutBox)
 
   document.querySelector('main').append(aboutWrapper)
