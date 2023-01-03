@@ -18,17 +18,21 @@ export function createNotificationItem(array){
     let notificationItemBox = document.querySelector(".notification-box")
     notificationItemBox.innerHTML=""
 
-    let unseenNoti = document.createElement("div")
-    unseenNoti.classList.add("unseen-notification-box")
+    let unseenNotiContainer = document.createElement("div")
+    unseenNotiContainer.classList.add("unseen-notification-box")
     let titleUnseen = document.createElement("div")
     titleUnseen.innerHTML = "New happenings"
-    unseenNoti.appendChild(titleUnseen)
+    unseenNotiContainer.appendChild(titleUnseen)
+    let unseenNotiBox = document.createElement("div")
+    unseenNotiContainer.append(unseenNotiBox)
 
-    let seenNoti = document.createElement("div")
-    seenNoti.classList.add("seen-notification-box")
+    let seenNotiContainer = document.createElement("div")
+    seenNotiContainer.classList.add("seen-notification-box")
     let titleSeen = document.createElement("div")
     titleSeen.innerHTML = "Previous happenings"
-    seenNoti.append(titleSeen)
+    seenNotiContainer.append(titleSeen)
+    let seenNotiBox = document.createElement("div")
+    seenNotiContainer.append(seenNotiBox)
 
     if(array.length == 0){
         notificationItemBox.innerHTML = `<div>You have no happenings</div>`
@@ -63,7 +67,10 @@ export function createNotificationItem(array){
     
                 notificationItem.innerHTML = `
                     <div>${userImg}</div>
-                    <div>${senderName} left a review on movie "${movieTitle}": <span>${notification.message}</span></div>
+                    <div>
+                        <div>${senderName} left a review on movie "${movieTitle}": <span>${notification.message}</span></div>
+                        <div>${notification.date}</div>
+                    </div>
                     <img src=${imgSrc}></img>`
                 // notificationItem.appendChild(movieImgDiv)
                 notificationItem.addEventListener("click", async function(){
@@ -73,14 +80,14 @@ export function createNotificationItem(array){
     
             if(notification.seen == false){
                 // notificationItem.style.color = "red"
-                unseenNoti.appendChild(notificationItem)
+                unseenNotiBox.prepend(notificationItem)
             }else{
-                seenNoti.appendChild(notificationItem)
+                seenNotiBox.prepend(notificationItem)
             }
         })
 
-        notificationItemBox.append(unseenNoti)
-        notificationItemBox.prepend(seenNoti)
+        notificationItemBox.append(unseenNotiContainer)
+        notificationItemBox.append(seenNotiContainer)
     }
     
 }
