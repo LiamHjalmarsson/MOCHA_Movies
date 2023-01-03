@@ -100,7 +100,7 @@ function getFollows (follow, user) {
                 userLocalStorage(recourseDelete);
                 document.querySelector(".followWrapper").remove();
                 document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-                getUserFollowers(-1);
+                getUserFollowers(0);
             }); 
             followDiv.append(icon);
         } else {
@@ -121,7 +121,7 @@ function getFollows (follow, user) {
                 userLocalStorage(recourseAdd);
                 document.querySelector(".followWrapper").remove();
                 document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-                getUserFollowers(-1);
+                getUserFollowers(0);
             });
             followDiv.append(icon);
         }
@@ -191,31 +191,35 @@ export async function followingIngs (counter) {
 function getFollowings (follow, user) {
     let followDiv = document.createElement("div");
     followDiv.classList.add("followDiv");
-    createFollow(follow, followDiv);
+
+    if (follow != undefined) {
+
+        createFollow(follow, followDiv);
     
-    let icon = document.createElement("div");
-    icon.innerHTML = `<i class="fa-solid fa-minus"></i>`; 
-    icon.addEventListener("click", async () => {
-        let responseDelete = await fetch(`../../php/delete/delete-following.php`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                userID: user.userID,
-                followingID: follow.userID
-            })
-        });
+        let icon = document.createElement("div");
+        icon.innerHTML = `<i class="fa-solid fa-minus"></i>`; 
+        icon.addEventListener("click", async () => {
+            let responseDelete = await fetch(`../../php/delete/delete-following.php`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    userID: user.userID,
+                    followingID: follow.userID
+                })
+            });
     
-        updateFreindList = setTimeout(updateFreinds, 100);
-        document.querySelector(".personBox").innerHTML = "";
+            updateFreindList = setTimeout(updateFreinds, 100);
+            document.querySelector(".personBox").innerHTML = "";
     
-        let recourseDelete = await responseDelete.json();
-        userLocalStorage(recourseDelete);
-        document.querySelector(".followWrapper").remove();
-        // document.querySelector("#followContainer").remove();
-        followingIngs(-1);
+            let recourseDelete = await responseDelete.json();
+            userLocalStorage(recourseDelete);
+            document.querySelector(".followWrapper").remove();
+            // document.querySelector("#followContainer").remove();
+            following(-1);
         }); 
-    followDiv.append(icon);
+        followDiv.append(icon);
     
+    }
     return followDiv;
 }
 
