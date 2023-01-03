@@ -12,7 +12,7 @@ export function navigationBack (remove, path) {
   // eller så placerar vi det någon annans stans i filmens information
 
   let name = document.createElement('div')
-  name.classList.add("nameInNav")
+  name.classList.add('nameInNav')
   console.log(path)
   switch (path) {
     case 'top_rated':
@@ -25,10 +25,16 @@ export function navigationBack (remove, path) {
       name.innerHTML = 'Watched movies'
       break
     case 'moviesToSee':
-      name.innerHTML = 'Movies to see'
+      name.innerHTML = 'Want to see'
+      break
+    case 'subscribedMovies':
+      name.innerHTML = 'Subscribed movies'
+      break
+    case 'Top_rated':
+      name.innerHTML = 'Top rated movies'
       break
     default:
-        name.innerHTML = path ? path : ""
+      name.innerHTML = path ? path : ''
       break
   }
 
