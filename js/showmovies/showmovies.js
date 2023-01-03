@@ -107,7 +107,7 @@ export async function renderMyMovies (counter, type, movies) {
     }
 
     // if the movies is defined
-  } else {
+  } else if (user[type].length != 0) {
     // loop the movies that comes with the array from first page
     movies.forEach(async movie => {
       if (typeof movie === 'number') {
@@ -122,7 +122,7 @@ export async function renderMyMovies (counter, type, movies) {
       } else {
         movieGridContainer.append(createMovie(movie))
       }
-    })
+    }) 
 
     // check if the type of movie array is longre then 10 to loop more movies
     if (user[type].length > 10) {
@@ -143,6 +143,12 @@ export async function renderMyMovies (counter, type, movies) {
         }
       }
     }
+  } else {
+    movieGridContainer.remove();
+    let noInfo = document.createElement("div");
+    noInfo.classList.add("noInfoOfMovies");
+    noInfo.textContent = `You dont have any movies to see here yet!`;
+    renderMoviesWrapper.append(noInfo);
   }
 
   renderMoviesWrapper.append(movieGridContainer)
