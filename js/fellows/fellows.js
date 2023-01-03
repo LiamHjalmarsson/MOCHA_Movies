@@ -14,7 +14,7 @@ export function userFollowers () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "original_title"));
+    followContainer.append(navigationBack(followContainer, "People i follow"));
     getUserFollowers(-1);
 }
 
@@ -132,7 +132,7 @@ export function following () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "original_title"));
+    followContainer.append(navigationBack(followContainer, "Following me"));
 
     followingIngs(-1);
 }
@@ -227,7 +227,7 @@ export function renderAddFreind () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "original_title"));
+    followContainer.append(navigationBack(followContainer, "Add new friend"));
     addFriend(0);
 }
 
