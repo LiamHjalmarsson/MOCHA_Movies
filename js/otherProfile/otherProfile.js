@@ -169,14 +169,14 @@ function createMovieBox (movieArray, otherUserResource) {
 
   movieArray.forEach(movie => {
     let movieDiv = document.createElement('div')
-    movieDiv.classList.add("otherProfileMovieDiv")
+    movieDiv.classList.add('otherProfileMovieDiv')
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`
     movieDiv.addEventListener('click', () => {
       renderMovie(movie)
     })
 
-    // ----- get review-grade to add stars --------------
-    
+    // ----- get review-grade and add stars --------------
+
     fetch(`../../php/get/get.php?movieReviews=${movie.id}`)
       .then(r => r.json())
       .then(movieResource => {
