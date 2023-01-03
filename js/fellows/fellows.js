@@ -211,7 +211,7 @@ function getFollowings (follow, user) {
         let recourseDelete = await responseDelete.json();
         userLocalStorage(recourseDelete);
         document.querySelector(".followWrapper").remove();
-        // document.querySelector("#followContainer").remove();
+        document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
         followingIngs(-1);
         }); 
     followDiv.append(icon);
@@ -229,11 +229,10 @@ export function renderAddFreind () {
 
 async function addFriend (counter) {
     let user = JSON.parse(localStorage.getItem("user"));
-    let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
-    let recourseAllusers = await responseAllUsers.json();
+    let users = await fetchUsers();
     let arrayNotFollowing = [];
     
-    recourseAllusers.forEach(recUser => {
+    users.forEach(recUser => {
         let follow = user.following.find(follow => follow === recUser.userID);
         if (follow == undefined) {
             if (user.userID != recUser.userID) {
