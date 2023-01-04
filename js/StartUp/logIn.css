@@ -1,24 +1,53 @@
-body{
-    margin: 0px;
+body {
+  margin: 0px;
 }
 
 .logIn {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: whitesmoke;
-    color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(40, 40, 40);
+  font-family: Nunito Sans, sans-serif;
 }
 
-.input{
-    display: flex;
-    flex-direction: column;
+.input {
+  display: flex;
+  flex-direction: column;
 }
 
 .input > input {
-    letter-spacing: 0.125em;
+  letter-spacing: 0.125em;
+  height: 48px;
+  border: rgb(136, 136, 136) solid 1px;
+  border-radius: 5px;
+  width: 89vw;
+  padding: 0px;
+  background-color: rgb(77, 77, 77);
+}
+
+.input > label {
+  margin: 0px 0px 5px 2px;
+}
+
+.logIn > button {
+  margin-top: 30px;
+  height: 50px;
+  border: 1px solid #333;
+  width: 89vw;
+  border-radius: 5px;
+  font-family: Nunito Sans, sans-serif;
+  font-weight: bold;
+  background-color: rgb(136, 136, 136);
+  font-size: 15px;
+  color: rgb(34, 34, 34);
+}
+.logIn > div:last-child {
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+  bottom: 10px;
 }
