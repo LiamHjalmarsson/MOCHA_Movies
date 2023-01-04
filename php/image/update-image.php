@@ -22,7 +22,7 @@ foreach ($data["users"] as $index => $user) {
         
         $timestamp = time();
             
-        $destination = "uploades/$timestamp-$name_remove_space";
+        $destination = "../uploades/$timestamp-$name_remove_space";
             
         if ($file_Size > 50000) {
             $error = ["error" => "The size is to big $file_Size cant be bigger then 50000!"];
@@ -35,11 +35,13 @@ foreach ($data["users"] as $index => $user) {
         }
     
         if (move_uploaded_file($file_Source, $destination)) {
-
+            $destination = "uploades/";
+            $destination .= "$timestamp-$name_remove_space";
             if ($user["imageLink"] != "") {
 
                 $remove_Img = $data["users"][$index]["imageLink"];
                 unlink("$remove_Img");
+                
                 
                 $data["users"][$index]["imageLink"] = $destination;
                 $imgInfo = $new_file_Name;
