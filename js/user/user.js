@@ -6,9 +6,9 @@ import {
   mySubscribedMovies,
   myWatchedMovies,
 } from "../userMovies/user-movies.js";
-import { renderMyMovies } from '../showmovies/showmovies.js'
+import { renderMyMovies } from "../showmovies/showmovies.js";
 import { logIn } from "../StartUp/start-up.js";
-import { renderAddFreind } from '../fellows/fellows.js'
+import { renderAddFreind } from "../fellows/fellows.js";
 
 export function userProfile() {
   let userProfile = document.createElement("div");
@@ -81,8 +81,8 @@ function informationUserProfile() {
 
 function changeProfileInformation() {
   let popUp = document.createElement("div");
-  popUp.append(navigationBack(popUp))
-  popUp.classList.add("changeProfile")
+  popUp.append(navigationBack(popUp));
+  popUp.classList.add("changeProfile");
 
   let profileImg = document.createElement("div");
   profileImg.classList.add("profilePicture");
@@ -90,11 +90,11 @@ function changeProfileInformation() {
   let textDiv = document.createElement("div");
   let imageChange = document.createElement("div");
 
-  imageChange.textContent = "Change profile image"
+  imageChange.textContent = "Change profile image";
 
   let user = JSON.parse(localStorage.getItem("user"));
-  
-  imageChange.addEventListener("click", () => changeImage(user))
+
+  imageChange.addEventListener("click", () => changeImage(user));
 
   if (user.imageLink == "") {
     profileImg.innerHTML =
@@ -106,16 +106,16 @@ function changeProfileInformation() {
   textDiv.textContent = `${user.firstName} ${user.lastName}`;
 
   popUp.append(textDiv, profileImg, imageChange);
-  
 
   document.querySelector("main").append(popUp);
 }
 
-function changeImage(user){
+function changeImage(user) {
   let popUp = document.createElement("div");
-  popUp.append(navigationBack(popUp))
-  popUp.classList.add("changeProfile")
+  popUp.append(navigationBack(popUp));
+  popUp.classList.add("changeProfile");
   let profileImg = document.createElement("div");
+
   profileImg.classList.add("profilePicture");
   if (user.imageLink == "") {
     profileImg.innerHTML =
@@ -125,46 +125,31 @@ function changeImage(user){
   }
   popUp.append(profileImg);
 
-  let form = document.createElement("form")
-  form.action = "../../php/image/update-image.php"
-  form.method = "post"
-  form.enctype = "multipart/form-data"
+  let dummy = document.createElement("iframe");
+  dummy.style.display = "none";
+  dummy.name = "dummy";
 
-  let userInput = document.createElement("input")
-  userInput.name = "userID"
-  userInput.value = user.userID
-  let inputFile = document.createElement("input")
-  inputFile.type = "file"
-  inputFile.name = "fileToUpload"
+  let form = document.createElement("form");
+  form.action = "../../php/image/update-image.php";
+  form.method = "post";
+  form.enctype = "multipart/form-data";
+  form.target = "dummy";
 
-  let submitInput = document.createElement("button")
+  let userInput = document.createElement("input");
+  userInput.name = "userID";
+  userInput.type = "number";
+  userInput.value = user.userID;
+  let inputFile = document.createElement("input");
+  inputFile.type = "file";
+  inputFile.name = "image";
 
-  submitInput.textContent = "Upload Image"
+  let submitInput = document.createElement("button");
+  submitInput.type = "submit";
 
-  submitInput.addEventListener("click", (event) => {
-    event.preventDefault()
-    event.stopPropagation()
-    let userImage = inputFile.files[0];
-    let formData = new FormData()
+  submitInput.textContent = "Upload Image";
 
-    formData.append("image", userImage)
-
-    console.log(formData);
-
-    let options = {method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: JSON.stringify({"image": formData, userID: user.userID})}
-
-    try{
-    fetch("../../php/image/update-image.php", options)
-    // .then(r => r.json())
-    // .then(r => console.log(r))
-    }catch (e){
-      console.log(e);
-    }
-
-  })
-
-  form.append(inputFile, submitInput)
-  popUp.append(form)
+  form.append(userInput, inputFile, submitInput);
+  popUp.append(dummy, form);
   document.querySelector("main").append(popUp);
 }
 
@@ -174,25 +159,41 @@ function buttonsUserProfile() {
   let array = [
     { name: "Following", function: following, icon: "none" },
     { name: "Followers", function: userFollowers, icon: "none" },
-    { name: "Watched Movies", function: () => renderMyMovies(0,"watchedMovies"), icon: "done_all" },
-    { name: "Want To See", function: () => renderMyMovies(0, "moviesToSee"), icon: "bookmark_added" },
-    { name: "Subscribed Movies", function:() => renderMyMovies(0, "subscribedMovies"), icon: "notifications" },
-    { name: "Add Friend", function:() => renderAddFreind(), icon: "person_add" }
+    {
+      name: "Watched Movies",
+      function: () => renderMyMovies(0, "watchedMovies"),
+      icon: "done_all",
+    },
+    {
+      name: "Want To See",
+      function: () => renderMyMovies(0, "moviesToSee"),
+      icon: "bookmark_added",
+    },
+    {
+      name: "Subscribed Movies",
+      function: () => renderMyMovies(0, "subscribedMovies"),
+      icon: "notifications",
+    },
+    {
+      name: "Add Friend",
+      function: () => renderAddFreind(),
+      icon: "person_add",
+    },
   ];
-  
+
   for (let button of array) {
     let movieButton = document.createElement("button");
-    let iconButtons = document.createElement("div")
-    if (button.icon != "none"){
-      let span = document.createElement("span")
-      span.classList.add("material-symbols-outlined")
-      span.textContent = button.icon
-      iconButtons.append(span)
-      movieButton.classList.add("iconButton")
+    let iconButtons = document.createElement("div");
+    if (button.icon != "none") {
+      let span = document.createElement("span");
+      span.classList.add("material-symbols-outlined");
+      span.textContent = button.icon;
+      iconButtons.append(span);
+      movieButton.classList.add("iconButton");
     }
     movieButton.textContent = button.name;
     movieButton.addEventListener("click", button.function);
-    iconButtons.append(movieButton)
+    iconButtons.append(movieButton);
     containerButtons.append(iconButtons);
   }
 
@@ -322,8 +323,7 @@ async function reviews(movieID) {
 let storage = JSON.parse(localStorage.getItem("user"));
 
 if (storage == null) {
-  logIn()
+  logIn();
 } else {
-  renderFirstPage(storage)
+  renderFirstPage(storage);
 }
-
