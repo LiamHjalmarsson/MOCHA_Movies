@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px 30px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .developerDiv {
@@ -28,8 +28,8 @@
 }
 
 .pictureDiv {
-  height: 80%;
-  width: 80%;
+  height: 70%;
+  width: 70%;
   border-radius: 50%;
 }
 .nameDiv {
@@ -41,15 +41,20 @@
   text-align: center;
   font-family: mukta;
   margin: 5px;
+  font-size: 25px;
 }
 
 #titleDiv {
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 #infoAboutBox > p {
   text-align: center;
-  margin: 30px 20px;
+  margin: 30px 40px;
   font-family: mukta;
   line-height: 22px;
+}
+
+#infoAboutBox > p:last-child{
+  text-align: center;
 }

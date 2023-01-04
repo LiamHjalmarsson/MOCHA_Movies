@@ -5,7 +5,6 @@ main {
   width: 100vw;
   overflow: hidden;
   background-color: rgb(15, 15, 15);
-  color: white;
 }
 
 #popularWrapper {
@@ -13,18 +12,10 @@ main {
   height: 65vh;
   flex-direction: row;
   position: relative;
-  /* width: 600vw; */
-  /* overflow: scroll; */
 }
 
-/* #popularWrapper > div{
-  margin-left: 2px;
-  margin-right: 2px;
-} */
-
 .movieWrapper {
-  margin-bottom: 10px;
-  margin-left: 3px;
+  margin: 0px 3px 10px 3px;
 }
 
 .movieDiv {
@@ -32,60 +23,63 @@ main {
 }
 
 #personWrapper {
-  /* display: flex; */
-  /* flex-direction: row; */
   padding-left: 5px;
 }
 
-.personDiv, #addFriendDiv {
-  margin: 0px 5px 20px 5px;
+.personDiv,
+#addFriendDiv {
+  margin: 0px 7px 20px 7px;
 }
 
 .imgDiv {
-  border: 0.5px solid black;
+  border: 0.5px solid rgb(48, 46, 46);
   border-radius: 50%;
-  height: 80px;
-  min-width: 80px;
+  height: 60px;
+  width: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.imgDiv:last-child {
-  margin: 0px 5px;
+  background-color: #1f1e1e84;
 }
 
 .nameDiv {
   text-align: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   font-size: 14px;
+}
+
+.nameDiv > p:first-child {
+  margin-top: 5px;
+}
+
+.nameDiv > p:last-child {
+  position: relative;
+  bottom: 20px;
 }
 
 .personBox {
   display: flex;
-  overflow: scroll;
-  height: 125px;
+  overflow-x: scroll;
+  max-height: 120px;
+  overflow-y: hidden;
 }
 
 .movieBox {
   display: flex;
   overflow: scroll;
-  margin:0 10px;
+  margin: 0 10px;
 }
 
 .titleBox {
-  padding: 5px;
-  padding-top: 20px;
+  padding: 10px 0px 5px 11px;
   font-family: 'Mukta', sans-serif;
   color: #c3c2c2;
+  font-weight: bold;
 }
 
-.titleBox:hover{
+.titleBox:hover {
   cursor: pointer;
-}
-
-.personDiv {
-
+  color: rgb(212, 209, 209);
 }
 
 .remove {
@@ -106,9 +100,30 @@ main {
   height: 65vh;
   min-width: 100vw;
   left: 0px;
-  transition: left 1s;
+  transition: left 1s ease-in;
 }
 
-.material-symbols-outlined {
+.popularMovie:hover {
+  cursor: pointer;
+}
+
+.personDiv > .imgDiv > .material-symbols-outlined {
   font-size: 35px;
+}
+
+.personBox > .imgDiv > .material-symbols-outlined {
+  font-size: 32px;
+  position: relative;
+  left: 3px;
+}
+
+.imgDiv > .material-symbols-outlined:hover {
+  cursor: pointer;
+}
+
+.personBox > .imgDiv {
+  height: 60px;
+  min-width: 60px;
+  margin-left: 7px;
+  margin-right: 7px;
 }

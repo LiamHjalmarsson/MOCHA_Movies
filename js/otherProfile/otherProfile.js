@@ -73,12 +73,12 @@ export async function otherUser (otherUserID) {
     fetchMovies(otherUserResource.moviesToSee, otherUserResource)
 
     toSeeBtn.textContent = 'Movies To See'
-    toSeeBtn.classList.add('active')
+    toSeeBtn.classList.add('activee')
     toSeeBtn.addEventListener('click', () => {
-      if (!toSeeBtn.classList.contains('active')) {
+      if (!toSeeBtn.classList.contains('activee')) {
         document.querySelectorAll('#btnBox').forEach(btn => btn.remove())
-        toSeeBtn.classList.toggle('active')
-        watchedBtn.classList.toggle('active')
+        toSeeBtn.classList.toggle('activee')
+        watchedBtn.classList.toggle('activee')
         resultContainer.innerHTML = ''
         fetchMovies(otherUserResource.moviesToSee, otherUserResource)
       }
@@ -86,10 +86,10 @@ export async function otherUser (otherUserID) {
 
     watchedBtn.textContent = 'Watched Movies'
     watchedBtn.addEventListener('click', () => {
-      if (!watchedBtn.classList.contains('active')) {
+      if (!watchedBtn.classList.contains('activee')) {
         document.querySelectorAll('#btnBox').forEach(btn => btn.remove())
-        watchedBtn.classList.toggle('active')
-        toSeeBtn.classList.toggle('active')
+        watchedBtn.classList.toggle('activee')
+        toSeeBtn.classList.toggle('activee')
         resultContainer.innerHTML = ''
         fetchMovies(otherUserResource.watchedMovies, otherUserResource)
       }

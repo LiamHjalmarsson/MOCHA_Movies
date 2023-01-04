@@ -125,7 +125,7 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
     imgDiv.innerHTML = '<span class="material-symbols-outlined">person</span>'
   }
 
-  nameDiv.textContent = personIFollowResource.firstName
+  nameDiv.innerHTML = `<p>${personIFollowResource.firstName}</p><p>${personIFollowResource.lastName}</p>`
 
   personDiv.addEventListener('click', () => {
     otherUser(followingID)
