@@ -16,8 +16,6 @@ export function userProfile() {
   let logOutDiv = document.createElement("div");
   let logOutButton = document.createElement("div");
 
-  // userProfile.classList.add("userProfile");
-
   logOutDiv.classList.add("logOut");
   logOutButton.innerHTML = `<span class="material-symbols-outlined">logout</span><div>Log out</div>`;
 
@@ -30,22 +28,6 @@ export function userProfile() {
   userProfile.append(logOutDiv);
   document.querySelector("main").appendChild(userProfile);
 }
-// async function navigationWithBack(popUp) {
-//   let user = JSON.parse(localStorage.getItem("user"));
-
-//   let nav = document.querySelector("nav");
-
-//   let arrowDiv = document.createElement("div");
-//   arrowDiv.innerHTML =
-//     '<span class="material-symbols-rounded">arrow_back_ios</span>';
-//   arrowDiv.addEventListener("click", () => {
-//     popUp.classList.toggle("hide");
-//     popUp.innerHTML = "";
-//   });
-//   nav.append(arrowDiv);
-//   nav.append(await renderNotification(user));
-//   nav.append(createProfile(user));
-// }
 
 function informationUserProfile() {
   let infoProfile = document.createElement("div");
@@ -91,6 +73,7 @@ function changeProfileInformation() {
   let imageChange = document.createElement("div");
 
   imageChange.textContent = "Change profile image";
+  imageChange.style.color = "plum"
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -104,16 +87,94 @@ function changeProfileInformation() {
   }
 
   textDiv.textContent = `${user.firstName} ${user.lastName}`;
+  let errorDiv = document.createElement("div");
+  errorDiv.style.color = "red";
 
-  popUp.append(textDiv, profileImg, imageChange);
+  popUp.append(
+    textDiv,
+    profileImg,
+    imageChange,
+    usernameUpdate(user, errorDiv),
+    passwordUpdate(user, errorDiv),
+    errorDiv
+  );
 
   document.querySelector("main").append(popUp);
+}
+
+function usernameUpdate(user, error) {
+  let form = document.createElement("form");
+  form.classList.add("usernameForm");
+
+  let input = document.createElement("input");
+  input.placeholder = "Change Username...";
+
+  let submit = document.createElement("button");
+  submit.textContent = "Change Username";
+  submit.addEventListener("click", async (event) => {
+    event.preventDefault();
+    error.textContent = "";
+    let options = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userID: user.userID, newName: input.value }),
+    };
+
+    let response = await fetch("../../php/patch/change-user.php", options);
+    if (response.ok) {
+    } else {
+      error.textContent = response.statusText;
+    }
+  });
+
+  form.append(input, submit);
+  return form;
+}
+
+function passwordUpdate(user, error) {
+  let form = document.createElement("form");
+  form.classList.add("passwordForm");
+
+  let oldPassword = document.createElement("input");
+  oldPassword.placeholder = "Old Password";
+  oldPassword.type = "password";
+
+  let newPassword = document.createElement("input");
+  newPassword.placeholder = "New Password...";
+  newPassword.type = "password";
+
+  let submit = document.createElement("button");
+  submit.textContent = "Change Password";
+  submit.addEventListener("click", async (event) => {
+    event.preventDefault();
+    error.textContent = "";
+    let options = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userID: user.userID,
+        password: oldPassword.value,
+        newPassword: newPassword.value,
+      }),
+    };
+
+    let response = await fetch("../../php/patch/change-user.php", options);
+    if (response.ok) {
+    } else {
+      error.textContent = response.statusText;
+    }
+  });
+
+  form.append(oldPassword, newPassword, submit);
+  return form;
 }
 
 function changeImage(user) {
   let popUp = document.createElement("div");
   popUp.append(navigationBack(popUp));
   popUp.classList.add("changeProfile");
+  let textDiv = document.createElement("div");
+  textDiv.textContent = `${user.firstName} ${user.lastName}`;
   let profileImg = document.createElement("div");
 
   profileImg.classList.add("profilePicture");
@@ -123,7 +184,7 @@ function changeImage(user) {
   } else {
     profileImg.style.backgroundImage = `url(${user.imageLink})`;
   }
-  popUp.append(profileImg);
+  popUp.append(textDiv, profileImg);
 
   let dummy = document.createElement("iframe");
   dummy.style.display = "none";
@@ -135,13 +196,18 @@ function changeImage(user) {
   form.enctype = "multipart/form-data";
   form.target = "dummy";
 
+  form.classList.add("imageForm");
+
   let userInput = document.createElement("input");
   userInput.name = "userID";
   userInput.type = "number";
   userInput.value = user.userID;
+  userInput.style.display = "none";
+
   let inputFile = document.createElement("input");
   inputFile.type = "file";
   inputFile.name = "image";
+  inputFile.textContent = "";
 
   let submitInput = document.createElement("button");
   submitInput.type = "submit";
