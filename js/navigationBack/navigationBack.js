@@ -13,7 +13,7 @@ export function navigationBack (remove, path) {
 
   let name = document.createElement('div')
   name.classList.add('nameInNav')
-  console.log(path)
+
   switch (path) {
     case 'top_rated':
       name.innerHTML = 'Top rated movies'
@@ -42,12 +42,69 @@ export function navigationBack (remove, path) {
   navigationBack.append(arrowBack, name, profile)
 
   arrowBack.addEventListener('click', () => {
-    remove.remove()
+    remove.style.left = "-600px"
+    console.log(remove)
+
+    setTimeout(function(){
+      remove.remove()
+    }, 500)
 
     if (document.querySelector('#review-container')) {
       document.querySelector('#review-container').remove()
     }
   })
 
+  // hej()
+
   return navigationBack
 }
+
+// function hej(){
+//   let w = window
+//   let doc = document.documentElement
+
+//   let prevScroll = w.scrollY || doc.scrollTop
+//   console.log(prevScroll)
+//   var curScroll
+  
+//   var direction = 0;
+//   var prevDirection = 0;
+
+//   var header = document.querySelector('#navigationBack');
+
+//   var checkScroll = function() {
+
+//     curScroll = w.scrollY || doc.scrollTop;
+//     if (curScroll > prevScroll) { 
+//       //scrolled up
+//       direction = 2;
+//     }
+//     else if (curScroll < prevScroll) { 
+//       //scrolled down
+//       direction = 1;
+//     }
+
+//     if (direction !== prevDirection) {
+//       toggleHeader(direction, curScroll);
+//     }
+    
+//     prevScroll = curScroll;
+//   };
+
+//   var toggleHeader = function(direction, curScroll) {
+//     if (direction === 2 && curScroll > 52) { 
+      
+//       //replace 52 with the height of your header in px
+
+//       header.classList.add('hide');
+//       prevDirection = direction;
+//     }
+//     else if (direction === 1) {
+//       header.classList.remove('hide');
+//       prevDirection = direction;
+//     }
+//   };
+  
+//   window.addEventListener('scroll', checkScroll);
+// }
+

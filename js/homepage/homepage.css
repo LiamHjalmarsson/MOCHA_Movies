@@ -44,7 +44,6 @@ main {
 
 .nameDiv {
   text-align: center;
-  /* margin-top: 10px; */
   font-size: 14px;
 }
 
@@ -67,19 +66,18 @@ main {
 .movieBox {
   display: flex;
   overflow: scroll;
-  margin: 0 10px;
+  margin: 0px 6px
 }
 
 .titleBox {
   padding: 10px 0px 5px 11px;
   font-family: 'Mukta', sans-serif;
   color: #c3c2c2;
-  font-weight: bold;
 }
 
 .titleBox:hover {
   cursor: pointer;
-  color: rgb(212, 209, 209);
+  color: rgb(153, 153, 153);
 }
 
 .remove {
@@ -91,8 +89,12 @@ main {
 .movieDiv {
   height: 190px;
   min-width: 120px;
-  margin-right: 10px;
+  margin: 5px;
   cursor: pointer;
+}
+
+.movieDiv:hover{
+  box-shadow: 0px 0px 10px #585858;
 }
 
 .popularMovie {

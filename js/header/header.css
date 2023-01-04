@@ -2,16 +2,21 @@ nav{
     position: fixed;
     width: 100vw;
     z-index: 1;
+    top: 0;
+    transition: 0.5s;
 }
 
 .navContainer{
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.05);
     background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0));
-    transition: 1s;
+    transition: color 1s;
     font-family: Nunito Sans, sans-serif;
     font-weight: bolder;
+}
+
+.hide-nav{
+    top: -80px;
 }
 
 .burger-div{
@@ -55,6 +60,19 @@ nav{
     display: flex;
     align-items: center;
     padding-left: 25px;
+}
+
+.burger-item-start{
+    position: relative;
+    left: -100px;
+    top: -100px;
+}
+
+.burger-item-end{
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: 0.5s;
 }
 
 .burgerMenu > div:hover{

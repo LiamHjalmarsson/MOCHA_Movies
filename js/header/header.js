@@ -39,7 +39,18 @@ export async function createNav (userID) {
 
   burgerDiv.addEventListener('click', function () {
     // navContainer.classList.toggle('hide')
+    console.log(burger.classList)
     burger.classList.toggle('hideBurger')
+    let allBurgerItems = document.querySelectorAll(".burger-item-start")
+
+    let counter = 100
+    allBurgerItems.forEach(item =>{
+      setTimeout(function(){
+        item.classList.add("burger-item-end")
+      }, counter)
+        counter = counter + 30
+      })
+
   })
   navContainer.appendChild(burgerDiv)
 
@@ -91,6 +102,11 @@ function createBurger (navContainer) {
       function: () => { renderMovies(1, "popular")}
     },
     {
+      title: "Subscribed Movies",
+      function: () => {renderMyMovies(1,"subscribedMovies")}
+
+    },
+    {
       title: 'Watched Movies',
       function: () => { renderMyMovies(0, "watchedMovies")}
     },
@@ -112,12 +128,18 @@ function createBurger (navContainer) {
   cross.innerHTML = '<span class="material-symbols-outlined">close</span>'
   cross.addEventListener('click', function () {
     burger.classList.toggle('hideBurger')
-    // navContainer.classList.toggle('hide')
+
+    let allBurgerItems = document.querySelectorAll(".burger-item-start")
+    allBurgerItems.forEach(item =>{
+      item.classList.remove("burger-item-end")
+    })
   })
   burger.appendChild(cross)
 
+ 
   arrayOfItems.forEach(element => {
     let burgerItem = document.createElement('div')
+    burgerItem.classList.add("burger-item-start")
     burgerItem.innerHTML = `<p>${element.title}</p>`
     burgerItem.addEventListener('click', () => {
       navContainer.classList.toggle('hide')
@@ -183,12 +205,63 @@ export function createProfile (user) {
   return profileIcon
 }
 
-window.addEventListener("scroll", function(){
-  if(this.scrollY > 50){
-    this.document.querySelector(".navContainer").style.backgroundColor= "#151515"
-  }else{
-    if(this.scrollY < 50){
-      this.document.querySelector(".navContainer").style.backgroundColor = "rgba(0, 0, 0, 0.05)"
+function hej(){
+  let w = window
+  let doc = document.documentElement
+  // doc html filen
+
+  let prevScroll = w.scrollY || doc.scrollTop
+  // hur mucket scroll från top html just nu
+  var curScroll
+  var direction = 0;
+  var prevDirection = 0;
+
+  var header = document.querySelector("nav");
+
+  var checkScroll = function() {
+
+    curScroll = w.scrollY || doc.scrollTop;
+    // scroll efter att ha scrollat 
+    if (curScroll > prevScroll) { 
+      // om nuvarande scroll är mer än förra srollen, är direction 2
+      //scrolled up
+      direction = 2;
     }
-  }
-})
+    else if (curScroll < prevScroll) { 
+      // om nuvarande scroll är mindre än förra scrollen är direction 1
+      //scrolled down
+      direction = 1;
+    }
+
+    if (direction !== prevDirection) {
+      // om direction är ny gemförm med den förra direcation så anropa toggle header som togglar classen på nav
+      toggleHeader(direction, curScroll);
+    }
+    // uppdatera scrollen du är på
+    prevScroll = curScroll;
+  };
+
+  var toggleHeader = function(direction, curScroll) {
+    if (direction === 2 && curScroll > 82) { 
+      // 82 är höjden på naven
+      header.classList.add('hide-nav');
+      prevDirection = direction;
+      // uppdatera vilken direction
+    }
+    else if (direction === 1) {
+      header.classList.remove('hide-nav');
+      prevDirection = direction;
+    }
+  };
+  
+  window.addEventListener('scroll', ()=>{
+    checkScroll()
+    if(curScroll > 150){
+      header.style.backgroundColor = "#151515"
+    }else{
+      header.style.backgroundColor = "rgba(0, 0, 0, 0.05)"
+    }
+  });
+}
+
+hej()

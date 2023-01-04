@@ -9,6 +9,10 @@
     width: 100vw;
 }
 
+#navigationBack .hide{
+    top: -53px;
+}
+
 .backArrow:before {
     content: "";
     position: absolute;
@@ -38,3 +42,4 @@
     font-weight: bolder;
 
 }
+
