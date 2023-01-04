@@ -13,7 +13,7 @@ foreach ($data["users"] as $index => $user) {
     
     if ($user["userID"] == $userID) {
         
-        $fiel_Source = $_FILES["image"]["tmp_name"];
+        $file_Source = $_FILES["image"]["tmp_name"];
         $new_file_Name = $_FILES["image"]["name"];
         $file_Size = $_FILES["image"]["size"];
         $file_Type = $_FILES["image"]["type"];
@@ -34,7 +34,7 @@ foreach ($data["users"] as $index => $user) {
             sendJSON($error, 400);
         }
     
-        if (move_uploaded_file($fiel_Source, $destination)) {
+        if (move_uploaded_file($file_Source, $destination)) {
 
             if ($user["imageLink"] != "") {
 
