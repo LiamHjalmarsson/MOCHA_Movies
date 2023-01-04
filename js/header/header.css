@@ -109,8 +109,10 @@ nav{
     max-height: 30vh;
     overflow: scroll;
     transition: 1s;
-    position: relative;
+    position: fixed;
     top: 0;
+    padding-top: 90px;
+    z-index: -1;
 }
 
 .unseen-notification-box, .seen-notification-box{
@@ -136,7 +138,7 @@ nav{
     display: flex;
     align-items: center;
     padding-bottom: 10px;
-    font-size: 11pt;
+    font-size: 10pt;
 }
 
 .notification-item > img{
@@ -147,6 +149,14 @@ nav{
 .notification-item > div:first-child  > .material-symbols-outlined{
     color: rgb(145, 145, 145);
     margin-right: 10px;
+}
+
+.notification-item > div:nth-child(2) > div:nth-child(1){
+    margin-bottom: 3px;
+}
+
+.notification-item > div:nth-child(2) > div:nth-child(2){
+    font-size: 9pt;
 }
 
 .notification-box > div:hover{

@@ -1,5 +1,6 @@
 import { navigationBack } from "../navigationBack/navigationBack.js";
 import { createMovieIcons } from "./movieIcons.js";
+import { createMovie } from "../showmovies/showmovies.js";
  
 const key = `e666c096bb904490508ada0b495d2d90`; 
 
@@ -8,103 +9,149 @@ export async function renderMovie (movie) {
     let movieContainer = document.createElement("div");
     movieContainer.id = "movieContainer";
 
-    movieContainer.append(navigationBack(movieContainer, movie.title));
-
-    let movieHeader = document.createElement("div");
-    movieHeader.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)),url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
-    movieHeader.id = "movieHeader";
+    movieContainer.append(navigationBack(movieContainer));
 
     let titleContainer = document.createElement("div")
     titleContainer.classList.add("titleContainer")
-    titleContainer.innerHTML = movie.title
 
+    let titleBox = document.createElement("div")
+    titleBox.innerHTML = movie.title
+    titleContainer.append(titleBox)
+    let releaseyear = document.createElement("p")
+    titleContainer.append(releaseyear)
+    let img = document.createElement("img")
+    img.src = "../../images/imdb.png"
+    let rating = Number(voterating(movie)).toFixed(1)
+    releaseyear.append(img, rating)
+
+    if(movie.runtime != undefined){
+        let runtime = movie.runtime
+        let hour = runtime/60
+        let stringhour = hour.toString()
+        console.log(stringhour)
+        let procentMinutes = stringhour.substring(stringhour.indexOf(".") + 1);
+        let hej = 0 + "." + procentMinutes
+        let hej1 = Number(hej)
+        let minutesWithDecimal = 60 * hej1
+        let minutesWithoutDecimal = Math.round(minutesWithDecimal)
+    
+        let hourWithoutDecimal = parseInt(hour)
+        let time = hourWithoutDecimal + "h" + " " + minutesWithoutDecimal + "min"
+        releaseyear.innerHTML += " " + "|" + " " + time    
+    }
+    
+    let movieHeader = document.createElement("div");
+    movieHeader.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)),url(https://image.tmdb.org/t/p/original/${movie.poster_path})`;
+    movieHeader.id = "movieHeader";
+    
     let iconContainer = createMovieIcons(movie)
-
+    
     let movieInformation = document.createElement("div");
     movieInformation.classList.add("movieInformation");
-    movieInformation.innerHTML = `
-        <div> 
-            <h3> Synopsis </h3> 
-            <p> ${overview(movie)} </p> 
-        </div> 
-        <div>
-            <h3> Relase year </h3>
-            <p> ${relaseYear(movie)} </p>
-        </div>
-        <div>
-            <h3> Actors </h3>
-            <p> ${await getActors(movie)} </p>
-        </div>
-        <div>
-            <h3> Production </h3>
-            <p> ${await getProduction(movie)}</p>
-        </div>
-        <div>
-            <h3> IMDB </h3>
-            <p> ${voterating(movie)} / 10 </p>
-        </div>
-    `
 
+
+    let div = document.createElement("div")
+    div.innerHTML = movie.overview == "" ? "There is no description of this movie" : movie.overview;
+    movieInformation.append(div)
+
+    if(movie.genres != undefined){
+        let genres = getGenres(movie)
+        movieInformation.append(genres)
+    }
+
+    let actors = await(getActors(movie))
+    movieInformation.append(actors)
+
+    // let stream = await getWhereToWatch(movie)
+    // if(stream != undefined){
+    //     movieInformation.append(stream)
+    // }
+    
     let reviewContainer = document.createElement("div");
     reviewContainer.id = "reviewContainer";
     let reviewHeader = document.createElement("div");
-    reviewHeader.innerHTML = `<h3> Reviews made on the movie </h3>`;
-
+    reviewHeader.innerHTML = `<h3> Reviews</h3>`;
+    
     reviewContainer.append(reviewHeader); 
     let reviewBox = await getReviews(movie)
     reviewContainer.appendChild(reviewBox)
-
+    
     movieInformation.append(reviewContainer);
     movieContainer.append(movieHeader, titleContainer, iconContainer, movieInformation);
+
+    let similar = await getSimilarMovies(movie)
+    movieInformation.append(similar)
+
     document.querySelector("main").append(movieContainer);
 }
 
 async function getActors (movie) {
     let responseCast = await fetch (`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${key}&language=en-US`);
     let recourseCast = await responseCast.json();
-    let text = "";
+    console.log(recourseCast)
+    let actors = document.createElement("div")
+    let title = document.createElement("h3")
+    title.innerHTML = "Actors"
+    let actorsBox = document.createElement("div")
+    actorsBox.classList.add("actors-box")
+    actors.append(title, actorsBox)
+
+    actors.classList.add("actors-wrapper")
 
     if (recourseCast.cast.length === 0) {
         return text = "No cast could be found";
     } else {
         for (let i = 0; i < 4; i++) {
-            text += `${recourseCast.cast[i].name}, `;
-
-            if (i === 3) {
-                text += `${recourseCast.cast[i].name}. `;
+            let person = document.createElement("div")
+            person.classList.add("actor")
+            let text = document.createElement("p")
+            text.innerHTML = recourseCast.cast[i].name
+            let img = document.createElement("div")
+            if(recourseCast.cast[i].profile_path != null){
+                img.style.backgroundImage= `url(https://image.tmdb.org/t/p/original/${recourseCast.cast[i].profile_path})`
+            }else{
+                if(recourseCast.cast[i].gender == 1){
+                    img.innerHTML = `<span class="material-symbols-outlined">face_4</span>`
+                }else{
+                    img.innerHTML = `<span class="material-symbols-outlined">face_5</span>`
+                }
             }
+            person.append(img,text)
+            actorsBox.append(person)
         }
     }
-    return text
+    return actors
 }
 
-async function getProduction (movie) {
-    let responseMoreInformation = await fetch (`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${key}&language=en-US`);
-    let recourseMoreInformation = await responseMoreInformation.json();
-    let text = "";
+// async function getProduction (movie) {
+//     let responseMoreInformation = await fetch (`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${key}&language=en-US`);
+//     let recourseMoreInformation = await responseMoreInformation.json();
+//     let text = "";
 
-    if (recourseMoreInformation.production_companies.length === 0) {
-        return text = "No production companie could be found";
-    } else {
-        recourseMoreInformation.production_companies.forEach(companie => {
-            text += ` ${companie.name}, `
-        });
-    }
+//     if (recourseMoreInformation.production_companies.length === 0) {
+//         return text = "No production companie could be found";
+//     } else {
+//         recourseMoreInformation.production_companies.forEach(companie => {
+//             text += ` ${companie.name}, `
+//         });
+//     }
 
-    return text
-}
+//     return text
+// }
 
 function voterating (movie) {
     return movie.vote_average == "" ? "There is no rating of this movie": movie.vote_average;
 }
 
-function relaseYear (movie) {
-    return movie.release_date == "" ? "The year of when movie was realsed is missing": movie.release_date;
-}
+// function relaseYear (movie) {
+//     return movie.release_date == "" ? "The year of when movie was realsed is missing": movie.release_date;
+// }
 
-function overview (movie) {
-    return movie.overview == "" ? "There is no description of this movie" : movie.overview;
-}
+// function overview (movie) {
+//     let div = document.createElement("div")
+//     div.innerHTML = movie.overview == "" ? "There is no description of this movie" : movie.overview;
+//     return div
+// }
 
 async function getReviews(movie){
     let reviewBox = document.createElement("div")
@@ -140,8 +187,6 @@ async function getReviews(movie){
 
             let givenGrade = review.grade
 
-            console.log(givenGrade)
-
             let starsContainer = document.createElement("div");
             starsContainer.classList.add("stars")
             for (let i = 0; i < 5; i++) {
@@ -161,11 +206,15 @@ async function getReviews(movie){
 
             let reviewName = document.createElement("div")
             reviewName.classList.add("review-name")
+
+            let reviewTime = document.createElement("p")
+            reviewTime.classList.add("review-date")
+            reviewTime.innerHTML = review.date
             
-            reviewName.append(personImg,userName)
+            reviewName.append(personImg,userName, reviewTime)
 
             let reviewText = document.createElement("div")
-            reviewText.innerHTML = review.reviewText
+            reviewText.innerHTML =  `"${review.reviewText}"`
 
 
             reviewItem.append(reviewName,starsContainer, reviewText)
@@ -179,4 +228,109 @@ async function getReviews(movie){
         })
     }
     return reviewBox
+}
+
+function getGenres(movie){
+    let genres = document.createElement("div")
+    genres.classList.add("genre-container")
+    let title = document.createElement("h3")
+    title.innerHTML = "Genres"
+    let genreBox = document.createElement("div")
+    genreBox.classList.add("genre-box")
+    genres.append(title,genreBox)
+
+    movie.genres.forEach(genre =>{
+        let genreDiv = document.createElement("div")
+        genreDiv.innerHTML = genre.name
+        genreBox.appendChild(genreDiv)
+    })
+
+    return genres
+}
+
+
+async function getSimilarMovies(movie){
+    let rqst = new Request(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${key}&language=en-US`)
+    let response = await fetch(rqst)
+    let similaResource = await response.json()
+
+    let similar = document.createElement("div")
+    // similar.classList.add("renderMoviesWrapper")
+
+    let title = document.createElement("h3")
+    title.innerHTML = "Similar movies"
+
+    let similarBox = document.createElement("div")
+    similarBox.classList.add("similar-grid-container")
+    similar.append(title,similarBox)
+
+    for(let i = 0; i<9; i++){
+        similarBox.append(createMovie(similaResource.results[i]))
+    }
+
+    return similar
+}
+
+// async function getVideo(movie){
+//     let rqst = new Request(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${key}&language=en-US`)
+//     let response = await fetch(rqst)
+//     let videosResource = await response.json()
+
+//     let video = videosResource.results.find(video => video.type == "Teaser")
+//     console.log(video)
+
+//     let div = document.createElement("div")
+//     // let tag = document.createElement("script")
+//     // tag.src = `https://www.youtube.com/watch?v=${video.key}`
+//     X-Frame
+//     div.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/watch?v=${video.key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+
+//     // div.innerHTML= `<source src="https://www.youtube.com/watch?v=${video.key}">`
+//     // div.style.backgroundClip = `https://www.youtube.com/watch?v=${video.key}`
+
+//     return div
+    
+// }
+
+
+async function getWhereToWatch(movie){
+    let rqst = new Request(`https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=${key}&language=en-US`)
+    let response = await fetch(rqst)
+    let streamResource = await response.json()
+    console.log(streamResource)
+    
+    
+    if(streamResource.results.SE){
+        let div = document.createElement("div")
+        let title = document.createElement("h3")
+        let box = document.createElement("div")
+        box.classList.add("stream-box")
+        div.append(title, box)
+
+        let swedishStream = streamResource.results.SE
+        console.log(swedishStream)
+    
+        if(swedishStream.flatrate){
+            title.innerHTML = "Stream on"
+            swedishStream.flatrate.forEach(stream =>{
+                let streamDiv = document.createElement("div")
+                let urlEnd = stream.logo_path
+                streamDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${urlEnd})`
+                box.append(streamDiv)
+            })
+        }else if(swedishStream.buy){
+            title.innerHTML = "Buy on"
+            swedishStream.buy.forEach(buy =>{
+                let buyDiv = document.createElement("div")
+                let urlEnd = buy.logo_path
+                buyDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${urlEnd})`
+                box.append(buyDiv)
+            })
+        }
+
+        return div
+    }
+
+
+
 }

@@ -39,12 +39,15 @@ $userID = $receivedData["userID"];
 $grade = $receivedData["grade"];
 $reviewText = $receivedData["reviewText"];
 
+date_default_timezone_set("Europe/Stockholm");
+
 $newReview = [
     "reviewID" => $reviewID,
     "movieID" => $movieID,
     "userID" => $userID,
     "grade" => $grade,
-    "reviewText" => $reviewText
+    "reviewText" => $reviewText,
+    "date" => date('Y-m-d H:i:s')
 ];
 
 // adding review to review array
@@ -71,6 +74,8 @@ foreach($data["users"] as $user){
                 $lastNotificationID = $data["notifications"][$lastIndexNotification]["notificationID"]; 
             }
              
+            date_default_timezone_set("Europe/Stockholm");
+            
             $notification = [
                 "notificationID" => $lastNotificationID + 1,
                 "senderID" => $userID,
@@ -78,6 +83,7 @@ foreach($data["users"] as $user){
                 "message" => "$reviewText",
                 "sendToUser" => $user["userID"],
                 "seen" => false,
+                "date" => date('Y-m-d H:i:s')
             ];
     
             $data["notifications"][] = $notification;

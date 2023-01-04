@@ -11,10 +11,14 @@
                 1,
                 2,
                 6,
-                7
+                7,
+                11
             ],
             "following": [
-                4
+                4,
+                5,
+                17,
+                8
             ],
             "moviesToSee": [
                 9841,
@@ -38,9 +42,9 @@
                 277368,
                 47964,
                 417830,
-                30178,
                 9731,
-                9876
+                9876,
+                661374
             ],
             "subscribedMovies": [
                 38579,
@@ -499,70 +503,88 @@
             "movieID": 38579,
             "userID": 1,
             "grade": 3,
-            "reviewText": "best movie ever"
+            "reviewText": "best movie ever",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 2,
             "movieID": 9714,
             "userID": 1,
             "grade": 3,
-            "reviewText": "quite boring movie"
+            "reviewText": "quite boring movie",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 3,
             "movieID": 550,
             "userID": 2,
             "grade": 3,
-            "reviewText": "this movie was special"
+            "reviewText": "this movie was special",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 4,
             "movieID": 769,
             "userID": 4,
             "grade": 3,
-            "reviewText": "like this movie very very very much"
+            "reviewText": "like this movie very very very much",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 5,
             "movieID": 9711,
             "userID": 2,
             "grade": 3,
-            "reviewText": "i love christmas movies more than this"
+            "reviewText": "i love christmas movies more than this",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 6,
             "movieID": 76600,
             "userID": 1,
             "grade": 5,
-            "reviewText": "Svinbra"
+            "reviewText": "Svinbra",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 7,
             "movieID": 76600,
             "userID": 1,
             "grade": 5,
-            "reviewText": "otrolig film"
+            "reviewText": "otrolig film",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 8,
             "movieID": 238,
             "userID": 2,
             "grade": 4,
-            "reviewText": "hej s\u00e5\u00e5\u00e5 s\u00e5 bra"
+            "reviewText": "hej s\u00e5\u00e5\u00e5 s\u00e5 bra",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 9,
             "movieID": 769,
             "userID": 2,
             "grade": 4,
-            "reviewText": "hej hoopp svinbra"
+            "reviewText": "hej hoopp svinbra",
+            "date": "2023-01-03 20:09:15"
         },
         {
             "reviewID": 10,
             "movieID": 490,
             "userID": 3,
             "grade": 4,
-            "reviewText": "One of the best movies of its time, the religious representation and depiction of the black plague in the scandinavias is unrivaled."
+            "reviewText": "One of the best movies of its time, the religious representation and depiction of the black plague in the scandinavias is unrivaled.",
+            "date": "2023-01-03 20:09:15"
+        },
+        {
+            "reviewID": 11,
+            "movieID": 661374,
+            "userID": 1,
+            "grade": 3,
+            "reviewText": "wowow",
+            "date": "2023-01-03 20:09:15"
         }
     ],
     "notifications": [
@@ -570,33 +592,37 @@
             "notificationID": 1,
             "senderID": 1,
             "movieID": 9714,
-            "message": "Sophie left a review on movie with movieID 9714 [ quite boring movie ]",
+            "message": "quite boring movie",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-02 13:30:35"
         },
         {
             "notificationID": 2,
             "senderID": 2,
             "movieID": 550,
-            "message": "Tanja left a review on movie with movieID 550 [ this movie was special ]",
+            "message": "this movie was special",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-01 13:30:35"
         },
         {
             "notificationID": 3,
             "senderID": 4,
             "movieID": 769,
-            "message": "Liam left a review on movie with movieID 769 [ like this movie very very very much ]",
+            "message": "like this movie very very very much",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2022-01-03 13:30:35"
         },
         {
             "notificationID": 4,
             "senderID": 2,
             "movieID": 9711,
-            "message": "Tanja left a review on movie with movieID 9711 [ 'i love christmas movies more than this' ]",
+            "message": "i love christmas movies more than this",
             "sendToUser": 1,
-            "seen": true
+            "seen": true,
+            "date": "2022-02-03 13:30:35"
         },
         {
             "notificationID": 5,
@@ -604,7 +630,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2022-04-03 13:30:35"
         },
         {
             "notificationID": 6,
@@ -612,7 +639,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2022-07-03 13:30:35"
         },
         {
             "notificationID": 7,
@@ -620,7 +648,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2022-06-03 13:30:35"
         },
         {
             "notificationID": 8,
@@ -628,7 +657,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2022-04-03 13:30:35"
         },
         {
             "notificationID": 9,
@@ -636,7 +666,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2022-10-03 13:30:35"
         },
         {
             "notificationID": 10,
@@ -644,7 +675,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2022-09-03 13:30:35"
         },
         {
             "notificationID": 11,
@@ -652,7 +684,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2022-12-03 13:30:35"
         },
         {
             "notificationID": 12,
@@ -660,7 +693,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2022-12-14 13:30:35"
         },
         {
             "notificationID": 13,
@@ -668,7 +702,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2022-04-08 13:30:35"
         },
         {
             "notificationID": 14,
@@ -676,7 +711,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2022-01-10 13:30:35"
         },
         {
             "notificationID": 15,
@@ -684,7 +720,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 16,
@@ -692,7 +729,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 17,
@@ -700,7 +738,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 18,
@@ -708,7 +747,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 19,
@@ -716,7 +756,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 20,
@@ -724,7 +765,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 21,
@@ -732,7 +774,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 22,
@@ -740,7 +783,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 23,
@@ -748,7 +792,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 24,
@@ -756,7 +801,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 25,
@@ -764,7 +810,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 26,
@@ -772,7 +819,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 27,
@@ -780,7 +828,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 28,
@@ -788,7 +837,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 29,
@@ -796,7 +846,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 30,
@@ -804,7 +855,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 13:30:35"
         },
         {
             "notificationID": 31,
@@ -812,7 +864,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 18:30:35"
         },
         {
             "notificationID": 32,
@@ -820,7 +873,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": true
+            "date": "2023-01-03 17:30:35"
         },
         {
             "notificationID": 33,
@@ -828,7 +881,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 4,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 16:30:35"
         },
         {
             "notificationID": 34,
@@ -836,7 +890,35 @@
             "movieID": 238,
             "message": "hej s\u00e5\u00e5\u00e5 s\u00e5 bra",
             "sendToUser": 1,
-            "seen": true
+            "seen": true,
+            "date": "2023-01-03 15:30:35"
+        },
+        {
+            "notificationID": 35,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 5,
+            "seen": false,
+            "date": "2023-01-03 23:30:35"
+        },
+        {
+            "notificationID": 36,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 17,
+            "seen": false,
+            "date": "2023-01-03 13:30:35"
+        },
+        {
+            "notificationID": 37,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 8,
+            "seen": false,
+            "date": "2023-01-03 14:34:05"
         }
     ]
 }

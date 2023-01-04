@@ -39,6 +39,7 @@ if(count($data["notifications"]) > 0){
     $lastNotificationID = $data["notifications"][$lastIndexNotification]["notificationID"]; 
 }
 
+date_default_timezone_set("Europe/Stockholm");  
 // create notification
 $notification = [
     "notificationID" => $lastNotificationID + 1,
@@ -47,6 +48,7 @@ $notification = [
     "message" => "$nameOfPersonStartedFollowing started to follow you",
     "sendToUser" => $receiver,
     "seen" => false,
+    "date" => date('Y-m-d H:i:s')
 ];
 
 $data["notifications"][] = $notification;
