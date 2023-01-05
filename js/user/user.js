@@ -73,7 +73,7 @@ function changeProfileInformation() {
   let imageChange = document.createElement("div");
 
   imageChange.textContent = "Change profile image";
-  imageChange.style.color = "plum"
+  imageChange.style.color = "moccasin"
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -122,6 +122,8 @@ function usernameUpdate(user, error) {
 
     let response = await fetch("../../php/patch/change-user.php", options);
     if (response.ok) {
+      let resource = await response.json()
+      localStorage.setItem("user", JSON.stringify(resource))
     } else {
       error.textContent = response.statusText;
     }
@@ -160,6 +162,8 @@ function passwordUpdate(user, error) {
 
     let response = await fetch("../../php/patch/change-user.php", options);
     if (response.ok) {
+      let resource = await response.json()
+      localStorage.setItem("user", JSON.stringify(resource))
     } else {
       error.textContent = response.statusText;
     }
@@ -211,6 +215,16 @@ function changeImage(user) {
 
   let submitInput = document.createElement("button");
   submitInput.type = "submit";
+
+  submitInput.addEventListener("click", () => {
+    setTimeout(() =>{
+      fetch("../../php/get/get.php?users="+user.userID)
+      .then(r => r.json())
+      .then(r => {
+          localStorage.setItem("user", JSON.stringify(r))
+      })
+    }, 200)
+  })
 
   submitInput.textContent = "Upload Image";
 
