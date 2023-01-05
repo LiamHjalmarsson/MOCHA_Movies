@@ -6,8 +6,12 @@ let updateFreindList;
 
 async function fetchUsers () {
     let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
-    let recourseAllusers = await responseAllUsers.json();
-    return recourseAllusers;
+    if (responseAllUsers.ok) {
+        let recourseAllusers = await responseAllUsers.json();
+        return recourseAllusers;
+    } else {
+        console.log(responseAllUsers)
+    }
 }
 
 export function userFollowers () {
@@ -37,7 +41,7 @@ export async function getUserFollowers (counter) {
 
   if (arrayFollowingMe.length != 0) {
     
-      if (arrayFollowingMe.length > 5) {
+      if (arrayFollowingMe.length > 20) {
           let btnBox = document.createElement('div');
           btnBox.id = 'btnBox';
           let btn = document.createElement('div');
@@ -48,7 +52,7 @@ export async function getUserFollowers (counter) {
               let btnEntrie = entries[0];
               if (!btnEntrie.isIntersecting) return
 
-              for (let i = 0; i < 6; i++) {
+              for (let i = 0; i < 20; i++) {
                     counter++;
                     if (arrayFollowingMe[counter] != undefined) {
                       followWrapper.append(getFollows(arrayFollowingMe[counter], user));
@@ -76,7 +80,6 @@ export async function getUserFollowers (counter) {
 function getFollows (follow, user) {
         let followDiv = document.createElement("div");
         followDiv.classList.add("followDiv");
-
         let iFollow = user.following.filter(following => following === follow.userID);
 
         createFollow(follow, followDiv);
@@ -93,14 +96,17 @@ function getFollows (follow, user) {
                         followingID: follow.userID
                     })
                 });
-                updateFreindList = setTimeout(updateFreinds, 100);
-                document.querySelector(".personBox").innerHTML = "";
-
-                let recourseDelete = await responseDelete.json();
-                userLocalStorage(recourseDelete);
-                document.querySelector(".followWrapper").remove();
-                document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-                getUserFollowers(-1);
+                if (responseDelete.ok) {
+                    let recourseDelete = await responseDelete.json();
+                    updateFreindList = setTimeout(updateFreinds, 100);
+                    document.querySelector(".personBox").innerHTML = "";
+                    userLocalStorage(recourseDelete);
+                    document.querySelector(".followWrapper").remove();
+                    document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+                    getUserFollowers(-1);
+                } else {
+                    console.log(responseDelete);
+                }
             }); 
             followDiv.append(icon);
         } else {
@@ -114,14 +120,17 @@ function getFollows (follow, user) {
                         followingID: follow.userID
                     })
                 });
-                updateFreindList = setTimeout(updateFreinds, 100);
-                document.querySelector(".personBox").innerHTML = "";
-
-                let recourseAdd = await responseAdd.json();
-                userLocalStorage(recourseAdd);
-                document.querySelector(".followWrapper").remove();
-                document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-                getUserFollowers(-1);
+                if (responseAdd.ok) {
+                    let recourseAdd = await responseAdd.json();
+                    updateFreindList = setTimeout(updateFreinds, 100);
+                    document.querySelector(".personBox").innerHTML = "";
+                    userLocalStorage(recourseAdd);
+                    document.querySelector(".followWrapper").remove();
+                    document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+                    getUserFollowers(-1);
+                } else {
+                    console.log(responseAdd)
+                }
             });
             followDiv.append(icon);
         }
@@ -133,7 +142,6 @@ export function following () {
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
     followContainer.append(navigationBack(followContainer, "Following me"));
-
     followingIngs(-1);
 }
 
@@ -155,7 +163,7 @@ export async function followingIngs (counter) {
     document.querySelector("#followContainer").appendChild(followWrapper);
 
     if (arrayFollowing.length != 0) {
-        if (arrayFollowing.length > 5) {
+        if (arrayFollowing.length > 20) {
             let btnBox = document.createElement('div');
             btnBox.id = 'btnBox';
             let btn = document.createElement('div');
@@ -165,7 +173,7 @@ export async function followingIngs (counter) {
             let observer = new IntersectionObserver(async (entries) => { 
                 let btnEntrie = entries[0];
                 if (!btnEntrie.isIntersecting) return
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < 20; i++) {
                     counter++;
                     if (arrayFollowing[counter] != undefined) {       
                         followWrapper.append(getFollowings(arrayFollowing[counter], user));
@@ -204,16 +212,19 @@ function getFollowings (follow, user) {
                 followingID: follow.userID
             })
         });
-    
-        updateFreindList = setTimeout(updateFreinds, 100);
-        document.querySelector(".personBox").innerHTML = "";
-    
-        let recourseDelete = await responseDelete.json();
-        userLocalStorage(recourseDelete);
-        document.querySelector(".followWrapper").remove();
-        document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-        followingIngs(-1);
-        }); 
+        if (responseDelete.ok) {
+            updateFreindList = setTimeout(updateFreinds, 100);
+            document.querySelector(".personBox").innerHTML = "";
+        
+            let recourseDelete = await responseDelete.json();
+            userLocalStorage(recourseDelete);
+            document.querySelector(".followWrapper").remove();
+            document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+            followingIngs(-1);
+        } else {
+            console.log(responseDelete);
+        }
+    }); 
     followDiv.append(icon);
     
     return followDiv;
@@ -224,7 +235,7 @@ export function renderAddFreind () {
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
     followContainer.append(navigationBack(followContainer, "Add new friend"));
-    addFriend(0);
+    addFriend(-1);
 }
 
 async function addFriend (counter) {
@@ -257,7 +268,7 @@ async function addFriend (counter) {
     followContainer.append(followWrapper);
 
     if (arrayNotFollowing.length != 0) {
-        if (arrayNotFollowing.length > 20) {
+        if (arrayNotFollowing.length >= 20) {
             
             let btnBox = document.createElement('div');
             btnBox.id = 'btnBox';
@@ -269,7 +280,7 @@ async function addFriend (counter) {
                 let btnEntrie = entries[0];
                 if (!btnEntrie.isIntersecting) return
 
-                for (let i = 0; i < 10; i++) {
+                for (let i = 0; i < 20; i++) {
                     counter++;
                     if (arrayNotFollowing[counter] != undefined) {
                         getAddFriend(user, arrayNotFollowing[counter]);
@@ -290,7 +301,7 @@ async function addFriend (counter) {
             });
         }
     } else {
-        document.querySelector(".followWrapper").textContent = `You are following all that exists in the Database at the moment`;
+        document.querySelector(".followWrapper").textContent = `You are following all in the Database at the moment`;
     }
 }
 
@@ -315,15 +326,19 @@ function getAddFriend (user, arrayNotFollowing) {
             })
         });
 
+        if (responseAdd.ok) {
         updateFreindList = setTimeout(updateFreinds, 100);
         document.querySelector(".personBox").innerHTML = "";
-        
-        let recourseAdd = await responseAdd.json();
-        userLocalStorage(recourseAdd);
-        document.querySelector("#followContainer > .inputBox").remove();
-        document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
-        document.querySelector(".followWrapper").remove();
-        addFriend(0);
+
+            let recourseAdd = await responseAdd.json();
+            userLocalStorage(recourseAdd);
+            document.querySelector("#followContainer > .inputBox").remove();
+            document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
+            document.querySelector(".followWrapper").remove();
+            addFriend(0);
+        } else {
+            console.log(responseAdd);
+        }
     });
 } 
 
@@ -338,7 +353,7 @@ function searchInput (arrayNotFollowing, user) {
             document.querySelector("#followContainer > .inputBox").remove();
             document.querySelectorAll("#followContainer > #btnBox").forEach(btn => btn.remove());
             document.querySelector(".followWrapper").remove();
-            addFriend(0)
+            addFriend(-1)
         } else {
             document.querySelectorAll(".followWrapper > .followDiv").forEach(div => div.remove());
             document.querySelector(".followWrapper").innerHTML = "";

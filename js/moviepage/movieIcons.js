@@ -75,7 +75,7 @@ function fetchAddMovie(user, movie, phpFile, movieForm){
         [`${movieForm}`]: movie.id
     }
 
-    console.log(body)
+    // console.log(body)
 
     let options = {
         method: "POST",
@@ -121,7 +121,7 @@ function fetchDeleteMovie(user, movie, phpFile, movieForm){
         }
     })
     .then(resource =>{
-        console.log(resource)
+        // console.log(resource)
         localStorage.setItem("user", JSON.stringify(resource));
         // vill anropa render movie här för att uppdatera utseednde men om man trycker tillbakaknapp efter det så blir det skevt
         renderMovie(movie)
@@ -158,8 +158,8 @@ function popUpReview(user, movie){
     buttonSubmit.addEventListener("click", function(){
         let inputGrade = parseInt(gradeDiv.firstChild.firstChild.value)
         let inputText = reviewDiv.value
-        console.log(inputGrade)
-        console.log(inputText)
+        // console.log(inputGrade)
+        // console.log(inputText)
 
         if(inputGrade > 5 || inputGrade < 0){
             inputMessage.innerHTML = "grade need to be a number between 1-5"
@@ -210,7 +210,7 @@ function fetchReview(user, movie, inputGrade, inputText){
     fetch(rqst,options)
     .then(r => r.json())
     .then(resoucre =>{
-        console.log(resoucre)
+        // console.log(resoucre)
         fetchAddMovie(user, movie, "watched-movies", "watchedMovie")
     })
 }

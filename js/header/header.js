@@ -39,7 +39,7 @@ export async function createNav (userID) {
 
   burgerDiv.addEventListener('click', function () {
     // navContainer.classList.toggle('hide')
-    console.log(burger.classList)
+    // console.log(burger.classList)
     burger.classList.toggle('hideBurger')
     let allBurgerItems = document.querySelectorAll(".burger-item-start")
 

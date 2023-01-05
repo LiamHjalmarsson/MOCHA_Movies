@@ -43,7 +43,7 @@ export function navigationBack (remove, path) {
 
   arrowBack.addEventListener('click', () => {
     remove.style.left = "-600px"
-    console.log(remove)
+    // console.log(remove)
 
     setTimeout(function(){
       remove.remove()

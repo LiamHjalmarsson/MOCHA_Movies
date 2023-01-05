@@ -12,14 +12,15 @@
 
 .inputBox {
     display: flex;
+    justify-content: center;
     margin-bottom: 20px;
     margin-top: 80px;
 }
 
 .addInput {
-    margin: auto;
-    /* width: 90%; */
-    padding: 5px;
+    width: 91vw;
+    height: 3vh;
+    border: 0px;
 }
 
 #followWrapper {

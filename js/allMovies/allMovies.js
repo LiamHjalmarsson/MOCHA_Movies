@@ -14,7 +14,7 @@ export async function showAllMovies (moviegenre, counter) {
   )
   let genreResponse = await fetch(rqstGenre)
   let genresObject = await genreResponse.json()
-  console.log(genresObject.genres)
+  // console.log(genresObject.genres)
   let filterContainer = document.createElement('div')
   filterContainer.id = 'filterContainer'
   let filterElement = createFilter(genresObject.genres)
@@ -31,7 +31,7 @@ export async function showAllMovies (moviegenre, counter) {
   )
   let moviesResponse = await fetch(rqstMovies)
   let moviesArray = await moviesResponse.json()
-  console.log(moviesArray)
+  // console.log(moviesArray)
   createMovie(moviesArray.results)
   createShowMore(moviegenre, counter)
 }
@@ -70,7 +70,7 @@ function createFilter (arrayOfGenres) {
   })
 
   selectElement.addEventListener('change', () => {
-    console.log(selectElement.value)
+    // console.log(selectElement.value)
     let allMoviesContainer = document.querySelector('.allMoviesContainer')
     allMoviesContainer.innerHTML = ''
     document.getElementById('btnBox').remove()
@@ -85,7 +85,7 @@ async function getMoviesAndSortAfterGenre (genreID, counter) {
   let requestGenreMovies = new Request(
     `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&with_genres=${genreID}&page=${counter}`
   )
-  console.log(requestGenreMovies)
+  // console.log(requestGenreMovies)
   let allMovieContainer = document.querySelector('.allMoviesContainer')
   allMovieContainer.innerHTML = ''
   let response = await fetch(requestGenreMovies)
@@ -116,7 +116,8 @@ async function createShowMore (genreID, counter) {
       let rqst = new Request(
         `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&with_genres=${genreID}&page=${counter}`
       )
-      console.log(rqst)
+
+      
       let response = await fetch(rqst)
       let moviesObject = await response.json()
       createMovie(moviesObject.results)

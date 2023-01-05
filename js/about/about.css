@@ -7,7 +7,7 @@
   position: fixed;
   top: 0px;
   bottom: 0px;
-  background-color: rgb(15, 15, 15);
+  background-color: #151515;
   z-index: 3;
   overflow: hidden;
 }
