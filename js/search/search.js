@@ -75,7 +75,6 @@ export function searchField(){
        let searchWord = document.querySelector(".search-field").value
         searchMovies(searchWord)
     })
-
     searchFieldContainer.appendChild(searchField)
 
     return searchFieldContainer
@@ -126,13 +125,12 @@ function createUser(array, searchWord){
     let userWrapper = document.querySelector(".search-result-wrapper")
     userWrapper.innerHTML=""
 
-    // console.log(array)
     array.forEach(user =>{
         if(user.username.includes(searchWord)){
             let userDiv = document.createElement("div")
 
             if(user.imageLink == ""){
-                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
+                userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
             }
             userDiv.innerHTML += user.username
 
@@ -214,7 +212,7 @@ function getUsersToShow(counter = -1){
                               });
 
                             if(recourse[counter].imageLink == ""){
-                                userDiv.innerHTML = `<span class="material-symbols-outlined">person</span>`
+                                userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
                             }
 
                             userDiv.innerHTML += `<p>${recourse[counter].username}</p>`
