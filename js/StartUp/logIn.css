@@ -6,12 +6,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   height: 100vh;
   width: 100vw;
   background-color: rgb(40, 40, 40);
   font-family: Nunito Sans, sans-serif;
+  padding-top: 1vh;
 }
 
 .input {
@@ -25,19 +26,21 @@ body {
   border: rgb(136, 136, 136) solid 1px;
   border-radius: 5px;
   width: 89vw;
-  padding: 0px;
+  padding-left: 2vw;
   background-color: rgb(77, 77, 77);
+  font-family: Nunito Sans, sans-serif;
+  font-size: 15px;
 }
 
 .input > label {
-  margin: 0px 0px 5px 2px;
+  margin: 0px 0px 5px 3px;
 }
 
 .logIn > button {
   margin-top: 30px;
   height: 50px;
   border: 1px solid #333;
-  width: 89vw;
+  width: 91vw;
   border-radius: 5px;
   font-family: Nunito Sans, sans-serif;
   font-weight: bold;
@@ -50,4 +53,13 @@ body {
   font-weight: bold;
   position: relative;
   bottom: 10px;
+}
+
+.errorDiv {
+  color: #1e608f;
+}
+
+.logSignInTitle{
+  font-weight: 500;
+  margin-top: 5vh;
 }
