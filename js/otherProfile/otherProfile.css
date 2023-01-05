@@ -101,3 +101,8 @@ font-size: 18px;
 .activee{
   background-color: #2a292984;
 }
+
+#otherProfileNotAllowed > span {
+  margin-top: 30px;
+
+}

@@ -1,45 +1,51 @@
 #navigationBack {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.05);
-    background-image: linear-gradient(to bottom, rgb(15, 15, 15, 0.6), rgba(15, 15, 15, 0)); 
-    position: fixed;
-    width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  background-image: linear-gradient(
+    to bottom,
+    rgb(15, 15, 15, 0.6),
+    rgba(15, 15, 15, 0)
+  );
+  position: fixed;
+  width: 100vw;
 }
 
-#navigationBack .hide{
-    top: -53px;
+#navigationBack .hide {
+  top: -53px;
 }
 
 .backArrow:before {
-    content: "";
-    position: absolute;
-    width: 18px;
-    height: 3px;
-    background: #fff;
-    transform-origin: left;
-    transform: translate(17px, 18px) scale(0); 
-    transition: .2s;
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 3px;
+  background: #fff;
+  transform-origin: left;
+  transform: translate(17px, 18px) scale(0);
+  transition: 0.2s;
 }
 
 #navigationBack > div:first-child:hover .backArrow:before {
-    transform: translate(17px, 18px) scale(1); 
+  transform: translate(17px, 18px) scale(1);
 }
 
-#navigationBack > div{
-    padding: 10px;
-    padding-right: 30px;
+#navigationBack > div {
+  padding: 10px;
+  padding-right: 30px;
 }
 
-#navigationBack > div:hover{
-    cursor: pointer;
+#navigationBack > div:hover {
+  cursor: pointer;
 }
 
 .nameInNav {
-    font-family: Nunito Sans, sans-serif;
-    font-weight: bolder;
-
+  font-family: Nunito Sans, sans-serif;
+  font-weight: bolder;
 }
 
+.seen-notification-box {
+  margin-top: 10px;
+}

@@ -4,86 +4,118 @@
 
 /* to overlapp everything and display on top */
 .search-container {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    overflow: scroll;
-    background-color: #151515;
-    width: 100%;
-    z-index: 3;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: scroll;
+  background-color: #151515;
+  width: 100%;
+  z-index: 3;
 }
 
-.search-nav-container{
-    padding-top: 60px;
+.search-nav-container {
+  padding-top: 60px;
+  display: flex;
+  margin: 10px;
+}
+
+.search-nav-container > div {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #525050;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.search-field-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-field {
+  width: 91vw;
+  height: 3vh;
+  border: 0px;
+}
+
+.search-result-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px;
+}
+
+.search-result-wrapper > div {
+  background-size: cover;
+  height: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userDiv{
+    height: 8vh;
     display: flex;
-    margin: 10px;
+    justify-content: flex-start;
+    font-size: 16px;
+    border: 1px solid rgb(78, 78, 78);
 }
 
-.search-nav-container > div{
-    flex-grow: 1;
+.search-user-button:hover {
+  cursor: pointer;
+}
+
+.search-movie-button:hover {
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgb(96, 96, 96);
+}
+
+.active-user-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active-user-search > div {
+    height: 8vh;
     display: flex;
-    justify-content: center;
-    border: 1px solid #525050;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
+    justify-content: flex-start;
+    font-size: 16px;
+    border: 1px solid rgb(78, 78, 78);
+    width: 91vw;
+    border-radius: 2px;
+    font-family: Nunito Sans, sans-serif;
 }
 
-.search-field-container{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.search-movie-button,
+.search-user-button {
+    font-family: Nunito Sans, sans-serif;
 }
 
-.search-result-wrapper{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 10px;
-    margin: 10px;
-}
-
-.search-result-wrapper > div{
-    background-size: cover;
-    height: 190px;
+.searchPersonDiv {
+    border-radius: 50%;
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: #1f1e1e84;
+    border: 0.5px solid rgb(48, 46, 46);
+    margin-left: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.search-user-button:hover{
-    cursor: pointer;
-}
-
-.search-movie-button:hover{
-    cursor: pointer;
-}
-
-.active{
-    background-color: rgb(96, 96, 96);
-}
-
-.active-user-search{
-    display: flex;
-    flex-direction: column;
-}
-
-.active-user-search > div{
-    height: 80px;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 14pt;
-    border: 1px solid rgb(78, 78, 78);
-    /* margin-left:10px; */
-    /* margin-right: 10px; */
-}
-
-.active-user-search > div > span{
-    margin-right: 30px;
-    margin-left: 30px;
-}
-
-.search-movie-button, .search-user-button {
-    font-family: Nunito Sans, sans-serif;
+.searchPersonDiv > span {
+  margin-right: 30px;
+  margin-left: 30px;
+  font-size: 30px;
+  margin-bottom: 2px;
 }
