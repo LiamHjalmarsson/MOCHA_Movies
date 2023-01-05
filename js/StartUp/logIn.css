@@ -27,9 +27,9 @@ body {
   border-radius: 5px;
   width: 89vw;
   padding-left: 2vw;
-  background-color: rgb(77, 77, 77);
   font-family: Nunito Sans, sans-serif;
   font-size: 15px;
+  background: rgb(77, 77, 77);
 }
 
 .input > label {

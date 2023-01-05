@@ -1,187 +1,204 @@
-nav{
-    position: fixed;
-    width: 100vw;
-    z-index: 1;
-    top: 0;
-    transition: 0.5s;
+nav {
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+  top: 0;
+  transition: 0.5s;
 }
 
-.navContainer{
-    display: flex;
-    align-items: center;
-    background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0));
-    transition: color 1s;
-    font-family: Nunito Sans, sans-serif;
-    font-weight: bolder;
+.navContainer {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(15, 15, 15),
+    rgba(15, 15, 15, 0)
+  );
+  transition: color 1s;
+  font-family: Nunito Sans, sans-serif;
+  font-weight: bolder;
 }
 
-.hide-nav{
-    top: -80px;
+.hide-nav {
+  top: -80px;
 }
 
-.burger-div{
-    width: 20%;
-    text-align: center;
+.burger-div {
+  width: 20%;
+  text-align: center;
 }
 
-.navContainer > div:nth-child(2){
-    width: 100%;
-    text-align: center;
-    font-size: 18pt;
-    color: white;
+.navContainer > div:nth-child(2) {
+  width: 100%;
+  text-align: center;
+  font-size: 18pt;
+  color: white;
 }
 
-.notification-icon{
-    width: 10%;
-    text-align: center;
+.notification-icon {
+  width: 10%;
+  text-align: center;
 }
 
-.profile-div{
-    width: 10%;
-    text-align: center;
+.profile-div {
+  width: 10%;
+  text-align: center;
 }
 
-.burgerMenu{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    font-size: 16pt;
-    right: 0px;
-    transition: 0.5s;
-    z-index: 2;
-    background-color: rgb(15, 15, 15);
-    font-family: 'Nunito Sans', sans-serif;
+.burgerMenu {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  font-size: 16pt;
+  right: 0px;
+  transition: 0.5s;
+  z-index: 2;
+  background-color: rgb(15, 15, 15);
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-.burgerMenu > div{
-    height: 20vw;
-    display: flex;
-    align-items: center;
-    padding-left: 25px;
+.burgerMenu > div {
+  height: 20vw;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
 }
 
-.burger-item-start{
-    position: relative;
-    left: -100px;
-    top: -100px;
+.burger-item-start {
+  position: relative;
+  left: -100px;
+  top: -100px;
 }
 
-.burger-item-end{
-    position: relative;
-    left: 0;
-    top: 0;
-    transition: 0.5s;
+.burger-item-end {
+  position: relative;
+  left: 0;
+  top: 0;
+  transition: 0.5s;
 }
 
-.burgerMenu > div:hover{
-    cursor: pointer;
+.burgerMenu > div:hover {
+  cursor: pointer;
 }
 
-.burgerMenu > div > p:hover{
-    color:#4e4e4e;;
+.burgerMenu > div > p:hover {
+  color: #4e4e4e;
 }
 
-.burgerMenu > div:first-child > .material-symbols-outlined{
-    font-size: 30px;
+.burgerMenu > div:first-child > .material-symbols-outlined {
+  font-size: 30px;
 }
 
-.hideBurger{
-    position: fixed;
-    right: 500px;
+.hideBurger {
+  position: fixed;
+  right: 500px;
 }
 
-.burger-div > .material-symbols-outlined{
-    font-size: 30px;
-    color: white;
+.burger-div > .material-symbols-outlined {
+  font-size: 30px;
+  color: white;
 }
 
-.burger-div > .material-symbols-outlined:hover{
-    cursor: pointer;
+.burger-div > .material-symbols-outlined:hover {
+  cursor: pointer;
 }
 
-
-.notification-icon > .material-symbols-outlined{
-    font-size: 32px;
-    color: white;
+.notification-icon > .material-symbols-outlined {
+  font-size: 32px;
+  color: white;
 }
 
-.notification-icon > .material-symbols-outlined:hover{
-    cursor: pointer;
+.notification-icon > .material-symbols-outlined:hover {
+  cursor: pointer;
 }
 
-.profile-div > .material-symbols-outlined{
-    font-size: 34px;
-    color: white;
+.profile-div > .material-symbols-outlined {
+  font-size: 34px;
+  color: white;
 }
 
-.profile-div > .material-symbols-outlined:hover{
-    cursor: pointer;
+.profile-div > .material-symbols-outlined:hover {
+  cursor: pointer;
 }
 
-.notification-box{
-    color: white;
-    padding: 20px;
-    background-color: black;
-    max-height: 30vh;
-    overflow: scroll;
-    transition: 1s;
-    position: fixed;
-    top: 0;
-    padding-top: 90px;
-    z-index: -1;
+.notification-box {
+  color: white;
+  padding: 15px;
+  background-color: black;
+  max-height: 40vh;
+  overflow: scroll;
+  transition: 1s;
+  position: fixed;
+  top: 0;
+  padding-top: 90px;
+  z-index: -1;
+  font-family: Nunito Sans, sans-serif;
 }
 
-.unseen-notification-box, .seen-notification-box{
-    min-height: 80px;
+.unseen-notification-box,
+.seen-notification-box {
+  min-height: 80px;
 }
 
-.unseen-notification-box >div:first-child{
-    font-size: 14pt;
-    margin-bottom: 16px;
-    margin-left: 7px;
+.unseen-notification-box > div:first-child {
+  font-size: 14pt;
+  margin-bottom: 16px;
+  margin-left: 7px;
 }
 
-.seen-notification-box >div:first-child{
-    font-size: 14pt;
-    margin-bottom: 16px;
-    margin-left: 7px;
+.seen-notification-box > div:first-child {
+  font-size: 14pt;
+  margin-bottom: 16px;
+  margin-left: 7px;
 }
 
-.notification-item{
-    /* background-color: #3b3a3a; */
-    border-radius: 10px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
-    font-size: 10pt;
+.notification-item {
+  border-radius: 2px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 10pt;
+  background-color: #1f1e1e84;
+  padding: 10px;
 }
 
-.notification-item > img{
-    width: 35px;
-    margin-left: 10px;
+.notification-item > img {
+  width: 35px;
+  margin-left: 10px;
 }
 
-.notification-item > div:first-child  > .material-symbols-outlined{
-    color: rgb(145, 145, 145);
-    margin-right: 10px;
+.notification-item > div:first-child {
+  border-radius: 50%;
+  margin-right: 10px;
+  height: 40px;
+  min-width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1e1e84;
+  border: 0.5px solid rgb(48, 46, 46);
+}
+.notification-item > div:first-child > .material-symbols-outlined {
+  color: rgb(145, 145, 145);
+  font-size: 30px;
+  margin-bottom: 2px;
 }
 
-.notification-item > div:nth-child(2) > div:nth-child(1){
-    margin-bottom: 3px;
+.notification-item > div:nth-child(2) > div:nth-child(1) {
+  margin-bottom: 3px;
 }
 
-.notification-item > div:nth-child(2) > div:nth-child(2){
-    font-size: 9pt;
+.notification-item > div:nth-child(2) > div:nth-child(2) {
+  font-size: 9pt;
 }
 
-.notification-box > div:hover{
-    cursor: pointer;
+.notification-box > div:hover {
+  cursor: pointer;
 }
 
-.hideNotifications{
-    position: fixed;
-    top: -500px;
+.hideNotifications {
+  position: fixed;
+  top: -500px;
 }
