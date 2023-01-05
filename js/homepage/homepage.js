@@ -94,13 +94,14 @@ export async function renderFirstPage (user) {
   }
 
   document.querySelector('main').append(popularWrapper, personWrapper)
+  firstPageTrendingMovies()
 
   firstPageUserMovie(
     user.subscribedMovies,
-    'Subscribed movie',
+    'Subscribed movies',
     'subscribedMovies'
   )
-  firstPageUserMovie(user.moviesToSee, 'Movies to see', 'moviesToSee')
+  firstPageUserMovie(user.moviesToSee, 'Want to see', 'moviesToSee')
   firstPageField('Top_rated')
   firstPageUserMovie(user.watchedMovies, 'Watch again', 'watchedMovies')
 }
@@ -135,19 +136,6 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   personBox.append(personDiv, addFriendDiv)
 }
 
-// ----- testing, delete this later --------
-
-// renderFirstPage()
-
-function followingProfile (followingID) {
-  console.log(followingID)
-}
-function addFriendPage () {
-  console.log('test test, add new friend')
-}
-
-// -----------------------------------------
-
 async function firstPageField (field) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
@@ -175,7 +163,6 @@ async function firstPageField (field) {
 
   for (let i = 0; i < 10; i++) {
     let movieDiv = createElementWithClassOrID('movieDiv')
-
     let popularMovies = movieResource.results
 
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${popularMovies[i].poster_path})`
@@ -192,8 +179,14 @@ async function firstPageUserMovie (array, title, path) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID('movieWrapper')
+  let userString = localStorage.getItem("user")
+  let user = JSON.parse(userString)
 
-  titleBox.textContent = title
+  if(title != "Watch agian"){
+    titleBox.textContent = user.firstName +"s" + " " + title
+  }else{
+    titleBox.textContent = title
+  }
 
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
@@ -233,4 +226,35 @@ export function createElementWithClassOrID (
   elementclass ? createdElement.classList.add(elementclass) : false
   id ? createdElement.setAttribute('id', id) : null
   return createdElement
+}
+
+
+async function firstPageTrendingMovies(){
+  let titleBox = createElementWithClassOrID('titleBox')
+  let movieBox = createElementWithClassOrID('movieBox')
+  let movieWrapper = createElementWithClassOrID('movieWrapper')
+  movieWrapper.append(titleBox, movieBox)
+  document.querySelector('main').append(movieWrapper)
+  titleBox.innerHTML = "Todays trending"
+
+
+  let rqst = new Request(`https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`)
+  let response = await fetch(rqst)
+  let recourse = await response.json()
+
+  for (let i = 0; i < 10; i++) {
+    let movieDiv = createElementWithClassOrID('movieDiv')
+
+    let trendingMovies = recourse.results
+
+    movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${trendingMovies[i].poster_path})`
+    movieDiv.style.backgroundSize = 'cover'
+    movieDiv.addEventListener('click', () => {
+      renderMovie(recourse.results[i])
+    })
+
+    movieBox.append(movieDiv)
+  }
+
+
 }

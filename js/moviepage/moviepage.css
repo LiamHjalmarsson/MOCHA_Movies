@@ -8,6 +8,12 @@
     font-family: 'Mukta', sans-serif;
     z-index: 4;
     width: 100vw;
+    left: 0;
+    transition: left 0.5s;
+}
+
+.left{
+    left: 400px;
 }
 
 #movieHeader {
@@ -22,7 +28,7 @@
     padding: 30px;
     padding-top: 0px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .titleContainer > div:first-child{
@@ -55,6 +61,10 @@
     cursor: pointer;
     transition: color 0.2s;
     color: #3699db;
+}
+
+#iconContainer > div > .material-symbols-outlined{
+    font-size: 35px;
 }
 
 .movieInformation > div {
@@ -271,6 +281,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    padding-bottom: 30px;
 }
 
 .stream-box{

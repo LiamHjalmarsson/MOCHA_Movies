@@ -139,7 +139,7 @@ async function getActors (movie) {
 //     return text
 // }
 
-function voterating (movie) {
+export function voterating (movie) {
     return movie.vote_average == "" ? "There is no rating of this movie": movie.vote_average;
 }
 
