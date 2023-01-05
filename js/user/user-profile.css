@@ -3,8 +3,6 @@ body {
     color: white
 }
 
-
-
 #user-profile {
     display: flex;
     flex-direction: column;
@@ -35,13 +33,13 @@ body {
 }
 
 .user > button {
-    color: black;
-    border: 0px solid;
-    padding: 5px 10px;
-    border-radius: 3px;
+    border: 1px solid #525050;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
 }
 
-.profilePicture{
+.profilePicture {
     border: 2px solid white;
     border-radius: 50%;
     height: 100px;
@@ -163,11 +161,24 @@ body {
     margin-top: 40px;
 }
 
-.passwordForm{
+.passwordForm {
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     margin-bottom: 50px;
+}
+
+.usernameForm > input, .passwordForm > input {
+    border: 1px solid #525050;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.usernameForm > button, .passwordForm > button {
+    border: 1px solid #525050;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
 }

@@ -103,6 +103,15 @@ export async function otherUser (otherUserID) {
 async function fetchMovies (otherUserMovies, otherUserResource, counter = 0) {
   let movieArray = []
 
+  if (otherUserMovies.length === 0) {
+    let noInfo = document.createElement("div");
+    noInfo.classList.add("noInfo");
+    noInfo.textContent = "This user has no movies";
+    noInfo.style.padding = "30px";
+    document.querySelector("#otherProfileWrapper").append(noInfo);
+    return;
+  }
+
   for (let i = 0; i < 20; i++) {
     counter++
     if (otherUserMovies[counter] != undefined) {
@@ -196,7 +205,7 @@ function createMovieBox (movieArray, otherUserResource) {
                 starsContainer.append(star)
 
                 if (i < grade) {
-                  console.log('gul')
+                  // console.log('gul')
                   star.firstChild.classList.add('fill')
                 }
               }

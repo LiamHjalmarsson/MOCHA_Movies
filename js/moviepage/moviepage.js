@@ -28,7 +28,7 @@ export async function renderMovie (movie) {
         let runtime = movie.runtime
         let hour = runtime/60
         let stringhour = hour.toString()
-        console.log(stringhour)
+        // console.log(stringhour)
         let procentMinutes = stringhour.substring(stringhour.indexOf(".") + 1);
         let hej = 0 + "." + procentMinutes
         let hej1 = Number(hej)
@@ -88,7 +88,7 @@ export async function renderMovie (movie) {
 async function getActors (movie) {
     let responseCast = await fetch (`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${key}&language=en-US`);
     let recourseCast = await responseCast.json();
-    console.log(recourseCast)
+
     let actors = document.createElement("div")
     let title = document.createElement("h3")
     title.innerHTML = "Actors"
@@ -102,22 +102,24 @@ async function getActors (movie) {
         return text = "No cast could be found";
     } else {
         for (let i = 0; i < 4; i++) {
-            let person = document.createElement("div")
-            person.classList.add("actor")
-            let text = document.createElement("p")
-            text.innerHTML = recourseCast.cast[i].name
-            let img = document.createElement("div")
-            if(recourseCast.cast[i].profile_path != null){
-                img.style.backgroundImage= `url(https://image.tmdb.org/t/p/original/${recourseCast.cast[i].profile_path})`
-            }else{
-                if(recourseCast.cast[i].gender == 1){
-                    img.innerHTML = `<span class="material-symbols-outlined">face_4</span>`
+            if (recourseCast.cast[i] != undefined) {
+                let person = document.createElement("div")
+                person.classList.add("actor")
+                let text = document.createElement("p")
+                text.innerHTML = recourseCast.cast[i].name
+                let img = document.createElement("div")
+                if(recourseCast.cast[i].profile_path != null){
+                    img.style.backgroundImage= `url(https://image.tmdb.org/t/p/original/${recourseCast.cast[i].profile_path})`
                 }else{
-                    img.innerHTML = `<span class="material-symbols-outlined">face_5</span>`
+                    if(recourseCast.cast[i].gender == 1){
+                        img.innerHTML = `<span class="material-symbols-outlined">face_4</span>`
+                    }else{
+                        img.innerHTML = `<span class="material-symbols-outlined">face_5</span>`
+                    }
                 }
+                person.append(img,text)
+                actorsBox.append(person)
             }
-            person.append(img,text)
-            actorsBox.append(person)
         }
     }
     return actors
@@ -196,7 +198,7 @@ async function getReviews(movie){
                 starsContainer.append(star);
 
                 if(i < givenGrade){
-                    console.log("gul")
+                    // console.log("gul")
                     star.firstChild.classList.add("fill")
                 }
               }
@@ -297,7 +299,7 @@ async function getWhereToWatch(movie){
     let rqst = new Request(`https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=${key}&language=en-US`)
     let response = await fetch(rqst)
     let streamResource = await response.json()
-    console.log(streamResource)
+    // console.log(streamResource)
     
     
     if(streamResource.results.SE){
@@ -308,7 +310,7 @@ async function getWhereToWatch(movie){
         div.append(title, box)
 
         let swedishStream = streamResource.results.SE
-        console.log(swedishStream)
+        // console.log(swedishStream)
     
         if(swedishStream.flatrate){
             title.innerHTML = "Stream on"
@@ -327,10 +329,6 @@ async function getWhereToWatch(movie){
                 box.append(buyDiv)
             })
         }
-
         return div
     }
-
-
-
 }

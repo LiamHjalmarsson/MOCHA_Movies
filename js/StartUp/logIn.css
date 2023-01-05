@@ -11,6 +11,7 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: rgb(40, 40, 40);
+  color: white;
   font-family: Nunito Sans, sans-serif;
   padding-top: 1vh;
 }
@@ -30,6 +31,7 @@ body {
   font-family: Nunito Sans, sans-serif;
   font-size: 15px;
   background: rgb(77, 77, 77);
+  color: #fff;
 }
 
 .input > label {
@@ -47,7 +49,9 @@ body {
   background-color: rgb(136, 136, 136);
   font-size: 15px;
   color: rgb(34, 34, 34);
+  cursor: pointer;
 }
+
 .logIn > div:last-child {
   color: #fff;
   font-weight: bold;
@@ -63,3 +67,10 @@ body {
   font-weight: 500;
   margin-top: 5vh;
 }
+
+/* activeButton background-color: rgb(96, 96, 96); 
+button styling 
+border: 1px solid #525050;
+border-radius: 5px;
+padding: 10px;
+margin: 5px;  */

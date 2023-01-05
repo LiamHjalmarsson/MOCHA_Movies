@@ -3,7 +3,6 @@ import { navigationBack } from '../navigationBack/navigationBack.js'
 
 const key = `e666c096bb904490508ada0b495d2d90`
 
-// three parameters movies = array, counter = counter, movieType = "string" (popoular/top_rated etc)
 export async function renderMovies (counter, movieType, movies) {
   let renderMoviesWrapper = document.createElement('div')
   document.querySelector('main').append(renderMoviesWrapper)
@@ -20,7 +19,6 @@ export async function renderMovies (counter, movieType, movies) {
       `https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`
     )
     let moviesResource = await moviesResponse.json()
-
     getMovies(moviesResource)
   } else {
     getMovies(movies)
@@ -54,21 +52,10 @@ export async function renderMovies (counter, movieType, movies) {
   )
 
   observer.observe(btn)
-
-  // jag avkommentera nedan o ersatte med ovan
-  //////
-  // btn.addEventListener('click', async () => {
-  //   counter++;
-  //   let moviesResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`);
-  //   let moviesResource = await moviesResponse.json();
-
-  //   getMovies(moviesResource);
-  // })
-  ////////
-
   btnBox.appendChild(btn)
   renderMoviesWrapper.append(btnBox)
 }
+
 export async function renderMyMovies (counter, type, movies) {
   let renderMoviesWrapper = document.createElement('div')
   renderMoviesWrapper.id = 'renderMoviesWrapper'
@@ -108,7 +95,7 @@ export async function renderMyMovies (counter, type, movies) {
 
     // if the movies is defined
   } else if (user[type].length != 0) {
-    // loop the movies that comes with the array from first page
+    // loop the movies that comes with the array from first pagex
     movies.forEach(async movie => {
       if (typeof movie === 'number') {
         let movieResponse = await fetch(
@@ -124,19 +111,15 @@ export async function renderMyMovies (counter, type, movies) {
       }
     }) 
 
-    // check if the type of movie array is longre then 10 to loop more movies
     if (user[type].length > 10) {
-      // console.log(movies, counter, type)
-      ////// **** problem here when fetching movies with error code getting all the information but getting error response ****** ///
       for (let i = 0; i < 10; i++) {
         counter++
-        // kontroll så att id inte är undefined
         if (user[type][counter] != undefined) {
           let movieResponse = await fetch(
             `https://api.themoviedb.org/3/movie/${user[type][counter]}?api_key=${key}&language=en-US`
           )
           let movieResource = await movieResponse.json()
-
+            
           if (movieResource.status_code != 34) {
             movieGridContainer.append(createMovie(movieResource))
           }
@@ -165,13 +148,10 @@ export async function renderMyMovies (counter, type, movies) {
         let btnEntrie = entries[0]
 
         if (!btnEntrie.isIntersecting) return
-
-        // console.log(user[type].length)
-        for (let i = 0; i < 20; i++) {
-          counter++
-          // console.log(counter)
-          getMovies(user[type], counter, type)
-        }
+          for (let i = 0; i < 20; i++) {
+            counter++
+            getMovies(user[type], counter, type)
+          }
       },
       {
         threshold: 1

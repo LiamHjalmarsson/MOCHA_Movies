@@ -191,29 +191,38 @@ async function firstPageUserMovie (array, title, path) {
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
   let movieArray = []
-  for (let i = 0; i < 10; i++) {
-    let movieDiv = createElementWithClassOrID('movieDiv')
 
-    let movieResponse = await fetch(
-      `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
-    )
-    let movieResource = await movieResponse.json()
+  if (array.length != 0) {
+    for (let i = 0; i < 10; i++) {
+      let movieDiv = createElementWithClassOrID('movieDiv')
 
-    // controls if there is a recourse or not
-    if (movieResource.status_code != 34) {
-      movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
-      movieDiv.style.backgroundSize = 'cover'
-      movieDiv.addEventListener('click', () => {
-        renderMovie(movieResource)
-      })
-
-      movieBox.append(movieDiv)
-      movieArray.push(movieResource)
+      if (array[i] != undefined) {
+        let movieResponse = await fetch(
+          `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+        )
+        let movieResource = await movieResponse.json()
+  
+        if (movieResource.status_code != 34) {
+          movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
+          movieDiv.style.backgroundSize = 'cover'
+          movieDiv.addEventListener('click', () => {
+            renderMovie(movieResource)
+          })
+  
+          movieBox.append(movieDiv)
+          movieArray.push(movieResource)
+        }
+      }
     }
+    titleBox.addEventListener('click', () => {
+      renderMyMovies(10, path, movieArray)
+    })
+  } else {
+    let movieDiv = createElementWithClassOrID('noMovies');
+    movieDiv.style.margin = "5px";
+    movieDiv.innerHTML = `<span class="material-symbols-outlined">tv_off</span>`;
+    movieBox.append(movieDiv);
   }
-  titleBox.addEventListener('click', () => {
-    renderMyMovies(10, path, movieArray)
-  })
 }
 
 // if elementclass = true, gör det som står innan kolon, om false , gör det efter kolon

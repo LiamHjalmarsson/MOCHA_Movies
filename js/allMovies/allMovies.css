@@ -3,7 +3,7 @@
     top: 0;
     bottom: 0;
     overflow: scroll;
-    background-color: black;
+    background-color: #151515;
     width: 100%;
     z-index: 3;
 }
