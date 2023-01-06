@@ -5,6 +5,7 @@ import { createNav } from '../header/header.js'
 import { otherUser } from '../otherProfile/otherProfile.js'
 import { renderAddFreind } from '../fellows/fellows.js'
 import { following } from '../fellows/fellows.js'
+import { logIn } from '../StartUp/start-up.js'
 
 // localStorage.setItem("user", JSON.stringify(user));
 
@@ -309,3 +310,16 @@ async function getCategories(){
   }
 
 }
+
+
+function  start(){
+  let storage = JSON.parse(localStorage.getItem("user"));
+  
+  if (storage == null) {
+     logIn();
+  } else {
+    renderFirstPage(storage);
+  }
+}
+
+start()

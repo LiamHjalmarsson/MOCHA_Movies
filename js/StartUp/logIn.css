@@ -2,7 +2,20 @@ body {
   margin: 0px;
 }
 
-.logIn {
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.logIn{
+  font-family: Nunito Sans, sans-serif;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -10,10 +23,6 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(40, 40, 40);
-  color: white;
-  font-family: Nunito Sans, sans-serif;
-  padding-top: 1vh;
 }
 
 .input {
@@ -26,7 +35,7 @@ body {
   height: 48px;
   border: rgb(136, 136, 136) solid 1px;
   border-radius: 5px;
-  width: 89vw;
+  width: 70vw;
   padding-left: 2vw;
   font-family: Nunito Sans, sans-serif;
   font-size: 15px;
@@ -42,7 +51,7 @@ body {
   margin-top: 30px;
   height: 50px;
   border: 1px solid #333;
-  width: 91vw;
+  width: 25vw;
   border-radius: 5px;
   font-family: Nunito Sans, sans-serif;
   font-weight: bold;
@@ -66,6 +75,15 @@ body {
 .logSignInTitle{
   font-weight: 500;
   margin-top: 5vh;
+}
+
+.logSignInTitle > h2{
+  font-size: 14pt;;
+}
+
+.titleHeader > h3{
+  margin-top: 30px;
+  font-size: 18pt;
 }
 
 /* activeButton background-color: rgb(96, 96, 96); 
