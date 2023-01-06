@@ -18,7 +18,7 @@ export function userFollowers () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "People i follow"));
+    followContainer.append(navigationBack(followContainer, "Followers"));
     getUserFollowers(-1);
 }
 
@@ -36,8 +36,13 @@ export async function getUserFollowers (counter) {
     
   let followWrapper = document.createElement("div");
   followWrapper.classList.add("followWrapper");
-  followWrapper.style.marginTop = "60px";
   document.querySelector("#followContainer").append(followWrapper);
+
+  let followCount = document.createElement("div")
+  followCount.classList.add("follow-count")
+  let count = arrayFollowingMe.length
+  followCount.innerHTML = `${count} Followers`
+  followWrapper.appendChild(followCount)
 
   if (arrayFollowingMe.length != 0) {
     
@@ -141,7 +146,7 @@ export function following () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "Following me"));
+    followContainer.append(navigationBack(followContainer, "Following"));
     followingIngs(-1);
 }
 
@@ -159,8 +164,13 @@ export async function followingIngs (counter) {
 
     let followWrapper = document.createElement("div")
     followWrapper.classList.add("followWrapper");
-    followWrapper.style.marginTop = "60px";
     document.querySelector("#followContainer").appendChild(followWrapper);
+
+    let followCount = document.createElement("div")
+    followCount.classList.add("follow-count")
+    let count = arrayFollowing.length
+    followCount.innerHTML = `${count} Followings`
+    followWrapper.appendChild(followCount)
 
     if (arrayFollowing.length != 0) {
         if (arrayFollowing.length > 20) {

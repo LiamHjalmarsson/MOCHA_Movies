@@ -4,6 +4,7 @@ import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
 import { createNav } from '../header/header.js'
 import { otherUser } from '../otherProfile/otherProfile.js'
 import { renderAddFreind } from '../fellows/fellows.js'
+import { following } from '../fellows/fellows.js'
 
 // localStorage.setItem("user", JSON.stringify(user));
 
@@ -66,6 +67,7 @@ export async function renderFirstPage (user) {
 
   titleBox.textContent = 'Your friends'
   personWrapper.append(titleBox, personBox)
+  titleBox.addEventListener("click", following)
 
   let addFriendDiv = createElementWithClassOrID('imgDiv', 'addfriendDiv')
   addFriendDiv.innerHTML =
@@ -102,6 +104,9 @@ export async function renderFirstPage (user) {
     'subscribedMovies'
   )
   firstPageUserMovie(user.moviesToSee, 'Want to see', 'moviesToSee')
+  firstPageField("Upcoming")
+  firstPageField("Now_playing")
+  // getCategories()
   firstPageField('Top_rated')
   firstPageUserMovie(user.watchedMovies, 'Watch again', 'watchedMovies')
 }
@@ -136,14 +141,19 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   personBox.append(personDiv, addFriendDiv)
 }
 
+
 async function firstPageField (field) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID('movieWrapper')
 
-  if (field.includes('_')) {
+  if(field == "Now_playing"){
+    titleBox.textContent = "Now playing in theatres"
+  }else if (field.includes('_')) {
     let titleFieldName = field.replace('_', ' ')
     titleBox.textContent = `${titleFieldName} movies`
+  }else{
+    titleBox.textContent = field
   }
 
   movieWrapper.append(titleBox, movieBox)
@@ -153,7 +163,7 @@ async function firstPageField (field) {
     `https://api.themoviedb.org/3/movie/${field.toLowerCase()}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1`
   )
   let movieResource = await movieResponse.json()
-
+ 
   titleBox.addEventListener('click', () => {
     window.scrollTo({
       top: 0
@@ -175,6 +185,8 @@ async function firstPageField (field) {
   }
 }
 
+
+
 async function firstPageUserMovie (array, title, path) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
@@ -188,11 +200,12 @@ async function firstPageUserMovie (array, title, path) {
     titleBox.textContent = title
   }
 
-  movieWrapper.append(titleBox, movieBox)
+  
   document.querySelector('main').append(movieWrapper)
   let movieArray = []
-
+  
   if (array.length != 0) {
+    movieWrapper.append(titleBox, movieBox)
     for (let i = 0; i < 10; i++) {
       let movieDiv = createElementWithClassOrID('movieDiv')
 
@@ -246,6 +259,10 @@ async function firstPageTrendingMovies(){
   document.querySelector('main').append(movieWrapper)
   titleBox.innerHTML = "Todays trending"
 
+  titleBox.addEventListener("click", function(){
+    renderMovies(0, "trending")
+  })
+
 
   let rqst = new Request(`https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`)
   let response = await fetch(rqst)
@@ -265,5 +282,30 @@ async function firstPageTrendingMovies(){
     movieBox.append(movieDiv)
   }
 
+
+}
+
+async function getCategories(){
+  let titleBox = createElementWithClassOrID('titleBox')
+  let genreBox = createElementWithClassOrID('genreBox')
+  let genreWrapper = createElementWithClassOrID('movieWrapper')
+
+  genreWrapper.append(titleBox, genreBox)
+  document.querySelector('main').append(genreWrapper)
+  titleBox.innerHTML = "Categories"
+
+  let rqstGenre = new Request(
+    'https://api.themoviedb.org/3/genre/movie/list?api_key=e666c096bb904490508ada0b495d2d90&language=en-US'
+  )
+  let genreResponse = await fetch(rqstGenre)
+  let genresObject = await genreResponse.json()
+
+  console.log(genresObject)
+
+  for(let i = 0; i < 10; i++){
+    let div = document.createElement("div")
+    div.innerHTML = genresObject.genres[i].name
+    genreBox.append(div)
+  }
 
 }

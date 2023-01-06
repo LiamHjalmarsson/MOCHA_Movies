@@ -203,8 +203,10 @@ async function getReviews(movie){
                 }
               }
 
+            let user = document.createElement("div")
             let userName = document.createElement("p")
-            userName.innerHTML = userResource.username
+            userName.innerHTML = userResource.firstName + " " + userResource.lastName
+            user.append(userName, starsContainer)
 
             let reviewName = document.createElement("div")
             reviewName.classList.add("review-name")
@@ -213,19 +215,14 @@ async function getReviews(movie){
             reviewTime.classList.add("review-date")
             reviewTime.innerHTML = review.date
             
-            reviewName.append(personImg,userName, reviewTime)
+            reviewName.append(personImg,user)
 
             let reviewText = document.createElement("div")
-            reviewText.innerHTML =  `"${review.reviewText}"`
+            reviewText.innerHTML =  review.reviewText
 
 
-            reviewItem.append(reviewName,starsContainer, reviewText)
+            reviewItem.append(reviewName, reviewText, reviewTime)
 
-            
-    
-            // reviewItem.innerHTML += `
-            //     <p>${personImg}${userResource.username}<p>
-            //     <p>"${review.reviewText}"</p>`
             reviewBox.appendChild(reviewItem)
         })
     }

@@ -60,7 +60,7 @@ nav {
 }
 
 .burgerMenu > div {
-  height: 20vw;
+  height: 17vw;
   display: flex;
   align-items: center;
   padding-left: 25px;
@@ -85,6 +85,19 @@ nav {
 
 .burgerMenu > div > p:hover {
   color: #4e4e4e;
+}
+
+.burgerMenu > div:first-child{
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.burgerMenu > div:last-child{
+  padding-top: 40px;
+}
+
+.burgerMenu > div:last-child > .material-symbols-outlined{
+  font-size: 30px;
 }
 
 .burgerMenu > div:first-child > .material-symbols-outlined {

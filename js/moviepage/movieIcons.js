@@ -10,6 +10,7 @@ export function createMovieIcons(movie){
     subscribeMovieDiv.innerHTML=`<span class="material-symbols-outlined">notification_add</span>`
     if(user.subscribedMovies.includes(movie.id)){
         subscribeMovieDiv.innerHTML=`<span class="material-symbols-outlined">notifications_active</span>`
+        subscribeMovieDiv.style.backgroundColor = "#3271a9"
         subscribeMovieDiv.addEventListener("click", function(){
             fetchDeleteMovie(user,movie,"delete-subscribed-movies", "subscribedMovie");
             setTimeout(() => {
@@ -30,6 +31,7 @@ export function createMovieIcons(movie){
     wantToSeeDiv.innerHTML=`<span class="material-symbols-outlined">bookmark</span>`
     if(user.moviesToSee.includes(movie.id)){
         wantToSeeDiv.innerHTML = `<span class="material-symbols-outlined">bookmark_added</span>`
+        wantToSeeDiv.style.backgroundColor = "#3271a9"
         wantToSeeDiv.addEventListener("click", function(){
             fetchDeleteMovie(user,movie, "delete-movies-to-see","movieToSee")
             setTimeout(() => {
@@ -49,6 +51,7 @@ export function createMovieIcons(movie){
     haveSeenDiv.innerHTML=`<span class="material-symbols-outlined">select_check_box</span>`
     if(user.watchedMovies.includes(movie.id)){
         haveSeenDiv.innerHTML = `<span class="material-symbols-outlined">done_all</span>`
+        haveSeenDiv.style.backgroundColor = "#3271a9"
         haveSeenDiv.addEventListener("click", function(){
             fetchDeleteMovie(user,movie, "delete-watched-movies", "watchedMovie" )
             setTimeout(() => {

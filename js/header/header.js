@@ -6,7 +6,7 @@ import {
 } from '../notification.js/notification.js'
 import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
 import { searchField, createSearch } from "../search/search.js"
-import {userProfile} from "../user/user.js"
+import {logOut, userProfile} from "../user/user.js"
 import {showAllMovies} from "../allMovies/allMovies.js"
 import { createAbout } from "../about/about.js"
 // this is to et user from DB should be from localStorage later?
@@ -102,6 +102,14 @@ function createBurger (navContainer) {
       function: () => { renderMovies(1, "popular")}
     },
     {
+      title: 'Trending',
+      function: () => { renderMovies(1, "trending")}
+    },
+    {
+      title: 'Upcoming',
+      function: () => { renderMovies(1, "Upcoming")}
+    },
+    {
       title: "Subscribed Movies",
       function: () => {renderMyMovies(1,"subscribedMovies")}
 
@@ -117,6 +125,9 @@ function createBurger (navContainer) {
     {
       title: 'About/contact',
       function: () => { createAbout()}
+    },{
+      title: '<p>Log out </p> <span class="material-symbols-outlined">logout</span>',
+      function: () => {logOut()}
     }
   ]
 
@@ -125,7 +136,7 @@ function createBurger (navContainer) {
   burger.classList.add('burgerMenu')
 
   let cross = document.createElement('div')
-  cross.innerHTML = '<span class="material-symbols-outlined">close</span>'
+  cross.innerHTML = '<span class="material-symbols-outlined">chevron_left</span>'
   cross.addEventListener('click', function () {
     burger.classList.toggle('hideBurger')
 

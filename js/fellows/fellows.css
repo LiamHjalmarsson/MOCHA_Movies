@@ -23,11 +23,6 @@
     border: 0px;
 }
 
-#followWrapper {
-    gap: 10px;
-    margin: 15px;
-}
-
 #following-container{
     position: fixed;
     top: 0;
@@ -45,18 +40,16 @@
     flex-direction: column;
     gap: 10px;
     margin: 15px;
+    margin-top: 90px;
 }
 
 .followDiv {
-    height: 80px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
     font-size: 14pt;
-    border: 1px solid rgb(78, 78, 78);
-    padding-bottom: 0px;
-    padding-top: 0px;
+    border: 1px solid rgb(61, 61, 61);
 }
 
 .img {
@@ -79,4 +72,11 @@
 
 .nan {
     text-align: center;
+}
+
+.follow-count{
+    font-size: 16pt;
+    border-bottom: 1px solid;
+    margin-right: 200px;
+    color: #c3c2c2;
 }
