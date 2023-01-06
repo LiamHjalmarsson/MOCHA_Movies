@@ -17,7 +17,7 @@ export function userProfile() {
   let logOutButton = document.createElement("div");
 
   logOutDiv.classList.add("logOut");
-  logOutButton.innerHTML = `<span class="material-symbols-outlined">logout</span><div>Log out</div>`;
+  logOutButton.innerHTML = `<div>Log out</div><span class="material-symbols-outlined">logout</span>`;
 
   logOutButton.addEventListener("click", logOut);
   userProfile.append(navigationBack(userProfile));
@@ -280,7 +280,7 @@ function buttonsUserProfile() {
   return containerButtons;
 }
 
-function logOut() {
+export function logOut() {
   let popUp = document.createElement("div");
   let text = document.createElement("div");
   let buttons = document.createElement("div");

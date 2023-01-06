@@ -14,14 +14,26 @@ export async function renderMovies (counter, movieType, movies) {
   movieGridContainer.id = 'movieGridContainer'
   renderMoviesWrapper.append(movieGridContainer)
 
-  if (movies == undefined) {
-    let moviesResponse = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`
-    )
-    let moviesResource = await moviesResponse.json()
-    getMovies(moviesResource)
-  } else {
-    getMovies(movies)
+  if(movieType != "trending"){
+    if (movies == undefined) {
+      let moviesResponse = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`
+      )
+      let moviesResource = await moviesResponse.json()
+      getMovies(moviesResource)
+      } else {
+      getMovies(movies)
+      }
+  }else{
+    if (movies == undefined) {
+      let moviesResponse = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+      )
+      let moviesResource = await moviesResponse.json()
+      getMovies(moviesResource)
+      } else {
+      getMovies(movies)
+      }
   }
 
   let btnBox = document.createElement('div')
