@@ -5,6 +5,16 @@ export function logIn () {
   let main = document.querySelector('main')
   main.innerHTML = ''
 
+  let videoDiv = document.createElement("div")
+  videoDiv.innerHTML = `
+  <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
+    <video autoplay muted loop id="myVideo">
+      <source src="../../videos/video.mp4" type="video/mp4">
+    </video>
+  </div>`
+
+main.append(videoDiv)
+
   let titleHeader = document.createElement('div')
   titleHeader.classList.add("titleHeader")
   titleHeader.innerHTML = "<h3>MochaMovies</h3>"
@@ -202,3 +212,4 @@ export function userLocalStorage (userObject) {
 
   return currentUser
 }
+

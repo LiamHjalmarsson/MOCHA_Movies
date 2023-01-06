@@ -400,10 +400,10 @@ async function reviews(movieID) {
 //   document.querySelector("main").append(popUp);
 // }
 
-let storage = JSON.parse(localStorage.getItem("user"));
+// let storage = JSON.parse(localStorage.getItem("user"));
 
-if (storage == null) {
-  logIn();
-} else {
-  renderFirstPage(storage);
-}
+// if (storage == null) {
+//   logIn();
+// } else {
+//   renderFirstPage(storage);
+// }

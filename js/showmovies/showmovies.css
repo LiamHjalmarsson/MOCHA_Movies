@@ -31,7 +31,7 @@
 
 .movieCard:hover{
     cursor: pointer;
-    box-shadow: 0px 0px 10px #4ba2e0;
+    box-shadow: 0px 0px 10px #585858;
 }
 
 #btnBox {
