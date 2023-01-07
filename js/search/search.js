@@ -131,6 +131,9 @@ function createUser(array, searchWord){
 
             if(user.imageLink == ""){
                 userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
+            } else {
+                userDiv.innerHTML = `<div class="searchPersonDiv"></div>`
+                // profileImg.style.backgroundImage = `url(../../php/image/${user.imageLink})`;
             }
             userDiv.innerHTML += user.username
 

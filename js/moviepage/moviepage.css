@@ -3,6 +3,7 @@
     top: 0;
     bottom: 0;
     overflow: scroll;
+    scrollbar-width: none;
     background-color: #151515;
     color: white;
     font-family: 'Mukta', sans-serif;

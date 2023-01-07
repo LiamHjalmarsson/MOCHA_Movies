@@ -6,6 +6,7 @@
     color: white;
     width: 100%;
     overflow: scroll;
+    scrollbar-width: none;
     font-family: 'Mukta', sans-serif;
     z-index: 4;
 }
@@ -31,6 +32,7 @@
     color: white;
     width: 100%;
     overflow: scroll;
+    scrollbar-width: none;
     font-family: 'Mukta', sans-serif;
     z-index: 4;
 }

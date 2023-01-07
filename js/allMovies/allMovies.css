@@ -3,6 +3,7 @@
     top: 0;
     bottom: 0;
     overflow: scroll;
+    scrollbar-width: none;
     background-color: #151515;
     width: 100%;
     z-index: 3;
@@ -17,6 +18,7 @@
     margin: 10px;
     /* width: 100vw; */
     overflow: scroll;
+    scrollbar-width: none;
   }
 
 .allMoviesContainer > div{

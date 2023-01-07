@@ -193,7 +193,7 @@
             "firstName": "Liam",
             "lastName": "Hjalmarsson",
             "password": "hundar321",
-            "imageLink": "",
+            "imageLink": "uploades\/1673116124-liam.png",
             "reviewID": [
                 4
             ],
@@ -282,7 +282,7 @@
             "firstName": "Camille",
             "lastName": "Petit",
             "password": "dogs123456",
-            "imageLink": "",
+            "imageLink": "uploades\/1673116539-icon-profile-6.jpg",
             "reviewID": [],
             "following": [],
             "moviesToSee": [],
@@ -900,7 +900,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 5,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-03 23:30:35"
         },
         {
