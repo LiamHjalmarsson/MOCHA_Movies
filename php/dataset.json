@@ -6,7 +6,7 @@
             "firstName": "Sophie",
             "lastName": "Sundqvist",
             "password": "loggain123",
-            "imageLink": "uploades\/1673126028-icon-profile-26.jpg",
+            "imageLink": "uploades\/1673133133-woman.png",
             "reviewID": [
                 1,
                 2,
@@ -193,7 +193,7 @@
             "firstName": "Liam",
             "lastName": "Hjalmarsson",
             "password": "hundar321",
-            "imageLink": "uploades\/1673126814-red-hot-chili-peppers-logo-1024x776.jpeg",
+            "imageLink": "uploades\/1673133103-liam.png",
             "reviewID": [
                 4
             ],
@@ -283,7 +283,7 @@
             "firstName": "Camille",
             "lastName": "Petit",
             "password": "dogs123456",
-            "imageLink": "uploades\/1673116539-icon-profile-6.jpg",
+            "imageLink": "uploades\/1673133166-icon-profile-26.jpg",
             "reviewID": [],
             "following": [],
             "moviesToSee": [],
