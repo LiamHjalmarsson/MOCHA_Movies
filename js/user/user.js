@@ -257,9 +257,13 @@ function changeImage(user) {
   let submitInput = document.createElement("button");
   submitInput.type = "submit";
 
+  let confirmDiv = document.createElement("div");
+  confirmDiv.classList.add("confrimDiv");
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     setTimeout( async () => {
+
       let formDATA = new FormData(form);
       formDATA.append("userID", user.userID);
 
@@ -271,18 +275,24 @@ function changeImage(user) {
       try {
           let response = await fetch(req);
           let recourse = await response.json();
-          
-          // console.log(recourse)
-          let new_response = await fetch(`../../php/get/get.php?users=${user.userID}`);
-          let new_recourse = await new_response.json();
 
-          localStorage.setItem("user", JSON.stringify(new_recourse));
-
-          document.querySelector("main").innerHTML = ""
-          document.querySelector("nav").innerHTML = ""
-          renderFirstPage(new_recourse);
+          if (recourse.error) {
+            let errorDiv = document.createElement("div");
+            errorDiv.textContent = recourse.error;
+            errorDiv.classList.add("errorDiv");
+            confirmDiv.append(errorDiv);
+          } else{
+            let new_response = await fetch(`../../php/get/get.php?users=${user.userID}`);
+            let new_recourse = await new_response.json();
+  
+            localStorage.setItem("user", JSON.stringify(new_recourse));
+  
+            document.querySelector("main").innerHTML = ""
+            document.querySelector("nav").innerHTML = ""
+            renderFirstPage(new_recourse);
+          }
         } catch (error) {
-          // console.log(error)
+          console.log(error)
       }
     }, 200)
   })
@@ -292,6 +302,7 @@ function changeImage(user) {
   form.append(userInput, inputFile, submitInput);
   // popUp.append(dummy, form);
   popUp.append(form);
+  popUp.append(confirmDiv);
   document.querySelector("main").append(popUp);
 }
 
