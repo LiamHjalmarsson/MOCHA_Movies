@@ -126,8 +126,9 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   let nameDiv = createElementWithClassOrID('nameDiv')
 
   if (personIFollowResource.imageLink != '') {
-    imgDiv.style.backgroundImage = `url${personIFollowResource.imageLink})`
+    imgDiv.style.backgroundImage = `url(../../php/image/${personIFollowResource.imageLink})`;
     imgDiv.style.backgroundSize = 'contain'
+    imgDiv.style.backgroundPosition = 'center'
   } else {
     imgDiv.innerHTML = '<span class="material-symbols-outlined">person</span>'
   }
