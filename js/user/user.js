@@ -73,12 +73,10 @@ function changeProfileInformation() {
   let imageChange = document.createElement("div");
 
   imageChange.textContent = "Change profile image";
-  imageChange.style.color = "moccasin"
 
   let user = JSON.parse(localStorage.getItem("user"));
 
   imageChange.addEventListener("click", () => changeImage(user));
-
   if (user.imageLink == "") {
     profileImg.innerHTML =
       '<span class="material-symbols-outlined">person</span>';
@@ -87,33 +85,37 @@ function changeProfileInformation() {
   }
 
   textDiv.textContent = `${user.firstName} ${user.lastName}`;
-  let errorDiv = document.createElement("div");
-  errorDiv.style.color = "red";
+  textDiv.style.fontSize = "18pt"
+  // let errorDiv = document.createElement("div");
+  // errorDiv.style.color = "red";
 
   popUp.append(
     textDiv,
     profileImg,
     imageChange,
-    usernameUpdate(user, errorDiv),
-    passwordUpdate(user, errorDiv),
-    errorDiv
+    usernameUpdate(user),
+    passwordUpdate(user),
+    // errorDiv
   );
 
   document.querySelector("main").append(popUp);
 }
 
-function usernameUpdate(user, error) {
+function usernameUpdate(user) {
   let form = document.createElement("form");
   form.classList.add("usernameForm");
 
   let input = document.createElement("input");
   input.placeholder = "Change Username...";
 
+  let responseDiv = document.createElement("div");
+  responseDiv.classList.add("response-div")
+
   let submit = document.createElement("button");
   submit.textContent = "Change Username";
   submit.addEventListener("click", async (event) => {
     event.preventDefault();
-    error.textContent = "";
+    // error.textContent = "";
     let options = {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -124,12 +126,30 @@ function usernameUpdate(user, error) {
     if (response.ok) {
       let resource = await response.json()
       localStorage.setItem("user", JSON.stringify(resource))
+      responseDiv.textContent = `Username is changed to ${input.value}`
+      responseDiv.style.color = "lightgreen"
+      setTimeout(() =>{
+        responseDiv.style.color = "transparent"
+      }, 4000)
+      setTimeout(() =>{
+        responseDiv.textContent = ""
+        input.value=""
+      }, 4500)
     } else {
-      error.textContent = response.statusText;
+      let resource = await response.json()
+      console.log(resource)
+      responseDiv.textContent = resource.error
+      responseDiv.style.color = "#ff6464"
+      setTimeout(() =>{
+        responseDiv.style.color = "transparent"
+      }, 4000)
+      setTimeout(() =>{
+        responseDiv.textContent = ""
+      }, 5000)
     }
   });
 
-  form.append(input, submit);
+  form.append(responseDiv, input, submit);
   return form;
 }
 
@@ -141,6 +161,9 @@ function passwordUpdate(user, error) {
   oldPassword.placeholder = "Old Password";
   oldPassword.type = "password";
 
+  let responseDiv = document.createElement("div");
+  responseDiv.classList.add("response-div")
+
   let newPassword = document.createElement("input");
   newPassword.placeholder = "New Password...";
   newPassword.type = "password";
@@ -149,7 +172,6 @@ function passwordUpdate(user, error) {
   submit.textContent = "Change Password";
   submit.addEventListener("click", async (event) => {
     event.preventDefault();
-    error.textContent = "";
     let options = {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -164,12 +186,31 @@ function passwordUpdate(user, error) {
     if (response.ok) {
       let resource = await response.json()
       localStorage.setItem("user", JSON.stringify(resource))
+      responseDiv.innerHTML = "Username sucessfully changed"
+      responseDiv.style.color = "lightgreen"
+      setTimeout(() =>{
+        responseDiv.style.color = "transparent"
+      }, 4000)
+      setTimeout(() =>{
+        responseDiv.textContent = ""
+        oldPassword.value=""
+        newPassword.value=""
+      }, 4500)
     } else {
-      error.textContent = response.statusText;
+      let resource = await response.json()
+      console.log(resource)
+      responseDiv.textContent = resource.error
+      responseDiv.style.color = "#ff6464"
+      setTimeout(() =>{
+        responseDiv.style.color = "transparent"
+      }, 4000)
+      setTimeout(() =>{
+        responseDiv.textContent = ""
+      }, 5000)
     }
   });
 
-  form.append(oldPassword, newPassword, submit);
+  form.append(responseDiv, oldPassword, newPassword, submit);
   return form;
 }
 
@@ -250,7 +291,7 @@ function buttonsUserProfile() {
       icon: "bookmark_added",
     },
     {
-      name: "Subscribed Movies",
+      name: "Subscribeings",
       function: () => renderMyMovies(0, "subscribedMovies"),
       icon: "notifications",
     },

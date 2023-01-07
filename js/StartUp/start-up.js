@@ -3,26 +3,26 @@ import { renderFirstPage } from '../homepage/homepage.js'
 
 export function logIn () {
   let main = document.querySelector('main')
-  main.innerHTML = ''
-
+  // main.innerHTML = ''
+  
   let videoDiv = document.createElement("div")
   videoDiv.innerHTML = `
   <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
-    <video autoplay muted loop id="myVideo">
-      <source src="../../videos/video.mp4" type="video/mp4">
-    </video>
+  <video autoplay muted loop id="myVideo">
+  <source src="../../videos/video.mp4" type="video/mp4">
+  </video>
   </div>`
-
-main.append(videoDiv)
-
+  
+  main.append(videoDiv)
+  
   let titleHeader = document.createElement('div')
   titleHeader.classList.add("titleHeader")
   titleHeader.innerHTML = "<h3>MochaMovies</h3>"
-
+  
   let logSignInTitle = document.createElement('div')
   logSignInTitle.classList.add("logSignInTitle")
   logSignInTitle.innerHTML = "<h2>Log In</h2>"
-
+  
   let logInDiv = document.createElement('div')
   let signUpDiv = document.createElement('div')
   let signUpText = document.createElement('div')
@@ -30,9 +30,10 @@ main.append(videoDiv)
   let errorDiv = document.createElement('div')
   errorDiv.classList.add("errorDiv")
   
-  logInDiv.append(titleHeader, logSignInTitle)
+  logInDiv.append(logSignInTitle)
   logInDiv.classList.add('logIn')
-
+  main.append(titleHeader, logInDiv)
+  
   let array = ['Username', 'Password']
 
   for (let name of array) {
@@ -56,7 +57,14 @@ main.append(videoDiv)
   submitButton.textContent = 'Log In'
   signUpDiv.append("if you don't have an account -")
   signUpText.textContent = 'Sign Up'
-  signUpText.addEventListener('click', signUp)
+  let signUpContainer = signUp()
+  main.appendChild(signUpContainer)
+  signUpContainer.classList.add("hideSign")
+
+  signUpText.addEventListener('click', () =>{
+    logInDiv.classList.add("hideLog")
+    signUpContainer.classList.remove("hideSign")
+  })
   signUpText.style.color = '#1e608f'
   signUpText.style.fontWeight = "bold";
 
@@ -84,7 +92,8 @@ main.append(videoDiv)
       .then(r => {
         if (r.userID == undefined) {
         } else {
-          logInDiv.remove()
+          // logInDiv.remove()
+          main.innerHTML = ""
           renderFirstPage(r)
           localStorage.setItem('user', JSON.stringify(r))
         }
@@ -94,77 +103,84 @@ main.append(videoDiv)
   logInDiv.append(submitButton)
   logInDiv.append(errorDiv)
   logInDiv.append(signUpDiv)
-
-  main.append(logInDiv)
+  
 }
 
 function signUp () {
-  let main = document.querySelector('main')
-  main.innerHTML = ''
-
-  let titleHeader = document.createElement('div')
-  titleHeader.classList.add("titleHeader")
-  titleHeader.innerHTML = "<h3>MochaMovies</h3>"
-
-  let logSignInTitle = document.createElement('div')
-  logSignInTitle.classList.add("logSignInTitle")
-  logSignInTitle.innerHTML = "<h2>Sign Up</h2>"
-  
-  let signUpDiv = document.createElement('div')
-  let logInDiv = document.createElement('div')
-  let submitButton = document.createElement('button')
-  let logInText = document.createElement('div')
-  let errorDiv = document.createElement('div')
-  errorDiv.classList.add("errorDiv")
-  
-  signUpDiv.append(titleHeader, logSignInTitle)
-  
-  let array = ['Username', 'Password', 'FirstName', 'LastName']
-
-  for (let name of array) {
-    let inputDiv = document.createElement('div')
-    let input = document.createElement('input')
-    inputDiv.classList.add('input')
-    input.classList.add(name)
-    input.name = name
-    let label = document.createElement('label')
-
-    switch (name) {
-      case 'FirstName':
-        label.textContent = `First name`
-        break
-
-      case 'LastName':
-        label.textContent = `Last name`
-        break
-
-      default:
-        label.textContent = `${name}`
-        break
-    }
-
-    // label.textContent = `${name} hej`
-    label.setAttribute('for', name)
-    if (name == 'Password') {
-      input.type = 'password'
-      input.style.letterSpacing = '0.125em'
-    }
-    inputDiv.append(label)
-    inputDiv.append(input)
-    signUpDiv.append(inputDiv)
+  // let main = document.querySelector('main')
+  // main.innerHTML = ''
+  // setTimeout(() =>{
+    //   logIncontainer.remove()
+    // }, 1000)
     
-  }
+    // let titleHeader = document.createElement('div')
+    // titleHeader.classList.add("titleHeader")
+    // titleHeader.innerHTML = "<h3>MochaMovies</h3>"
+    
+    let logSignInTitle = document.createElement('div')
+    logSignInTitle.classList.add("logSignInTitle")
+    logSignInTitle.innerHTML = "<h2>Sign Up</h2>"
+    
+    let signUpDiv = document.createElement('div')
+    let logInDiv = document.createElement('div')
+    let submitButton = document.createElement('button')
+    let logInText = document.createElement('div')
+    let errorDiv = document.createElement('div')
+    errorDiv.classList.add("errorDiv")
+    
+    signUpDiv.append(logSignInTitle)
+    
+    let array = ['Username', 'Password', 'FirstName', 'LastName']
+    
+    for (let name of array) {
+      let inputDiv = document.createElement('div')
+      let input = document.createElement('input')
+      inputDiv.classList.add('input')
+      input.classList.add(name)
+      input.name = name
+      let label = document.createElement('label')
+      
+      switch (name) {
+        case 'FirstName':
+          label.textContent = `First name`
+          break
+          
+          case 'LastName':
+            label.textContent = `Last name`
+            break
+            
+            default:
+              label.textContent = `${name}`
+              break
+            }
+            
+            // label.textContent = `${name} hej`
+            label.setAttribute('for', name)
+            if (name == 'Password') {
+              input.type = 'password'
+              input.style.letterSpacing = '0.125em'
+            }
+            inputDiv.append(label)
+            inputDiv.append(input)
+            signUpDiv.append(inputDiv)
+            
+          }
 
+          
   logInDiv.append('If you have an account -')
   logInText.textContent = 'Log In'
-  logInText.addEventListener('click', logIn)
+  logInText.addEventListener('click', ()=>{
+    document.querySelector(".logIn").classList.remove("hideLog")
+    signUpDiv.classList.add("hideSign")
+  })
+
   logInText.style.color = '#1e608f'
   logInText.style.cursor = 'pointer'
-
+  
   logInDiv.append(logInText)
   logInDiv.style.display = 'flex'
   logInDiv.style.gap = '3px'
-
+  
   submitButton.textContent = 'Sign Up'
   submitButton.addEventListener('click', () => {
     let usernameInput = document.querySelector('.Username')
@@ -195,15 +211,15 @@ function signUp () {
       })
   })
 
-  signUpDiv.style.position = 'absolute'
-  signUpDiv.style.top = '0'
-  signUpDiv.classList.add('logIn')
+  // signUpDiv.style.position = 'absolute'
+  // signUpDiv.style.top = '0'
+  signUpDiv.classList.add('signUp')
 
   signUpDiv.append(submitButton)
   signUpDiv.append(errorDiv)
   signUpDiv.append(logInDiv)
 
-  main.append(signUpDiv)
+  return signUpDiv
 }
 
 export function userLocalStorage (userObject) {

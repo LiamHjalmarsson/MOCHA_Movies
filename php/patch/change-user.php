@@ -6,6 +6,11 @@ if(isset($receivedData["userID"], $receivedData["newName"])){
     $userID = $receivedData["userID"];
     $newName = $receivedData["newName"];
 
+    if(strlen($newName) < 2){
+        $error = ["error" => "Username is to short, at least 2 characters is requiered"];
+        sendJSON($error, 400);
+    }
+
     foreach($data["users"] as $index => $user){
         if($user["userID"] == $userID){
             $data["users"][$index]["username"] = $newName;
