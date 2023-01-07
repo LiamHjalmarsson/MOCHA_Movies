@@ -10,7 +10,7 @@ body {
   min-height: 100%;
 }
 
-.logIn{
+.logIn, .signUp{
   font-family: Nunito Sans, sans-serif;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
@@ -23,6 +23,16 @@ body {
   align-items: center;
   height: 100vh;
   width: 100vw;
+  top: 0;
+  transition: 1s;
+}
+
+.hideLog{
+  top: -1000px;
+}
+
+.hideSign{
+  top: 1000px;
 }
 
 .input {
@@ -74,11 +84,18 @@ body {
 
 .logSignInTitle{
   font-weight: 500;
-  margin-top: 5vh;
+  margin-top: 15vh;
 }
 
 .logSignInTitle > h2{
   font-size: 14pt;;
+}
+
+.titleHeader{
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+  text-align: center;
 }
 
 .titleHeader > h3{
