@@ -222,6 +222,9 @@ function changeImage(user) {
   textDiv.textContent = `${user.firstName} ${user.lastName}`;
   let profileImg = document.createElement("div");
 
+  let responseDiv = document.createElement("div");
+  responseDiv.classList.add("response-div")
+  
   profileImg.classList.add("profilePicture");
   if (user.imageLink == "") {
     profileImg.innerHTML =
@@ -272,37 +275,49 @@ function changeImage(user) {
           body: formDATA
       });
 
-      try {
-          let response = await fetch(req);
-          let recourse = await response.json();
+        let response = await fetch(req);
+          
+        if (!response.ok) {
+          let resource = await response.json();
+          responseDiv.textContent = resource.error
+          responseDiv.style.color = "#ff6464"
+          setTimeout(() =>{
+            responseDiv.style.color = "transparent"
+          }, 4000)
+          setTimeout(() =>{
+            responseDiv.textContent = ""
+          }, 5000)
+        } else{
 
-          if (recourse.error) {
-            let errorDiv = document.createElement("div");
-            errorDiv.textContent = recourse.error;
-            errorDiv.classList.add("errorDiv");
-            confirmDiv.append(errorDiv);
-          } else{
-            let new_response = await fetch(`../../php/get/get.php?users=${user.userID}`);
-            let new_recourse = await new_response.json();
-  
-            localStorage.setItem("user", JSON.stringify(new_recourse));
-  
-            document.querySelector("main").innerHTML = ""
-            document.querySelector("nav").innerHTML = ""
-            renderFirstPage(new_recourse);
-          }
-        } catch (error) {
-          console.log(error)
-      }
+          responseDiv.innerHTML = "Username sucessfully changed! Relog to update image"
+          responseDiv.style.color = "lightgreen"
+
+          setTimeout(async () =>{
+            responseDiv.style.color = "transparent"
+            let resource = await response.json();
+          }, 4000)
+
+        setTimeout(async () =>{
+          let new_response = await fetch(`../../php/get/get.php?users=${user.userID}`);
+          let new_recourse = await new_response.json();
+
+          localStorage.setItem("user", JSON.stringify(new_recourse));
+
+          // document.querySelector("main").innerHTML = ""
+          // document.querySelector("nav").innerHTML = ""
+          // renderFirstPage(new_recourse);
+        }, 4500)
+        }
     }, 200)
   })
 
   submitInput.textContent = "Upload Image";
 
-  form.append(userInput, inputFile, submitInput);
+  form.append(responseDiv, userInput, inputFile, submitInput);
   // popUp.append(dummy, form);
   popUp.append(form);
   popUp.append(confirmDiv);
+
   document.querySelector("main").append(popUp);
 }
 
