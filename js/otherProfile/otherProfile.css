@@ -9,6 +9,8 @@
   width: 100%;
   overflow: scroll;
   scrollbar-width: none;
+  left: 0;
+  transition: left 0.5s;
   z-index: 4;
   font-family: Nunito Sans, sans-serif;
 }

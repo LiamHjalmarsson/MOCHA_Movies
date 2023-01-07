@@ -6,8 +6,10 @@ let updateFreindList;
 
 async function fetchUsers () {
     let rqst = new Request("../../php/get/get.php?users")
+
     let response = await fetch(rqst);
     let recourse = await response.json();
+    console.log(recourse)
     return recourse
 }
 
@@ -380,17 +382,17 @@ function createFollow (recoursFollow, followingDiv) {
     let name = document.createElement("div");
     name.classList.add("name");
 
-    console.log(recoursFollow)
+    console.log(recoursFollow.imageLink)
 
     if (recoursFollow.imageLink === "") {
-        img.innerHTML = '<span class="material-symbols-outlined">person</span>'
+        img.style.backgroundColor = `gray`;
     } else {
         img.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`;
         img.style.backgroundSize = 'contain'
         img.style.backgroundPosition = 'center'
     }
     
-    name.textContent = `${recoursFollow.firstName}`;
+    name.textContent = `${recoursFollow.username}`;
     name.addEventListener("click", () => {
         otherUser(recoursFollow.userID);
     });

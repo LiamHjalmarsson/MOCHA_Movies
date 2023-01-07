@@ -48,8 +48,9 @@ export function createNotificationItem(array){
             if(senderUser.imageLink == ""){
                 userImg = `<span class="material-symbols-outlined">person</span>`
             }else{
-                userImg = document.createElement("span")
-                userImg.backgroundImage = `url(${senderUser.imageLink})`
+                // userImg.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`;
+                // userImg.classList.add("userImg");
+                userImg = `<div class="userImg notImg" style="background-image:url(../../php/image/${senderUser.imageLink})"> </div>`
             }
     
             if(notification.movieID == ""){

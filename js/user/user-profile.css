@@ -15,6 +15,8 @@ body {
     z-index: 3;
     background-image: linear-gradient(#041827, #574343);
     width: 100vw;
+    left: 0;
+    transition: left 0.5s;
     font-family: 'Mukta', sans-serif;
     margin: 0;
 }

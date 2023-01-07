@@ -160,6 +160,7 @@ nav {
   top: 0;
   padding-top: 90px;
   z-index: -1;
+  width: 100%;
   font-family: Nunito Sans, sans-serif;
 }
 
@@ -186,7 +187,7 @@ nav {
   display: flex;
   align-items: center;
   font-size: 10pt;
-  width: 95%;
+  width: 85%;
   background-color: #1f1e1e84;
   padding: 10px;
 }
@@ -228,4 +229,9 @@ nav {
 .hideNotifications {
   position: fixed;
   top: -500px;
+}
+
+.notImg {
+  height: 100%;
+  width: 100%;
 }
