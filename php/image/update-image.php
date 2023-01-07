@@ -25,7 +25,7 @@ foreach ($data["users"] as $index => $user) {
         $destination = "uploades/$timestamp-$name_remove_space";
             
         if ($file_Size > 50000) {
-            $error = ["error" => "The size is to big $file_Size cant be bigger then 50000!"];
+            $error = ["error" => "The size is to big $file_Size. The file cant be bigger then 50000!"];
             sendJSON($error, 400);
         }
             
