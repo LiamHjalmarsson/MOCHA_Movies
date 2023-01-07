@@ -24,8 +24,9 @@ export async function otherUser (otherUserID) {
 
   let otherProfileImg = createElementWithClassOrID(false, 'otherProfileImg')
   if (otherUserResource.imageLink != '') {
-    otherProfileImg.style.backgroundImage = `url${otherUserResource.imageLink})`
-    otherProfileImg.style.backgroundSize = 'cover'
+    otherProfileImg.style.backgroundImage = `url(../../php/image/${otherUserResource.imageLink})`;
+    otherProfileImg.style.backgroundSize = 'contain'
+    otherProfileImg.style.backgroundPosition = 'center'
   } else {
     otherProfileImg.innerHTML =
       '<span class="material-symbols-outlined">person</span>'

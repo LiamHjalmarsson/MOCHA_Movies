@@ -37,12 +37,16 @@
     z-index: 4;
 }
 
+.follow-count {
+    margin-top: 90px;
+}
+
 .followWrapper{
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin: 15px;
-    margin-top: 90px;
+    /* margin-top: 90px; */
 }
 
 .followDiv {
@@ -55,10 +59,11 @@
 }
 
 .img {
-    background-color: gray;
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    background-position: center;
+    background-size: contain;
 }
 
 .name {

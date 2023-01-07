@@ -126,8 +126,9 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   let nameDiv = createElementWithClassOrID('nameDiv')
 
   if (personIFollowResource.imageLink != '') {
-    imgDiv.style.backgroundImage = `url${personIFollowResource.imageLink})`
+    imgDiv.style.backgroundImage = `url(../../php/image/${personIFollowResource.imageLink})`;
     imgDiv.style.backgroundSize = 'contain'
+    imgDiv.style.backgroundPosition = 'center'
   } else {
     imgDiv.innerHTML = '<span class="material-symbols-outlined">person</span>'
   }
@@ -301,7 +302,7 @@ async function getCategories(){
   let genreResponse = await fetch(rqstGenre)
   let genresObject = await genreResponse.json()
 
-  console.log(genresObject)
+  // console.log(genresObject)
 
   for(let i = 0; i < 10; i++){
     let div = document.createElement("div")

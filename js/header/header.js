@@ -194,7 +194,7 @@ export function createProfile (user) {
   let profileIcon = document.createElement('div')
   profileIcon.classList.add("profile-div")
 
-  console.log(user)
+  // console.log(user)
   if(user.imageLink == ""){
       profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
   }else{

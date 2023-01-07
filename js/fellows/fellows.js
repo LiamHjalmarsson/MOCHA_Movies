@@ -5,13 +5,10 @@ import { createPersonDivs, createElementWithClassOrID } from "../homepage/homepa
 let updateFreindList;
 
 async function fetchUsers () {
-    let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
-    if (responseAllUsers.ok) {
-        let recourseAllusers = await responseAllUsers.json();
-        return recourseAllusers;
-    } else {
-        console.log(responseAllUsers)
-    }
+    let rqst = new Request("../../php/get/get.php?users")
+    let response = await fetch(rqst);
+    let recourse = await response.json();
+    return recourse
 }
 
 export function userFollowers () {
@@ -383,13 +380,17 @@ function createFollow (recoursFollow, followingDiv) {
     let name = document.createElement("div");
     name.classList.add("name");
 
-    if (recoursFollow.imageLink =! "") {
-        img.style.backgroundImage = `url()`;
+    console.log(recoursFollow)
+
+    if (recoursFollow.imageLink === "") {
+        img.innerHTML = '<span class="material-symbols-outlined">person</span>'
     } else {
-        img.style.color = `gray`;
+        img.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`;
+        img.style.backgroundSize = 'contain'
+        img.style.backgroundPosition = 'center'
     }
     
-    name.textContent = `${recoursFollow.username}`;
+    name.textContent = `${recoursFollow.firstName}`;
     name.addEventListener("click", () => {
         otherUser(recoursFollow.userID);
     });
