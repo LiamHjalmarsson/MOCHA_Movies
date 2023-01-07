@@ -198,7 +198,7 @@ function passwordUpdate(user, error) {
       }, 4500)
     } else {
       let resource = await response.json()
-      console.log(resource)
+      // console.log(resource)
       responseDiv.textContent = resource.error
       responseDiv.style.color = "#ff6464"
       setTimeout(() =>{
@@ -213,6 +213,7 @@ function passwordUpdate(user, error) {
   form.append(responseDiv, oldPassword, newPassword, submit);
   return form;
 }
+
 function changeImage(user) {
   let popUp = document.createElement("div");
   popUp.append(navigationBack(popUp));
@@ -271,7 +272,7 @@ function changeImage(user) {
           let response = await fetch(req);
           let recourse = await response.json();
           
-          console.log(recourse)
+          // console.log(recourse)
           let new_response = await fetch(`../../php/get/get.php?users=${user.userID}`);
           let new_recourse = await new_response.json();
 
@@ -281,7 +282,7 @@ function changeImage(user) {
           document.querySelector("nav").innerHTML = ""
           renderFirstPage(new_recourse);
         } catch (error) {
-          console.log(error)
+          // console.log(error)
       }
     }, 200)
   })

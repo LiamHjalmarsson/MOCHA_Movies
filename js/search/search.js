@@ -72,7 +72,7 @@ export function searchField(){
     searchField.setAttribute(`type`, `text`)
 
     searchField.addEventListener("keyup", (event)=>{
-       let searchWord = document.querySelector(".search-field").value
+       let searchWord = document.querySelector(".search-field").value;
         searchMovies(searchWord)
     })
     searchFieldContainer.appendChild(searchField)
@@ -122,9 +122,11 @@ function createMovies(array){
 }
 
 function createUser(array, searchWord){
+    console.log(array)
     let userWrapper = document.querySelector(".search-result-wrapper")
     userWrapper.innerHTML=""
 
+    console.log(array)
     array.forEach(user =>{
         if(user.username.includes(searchWord)){
             let userDiv = document.createElement("div")
@@ -132,8 +134,8 @@ function createUser(array, searchWord){
             if(user.imageLink == ""){
                 userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
             } else {
-                userDiv.innerHTML = `<div class="searchPersonDiv"></div>`
-                // profileImg.style.backgroundImage = `url(../../php/image/${user.imageLink})`;
+                console.log(user.imageLink)
+                userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../../php/image/${user.imageLink})"></div>`
             }
             userDiv.innerHTML += user.username
 
@@ -216,6 +218,8 @@ function getUsersToShow(counter = -1){
 
                             if(recourse[counter].imageLink == ""){
                                 userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
+                            } else {
+                                userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../../php/image/${recourse[counter].imageLink})"></div>`
                             }
 
                             userDiv.innerHTML += `<p>${recourse[counter].username}</p>`

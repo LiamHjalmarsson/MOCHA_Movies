@@ -112,6 +112,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-position: center;
+    background-size: contain;
 }
 
 .searchPersonDiv > span {

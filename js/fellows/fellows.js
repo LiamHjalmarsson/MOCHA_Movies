@@ -5,13 +5,12 @@ import { createPersonDivs, createElementWithClassOrID } from "../homepage/homepa
 let updateFreindList;
 
 async function fetchUsers () {
-    let responseAllUsers = await fetch(`../../php/get/get.php/?users`);
-    if (responseAllUsers.ok) {
-        let recourseAllusers = await responseAllUsers.json();
-        return recourseAllusers;
-    } else {
-        console.log(responseAllUsers)
-    }
+    let rqst = new Request("../../php/get/get.php?users")
+
+    let response = await fetch(rqst);
+    let recourse = await response.json();
+    console.log(recourse)
+    return recourse
 }
 
 export function userFollowers () {
@@ -386,7 +385,7 @@ function createFollow (recoursFollow, followingDiv) {
     if (recoursFollow.imageLink =! "") {
         img.style.backgroundImage = `url()`;
     } else {
-        img.style.color = `gray`;
+        img.style.backgroundColor = `gray`;
     }
     
     name.textContent = `${recoursFollow.username}`;
