@@ -193,23 +193,20 @@ function createNotification (user) {
 export function createProfile (user) {
   let profileIcon = document.createElement('div')
   profileIcon.classList.add("profile-div")
-  // profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
 
-  // if (user.imageLink != '') {
-  //   profileIcon.innerHTML = ''
-  //   // here add image link and style with background img
-  // }
-
+  console.log(user)
   if(user.imageLink == ""){
       profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
   }else{
-      let userImg = document.createElement("span")
-      userImg.backgroundImage = `url(${user.imageLink})`
-      profileIcon.append(userImg)
+      profileIcon.classList.add("userImg");
+      profileIcon.style.backgroundImage = `url(../../php/image/${user.imageLink})`;
   }
 
 
   profileIcon.addEventListener('click', function () {
+    if (document.querySelector("#user-profile")) {
+      document.querySelector("#user-profile").remove();
+    }
     userProfile()
   })
 

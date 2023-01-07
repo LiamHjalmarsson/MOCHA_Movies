@@ -17,6 +17,7 @@ nav {
   transition: color 1s;
   font-family: Nunito Sans, sans-serif;
   font-weight: bolder;
+  padding: 0px 10px;
 }
 
 .hide-nav {
@@ -38,11 +39,22 @@ nav {
 .notification-icon {
   width: 10%;
   text-align: center;
+  margin-right: 5px;
 }
 
 .profile-div {
   width: 10%;
+  height: 50px;
   text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.userImg {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 20px;
 }
 
 .burgerMenu {
@@ -144,6 +156,7 @@ nav {
   overflow: scroll;
   transition: 1s;
   position: fixed;
+  scrollbar-width: 0;
   top: 0;
   padding-top: 90px;
   z-index: -1;
@@ -173,6 +186,7 @@ nav {
   display: flex;
   align-items: center;
   font-size: 10pt;
+  width: 95%;
   background-color: #1f1e1e84;
   padding: 10px;
 }
