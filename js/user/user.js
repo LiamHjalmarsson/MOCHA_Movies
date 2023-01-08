@@ -105,14 +105,18 @@ function usernameUpdate(user) {
   let form = document.createElement("form");
   form.classList.add("usernameForm");
 
+  let titleChangeDiv = document.createElement("div")
+  titleChangeDiv.classList.add("titleChangeDiv")
+  titleChangeDiv.innerHTML = "<h3>Change username</h3>"
+
   let input = document.createElement("input");
-  input.placeholder = "Change Username...";
+  input.placeholder = "New username";
 
   let responseDiv = document.createElement("div");
   responseDiv.classList.add("response-div")
 
   let submit = document.createElement("button");
-  submit.textContent = "Change Username";
+  submit.textContent = "Change username";
   submit.addEventListener("click", async (event) => {
     event.preventDefault();
     // error.textContent = "";
@@ -149,7 +153,7 @@ function usernameUpdate(user) {
     }
   });
 
-  form.append(responseDiv, input, submit);
+  form.append(titleChangeDiv, responseDiv, input, submit);
   return form;
 }
 
@@ -157,19 +161,23 @@ function passwordUpdate(user, error) {
   let form = document.createElement("form");
   form.classList.add("passwordForm");
 
+  let titleChangeDiv = document.createElement("div")
+  titleChangeDiv.classList.add("titleChangeDiv")
+  titleChangeDiv.innerHTML = "<h3>Change password</h3>"
+
   let oldPassword = document.createElement("input");
-  oldPassword.placeholder = "Old Password";
+  oldPassword.placeholder = "Old password";
   oldPassword.type = "password";
 
   let responseDiv = document.createElement("div");
   responseDiv.classList.add("response-div")
 
   let newPassword = document.createElement("input");
-  newPassword.placeholder = "New Password...";
+  newPassword.placeholder = "New password";
   newPassword.type = "password";
 
   let submit = document.createElement("button");
-  submit.textContent = "Change Password";
+  submit.textContent = "Change password";
   submit.addEventListener("click", async (event) => {
     event.preventDefault();
     let options = {
@@ -210,7 +218,7 @@ function passwordUpdate(user, error) {
     }
   });
 
-  form.append(responseDiv, oldPassword, newPassword, submit);
+  form.append(titleChangeDiv, responseDiv, oldPassword, newPassword, submit);
   return form;
 }
 
@@ -311,7 +319,7 @@ function changeImage(user) {
     }, 200)
   })
 
-  submitInput.textContent = "Upload Image";
+  submitInput.textContent = "Upload image";
 
   form.append(responseDiv, userInput, inputFile, submitInput);
   // popUp.append(dummy, form);
@@ -385,7 +393,7 @@ export function logOut() {
     popUp.remove();
   });
 
-  logOutButton.textContent = "Log Out";
+  logOutButton.textContent = "Log out";
   logOutButton.addEventListener("click", () => {
     document.querySelector("nav").innerHTML = "";
     document.querySelector("main").innerHTML = "";
