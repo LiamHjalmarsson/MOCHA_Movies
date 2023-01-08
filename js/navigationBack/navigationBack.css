@@ -49,3 +49,7 @@
 .seen-notification-box {
   margin-top: 10px;
 }
+
+#navigationBack > .profile-div {
+  height: 11px;
+}

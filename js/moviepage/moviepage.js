@@ -1,4 +1,4 @@
-import { navigationBack } from "../navigationBack/navigationBack.js";
+import { navigationBackNoUser } from "../navigationBack/navigationBack.js";
 import { createMovieIcons } from "./movieIcons.js";
 import { createMovie } from "../showmovies/showmovies.js";
  
@@ -9,7 +9,7 @@ export async function renderMovie (movie) {
     let movieContainer = document.createElement("div");
     movieContainer.id = "movieContainer";
 
-    movieContainer.append(navigationBack(movieContainer));
+    movieContainer.append(navigationBackNoUser(movieContainer));
 
     let titleContainer = document.createElement("div")
     titleContainer.classList.add("titleContainer")

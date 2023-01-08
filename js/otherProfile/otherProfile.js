@@ -1,4 +1,4 @@
-import { navigationBack } from '../navigationBack/navigationBack.js'
+import {navigationBackNoUser } from '../navigationBack/navigationBack.js'
 // import { renderMyMovies } from '../showmovies/showmovies.js'
 import { renderMovie } from '../moviepage/moviepage.js'
 import { createElementWithClassOrID } from '../homepage/homepage.js'
@@ -18,7 +18,7 @@ export async function otherUser (otherUserID) {
   // ta bort bara för försök
   // navigation to close and other information / LIAM
   otherProfileWrapper.append(
-    navigationBack(otherProfileWrapper)
+    navigationBackNoUser(otherProfileWrapper)
   )
   // --------------- profile image on other persons profile ----------------
 
