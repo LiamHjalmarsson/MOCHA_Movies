@@ -33,6 +33,12 @@ export function navigationBack (remove, path) {
     case 'Top_rated':
       name.innerHTML = 'Top rated movies'
       break
+    case 'trending':
+      name.innerHTML = 'Todays trending'
+      break
+      case 'Now_playing':
+        name.innerHTML = 'Now playing in theatres'
+        break
     default:
       name.innerHTML = path ? path : ''
       break
