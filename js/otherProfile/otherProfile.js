@@ -1,4 +1,4 @@
-import { navigationBack } from '../navigationBack/navigationBack.js'
+import {navigationBackNoUser } from '../navigationBack/navigationBack.js'
 // import { renderMyMovies } from '../showmovies/showmovies.js'
 import { renderMovie } from '../moviepage/moviepage.js'
 import { createElementWithClassOrID } from '../homepage/homepage.js'
@@ -18,7 +18,7 @@ export async function otherUser (otherUserID) {
   // ta bort bara för försök
   // navigation to close and other information / LIAM
   otherProfileWrapper.append(
-    navigationBack(otherProfileWrapper)
+    navigationBackNoUser(otherProfileWrapper)
   )
   // --------------- profile image on other persons profile ----------------
 
@@ -61,16 +61,20 @@ export async function otherUser (otherUserID) {
 
     let chooseMovieContainer = createElementWithClassOrID(
       'chooseMovieContainer'
-    )
-    otherProfileWrapper.append(chooseMovieContainer)
-
-    let toSeeBtn = createElementWithClassOrID('toSeeBtn')
-    let watchedBtn = createElementWithClassOrID('watchedBtn')
-    chooseMovieContainer.append(toSeeBtn, watchedBtn)
-
-    // ------------------------------------------------------
-
-    let resultContainer = createElementWithClassOrID('resultContainer')
+      )
+      otherProfileWrapper.append(chooseMovieContainer)
+      
+      let toSeeBtn = createElementWithClassOrID('toSeeBtn')
+      let watchedBtn = createElementWithClassOrID('watchedBtn')
+      chooseMovieContainer.append(toSeeBtn, watchedBtn)
+      
+      // ------------------------------------------------------
+      
+      let resultContainer = createElementWithClassOrID('resultContainer')
+      let noInfo = document.createElement("div");
+      otherProfileWrapper.append(noInfo);
+      noInfo.classList.add("noInfo");
+   
     fetchMovies(otherUserResource.moviesToSee, otherUserResource)
 
     toSeeBtn.textContent = 'Movies To See'
@@ -103,13 +107,12 @@ export async function otherUser (otherUserID) {
 
 async function fetchMovies (otherUserMovies, otherUserResource, counter = 0) {
   let movieArray = []
+  let noInfo = document.querySelector(".noInfo")
+  noInfo.innerHTML=""
 
   if (otherUserMovies.length === 0) {
-    let noInfo = document.createElement("div");
-    noInfo.classList.add("noInfo");
     noInfo.textContent = "This user has no movies";
     noInfo.style.padding = "30px";
-    document.querySelector("#otherProfileWrapper").append(noInfo);
     return;
   }
 

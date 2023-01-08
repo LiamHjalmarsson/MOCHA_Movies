@@ -65,6 +65,71 @@ export function navigationBack (remove, path) {
   return navigationBack
 }
 
+
+export function navigationBackNoUser (remove, path) {
+  let stringUser = localStorage.getItem('user')
+  let user = JSON.parse(stringUser)
+  let navigationBack = document.createElement('div')
+  navigationBack.id = 'navigationBack'
+
+  let arrowBack = document.createElement('div')
+  arrowBack.innerHTML = `<span class="material-symbols-outlined backArrow">chevron_left</span>`
+  // lagt till namn / filmens title i naven då man inte ser namnet på vissa filmer, antingen låtter vi detta ligga här
+  // eller så placerar vi det någon annans stans i filmens information
+
+  let name = document.createElement('div')
+  name.classList.add('nameInNav')
+
+  switch (path) {
+    case 'top_rated':
+      name.innerHTML = 'Top rated movies'
+      break
+    case 'popular':
+      name.innerHTML = 'Popular movies'
+      break
+    case 'watchedMovies':
+      name.innerHTML = 'Watched movies'
+      break
+    case 'moviesToSee':
+      name.innerHTML = 'Want to see'
+      break
+    case 'subscribedMovies':
+      name.innerHTML = 'Subscribed movies'
+      break
+    case 'Top_rated':
+      name.innerHTML = 'Top rated movies'
+      break
+    case 'trending':
+      name.innerHTML = 'Todays trending'
+      break
+      case 'Now_playing':
+        name.innerHTML = 'Now playing in theatres'
+        break
+    default:
+      name.innerHTML = path ? path : ''
+      break
+  }
+
+  navigationBack.append(arrowBack, name)
+
+  arrowBack.addEventListener('click', () => {
+    remove.style.left = "-600px"
+    // console.log(remove)
+
+    setTimeout(function(){
+      remove.remove()
+    }, 500)
+
+    if (document.querySelector('#review-container')) {
+      document.querySelector('#review-container').remove()
+    }
+  })
+
+  // hej()
+
+  return navigationBack
+}
+
 // function hej(){
 //   let w = window
 //   let doc = document.documentElement

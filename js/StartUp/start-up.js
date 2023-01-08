@@ -125,8 +125,8 @@ function signUp () {
     let logInDiv = document.createElement('div')
     let submitButton = document.createElement('button')
     let logInText = document.createElement('div')
-    let errorDiv = document.createElement('div')
-    errorDiv.classList.add("errorDiv")
+    let responseDiv = document.createElement('div')
+    responseDiv.classList.add("errorDiv")
     
     signUpDiv.append(logSignInTitle)
     
@@ -136,7 +136,7 @@ function signUp () {
       let inputDiv = document.createElement('div')
       let input = document.createElement('input')
       inputDiv.classList.add('input')
-      input.classList.add(name)
+      input.classList.add(name.toLowerCase())
       input.name = name
       let label = document.createElement('label')
       
@@ -183,30 +183,38 @@ function signUp () {
   
   submitButton.textContent = 'Sign Up'
   submitButton.addEventListener('click', () => {
-    let usernameInput = document.querySelector('.Username')
-    let passwordInput = document.querySelector('.Password')
-    let firstNameInput = document.querySelector('.FirstName')
-    let lastNameInput = document.querySelector('.LastName')
+    let usernameInput = document.querySelector('.username').value
+    console.log(usernameInput)
+    let passwordInput = document.querySelector('.password').value
+    console.log(passwordInput)
+    let firstNameInput = document.querySelector('.firstname').value
+    let lastNameInput = document.querySelector('.lastname').value
     let options = {
       method: 'POST',
       body: JSON.stringify({
-        username: usernameInput.value,
-        firstName: firstNameInput.value,
-        lastName: lastNameInput.value,
-        password: passwordInput.value
+        username: usernameInput,
+        firstName: firstNameInput,
+        lastName: lastNameInput,
+        password: passwordInput
       }),
       headers: { 'Content-Type': 'application/json' }
     }
 
-    errorDiv.textContent = ''
+    console.log(options)
+
+    responseDiv.textContent = ''
 
     fetch(`../../php/post/new-user.php/`, options)
       .then(r => r.json())
       .then(r => {
         if (r.userID == undefined) {
-          errorDiv.textContent = r.error
+          responseDiv.textContent = r.error
         } else {
-          logIn()
+          responseDiv.innerHTML = `<p>Account created, click <span class="here">here</span> to log in</p>`
+          responseDiv.addEventListener("click", () =>{
+            document.querySelector(".logIn").classList.remove("hideLog")
+            signUpDiv.classList.add("hideSign")
+          })
         }
       })
   })
@@ -216,7 +224,7 @@ function signUp () {
   signUpDiv.classList.add('signUp')
 
   signUpDiv.append(submitButton)
-  signUpDiv.append(errorDiv)
+  signUpDiv.append(responseDiv)
   signUpDiv.append(logInDiv)
 
   return signUpDiv
