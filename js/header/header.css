@@ -54,7 +54,11 @@ nav {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 20px;
+  /* height: 20px; */
+  position: relative;
+  bottom: 4px;
+  height: 35px;
+  width: 35px;
 }
 
 .burgerMenu {
@@ -118,7 +122,7 @@ nav {
 
 .hideBurger {
   position: fixed;
-  right: 500px;
+  right: 100vw;
 }
 
 .burger-div > .material-symbols-outlined {
@@ -228,7 +232,7 @@ nav {
 
 .hideNotifications {
   position: fixed;
-  top: -500px;
+  top: -100vh;
 }
 
 .notImg {
