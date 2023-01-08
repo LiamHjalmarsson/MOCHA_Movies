@@ -289,7 +289,7 @@ function changeImage(user) {
           }, 5000)
         } else{
 
-          responseDiv.innerHTML = "Username sucessfully changed! Relog to update image"
+          responseDiv.innerHTML = "Image updated! Reload to update image"
           responseDiv.style.color = "lightgreen"
 
           setTimeout(async () =>{
