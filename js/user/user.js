@@ -336,12 +336,12 @@ function buttonsUserProfile() {
     { name: "Following", function: following, icon: "none" },
     { name: "Followers", function: userFollowers, icon: "none" },
     {
-      name: "Watched Movies",
+      name: "Watched movies",
       function: () => renderMyMovies(0, "watchedMovies"),
       icon: "done_all",
     },
     {
-      name: "Want To See",
+      name: "Want to see",
       function: () => renderMyMovies(0, "moviesToSee"),
       icon: "bookmark_added",
     },
@@ -351,7 +351,7 @@ function buttonsUserProfile() {
       icon: "notifications",
     },
     {
-      name: "Add Friend",
+      name: "Add friend",
       function: () => renderAddFreind(),
       icon: "person_add",
     },
