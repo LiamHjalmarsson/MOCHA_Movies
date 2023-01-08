@@ -15,19 +15,9 @@
 }
 
 .search-nav-container {
-  padding-top: 60px;
+  margin-top: 80px;
   display: flex;
-  margin: 10px;
-}
-
-.search-nav-container > div {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  border: 1px solid #525050;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 5px;
+  width: 100vw;
 }
 
 .search-field-container {
@@ -36,12 +26,22 @@
   width: 100vw;
   margin-top: 10px;
   margin-bottom: 10px;
+  position: relative;
+}
+.search-field-container > span {
+  color: #484545;
+  position: absolute;
+  right: 6vw;
+  top: 0.4vh;
+  font-size: 24px;
 }
 
 .search-field {
   width: 91vw;
-  height: 3vh;
+  height: 3.2vh;
   border: 0px;
+  font-family: Nunito Sans, sans-serif;
+  padding-left: 5px;
 }
 
 .search-result-wrapper {
@@ -59,12 +59,12 @@
   align-items: center;
 }
 
-.userDiv{
-    height: 8vh;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 16px;
-    border: 1px solid rgb(78, 78, 78);
+.userDiv {
+  height: 8vh;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 16px;
+  border: 1px solid rgb(78, 78, 78);
 }
 
 .search-user-button:hover {
@@ -76,7 +76,7 @@
 }
 
 .active {
-  background-color: rgb(96, 96, 96);
+  background-color: #2a292984;
 }
 
 .active-user-search {
@@ -86,34 +86,40 @@
 }
 
 .active-user-search > div {
-    height: 8vh;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 16px;
-    border: 1px solid rgb(78, 78, 78);
-    width: 91vw;
-    border-radius: 2px;
-    font-family: Nunito Sans, sans-serif;
+  height: 8vh;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 16px;
+  border: 1px solid rgb(78, 78, 78);
+  width: 91vw;
+  border-radius: 2px;
+  font-family: Nunito Sans, sans-serif;
 }
 
 .search-movie-button,
 .search-user-button {
-    font-family: Nunito Sans, sans-serif;
+  font-family: Nunito Sans, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 15px;
+  border: 0.5px solid rgb(48, 46, 46);
 }
 
 .searchPersonDiv {
-    border-radius: 50%;
-    margin-right: 10px;
-    height: 40px;
-    width: 40px;
-    background-color: #1f1e1e84;
-    border: 0.5px solid rgb(48, 46, 46);
-    margin-left: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-position: center;
-    background-size: contain;
+  border-radius: 50%;
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  background-color: #1f1e1e84;
+  border: 0.5px solid rgb(48, 46, 46);
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: contain;
 }
 
 .searchPersonDiv > span {
