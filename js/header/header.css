@@ -25,8 +25,12 @@ nav {
 }
 
 .burger-div {
-  width: 20%;
-  text-align: center;
+  width: 40%;
+}
+
+.burger-div > .material-symbols-outlined{
+  position: relative;
+  left: 5px;
 }
 
 .navContainer > div:nth-child(2) {
@@ -37,17 +41,16 @@ nav {
 }
 
 .notification-icon {
-  width: 10%;
-  text-align: center;
-  margin-right: 5px;
+  width: 20%;
 }
 
 .profile-div {
-  width: 10%;
+  width: 20%;
   height: 50px;
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .userImg {
@@ -57,8 +60,8 @@ nav {
   /* height: 20px; */
   position: relative;
   bottom: 4px;
-  height: 35px;
-  width: 35px;
+  height: 24px;
+  left: 5px;
 }
 
 .burgerMenu {
@@ -137,6 +140,8 @@ nav {
 .notification-icon > .material-symbols-outlined {
   font-size: 32px;
   color: white;
+  position: relative;
+  left: 10px;
 }
 
 .notification-icon > .material-symbols-outlined:hover {
@@ -146,6 +151,8 @@ nav {
 .profile-div > .material-symbols-outlined {
   font-size: 34px;
   color: white;
+  position: relative;
+  bottom: 3px;
 }
 
 .profile-div > .material-symbols-outlined:hover {
