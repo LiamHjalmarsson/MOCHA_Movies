@@ -68,7 +68,7 @@ export async function renderFirstPage (user) {
 
   titleBox.textContent = 'Your friends'
   personWrapper.append(titleBox, personBox)
-  titleBox.addEventListener("click", following)
+  titleBox.addEventListener('click', following)
 
   let addFriendDiv = createElementWithClassOrID('imgDiv', 'addfriendDiv')
   addFriendDiv.innerHTML =
@@ -101,12 +101,12 @@ export async function renderFirstPage (user) {
 
   firstPageUserMovie(
     user.subscribedMovies,
-    'Subscribed movies',
+    'subscribed movies',
     'subscribedMovies'
   )
+  firstPageField('Upcoming')
   firstPageUserMovie(user.moviesToSee, 'Want to see', 'moviesToSee')
-  firstPageField("Upcoming")
-  firstPageField("Now_playing")
+  firstPageField('Now_playing')
   // getCategories()
   firstPageField('Top_rated')
   firstPageUserMovie(user.watchedMovies, 'Watch again', 'watchedMovies')
@@ -126,7 +126,7 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   let nameDiv = createElementWithClassOrID('nameDiv')
 
   if (personIFollowResource.imageLink != '') {
-    imgDiv.style.backgroundImage = `url(../../php/image/${personIFollowResource.imageLink})`;
+    imgDiv.style.backgroundImage = `url(../../php/image/${personIFollowResource.imageLink})`
     imgDiv.style.backgroundSize = 'contain'
     imgDiv.style.backgroundPosition = 'center'
   } else {
@@ -143,18 +143,17 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   personBox.append(personDiv, addFriendDiv)
 }
 
-
 async function firstPageField (field) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID('movieWrapper')
 
-  if(field == "Now_playing"){
-    titleBox.textContent = "Now playing in theatres"
-  }else if (field.includes('_')) {
+  if (field == 'Now_playing') {
+    titleBox.textContent = 'Now playing in theatres'
+  } else if (field.includes('_')) {
     let titleFieldName = field.replace('_', ' ')
     titleBox.textContent = `${titleFieldName} movies`
-  }else{
+  } else {
     titleBox.textContent = field
   }
 
@@ -165,7 +164,7 @@ async function firstPageField (field) {
     `https://api.themoviedb.org/3/movie/${field.toLowerCase()}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=1`
   )
   let movieResource = await movieResponse.json()
- 
+
   titleBox.addEventListener('click', () => {
     window.scrollTo({
       top: 0
@@ -187,25 +186,34 @@ async function firstPageField (field) {
   }
 }
 
-
-
 async function firstPageUserMovie (array, title, path) {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID('movieWrapper')
-  let userString = localStorage.getItem("user")
+  let userString = localStorage.getItem('user')
   let user = JSON.parse(userString)
 
-  if(title != "Watch agian"){
-    titleBox.textContent = user.firstName +"s" + " " + title
-  }else{
+  // if (title != 'Watch again') {
+  //   titleBox.textContent = user.firstName + 's' + ' ' + title
+  // }
+  // else {
+  //   titleBox.textContent = title
+  // }
+
+    if (title == 'subscribed movies') {
+    titleBox.textContent = user.firstName + 's' + ' ' + title
+  } else if (title == "Want to see") {
+    titleBox.textContent = user.firstName + ' ' + "wants to see"
+  }
+  else {
     titleBox.textContent = title
   }
 
   
+
   document.querySelector('main').append(movieWrapper)
   let movieArray = []
-  
+
   if (array.length != 0) {
     movieWrapper.append(titleBox, movieBox)
     for (let i = 0; i < 10; i++) {
@@ -216,14 +224,14 @@ async function firstPageUserMovie (array, title, path) {
           `https://api.themoviedb.org/3/movie/${array[i]}?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
         )
         let movieResource = await movieResponse.json()
-  
+
         if (movieResource.status_code != 34) {
           movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
           movieDiv.style.backgroundSize = 'cover'
           movieDiv.addEventListener('click', () => {
             renderMovie(movieResource)
           })
-  
+
           movieBox.append(movieDiv)
           movieArray.push(movieResource)
         }
@@ -233,10 +241,10 @@ async function firstPageUserMovie (array, title, path) {
       renderMyMovies(10, path, movieArray)
     })
   } else {
-    let movieDiv = createElementWithClassOrID('noMovies');
-    movieDiv.style.margin = "5px";
-    movieDiv.innerHTML = `<span class="material-symbols-outlined">tv_off</span>`;
-    movieBox.append(movieDiv);
+    let movieDiv = createElementWithClassOrID('noMovies')
+    movieDiv.style.margin = '5px'
+    movieDiv.innerHTML = `<span class="material-symbols-outlined">tv_off</span>`
+    movieBox.append(movieDiv)
   }
 }
 
@@ -252,21 +260,21 @@ export function createElementWithClassOrID (
   return createdElement
 }
 
-
-async function firstPageTrendingMovies(){
+async function firstPageTrendingMovies () {
   let titleBox = createElementWithClassOrID('titleBox')
   let movieBox = createElementWithClassOrID('movieBox')
   let movieWrapper = createElementWithClassOrID('movieWrapper')
   movieWrapper.append(titleBox, movieBox)
   document.querySelector('main').append(movieWrapper)
-  titleBox.innerHTML = "Todays trending"
+  titleBox.innerHTML = 'Todays trending'
 
-  titleBox.addEventListener("click", function(){
-    renderMovies(0, "trending")
+  titleBox.addEventListener('click', function () {
+    renderMovies(0, 'trending')
   })
 
-
-  let rqst = new Request(`https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`)
+  let rqst = new Request(
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
+  )
   let response = await fetch(rqst)
   let recourse = await response.json()
 
@@ -283,18 +291,16 @@ async function firstPageTrendingMovies(){
 
     movieBox.append(movieDiv)
   }
-
-
 }
 
-async function getCategories(){
+async function getCategories () {
   let titleBox = createElementWithClassOrID('titleBox')
   let genreBox = createElementWithClassOrID('genreBox')
   let genreWrapper = createElementWithClassOrID('movieWrapper')
 
   genreWrapper.append(titleBox, genreBox)
   document.querySelector('main').append(genreWrapper)
-  titleBox.innerHTML = "Categories"
+  titleBox.innerHTML = 'Categories'
 
   let rqstGenre = new Request(
     'https://api.themoviedb.org/3/genre/movie/list?api_key=e666c096bb904490508ada0b495d2d90&language=en-US'
@@ -304,22 +310,20 @@ async function getCategories(){
 
   // console.log(genresObject)
 
-  for(let i = 0; i < 10; i++){
-    let div = document.createElement("div")
+  for (let i = 0; i < 10; i++) {
+    let div = document.createElement('div')
     div.innerHTML = genresObject.genres[i].name
     genreBox.append(div)
   }
-
 }
 
+function start () {
+  let storage = JSON.parse(localStorage.getItem('user'))
 
-function  start(){
-  let storage = JSON.parse(localStorage.getItem("user"));
-  
   if (storage == null) {
-     logIn();
+    logIn()
   } else {
-    renderFirstPage(storage);
+    renderFirstPage(storage)
   }
 }
 

@@ -110,12 +110,12 @@ function createBurger (navContainer) {
       function: () => { renderMovies(1, "Upcoming")}
     },
     {
-      title: "Subscribed Movies",
+      title: "Subscribed movies",
       function: () => {renderMyMovies(1,"subscribedMovies")}
 
     },
     {
-      title: 'Watched Movies',
+      title: 'Watched movies',
       function: () => { renderMyMovies(0, "watchedMovies")}
     },
     {
