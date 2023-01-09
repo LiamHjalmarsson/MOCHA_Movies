@@ -234,8 +234,10 @@ function getUsersToShow (counter = -1) {
                   }
 
                   userDiv.innerHTML += `<p>${recourse[counter].username}</p>`
+                  let id = recourse[counter].userID;
+
                   userDiv.addEventListener('click', () => {
-                    otherUser(recourse[counter].userID)
+                    otherUser(id)
                   })
                   userWrapper.appendChild(userDiv)
                 }
