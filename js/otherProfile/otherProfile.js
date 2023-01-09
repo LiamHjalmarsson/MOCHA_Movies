@@ -150,6 +150,8 @@ async function fetchMovies (otherUserMovies, otherUserResource, counter = 0) {
             let movieResource = await movieResponse.json()
             let movieDiv = document.createElement('div')
             movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movieResource.poster_path})`
+            movieDiv.style.backgroundSize = 'cover'
+            movieDiv.style.backgroundPosition = 'center'
             movieDiv.addEventListener('click', () => {
               renderMovie(movieResource)
             })
@@ -184,6 +186,8 @@ function createMovieBox (movieArray, otherUserResource) {
     let movieDiv = document.createElement('div')
     movieDiv.classList.add('otherProfileMovieDiv')
     movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`
+    movieDiv.style.backgroundSize = 'cover'
+    movieDiv.style.backgroundPosition = 'center'
     movieDiv.addEventListener('click', () => {
       renderMovie(movie)
     })

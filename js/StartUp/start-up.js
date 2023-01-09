@@ -1,4 +1,5 @@
 'use strict'
+// https://github.com/LiamHjalmarsson/MOCHA_Movies
 import { renderFirstPage } from '../homepage/homepage.js'
 
 export function logIn () {
