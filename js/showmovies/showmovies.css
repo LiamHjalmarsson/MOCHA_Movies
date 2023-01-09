@@ -26,10 +26,12 @@
 
 .movieCard {
     height: 190px;
-    cursor: pointer;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .movieCard:hover{
@@ -47,3 +49,29 @@
     text-align: center;   
     margin-top: 90px;
 }
+
+.dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: dual-ring 1.5s linear infinite;
+  }
+  @keyframes dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
