@@ -95,31 +95,31 @@ export function logIn () {
           // logInDiv.remove()
           main.innerHTML = ""
           let h1 = document.createElement("div");
-          h1.id = "boxTransition";
-          h1.innerHTML = `<h2 class="h1Transiton">
-          <span class="let1">M</span>  
-          <span class="let2">o</span>  
-          <span class="let3">c</span>  
-          <span class="let4">h</span>  
-          <span class="let5">a</span>  
-          <span class="let6">M</span>  
-          <span class="let7">o</span> 
-          <span class="let8">v</span> 
-          <span class="let9">i</span> 
-          <span class="let10">e</span> 
-          <span class="let11">s</span> </div>`
+          h1.id = "loadingFirst";
+          h1.innerHTML = `<h2 class="transitonLoading">
+          <span class="let_1">M</span>  
+          <span class="let_2">o</span>  
+          <span class="let_3">c</span>  
+          <span class="let_4">h</span>  
+          <span class="let_5">a</span>  
+          <span class="let_6">M</span>  
+          <span class="let_7">o</span> 
+          <span class="let_8">v</span> 
+          <span class="let_9">i</span> 
+          <span class="let_10">e</span> 
+          <span class="let_11">s</span> </div>`
           document.querySelector("main").append(h1)
 
           renderFirstPage(r)
           localStorage.setItem('user', JSON.stringify(r))
 
           setTimeout(() => {
-            h1.classList.add("fadeOutH")
+            h1.id = "fadeOutloadingFirst"
           }, 2500)
           
           setTimeout(() => {
             h1.remove();
-          }, 3000)
+          }, 2800)
           // main.innerHTML = ""
           // renderFirstPage(r)
           // localStorage.setItem('user', JSON.stringify(r))

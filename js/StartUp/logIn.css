@@ -130,7 +130,7 @@ border-radius: 5px;
 padding: 10px;
 margin: 5px;  */
 
-#boxTransition {
+#loadingFirst {
   background-color: #151515;
   height: 100vh;
   width: 100%;
@@ -145,12 +145,12 @@ margin: 5px;  */
   opacity: 1;
 }
 
-.fadeOutH {
+#fadeOutloadingFirst {
   opacity: 0;
   transition: 0.4s ease-out;
 }
 
-.h1Transiton {
+.transitonLoading {
   margin: 0;
   padding: 0;
   font-family: ‘Arial Narrow’, sans-serif;
@@ -161,7 +161,7 @@ margin: 5px;  */
   width: 100%;
 }
 
-.h1Transiton > span {
+.transitonLoading > span {
   position: relative;
   top: 0.63em;  
   display: inline-block;
@@ -170,58 +170,58 @@ margin: 5px;  */
   transform: rotateX(-90deg);
 }
 
-.let1 {
+.let_1 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.4s;
 }
 
-.let2 {
+.let_2 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.5s;
 }
 
-.let3 {
+.let_3 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.6s;
 }
 
-.let4 {
+.let_4 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.7s;
 
 }
 
-.let5 {
+.let_5 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.8s;
 }
 
-.let6 {
+.let_6 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.9s;
 }
 
-.let7 {
+.let_7 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 1s;
 }
 
-.let8 {
+.let_8 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 1.1s;
 }
 
-.let9 {
+.let_9 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 1.2s;
 }
 
-.let10 {
+.let_10 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 1.3s;
 }
 
-.let11 {
+.let_11 {
   animation: drop 1s ease-in-out infinite;
   animation-delay: 1.4s;
 }
