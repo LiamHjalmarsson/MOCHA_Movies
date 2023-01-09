@@ -13,6 +13,7 @@ export async function renderMovies (counter, movieType, movies) {
   let movieGridContainer = document.createElement('div')
   movieGridContainer.id = 'movieGridContainer'
   renderMoviesWrapper.append(movieGridContainer)
+  let arrayRes = [];
 
   if(movieType != "trending"){
     if (movies == undefined) {
@@ -21,19 +22,20 @@ export async function renderMovies (counter, movieType, movies) {
       )
       let moviesResource = await moviesResponse.json()
       getMovies(moviesResource)
-      } else {
+    } else {
       getMovies(movies)
-      }
+    }
   }else{
     if (movies == undefined) {
       let moviesResponse = await fetch(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
       )
+      
       let moviesResource = await moviesResponse.json()
       getMovies(moviesResource)
-      } else {
+    } else {
       getMovies(movies)
-      }
+    }
   }
 
   let btnBox = document.createElement('div')
@@ -78,7 +80,6 @@ export async function renderMyMovies (counter, type, movies) {
   movieGridContainer.id = 'movieGridContainer'
 
   let user = JSON.parse(localStorage.getItem('user'))
-
   // if statment to controll if movies is undefined when called
   if (movies == undefined) {
     // controll if the users movie array is longer then 20
@@ -91,7 +92,7 @@ export async function renderMyMovies (counter, type, movies) {
         let movieResource = await movieResponse.json()
 
         if (movieResource.status_code != 34) {
-          movieGridContainer.append(createMovie(movieResource))
+           movieGridContainer.append(createMovie(movieResource))
         }
       }
     } else {
@@ -208,15 +209,21 @@ export function createMovie (movie) {
   let movieCard = document.createElement('div')
   movieCard.classList.add('movieCard')
 
-  if (movie.poster_path != '') {
-    movieCard.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`
-  } else {
-    movieCard.style.backgroundColor = 'gray'
-  }
+  movieCard.innerHTML = `<div class="dual-ring"></div>`;
+  setTimeout(() => {
 
-  movieCard.addEventListener('click', () => {
-    renderMovie(movie)
-  })
+    movieCard.innerHTML = "";
+    if (movie.poster_path != '') {
+      movieCard.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`
+    } else {
+      movieCard.style.backgroundColor = 'gray'
+    }
+  
+    movieCard.addEventListener('click', () => {
+      renderMovie(movie)
+    })
+
+  }, 1500)
 
   return movieCard
 }

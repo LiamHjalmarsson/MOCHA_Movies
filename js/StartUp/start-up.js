@@ -94,8 +94,35 @@ export function logIn () {
         } else {
           // logInDiv.remove()
           main.innerHTML = ""
+          let h1 = document.createElement("div");
+          h1.classList.add("boxTransition");
+          h1.innerHTML = `<h2 class="h1Transiton">
+          <span class="let1">M</span>  
+          <span class="let2">o</span>  
+          <span class="let3">c</span>  
+          <span class="let4">h</span>  
+          <span class="let5">a</span>  
+          <span class="let6">M</span>  
+          <span class="let7">o</span> 
+          <span class="let8">v</span> 
+          <span class="let9">i</span> 
+          <span class="let10">e</span> 
+          <span class="let11">s</span> </div>`
+          document.querySelector("main").append(h1)
+
           renderFirstPage(r)
           localStorage.setItem('user', JSON.stringify(r))
+
+          setTimeout(() => {
+            h1.classList.add("fadeOut")
+          }, 2500)
+          
+          setTimeout(() => {
+            h1.remove();
+          }, 3000)
+          // main.innerHTML = ""
+          // renderFirstPage(r)
+          // localStorage.setItem('user', JSON.stringify(r))
         }
       })
   })
