@@ -26,7 +26,6 @@ export async function renderFirstPage (user) {
     popularMovie.style.backgroundImage = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(15, 15, 15, 1)),url(https://image.tmdb.org/t/p/original/${movies[i].poster_path})`
     popularMovie.style.backgroundSize = 'cover'
     popularMovie.style.backgroundRepeat = 'no-repeat'
-    // console.log(counter)
     popularMovie.style.left = `${counter}vw`
     popularMovie.addEventListener('click', () => {
       renderMovie(movies[i])

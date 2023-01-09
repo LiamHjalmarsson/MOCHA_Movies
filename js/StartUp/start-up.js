@@ -95,7 +95,7 @@ export function logIn () {
           // logInDiv.remove()
           main.innerHTML = ""
           let h1 = document.createElement("div");
-          h1.classList.add("boxTransition");
+          h1.id = "boxTransition";
           h1.innerHTML = `<h2 class="h1Transiton">
           <span class="let1">M</span>  
           <span class="let2">o</span>  
@@ -114,7 +114,7 @@ export function logIn () {
           localStorage.setItem('user', JSON.stringify(r))
 
           setTimeout(() => {
-            h1.classList.add("fadeOut")
+            h1.classList.add("fadeOutH")
           }, 2500)
           
           setTimeout(() => {
