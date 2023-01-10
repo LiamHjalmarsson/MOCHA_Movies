@@ -99,7 +99,8 @@ async function getActors (movie) {
     actors.classList.add("actors-wrapper")
 
     if (recourseCast.cast.length === 0) {
-        return text = "No cast could be found";
+        let text = document.createElement("p")
+        text.textContent = "No cast could be found";
     } else {
         for (let i = 0; i < 4; i++) {
             if (recourseCast.cast[i] != undefined) {
