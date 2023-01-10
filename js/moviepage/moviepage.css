@@ -230,9 +230,10 @@
 }
 
 .review-item > div:nth-child(2){
-    margin: 10px;
     margin-left: 6px;
-    padding-bottom: 15px;
+    border-bottom: 15px solid #3a3e49;
+    height: 82px;
+    overflow: scroll;
 }
 
 .review-name > div:nth-child(2) > .stars > .star > .material-symbols-outlined{
