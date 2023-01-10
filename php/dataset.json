@@ -127,9 +127,14 @@
             "firstName": "Caspian",
             "lastName": "Ulvm\u00e5ne",
             "password": "testpass",
-            "imageLink": "",
+            "imageLink": "uploades\/1673368825-selfportrait_shorthair_Small.jpg",
             "reviewID": [
-                10
+                10,
+                121,
+                122,
+                123,
+                124,
+                125
             ],
             "following": [
                 1,
@@ -162,13 +167,17 @@
                 795607,
                 73,
                 567,
-                27205,
                 3782,
                 283566,
                 807,
                 652837,
                 20334,
-                490
+                490,
+                593643,
+                238,
+                27205,
+                661374,
+                315162
             ],
             "subscribedMovies": [
                 550,
@@ -184,7 +193,8 @@
                 441130,
                 12493,
                 533514,
-                101
+                101,
+                238
             ]
         },
         {
@@ -1953,6 +1963,46 @@
             "grade": 3,
             "reviewText": "Better then i tought",
             "date": "2023-01-10 16:55:53"
+        },
+        {
+            "reviewID": 121,
+            "movieID": 593643,
+            "userID": 3,
+            "grade": 3,
+            "reviewText": "I twist on a horror story, not only engaging and intriguing but also very funny with jokes that land. Possible a bit predictable but its also a lot of dumb fun!",
+            "date": "2023-01-10 17:42:45"
+        },
+        {
+            "reviewID": 122,
+            "movieID": 238,
+            "userID": 3,
+            "grade": 4,
+            "reviewText": "Great story, acting, cinematography and soundtrack! many memorable scenes!",
+            "date": "2023-01-10 18:22:21"
+        },
+        {
+            "reviewID": 123,
+            "movieID": 27205,
+            "userID": 3,
+            "grade": 3,
+            "reviewText": "really cool movie by Nolan, his visual interpretations of cool concepts is always fun to watch!",
+            "date": "2023-01-10 18:24:37"
+        },
+        {
+            "reviewID": 124,
+            "movieID": 661374,
+            "userID": 3,
+            "grade": 3,
+            "reviewText": "Never saw the first movie but Benoit is a really fun character and the humor does this one for me",
+            "date": "2023-01-10 18:26:00"
+        },
+        {
+            "reviewID": 125,
+            "movieID": 315162,
+            "userID": 3,
+            "grade": 4,
+            "reviewText": "The nostaliga, so fun to see him again!",
+            "date": "2023-01-10 18:36:08"
         }
     ],
     "notifications": [
@@ -3934,6 +3984,141 @@
             "sendToUser": 24,
             "seen": false,
             "date": "2023-01-10 16:55:11"
+        },
+        {
+            "notificationID": 221,
+            "senderID": 3,
+            "movieID": 593643,
+            "message": "I twist on a horror story, not only engaging and intriguing but also very funny with jokes that land. Possible a bit predictable but its also a lot of dumb fun!",
+            "sendToUser": 5,
+            "seen": false,
+            "date": "2023-01-10 17:42:45"
+        },
+        {
+            "notificationID": 222,
+            "senderID": 3,
+            "movieID": 593643,
+            "message": "I twist on a horror story, not only engaging and intriguing but also very funny with jokes that land. Possible a bit predictable but its also a lot of dumb fun!",
+            "sendToUser": 25,
+            "seen": false,
+            "date": "2023-01-10 17:42:45"
+        },
+        {
+            "notificationID": 223,
+            "senderID": 3,
+            "movieID": 593643,
+            "message": "I twist on a horror story, not only engaging and intriguing but also very funny with jokes that land. Possible a bit predictable but its also a lot of dumb fun!",
+            "sendToUser": 26,
+            "seen": false,
+            "date": "2023-01-10 17:42:45"
+        },
+        {
+            "notificationID": 224,
+            "senderID": 3,
+            "movieID": 238,
+            "message": "Great story, acting, cinematography and soundtrack! many memorable scenes!",
+            "sendToUser": 1,
+            "seen": false,
+            "date": "2023-01-10 18:22:21"
+        },
+        {
+            "notificationID": 225,
+            "senderID": 3,
+            "movieID": 238,
+            "message": "Great story, acting, cinematography and soundtrack! many memorable scenes!",
+            "sendToUser": 23,
+            "seen": false,
+            "date": "2023-01-10 18:22:21"
+        },
+        {
+            "notificationID": 226,
+            "senderID": 3,
+            "movieID": 238,
+            "message": "Great story, acting, cinematography and soundtrack! many memorable scenes!",
+            "sendToUser": 26,
+            "seen": false,
+            "date": "2023-01-10 18:22:21"
+        },
+        {
+            "notificationID": 227,
+            "senderID": 3,
+            "movieID": 238,
+            "message": "Great story, acting, cinematography and soundtrack! many memorable scenes!",
+            "sendToUser": 27,
+            "seen": false,
+            "date": "2023-01-10 18:22:21"
+        },
+        {
+            "notificationID": 228,
+            "senderID": 3,
+            "movieID": 661374,
+            "message": "Never saw the first movie but Benoit is a really fun character and the humor does this one for me",
+            "sendToUser": 14,
+            "seen": false,
+            "date": "2023-01-10 18:26:00"
+        },
+        {
+            "notificationID": 229,
+            "senderID": 3,
+            "movieID": 661374,
+            "message": "Never saw the first movie but Benoit is a really fun character and the humor does this one for me",
+            "sendToUser": 24,
+            "seen": false,
+            "date": "2023-01-10 18:26:00"
+        },
+        {
+            "notificationID": 230,
+            "senderID": 3,
+            "movieID": 661374,
+            "message": "Never saw the first movie but Benoit is a really fun character and the humor does this one for me",
+            "sendToUser": 26,
+            "seen": false,
+            "date": "2023-01-10 18:26:00"
+        },
+        {
+            "notificationID": 231,
+            "senderID": 3,
+            "movieID": 315162,
+            "message": "The nostaliga, so fun to see him again!",
+            "sendToUser": 14,
+            "seen": false,
+            "date": "2023-01-10 18:36:08"
+        },
+        {
+            "notificationID": 232,
+            "senderID": 3,
+            "movieID": 315162,
+            "message": "The nostaliga, so fun to see him again!",
+            "sendToUser": 23,
+            "seen": false,
+            "date": "2023-01-10 18:36:08"
+        },
+        {
+            "notificationID": 233,
+            "senderID": 3,
+            "movieID": 315162,
+            "message": "The nostaliga, so fun to see him again!",
+            "sendToUser": 25,
+            "seen": false,
+            "date": "2023-01-10 18:36:08"
+        },
+        {
+            "notificationID": 234,
+            "senderID": 3,
+            "movieID": 315162,
+            "message": "The nostaliga, so fun to see him again!",
+            "sendToUser": 26,
+            "seen": false,
+            "date": "2023-01-10 18:36:08"
+        },
+        {
+            "notificationID": 235,
+            "senderID": 3,
+            "movieID": 315162,
+            "message": "The nostaliga, so fun to see him again!",
+            "sendToUser": 27,
+            "seen": false,
+            "date": "2023-01-10 18:36:08"
         }
     ]
 }
