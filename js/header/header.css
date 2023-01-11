@@ -28,7 +28,7 @@ nav {
   width: 40%;
 }
 
-.burger-div > .material-symbols-outlined{
+.burger-div > .material-symbols-outlined {
   position: relative;
   left: 5px;
 }
@@ -45,25 +45,32 @@ nav {
 }
 
 .profile-div {
-  width: 20%;
-  height: 50px;
+  min-width: 33px;
+  min-height: 33px;
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .userImg {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  /* height: 20px; */
+  border-radius: 50%;
+  height: 24px;
   position: relative;
   bottom: 4px;
-  height: 24px;
-  left: 5px;
+  margin-left: 5px;
 }
 
+.notiUserImg {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 24px;
+}
 .burgerMenu {
   height: 100vh;
   width: 100vw;
@@ -106,16 +113,16 @@ nav {
   color: #4e4e4e;
 }
 
-.burgerMenu > div:first-child{
+.burgerMenu > div:first-child {
   padding-top: 20px;
   padding-left: 20px;
 }
 
-.burgerMenu > div:last-child{
+.burgerMenu > div:last-child {
   padding-top: 40px;
 }
 
-.burgerMenu > div:last-child > .material-symbols-outlined{
+.burgerMenu > div:last-child > .material-symbols-outlined {
   font-size: 30px;
 }
 

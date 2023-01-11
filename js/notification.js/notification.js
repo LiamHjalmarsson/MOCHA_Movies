@@ -45,18 +45,18 @@ export function createNotificationItem(array){
             let senderUser = await getUser(notification.senderID)
             let senderName = senderUser.firstName
             
-            let userImg = ""
+            let notiUserImg = ""
             if(senderUser.imageLink == ""){
-                userImg = `<span class="material-symbols-outlined">person</span>`
+                notiUserImg = `<span class="material-symbols-outlined">person</span>`
             }else{
-                // userImg.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`;
-                // userImg.classList.add("userImg");
-                userImg = `<div class="userImg notImg" style="background-image:url(../../php/image/${senderUser.imageLink})"> </div>`
+                // notiUserImg.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`;
+                // notiUserImg.classList.add("notiUserImg");
+                notiUserImg = `<div class="notiUserImg notImg" style="background-image:url(../../php/image/${senderUser.imageLink})"> </div>`
             }
     
             if(notification.movieID == ""){
                 // här om vi vill att man ska kunna ta sig till profil ta reda på användaren
-                notificationItem.innerHTML = `<div>${userImg}</div><div>${notification.message}<div>${notification.date}</div></div>`
+                notificationItem.innerHTML = `<div>${notiUserImg}</div><div>${notification.message}<div>${notification.date}</div></div>`
                 notificationItem.addEventListener("click", function(){
                     otherUser(notification.senderID)
                 })
@@ -68,7 +68,7 @@ export function createNotificationItem(array){
                 let imgSrc = `https://image.tmdb.org/t/p/original/${movieResource.poster_path}`
     
                 notificationItem.innerHTML = `
-                    <div>${userImg}</div>
+                    <div>${notiUserImg}</div>
                     <div>
                         <div>${senderName} left a review on ${movieTitle}: <span>"${notification.message}"</span></div>
                         <div>${notification.date}</div>
