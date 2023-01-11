@@ -83,6 +83,8 @@ nav {
   z-index: 2;
   background-color: rgb(15, 15, 15);
   font-family: 'Nunito Sans', sans-serif;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .burgerMenu > div {

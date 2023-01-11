@@ -1,8 +1,3 @@
-/* body{
-    margin: 0;
-} */
-
-/* to overlapp everything and display on top */
 .search-container {
   position: fixed;
   top: 0;

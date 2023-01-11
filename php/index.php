@@ -22,13 +22,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Condensed:wght@300&family=Nunito+Sans:wght@200&family=Righteous&display=swap" rel="stylesheet">
 
-    <!--  navigation is to be removde if we want, just to be able to see better -->
     <link rel="stylesheet" href="../js/navigationBack/navigationBack.css">
     <title>Document</title>
 </head>
@@ -36,7 +35,6 @@
 <body>
     <nav></nav>
     <main>
-        <!-- <h1>Movies</h1> -->
     </main>
     <footer></footer>
     <script type="module" src="../js/startUp/start-up.js"></script>
@@ -44,7 +42,7 @@
     <script type="module" src="../js/user/user.js"></script>
     <script type="module" src="../js/about/about.js"></script>
 
-    
+
 </body>
 
 </html>

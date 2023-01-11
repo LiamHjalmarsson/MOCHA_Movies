@@ -18,5 +18,3 @@ function sendJSON($data, $responseCode = 200){
     echo $json;
     exit();
 }
-
-?>

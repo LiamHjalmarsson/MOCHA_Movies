@@ -13,9 +13,8 @@ export async function renderMovies (counter, movieType, movies) {
   let movieGridContainer = document.createElement('div')
   movieGridContainer.id = 'movieGridContainer'
   renderMoviesWrapper.append(movieGridContainer)
-  let arrayRes = [];
 
-  if(movieType != "trending"){
+  if (movieType != 'trending') {
     if (movies == undefined) {
       let moviesResponse = await fetch(
         `https://api.themoviedb.org/3/movie/${movieType.toLowerCase()}?api_key=${key}&language=en-US&page=${counter}`
@@ -25,12 +24,12 @@ export async function renderMovies (counter, movieType, movies) {
     } else {
       getMovies(movies)
     }
-  }else{
+  } else {
     if (movies == undefined) {
       let moviesResponse = await fetch(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=e666c096bb904490508ada0b495d2d90&language=en-US`
       )
-      
+
       let moviesResource = await moviesResponse.json()
       getMovies(moviesResource)
     } else {
@@ -43,7 +42,6 @@ export async function renderMovies (counter, movieType, movies) {
   let btn = document.createElement('div')
   btn.innerHTML = `<span class="material-symbols-outlined">keyboard_double_arrow_down</span>`
   btn.classList.add('showMore')
-  // btn.textContent = 'show more';
 
   // this is a function that observe btn, if whole btn is fully vissible on screen dvs, (btnEntrie.isIntersecting == true) then more movies will load to page
   let observer = new IntersectionObserver(
@@ -92,7 +90,7 @@ export async function renderMyMovies (counter, type, movies) {
         let movieResource = await movieResponse.json()
 
         if (movieResource.status_code != 34) {
-           movieGridContainer.append(createMovie(movieResource))
+          movieGridContainer.append(createMovie(movieResource))
         }
       }
     } else {
@@ -122,7 +120,7 @@ export async function renderMyMovies (counter, type, movies) {
       } else {
         movieGridContainer.append(createMovie(movie))
       }
-    }) 
+    })
 
     if (user[type].length > 10) {
       for (let i = 0; i < 10; i++) {
@@ -132,7 +130,7 @@ export async function renderMyMovies (counter, type, movies) {
             `https://api.themoviedb.org/3/movie/${user[type][counter]}?api_key=${key}&language=en-US`
           )
           let movieResource = await movieResponse.json()
-            
+
           if (movieResource.status_code != 34) {
             movieGridContainer.append(createMovie(movieResource))
           }
@@ -140,11 +138,11 @@ export async function renderMyMovies (counter, type, movies) {
       }
     }
   } else {
-    movieGridContainer.remove();
-    let noInfo = document.createElement("div");
-    noInfo.classList.add("noInfoOfMovies");
-    noInfo.textContent = `You dont have any movies to see here yet!`;
-    renderMoviesWrapper.append(noInfo);
+    movieGridContainer.remove()
+    let noInfo = document.createElement('div')
+    noInfo.classList.add('noInfoOfMovies')
+    noInfo.textContent = `You dont have any movies to see here yet!`
+    renderMoviesWrapper.append(noInfo)
   }
 
   renderMoviesWrapper.append(movieGridContainer)
@@ -161,10 +159,10 @@ export async function renderMyMovies (counter, type, movies) {
         let btnEntrie = entries[0]
 
         if (!btnEntrie.isIntersecting) return
-          for (let i = 0; i < 20; i++) {
-            counter++
-            getMovies(user[type], counter, type)
-          }
+        for (let i = 0; i < 20; i++) {
+          counter++
+          getMovies(user[type], counter, type)
+        }
       },
       {
         threshold: 1
@@ -209,20 +207,18 @@ export function createMovie (movie) {
   let movieCard = document.createElement('div')
   movieCard.classList.add('movieCard')
 
-  movieCard.innerHTML = `<div class="dual-ring"></div>`;
+  movieCard.innerHTML = `<div class="dual-ring"></div>`
   setTimeout(() => {
-
-    movieCard.innerHTML = "";
+    movieCard.innerHTML = ''
     if (movie.poster_path != '') {
       movieCard.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`
     } else {
       movieCard.style.backgroundColor = 'gray'
     }
-  
+
     movieCard.addEventListener('click', () => {
       renderMovie(movie)
     })
-
   }, 1500)
 
   return movieCard

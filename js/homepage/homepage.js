@@ -7,8 +7,6 @@ import { renderAddFreind } from '../fellows/fellows.js'
 import { following } from '../fellows/fellows.js'
 import { logIn } from '../StartUp/start-up.js'
 
-// localStorage.setItem("user", JSON.stringify(user));
-
 export async function renderFirstPage (user) {
   createNav(user.userID)
 
@@ -40,20 +38,16 @@ export async function renderFirstPage (user) {
       let divWithVW = div.style.left
       let withoutVW = divWithVW.slice(0, -2)
       let newNr = withoutVW - 100
-      // console.log(newNr)
       div.style.left = newNr + 'vw'
 
       let arrayOfDivs = document.querySelectorAll('.popularMovie')
       let lastDiv = arrayOfDivs[arrayOfDivs.length - 1]
-      // console.log(lastDiv)
-      // console.log(lastDiv.style.left)
       let c = 0
       if (lastDiv.style.left == '-100vw') {
         for (let j = 0; j < 6; j++) {
           arrayOfDivs[j].style.left = `${c}vw`
           arrayOfDivs[j].style.transition = 'ease-in 1s'
           c += 100
-          // console.log('bytförfan')
         }
       }
     })
@@ -106,14 +100,11 @@ export async function renderFirstPage (user) {
   firstPageField('Upcoming')
   firstPageUserMovie(user.moviesToSee, 'Want to see', 'moviesToSee')
   firstPageField('Now_playing')
-  // getCategories()
   firstPageField('Top_rated')
   firstPageUserMovie(user.watchedMovies, 'Watch again', 'watchedMovies')
 }
 
 export async function createPersonDivs (followingID, personBox, addFriendDiv) {
-  // (addFriendDiv), to be able to put the addFriendDiv last
-
   // for each followingID, fetch person and create div
   let personIFollowResponse = await fetch(
     `../php/get/get.php/?users=${followingID}`
@@ -192,23 +183,13 @@ async function firstPageUserMovie (array, title, path) {
   let userString = localStorage.getItem('user')
   let user = JSON.parse(userString)
 
-  // if (title != 'Watch again') {
-  //   titleBox.textContent = user.firstName + 's' + ' ' + title
-  // }
-  // else {
-  //   titleBox.textContent = title
-  // }
-
-    if (title == 'subscribed movies') {
+  if (title == 'subscribed movies') {
     titleBox.textContent = user.firstName + 's' + ' ' + title
-  } else if (title == "Want to see") {
-    titleBox.textContent = user.firstName + ' ' + "wants to see"
-  }
-  else {
+  } else if (title == 'Want to see') {
+    titleBox.textContent = user.firstName + ' ' + 'wants to see'
+  } else {
     titleBox.textContent = title
   }
-
-  
 
   document.querySelector('main').append(movieWrapper)
   let movieArray = []
@@ -306,8 +287,6 @@ async function getCategories () {
   )
   let genreResponse = await fetch(rqstGenre)
   let genresObject = await genreResponse.json()
-
-  // console.log(genresObject)
 
   for (let i = 0; i < 10; i++) {
     let div = document.createElement('div')

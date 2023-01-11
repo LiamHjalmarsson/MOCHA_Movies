@@ -1,29 +1,33 @@
 #navigationBack {
   position: fixed;
-width: 100vw;
-display: flex;
-align-items: center;
-background-image: linear-gradient( to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0) );
-transition: color 1s;
-font-family: Nunito Sans, sans-serif;
-font-weight: bolder;
-height: 82px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(15, 15, 15),
+    rgba(15, 15, 15, 0)
+  );
+  transition: color 1s;
+  font-family: Nunito Sans, sans-serif;
+  font-weight: bolder;
+  height: 82px;
 }
 
-#navigationBack > div:first-child{
+#navigationBack > div:first-child {
   width: 20%;
   position: relative;
   left: 10px;
 }
 
-#navigationBack > .nameInNav{
+#navigationBack > .nameInNav {
   width: 60%;
   text-align: center;
   font-size: 12pt;
 }
 
-#navigationBack > div:nth-child(3){
-  width: 20%;
+#navigationBack > div:nth-child(3) {
+  margin-left: 25px;
 }
 
 #navigationBack .hide {
@@ -45,11 +49,6 @@ height: 82px;
   transform: translate(17px, 18px) scale(1);
 }
 
-/* #navigationBack > div {
-  padding: 10px;
-  padding-right: 30px;
-} */
-
 #navigationBack > div:hover {
   cursor: pointer;
 }
@@ -62,7 +61,3 @@ height: 82px;
 .seen-notification-box {
   margin-top: 10px;
 }
-
-/* #navigationBack > .profile-div {
-  height: 11px;
-} */

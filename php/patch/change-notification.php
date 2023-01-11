@@ -27,5 +27,3 @@ file_put_contents($filename, $jsonData);
 
 // sends back array with changed notifications
 sendJSON($changedNotifications);
-
-?>

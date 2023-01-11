@@ -34,6 +34,3 @@
 
     $error = ["error" => "This review does not exist."];
             sendJSON($error, 404);
-
-
-?>

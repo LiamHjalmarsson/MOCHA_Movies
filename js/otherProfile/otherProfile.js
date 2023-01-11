@@ -1,4 +1,4 @@
-import {navigationBackNoUser } from '../navigationBack/navigationBack.js'
+import { navigationBackNoUser } from '../navigationBack/navigationBack.js'
 import { renderMovie } from '../moviepage/moviepage.js'
 import { createElementWithClassOrID } from '../homepage/homepage.js'
 
@@ -14,17 +14,13 @@ export async function otherUser (otherUserID) {
   )
   document.querySelector('main').append(otherProfileWrapper)
 
-  // ta bort bara för försök
-  // navigation to close and other information / LIAM
-  otherProfileWrapper.append(
-    navigationBackNoUser(otherProfileWrapper)
-  )
+  otherProfileWrapper.append(navigationBackNoUser(otherProfileWrapper))
 
   // --------------- profile image on other persons profile ----------------
 
   let otherProfileImg = createElementWithClassOrID(false, 'otherProfileImg')
   if (otherUserResource.imageLink != '') {
-    otherProfileImg.style.backgroundImage = `url(../../php/image/${otherUserResource.imageLink})`;
+    otherProfileImg.style.backgroundImage = `url(../../php/image/${otherUserResource.imageLink})`
     otherProfileImg.style.backgroundSize = 'contain'
     otherProfileImg.style.backgroundPosition = 'center'
   } else {
@@ -40,28 +36,27 @@ export async function otherUser (otherUserID) {
 
   // --------------- "not allowed text", if you are not following  ----------------
 
-  let startFollow = document.createElement("div");
-  startFollow.classList.add("start-follow")
-  startFollow.innerHTML = `Follow<i class="fa-solid fa-plus"></i>`; 
+  let startFollow = document.createElement('div')
+  startFollow.classList.add('start-follow')
+  startFollow.innerHTML = `Follow<i class="fa-solid fa-plus"></i>`
 
-  startFollow.addEventListener("click", async () => {
+  startFollow.addEventListener('click', async () => {
     let responseAdd = await fetch(`../../php/post/following.php`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      userID: user.userID,
-      followingID: otherUserID
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userID: user.userID,
+        followingID: otherUserID
+      })
     })
-    });
 
     if (responseAdd.ok) {
-      let recourseAdd = await responseAdd.json();
-      localStorage.setItem("user", JSON.stringify(recourseAdd));
-      // let currentUser = localStorage.getItem("user");
+      let recourseAdd = await responseAdd.json()
+      localStorage.setItem('user', JSON.stringify(recourseAdd))
       otherUser(otherUserID)
       setTimeout(() => {
-        document.querySelector("main > #otherProfileWrapper").remove();
-    }, 500);
+        document.querySelector('main > #otherProfileWrapper').remove()
+      }, 500)
     }
   })
 
@@ -86,20 +81,20 @@ export async function otherUser (otherUserID) {
 
     let chooseMovieContainer = createElementWithClassOrID(
       'chooseMovieContainer'
-      )
-      otherProfileWrapper.append(chooseMovieContainer)
-      
-      let toSeeBtn = createElementWithClassOrID('toSeeBtn')
-      let watchedBtn = createElementWithClassOrID('watchedBtn')
-      chooseMovieContainer.append(toSeeBtn, watchedBtn)
-      
-      // ------------------------------------------------------
-      
-      let resultContainer = createElementWithClassOrID('resultContainer')
-      let noInfo = document.createElement("div");
-      otherProfileWrapper.append(noInfo);
-      noInfo.classList.add("noInfo");
-   
+    )
+    otherProfileWrapper.append(chooseMovieContainer)
+
+    let toSeeBtn = createElementWithClassOrID('toSeeBtn')
+    let watchedBtn = createElementWithClassOrID('watchedBtn')
+    chooseMovieContainer.append(toSeeBtn, watchedBtn)
+
+    // ------------------------------------------------------
+
+    let resultContainer = createElementWithClassOrID('resultContainer')
+    let noInfo = document.createElement('div')
+    otherProfileWrapper.append(noInfo)
+    noInfo.classList.add('noInfo')
+
     fetchMovies(otherUserResource.moviesToSee, otherUserResource)
 
     toSeeBtn.textContent = 'Movies To See'
@@ -132,13 +127,13 @@ export async function otherUser (otherUserID) {
 
 async function fetchMovies (otherUserMovies, otherUserResource, counter = 0) {
   let movieArray = []
-  let noInfo = document.querySelector(".noInfo")
-  noInfo.innerHTML=""
+  let noInfo = document.querySelector('.noInfo')
+  noInfo.innerHTML = ''
 
   if (otherUserMovies.length === 0) {
-    noInfo.textContent = "This user has no movies";
-    noInfo.style.padding = "30px";
-    return;
+    noInfo.textContent = 'This user has no movies'
+    noInfo.style.padding = '30px'
+    return
   }
 
   for (let i = 0; i < 20; i++) {
@@ -238,7 +233,6 @@ function createMovieBox (movieArray, otherUserResource) {
                 starsContainer.append(star)
 
                 if (i < grade) {
-                  // console.log('gul')
                   star.firstChild.classList.add('fill')
                 }
               }

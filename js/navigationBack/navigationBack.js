@@ -8,8 +8,6 @@ export function navigationBack (remove, path) {
 
   let arrowBack = document.createElement('div')
   arrowBack.innerHTML = `<span class="material-symbols-outlined backArrow">chevron_left</span>`
-  // lagt till namn / filmens title i naven då man inte ser namnet på vissa filmer, antingen låtter vi detta ligga här
-  // eller så placerar vi det någon annans stans i filmens information
 
   let name = document.createElement('div')
   name.classList.add('nameInNav')
@@ -36,9 +34,9 @@ export function navigationBack (remove, path) {
     case 'trending':
       name.innerHTML = 'Todays trending'
       break
-      case 'Now_playing':
-        name.innerHTML = 'Now playing in theatres'
-        break
+    case 'Now_playing':
+      name.innerHTML = 'Now playing in theatres'
+      break
     default:
       name.innerHTML = path ? path : ''
       break
@@ -48,10 +46,9 @@ export function navigationBack (remove, path) {
   navigationBack.append(arrowBack, name, profile)
 
   arrowBack.addEventListener('click', () => {
-    remove.style.left = "-600px"
-    // console.log(remove)
+    remove.style.left = '-600px'
 
-    setTimeout(function(){
+    setTimeout(function () {
       remove.remove()
     }, 500)
 
@@ -60,11 +57,8 @@ export function navigationBack (remove, path) {
     }
   })
 
-  // hej()
-
   return navigationBack
 }
-
 
 export function navigationBackNoUser (remove, path) {
   let stringUser = localStorage.getItem('user')
@@ -74,8 +68,6 @@ export function navigationBackNoUser (remove, path) {
 
   let arrowBack = document.createElement('div')
   arrowBack.innerHTML = `<span class="material-symbols-outlined backArrow">chevron_left</span>`
-  // lagt till namn / filmens title i naven då man inte ser namnet på vissa filmer, antingen låtter vi detta ligga här
-  // eller så placerar vi det någon annans stans i filmens information
 
   let name = document.createElement('div')
   name.classList.add('nameInNav')
@@ -102,9 +94,9 @@ export function navigationBackNoUser (remove, path) {
     case 'trending':
       name.innerHTML = 'Todays trending'
       break
-      case 'Now_playing':
-        name.innerHTML = 'Now playing in theatres'
-        break
+    case 'Now_playing':
+      name.innerHTML = 'Now playing in theatres'
+      break
     default:
       name.innerHTML = path ? path : ''
       break
@@ -113,10 +105,9 @@ export function navigationBackNoUser (remove, path) {
   navigationBack.append(arrowBack, name)
 
   arrowBack.addEventListener('click', () => {
-    remove.style.left = "-600px"
-    // console.log(remove)
+    remove.style.left = '-600px'
 
-    setTimeout(function(){
+    setTimeout(function () {
       remove.remove()
     }, 500)
 
@@ -125,57 +116,5 @@ export function navigationBackNoUser (remove, path) {
     }
   })
 
-  // hej()
-
   return navigationBack
 }
-
-// function hej(){
-//   let w = window
-//   let doc = document.documentElement
-
-//   let prevScroll = w.scrollY || doc.scrollTop
-//   console.log(prevScroll)
-//   var curScroll
-  
-//   var direction = 0;
-//   var prevDirection = 0;
-
-//   var header = document.querySelector('#navigationBack');
-
-//   var checkScroll = function() {
-
-//     curScroll = w.scrollY || doc.scrollTop;
-//     if (curScroll > prevScroll) { 
-//       //scrolled up
-//       direction = 2;
-//     }
-//     else if (curScroll < prevScroll) { 
-//       //scrolled down
-//       direction = 1;
-//     }
-
-//     if (direction !== prevDirection) {
-//       toggleHeader(direction, curScroll);
-//     }
-    
-//     prevScroll = curScroll;
-//   };
-
-//   var toggleHeader = function(direction, curScroll) {
-//     if (direction === 2 && curScroll > 52) { 
-      
-//       //replace 52 with the height of your header in px
-
-//       header.classList.add('hide');
-//       prevDirection = direction;
-//     }
-//     else if (direction === 1) {
-//       header.classList.remove('hide');
-//       prevDirection = direction;
-//     }
-//   };
-  
-//   window.addEventListener('scroll', checkScroll);
-// }
-

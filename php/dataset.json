@@ -2579,7 +2579,7 @@
             "movieID": "",
             "message": "Liam started to follow you",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-09 15:23:16"
         },
         {
@@ -2777,7 +2777,7 @@
             "movieID": 278,
             "message": "Grate movie, good acting. ",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 15:52:12"
         },
         {
@@ -2804,7 +2804,7 @@
             "movieID": "",
             "message": "Liam started to follow you",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:05:59"
         },
         {
@@ -2975,7 +2975,7 @@
             "movieID": 278,
             "message": "morgan freeman<3",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:18:28"
         },
         {
@@ -3182,7 +3182,7 @@
             "movieID": 278,
             "message": "Now this is a movie to watch ",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:32:16"
         },
         {
@@ -3623,7 +3623,7 @@
             "movieID": 278,
             "message": "what a movie can watch it over and over again ",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:44:27"
         },
         {
@@ -3902,7 +3902,7 @@
             "movieID": 724495,
             "message": "Really like it, it  was amazing",
             "sendToUser": 4,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:54:04"
         },
         {
@@ -3974,7 +3974,7 @@
             "movieID": 278,
             "message": "WOW !!!!",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:54:49"
         },
         {
@@ -3983,7 +3983,7 @@
             "movieID": 278,
             "message": "WOW !!!!",
             "sendToUser": 4,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:54:49"
         },
         {
@@ -4028,7 +4028,7 @@
             "movieID": 424,
             "message": "fantastic",
             "sendToUser": 4,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:55:11"
         },
         {
@@ -4253,7 +4253,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 3,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-11 00:54:51"
         },
         {

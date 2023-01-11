@@ -41,5 +41,3 @@ export function createAbout () {
 
   document.querySelector('main').append(aboutWrapper)
 }
-
-// createAbout()

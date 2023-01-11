@@ -58,8 +58,6 @@ export function createSearch (counter = 0) {
   searchContainer.appendChild(resultWrapper)
 
   getMoviesToShow(counter)
-
-  //    return searchContainer
 }
 
 export function searchField () {
@@ -118,7 +116,6 @@ function createMovies (array) {
     if (element.poster_path != null) {
       let movieDiv = document.createElement('div')
       movieDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${element.poster_path})`
-      // add click event to each element who call on function that take you to specifik moviePage
       movieDiv.addEventListener('click', () => {
         renderMovie(element)
       })
@@ -128,11 +125,9 @@ function createMovies (array) {
 }
 
 function createUser (array, searchWord) {
-  console.log(array)
   let userWrapper = document.querySelector('.search-result-wrapper')
   userWrapper.innerHTML = ''
 
-  console.log(array)
   array.forEach(user => {
     if (user.username.includes(searchWord)) {
       let userDiv = document.createElement('div')
@@ -140,12 +135,10 @@ function createUser (array, searchWord) {
       if (user.imageLink == '') {
         userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
       } else {
-        console.log(user.imageLink)
         userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../../php/image/${user.imageLink})"></div>`
       }
       userDiv.innerHTML += user.username
 
-      // click on user to get to there page
       userDiv.addEventListener('click', () => {
         otherUser(user.userID)
       })
@@ -234,7 +227,7 @@ function getUsersToShow (counter = -1) {
                   }
 
                   userDiv.innerHTML += `<p>${recourse[counter].username}</p>`
-                  let id = recourse[counter].userID;
+                  let id = recourse[counter].userID
 
                   userDiv.addEventListener('click', () => {
                     otherUser(id)
