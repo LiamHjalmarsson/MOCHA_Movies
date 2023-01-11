@@ -1,4 +1,4 @@
-import { navigationBack } from "../navigationBack/navigationBack.js";
+import { navigationBack, navigationBackNoUser } from "../navigationBack/navigationBack.js";
 import { following, userFollowers } from "../fellows/fellows.js";
 import { renderFirstPage } from "../homepage/homepage.js";
 import {
@@ -20,7 +20,7 @@ export function userProfile() {
   logOutButton.innerHTML = `<div>Log out</div><span class="material-symbols-outlined">logout</span>`;
 
   logOutButton.addEventListener("click", logOut);
-  userProfile.append(navigationBack(userProfile));
+  userProfile.append(navigationBackNoUser(userProfile));
 
   logOutDiv.append(logOutButton);
   userProfile.append(informationUserProfile());
@@ -63,7 +63,7 @@ function informationUserProfile() {
 
 function changeProfileInformation() {
   let popUp = document.createElement("div");
-  popUp.append(navigationBack(popUp));
+  popUp.append(navigationBackNoUser(popUp));
   popUp.classList.add("changeProfile");
 
   let profileImg = document.createElement("div");
@@ -224,7 +224,7 @@ function passwordUpdate(user, error) {
 
 function changeImage(user) {
   let popUp = document.createElement("div");
-  popUp.append(navigationBack(popUp));
+  popUp.append(navigationBackNoUser(popUp));
   popUp.classList.add("changeProfile");
   let textDiv = document.createElement("div");
   textDiv.textContent = `${user.firstName} ${user.lastName}`;
