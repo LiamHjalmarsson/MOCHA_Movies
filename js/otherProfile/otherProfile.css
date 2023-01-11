@@ -39,7 +39,7 @@
 }
 
 #otherProfileImg {
-  margin: 80px 0px 15px 0px;
+  margin: 150px 0px 15px 0px;
   border: 0.5px solid rgb(48, 46, 46);
   border-radius: 50%;
   min-height: 80px;
@@ -108,4 +108,11 @@ font-size: 18px;
 #otherProfileNotAllowed > span {
   margin-top: 30px;
 
+}
+
+.start-follow{
+  position: absolute;
+  margin-top: 145px;
+  left: 54vw;
+  cursor: pointer;
 }

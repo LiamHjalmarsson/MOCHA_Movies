@@ -1,5 +1,4 @@
 import {navigationBackNoUser } from '../navigationBack/navigationBack.js'
-// import { renderMyMovies } from '../showmovies/showmovies.js'
 import { renderMovie } from '../moviepage/moviepage.js'
 import { createElementWithClassOrID } from '../homepage/homepage.js'
 
@@ -20,6 +19,7 @@ export async function otherUser (otherUserID) {
   otherProfileWrapper.append(
     navigationBackNoUser(otherProfileWrapper)
   )
+
   // --------------- profile image on other persons profile ----------------
 
   let otherProfileImg = createElementWithClassOrID(false, 'otherProfileImg')
@@ -40,13 +40,38 @@ export async function otherUser (otherUserID) {
 
   // --------------- "not allowed text", if you are not following  ----------------
 
+  let startFollow = document.createElement("div");
+  startFollow.classList.add("start-follow")
+  startFollow.innerHTML = `Follow<i class="fa-solid fa-plus"></i>`; 
+
+  startFollow.addEventListener("click", async () => {
+    let responseAdd = await fetch(`../../php/post/following.php`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userID: user.userID,
+      followingID: otherUserID
+    })
+    });
+
+    if (responseAdd.ok) {
+      let recourseAdd = await responseAdd.json();
+      localStorage.setItem("user", JSON.stringify(recourseAdd));
+      // let currentUser = localStorage.getItem("user");
+      otherUser(otherUserID)
+      setTimeout(() => {
+        document.querySelector("main > #otherProfileWrapper").remove();
+    }, 500);
+    }
+  })
+
   let otherProfileNotAllowed = createElementWithClassOrID(
     false,
     'otherProfileNotAllowed'
   )
   otherProfileNotAllowed.innerHTML = `
     <p>You are not following this account</p>
-    <p>Follow this account to see its watched movies as well as movies the person wants to watch</p>
+    <p>Follow this account to see ${otherUserResource.firstName}´s watched movies as well as movies the person wants to watch</p>
     <span class="material-symbols-outlined">lock</span>`
   otherProfileWrapper.append(otherProfileImg, otherProfileName)
 
@@ -55,7 +80,7 @@ export async function otherUser (otherUserID) {
   // checks if you are following or not!
 
   if (!user.following.includes(otherUserID)) {
-    otherProfileWrapper.append(otherProfileNotAllowed)
+    otherProfileWrapper.append(otherProfileNotAllowed, startFollow)
   } else {
     // ------------- create "kartvy/listvy" -----------------
 
