@@ -19,5 +19,3 @@ foreach ($data["users"] as $index => $user) {
 
 $error = ["error" => "There is no user with this id"];
 sendJSON($error, 400);
-
-?>

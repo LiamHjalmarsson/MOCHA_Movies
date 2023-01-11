@@ -1,351 +1,335 @@
-#movieContainer{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    overflow: scroll;
-    scrollbar-width: none;
-    background-color: #151515;
-    color: white;
-    font-family: 'Mukta', sans-serif;
-    z-index: 4;
-    width: 100vw;
-    left: 0;
-    transition: left 0.5s;
+#movieContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: scroll;
+  scrollbar-width: none;
+  background-color: #151515;
+  color: white;
+  font-family: 'Mukta', sans-serif;
+  z-index: 4;
+  width: 100vw;
+  left: 0;
+  transition: left 0.5s;
 }
 
-.left{
-    left: 400px;
+.left {
+  left: 400px;
 }
 
 #movieHeader {
-    height: 550px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* border-radius: 10px; */
+  height: 550px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .titleContainer {
-    background-color: black;
-    padding: 30px;
-    padding-top: 0px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-bottom: 15px;
+  background-color: black;
+  padding: 30px;
+  padding-top: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 15px;
 }
 
-.titleContainer > div:first-child{
-    font-size: 24pt;
+.titleContainer > div:first-child {
+  font-size: 24pt;
 }
 
-.titleContainer > p{
-    font-size: 10pt;
-    display: flex;
+.titleContainer > p {
+  font-size: 10pt;
+  display: flex;
 }
 
-.titleContainer > p > img{
-    width: 35px;
-    margin-right: 5px;
+.titleContainer > p > img {
+  width: 35px;
+  margin-right: 5px;
 }
 
 #iconContainer {
-    padding-bottom: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #151515;
-    background-image: linear-gradient(to top, rgb(15, 15, 20,0.01), rgb(0, 0, 0));
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #151515;
+  background-image: linear-gradient(
+    to top,
+    rgb(15, 15, 20, 0.01),
+    rgb(0, 0, 0)
+  );
 }
 
 #iconContainer > div:hover {
-    cursor: pointer;
-    transition: color 0.2s;
-    box-shadow: 0px 0px 5px #7a7a7a;
+  cursor: pointer;
+  transition: color 0.2s;
+  box-shadow: 0px 0px 5px #7a7a7a;
 }
 
-#iconContainer > div > .material-symbols-outlined{
-    font-size: 35px;
+#iconContainer > div > .material-symbols-outlined {
+  font-size: 35px;
 }
 
-#iconContainer > div{
-    border: 0.5px solid rgb(48, 46, 46);
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1f1e1e84;
+#iconContainer > div {
+  border: 0.5px solid rgb(48, 46, 46);
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1e1e84;
 }
 
 .movieInformation > div {
-    padding: 0px 30px;
+  padding: 0px 30px;
 }
 
 .movieInformation > div > h3 {
-    margin-top: 25px;
-    /* margin-bottom: 20px; */
-    /* font-family: Arial, Helvetica, sans-serif; */
-    font-weight: 100;
-    font-size: 13pt;
+  margin-top: 25px;
+  font-weight: 100;
+  font-size: 13pt;
 }
 
 .movieInformation > div > p {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
-#reviewContainer{
-    /* position: fixed; */
-    /* top: 0;
-    bottom: 0; */
-    overflow: scroll;
-    /* background-color: rgba(0, 0, 0, 0.448); */
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    /* align-items: center;
-    justify-content: center; */
+#reviewContainer {
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
-#reviewContainer > div:nth-child(1) > h3{
-    font-weight: 100;
-    font-size: 13pt;
-    margin-top: 20px;
-    margin-bottom: 10px;
+#reviewContainer > div:nth-child(1) > h3 {
+  font-weight: 100;
+  font-size: 13pt;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-#review-container{
-    position: fixed;
-    z-index: 5;
-    height: 100vh;
-    top: 0;
-    background-color: #0000008f;
+#review-container {
+  position: fixed;
+  z-index: 5;
+  height: 100vh;
+  top: 0;
+  background-color: #0000008f;
 }
 
-#review-box{
-    background-color: #151515;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 10px;
-    position: relative;
-    bottom: 0;
-    top: 40%;
+#review-box {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+  position: relative;
+  bottom: 0;
+  top: 40%;
 }
 
-#review-box > div:first-child{
-    margin: 40px;
-    margin-bottom: 20px;
-    text-align: center;
+#review-box > div:first-child {
+  margin: 40px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-#review-input{
-    height: 40px;
-    margin-top: 20px;
+#review-input {
+  height: 40px;
+  margin-top: 20px;
 }
 
-#button-wrapper{
-    display: flex;
+#button-wrapper {
+  display: flex;
 }
 
-#button-wrapper > div{
-    border: 1px solid black;
-    margin: 10px;
-    padding: 8px;
-    border-radius: 5px;
+#button-wrapper > div {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 5px;
 }
 
-.review-box{
-    max-height: 200px;
-    /* background: #1a1a1a; */
-    color: white;
-    /* padding: 5px;
-    padding-top: 15px; */
-    overflow: scroll;
-    border-radius: 5px;
-    display: flex;
+.review-box {
+  max-height: 200px;
+  color: white;
+  overflow: scroll;
+  border-radius: 5px;
+  display: flex;
 }
 
-.review-item{
-    position: relative;
-    border-radius: 10px;
-    color: white;
-    /* height: 35vw; */
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-width: 87%;
-    margin: 5px;
-    background-color: #707c9666;
-    padding: 10px;  
+.review-item {
+  position: relative;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 87%;
+  margin: 5px;
+  background-color: #707c9666;
+  padding: 10px;
 }
 
-.review-box > div:first-child{
-    margin-left: 0px;
+.review-box > div:first-child {
+  margin-left: 0px;
 }
 
-.review-name{
-    display: flex;
+.review-name {
+  display: flex;
 }
 
-.review-name > div:first-child{
-    border: 0.5px solid rgb(48, 46, 46);
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1f1e1e84;
-    background-size: cover;
-    background-position: center;
+.review-name > div:first-child {
+  border: 0.5px solid rgb(48, 46, 46);
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1e1e84;
+  background-size: cover;
+  background-position: center;
 }
 
-.review-name > div:nth-child(2) > p{
-    margin: 0;
-    font-size: 12pt;
-    margin-left: 10px;
-    margin-bottom: 6px;
-    margin-top: 5px;
+.review-name > div:nth-child(2) > p {
+  margin: 0;
+  font-size: 12pt;
+  margin-left: 10px;
+  margin-bottom: 6px;
+  margin-top: 5px;
 }
 
-.review-item > p{
-    margin: 0;
-    font-size: 10pt;
-    position: absolute;
-    bottom: 5px;
-    right: 12px;
+.review-item > p {
+  margin: 0;
+  font-size: 10pt;
+  position: absolute;
+  bottom: 5px;
+  right: 12px;
 }
 
-.review-name > div:first-child >.material-symbols-outlined{
-    font-size: 25px;
-    position: relative;
-    bottom: 2px;
+.review-name > div:first-child > .material-symbols-outlined {
+  font-size: 25px;
+  position: relative;
+  bottom: 2px;
 }
 
-.review-name > div:nth-child(2) > .stars{
-    left: 8px;
-    bottom: 12px;
-    position: relative;
-    gap: 1px;
+.review-name > div:nth-child(2) > .stars {
+  left: 8px;
+  bottom: 12px;
+  position: relative;
+  gap: 1px;
 }
 
-.review-item > div:nth-child(2){
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 6px;
-    border-bottom: 15px solid #3a3e49;
-    height: 82px;
-    overflow: scroll;
-
+.review-item > div:nth-child(2) {
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 6px;
+  border-bottom: 15px solid #3a3e49;
+  height: 82px;
+  overflow: scroll;
 }
 
-.review-name > div:nth-child(2) > .stars > .star > .material-symbols-outlined{
-    font-size: 18px;
+.review-name > div:nth-child(2) > .stars > .star > .material-symbols-outlined {
+  font-size: 18px;
 }
 
-.material-symbols-outlined.fill{
-    font-variation-settings: 'FILL' 1;
-    color: gold;
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1;
+  color: gold;
 }
-
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 
-.stars{
-    display: flex;
+.stars {
+  display: flex;
 }
 
 .grade {
-    position: relative;
-    height: 27px;
+  position: relative;
+  height: 27px;
 }
 
-.stars{
-    gap: 12px;
+.stars {
+  gap: 12px;
 }
 
 .slidecontainer {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    left: -20px;
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  left: -20px;
 }
 
 .slidecontainer > input {
-    width: 100%;
-    height: 40px;
-    z-index: 5;
+  width: 100%;
+  height: 40px;
+  z-index: 5;
 }
 
-.genre-container > h3{
-    margin-bottom: 10px;
+.genre-container > h3 {
+  margin-bottom: 10px;
 }
 
-.genre-box{
-    display: flex;
+.genre-box {
+  display: flex;
 }
 
-.genre-box > div{
-    padding: 1px 10px;
-    background-color: #3699db;
-    margin-right: 8px;
-    border-radius: 10px;
-    font-size: 10pt;
-
+.genre-box > div {
+  padding: 1px 10px;
+  background-color: #3699db;
+  margin-right: 8px;
+  border-radius: 10px;
+  font-size: 10pt;
 }
 
-.actor{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25%;
+.actor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
 }
 
-.actor > p{
-    font-size: 9pt;
-    text-align: center;
+.actor > p {
+  font-size: 9pt;
+  text-align: center;
 }
 
-.actor > div:first-child{
-    width: 12vw;
-    height: 12vw;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
+.actor > div:first-child {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
 }
 
-.actors-box{
-    display: flex;
+.actors-box {
+  display: flex;
 }
 
-.similar-grid-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding-bottom: 30px;
+.similar-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-bottom: 30px;
 }
 
-.stream-box{
-    display: flex;
+.stream-box {
+  display: flex;
 }
 
-.stream-box > div{
-    height: 40px;
-    width: 40px;
-    background-size: cover;
-    margin-right: 30px;
+.stream-box > div {
+  height: 40px;
+  width: 40px;
+  background-size: cover;
+  margin-right: 30px;
 }
 
-.review-name > .review-date{
-    font-size: 9pt;
-    margin-left: 70px;
-    margin-top: 3px;
+.review-name > .review-date {
+  font-size: 9pt;
+  margin-left: 70px;
+  margin-top: 3px;
 }

@@ -45,4 +45,3 @@ if(isset($receivedData["userID"], $receivedData["password"], $receivedData["newP
 
 $error = ["error" => "Invalid credentials"];
 sendJSON($error, 400);
-?>

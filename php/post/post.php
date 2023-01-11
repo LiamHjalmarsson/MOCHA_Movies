@@ -8,5 +8,3 @@ if($requestMethod != "POST"){
 
 $receivedJsonData = file_get_contents("php://input");
 $receivedData = json_decode($receivedJsonData, true);
-
-?>

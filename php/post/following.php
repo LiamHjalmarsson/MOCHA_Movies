@@ -58,8 +58,3 @@ file_put_contents($filename, $jsonData);
 
 // sendBack the user who started following
 sendJSON($userToSend);
-
-
-
-
-?>

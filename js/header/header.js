@@ -5,11 +5,11 @@ import {
   sendPatchRequestNotification
 } from '../notification.js/notification.js'
 import { renderMovies, renderMyMovies } from '../showmovies/showmovies.js'
-import { searchField, createSearch } from "../search/search.js"
-import {logOut, userProfile} from "../user/user.js"
-import {showAllMovies} from "../allMovies/allMovies.js"
-import { createAbout } from "../about/about.js"
-// this is to et user from DB should be from localStorage later?
+import { createSearch } from '../search/search.js'
+import { logOut, userProfile } from '../user/user.js'
+import { showAllMovies } from '../allMovies/allMovies.js'
+import { createAbout } from '../about/about.js'
+
 async function getUser (userID) {
   let rqstUser = new Request(`../../php/get/get.php?users=${userID}`)
 
@@ -34,23 +34,19 @@ export async function createNav (userID) {
   burgerDiv.innerHTML = '<span class="material-symbols-outlined">menu</span>'
   let burger = createBurger(navContainer)
 
-    main.appendChild(burger)
-    // nav.appendChild(burger)
+  main.appendChild(burger)
 
   burgerDiv.addEventListener('click', function () {
-    // navContainer.classList.toggle('hide')
-    // console.log(burger.classList)
     burger.classList.toggle('hideBurger')
-    let allBurgerItems = document.querySelectorAll(".burger-item-start")
+    let allBurgerItems = document.querySelectorAll('.burger-item-start')
 
     let counter = 100
-    allBurgerItems.forEach(item =>{
-      setTimeout(function(){
-        item.classList.add("burger-item-end")
+    allBurgerItems.forEach(item => {
+      setTimeout(function () {
+        item.classList.add('burger-item-end')
       }, counter)
-        counter = counter + 30
-      })
-
+      counter = counter + 30
+    })
   })
   navContainer.appendChild(burgerDiv)
 
@@ -83,51 +79,73 @@ export async function createNav (userID) {
 }
 
 function createBurger (navContainer) {
-  // need to add functions to each element in this array
-
   let arrayOfItems = [
     {
       title: 'Search',
-      function: () => { createSearch() }
-    },{
-      title: "All movies",
-      function: () => {showAllMovies("",1)}
+      function: () => {
+        createSearch()
+      }
+    },
+    {
+      title: 'All movies',
+      function: () => {
+        showAllMovies('', 1)
+      }
     },
     {
       title: 'Toplist',
-      function: () => { renderMovies(1, "top_rated")}
+      function: () => {
+        renderMovies(1, 'top_rated')
+      }
     },
     {
       title: 'Popular',
-      function: () => { renderMovies(1, "popular")}
+      function: () => {
+        renderMovies(1, 'popular')
+      }
     },
     {
       title: 'Trending',
-      function: () => { renderMovies(1, "trending")}
+      function: () => {
+        renderMovies(1, 'trending')
+      }
     },
     {
       title: 'Upcoming',
-      function: () => { renderMovies(1, "Upcoming")}
+      function: () => {
+        renderMovies(1, 'Upcoming')
+      }
     },
     {
-      title: "Subscribed movies",
-      function: () => {renderMyMovies(1,"subscribedMovies")}
-
+      title: 'Subscribed movies',
+      function: () => {
+        renderMyMovies(1, 'subscribedMovies')
+      }
     },
     {
       title: 'Watched movies',
-      function: () => { renderMyMovies(0, "watchedMovies")}
+      function: () => {
+        renderMyMovies(0, 'watchedMovies')
+      }
     },
     {
       title: 'Want to see',
-      function: () => { renderMyMovies(0, "moviesToSee")}
+      function: () => {
+        renderMyMovies(0, 'moviesToSee')
+      }
     },
     {
       title: 'About/contact',
-      function: () => { createAbout()}
-    },{
-      title: '<p>Log out </p> <span class="material-symbols-outlined">logout</span>',
-      function: () => {logOut()}
+      function: () => {
+        createAbout()
+      }
+    },
+    {
+      title:
+        '<p>Log out  </p> <span class="material-symbols-outlined">logout</span>',
+      function: () => {
+        logOut()
+      }
     }
   ]
 
@@ -136,26 +154,26 @@ function createBurger (navContainer) {
   burger.classList.add('burgerMenu')
 
   let cross = document.createElement('div')
-  cross.innerHTML = '<span class="material-symbols-outlined">chevron_left</span>'
+  cross.innerHTML =
+    '<span class="material-symbols-outlined">chevron_left</span>'
   cross.addEventListener('click', function () {
     burger.classList.toggle('hideBurger')
 
-    let allBurgerItems = document.querySelectorAll(".burger-item-start")
-    allBurgerItems.forEach(item =>{
-      item.classList.remove("burger-item-end")
+    let allBurgerItems = document.querySelectorAll('.burger-item-start')
+    allBurgerItems.forEach(item => {
+      item.classList.remove('burger-item-end')
     })
   })
   burger.appendChild(cross)
 
- 
   arrayOfItems.forEach(element => {
     let burgerItem = document.createElement('div')
-    burgerItem.classList.add("burger-item-start")
+    burgerItem.classList.add('burger-item-start')
     burgerItem.innerHTML = `<p>${element.title}</p>`
     burgerItem.addEventListener('click', () => {
       navContainer.classList.toggle('hide')
       burger.classList.toggle('hide')
-      element.function();
+      element.function()
     })
     burger.appendChild(burgerItem)
   })
@@ -171,20 +189,18 @@ function createNotification (user) {
   notificationItemBox.classList.add('notification-box')
   notificationItemBox.classList.add('hideNotifications')
 
-  let navContainer = document.querySelector(".navContainer")
+  let navContainer = document.querySelector('.navContainer')
 
   notificationIcon.addEventListener('click', function () {
     notificationItemBox.classList.toggle('hideNotifications')
-    navContainer.style.backgroundColor= "black"
+    navContainer.style.backgroundColor = 'black'
     if (notificationItemBox.classList.contains('hideNotifications')) {
       sendPatchRequestNotification(user)
-      navContainer.style.backgroundColor = "rgba(0, 0, 0, 0.163)"
-
+      navContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.163)'
     }
   })
 
-    let nav = document.querySelector('nav')
-    // let main = document.querySelector('nav')
+  let nav = document.querySelector('nav')
   nav.appendChild(notificationItemBox)
 
   return notificationIcon
@@ -192,20 +208,18 @@ function createNotification (user) {
 
 export function createProfile (user) {
   let profileIcon = document.createElement('div')
-  profileIcon.classList.add("profile-div")
+  profileIcon.classList.add('profile-div')
 
-  // console.log(user)
-  if(user.imageLink == ""){
-      profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
-  }else{
-      profileIcon.classList.add("userImg");
-      profileIcon.style.backgroundImage = `url(../../php/image/${user.imageLink})`;
+  if (user.imageLink == '') {
+    profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
+  } else {
+    profileIcon.classList.add('userImg')
+    profileIcon.style.backgroundImage = `url(../../php/image/${user.imageLink})`
   }
 
-
   profileIcon.addEventListener('click', function () {
-    if (document.querySelector("#user-profile")) {
-      document.querySelector("#user-profile").remove();
+    if (document.querySelector('#user-profile')) {
+      document.querySelector('#user-profile').remove()
     }
     userProfile()
   })
@@ -213,7 +227,7 @@ export function createProfile (user) {
   return profileIcon
 }
 
-function hej(){
+function headerTransition () {
   let w = window
   let doc = document.documentElement
   // doc html filen
@@ -221,55 +235,52 @@ function hej(){
   let prevScroll = w.scrollY || doc.scrollTop
   // hur mucket scroll från top html just nu
   var curScroll
-  var direction = 0;
-  var prevDirection = 0;
+  var direction = 0
+  var prevDirection = 0
 
-  var header = document.querySelector("nav");
+  var header = document.querySelector('nav')
 
-  var checkScroll = function() {
-
-    curScroll = w.scrollY || doc.scrollTop;
-    // scroll efter att ha scrollat 
-    if (curScroll > prevScroll) { 
+  var checkScroll = function () {
+    curScroll = w.scrollY || doc.scrollTop
+    // scroll efter att ha scrollat
+    if (curScroll > prevScroll) {
       // om nuvarande scroll är mer än förra srollen, är direction 2
       //scrolled up
-      direction = 2;
-    }
-    else if (curScroll < prevScroll) { 
+      direction = 2
+    } else if (curScroll < prevScroll) {
       // om nuvarande scroll är mindre än förra scrollen är direction 1
       //scrolled down
-      direction = 1;
+      direction = 1
     }
 
     if (direction !== prevDirection) {
       // om direction är ny gemförm med den förra direcation så anropa toggle header som togglar classen på nav
-      toggleHeader(direction, curScroll);
+      toggleHeader(direction, curScroll)
     }
     // uppdatera scrollen du är på
-    prevScroll = curScroll;
-  };
+    prevScroll = curScroll
+  }
 
-  var toggleHeader = function(direction, curScroll) {
-    if (direction === 2 && curScroll > 82) { 
+  var toggleHeader = function (direction, curScroll) {
+    if (direction === 2 && curScroll > 82) {
       // 82 är höjden på naven
-      header.classList.add('hide-nav');
-      prevDirection = direction;
+      header.classList.add('hide-nav')
+      prevDirection = direction
       // uppdatera vilken direction
+    } else if (direction === 1) {
+      header.classList.remove('hide-nav')
+      prevDirection = direction
     }
-    else if (direction === 1) {
-      header.classList.remove('hide-nav');
-      prevDirection = direction;
-    }
-  };
-  
-  window.addEventListener('scroll', ()=>{
+  }
+
+  window.addEventListener('scroll', () => {
     checkScroll()
-    if(curScroll > 150){
-      header.style.backgroundColor = "#151515"
-    }else{
-      header.style.backgroundColor = "rgba(0, 0, 0, 0.05)"
+    if (curScroll > 150) {
+      header.style.backgroundColor = '#151515'
+    } else {
+      header.style.backgroundColor = 'rgba(0, 0, 0, 0.05)'
     }
-  });
+  })
 }
 
-hej()
+headerTransition()

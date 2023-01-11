@@ -29,5 +29,3 @@ foreach($data["users"] as $index => $user){
         sendJSON($userToSend);
     }
 }
-
-?>

@@ -9,7 +9,8 @@
   bottom: 0px;
   background-color: #151515;
   z-index: 3;
-  overflow: hidden;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 #developerContainer {
@@ -55,6 +56,6 @@
   line-height: 22px;
 }
 
-#infoAboutBox > p:last-child{
+#infoAboutBox > p:last-child {
   text-align: center;
 }

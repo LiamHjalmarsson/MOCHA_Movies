@@ -34,7 +34,3 @@
 
     $error = ["error" => "This user or movie could not be found"];
             sendJSON($error, 404);
-
-
-
-?>

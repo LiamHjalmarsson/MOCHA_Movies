@@ -10,7 +10,8 @@ body {
   min-height: 100%;
 }
 
-.logIn, .signUp{
+.logIn,
+.signUp {
   font-family: Nunito Sans, sans-serif;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
@@ -27,11 +28,11 @@ body {
   transition: 1s;
 }
 
-.hideLog{
+.hideLog {
   top: -1000px;
 }
 
-.hideSign{
+.hideSign {
   top: 1000px;
 }
 
@@ -71,12 +72,12 @@ body {
   cursor: pointer;
 }
 
-.here{
-  border-bottom:1px solid rgb(107, 107, 107) ;
+.here {
+  border-bottom: 1px solid rgb(107, 107, 107);
   cursor: pointer;
 }
 
-.signUp > button{
+.signUp > button {
   margin-top: 30px;
   height: 50px;
   border: 1px solid #333;
@@ -102,33 +103,27 @@ body {
   text-align: center;
 }
 
-.logSignInTitle{
+.logSignInTitle {
   font-weight: 500;
   margin-top: 15vh;
 }
 
-.logSignInTitle > h2{
-  font-size: 14pt;;
+.logSignInTitle > h2 {
+  font-size: 14pt;
 }
 
-.titleHeader{
+.titleHeader {
   position: fixed;
   z-index: 2;
   width: 100vw;
   text-align: center;
+  font-family: Nunito Sans, sans-serif;
 }
 
-.titleHeader > h3{
+.titleHeader > h3 {
   margin-top: 30px;
   font-size: 18pt;
 }
-
-/* activeButton background-color: rgb(96, 96, 96); 
-button styling 
-border: 1px solid #525050;
-border-radius: 5px;
-padding: 10px;
-margin: 5px;  */
 
 #loadingFirst {
   background-color: #151515;
@@ -163,9 +158,9 @@ margin: 5px;  */
 
 .transitonLoading > span {
   position: relative;
-  top: 0.63em;  
+  top: 0.63em;
   display: inline-block;
-  text-transform: uppercase;  
+  text-transform: uppercase;
   opacity: 0;
   transform: rotateX(-90deg);
 }
@@ -188,7 +183,6 @@ margin: 5px;  */
 .let_4 {
   animation: letterDrop 1s ease-in-out infinite;
   animation-delay: 0.7s;
-
 }
 
 .let_5 {
@@ -227,24 +221,24 @@ margin: 5px;  */
 }
 
 @keyframes letterDrop {
-    10% {
-        opacity: 0.5;
-    }
-    20% {
-        opacity: 1;
-        top: 3.78em;
-        transform: rotateX(-360deg);
-    }
-    80% {
-        opacity: 1;
-        top: 3.78em;
-        transform: rotateX(-360deg);
-    }
-    90% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 0;
-        top: 6.94em
-    }
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 1;
+    top: 3.78em;
+    transform: rotateX(-360deg);
+  }
+  80% {
+    opacity: 1;
+    top: 3.78em;
+    transform: rotateX(-360deg);
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    top: 6.94em;
+  }
 }

@@ -95,7 +95,3 @@ $jsonData = json_encode($data, JSON_PRETTY_PRINT);
 file_put_contents($filename, $jsonData);
 
 sendJSON($newReview);
-
-
-
-?>
