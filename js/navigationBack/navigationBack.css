@@ -1,16 +1,29 @@
 #navigationBack {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.05);
-  background-image: linear-gradient(
-    to bottom,
-    rgb(15, 15, 15, 0.6),
-    rgba(15, 15, 15, 0)
-  );
   position: fixed;
-  width: 100vw;
+width: 100vw;
+display: flex;
+align-items: center;
+background-image: linear-gradient( to bottom, rgb(15, 15, 15), rgba(15, 15, 15, 0) );
+transition: color 1s;
+font-family: Nunito Sans, sans-serif;
+font-weight: bolder;
+height: 82px;
+}
+
+#navigationBack > div:first-child{
+  width: 20%;
+  position: relative;
+  left: 10px;
+}
+
+#navigationBack > div:nth-child(2){
+  width: 60%;
+  text-align: center;
+  font-size: 12pt;
+}
+
+#navigationBack > div:nth-child(3){
+  width: 20%;
 }
 
 #navigationBack .hide {
@@ -32,10 +45,10 @@
   transform: translate(17px, 18px) scale(1);
 }
 
-#navigationBack > div {
+/* #navigationBack > div {
   padding: 10px;
   padding-right: 30px;
-}
+} */
 
 #navigationBack > div:hover {
   cursor: pointer;
@@ -50,6 +63,6 @@
   margin-top: 10px;
 }
 
-#navigationBack > .profile-div {
+/* #navigationBack > .profile-div {
   height: 11px;
-}
+} */
