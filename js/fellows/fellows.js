@@ -1,5 +1,5 @@
 import { otherUser } from "../otherProfile/otherProfile.js";
-import { navigationBack } from "../navigationBack/navigationBack.js";
+import { navigationBack, navigationBackNoUser } from "../navigationBack/navigationBack.js";
 import { createPersonDivs, createElementWithClassOrID } from "../homepage/homepage.js";
 
 let updateFreindList;
@@ -17,7 +17,7 @@ export function userFollowers () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "Followers"));
+    followContainer.append(navigationBackNoUser(followContainer));
     getUserFollowers(-1);
 }
 
@@ -145,7 +145,7 @@ export function following () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "Following"));
+    followContainer.append(navigationBackNoUser(followContainer));
     followingIngs(-1);
 }
 
@@ -243,7 +243,7 @@ export function renderAddFreind () {
     let followContainer = document.createElement("div");
     followContainer.id = "followContainer";
     document.querySelector("main").append(followContainer);
-    followContainer.append(navigationBack(followContainer, "Add new friend"));
+    followContainer.append(navigationBackNoUser(followContainer, "Add new friend"));
     addFriend(-1);
 }
 
@@ -287,12 +287,15 @@ async function addFriend (counter) {
             
             let observer = new IntersectionObserver(async (entries) => { 
                 let btnEntrie = entries[0];
+                console.log(btnEntrie)
                 if (!btnEntrie.isIntersecting) return
 
                 for (let i = 0; i < 20; i++) {
                     counter++;
                     if (arrayNotFollowing[counter] != undefined) {
                         getAddFriend(user, arrayNotFollowing[counter]);
+                    }else{
+                        btnBox.remove()
                     }
                 }
             }, 
@@ -382,10 +385,8 @@ function createFollow (recoursFollow, followingDiv) {
     let name = document.createElement("div");
     name.classList.add("name");
 
-    console.log(recoursFollow.imageLink)
-
     if (recoursFollow.imageLink === "") {
-        img.style.backgroundColor = `gray`;
+        img.innerHTML=`<span class="material-symbols-outlined">person</span>`;
     } else {
         img.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`;
         img.style.backgroundSize = 'contain'

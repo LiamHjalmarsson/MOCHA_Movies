@@ -189,6 +189,7 @@ body {
 .changeProfile > div:nth-child(4) {
   text-decoration: underline;
   margin-top: 2px;
+  cursor: pointer;
 }
 .imageForm {
   width: 80%;

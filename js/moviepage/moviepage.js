@@ -170,22 +170,20 @@ async function getReviews(movie){
         reviewItem.innerHTML="There are no reviews on this movie" 
         reviewBox.appendChild(reviewItem)
     }else{
-        resource.forEach(async (review) =>{
+        let sortedResource = resource.sort((a,b) => new Date(b.date) - new Date(a.date))
+        sortedResource.forEach(async (review) =>{
             let reviewItem = document.createElement("div")
             reviewItem.classList.add("review-item")
     
             let rqstReviewPerson = new Request(`../../php/get/get.php?users=${review.userID}`)
             let userResponse = await fetch(rqstReviewPerson)
             let userResource = await userResponse.json()
-    
             let personImg = document.createElement("div")
     
             if(userResource.imageLink == ""){
                 personImg.innerHTML = `<span class="material-symbols-outlined">person</span>`
             }else{
-                let imgBox = document.createElement("span")
-                imgBox.backgroundImage = `url(${userResource.imageLink})`
-                personImg.append(imgBox)
+                personImg.style.backgroundImage = `url(../../php/image/${userResource.imageLink})`
             }
 
             let givenGrade = review.grade
@@ -199,7 +197,6 @@ async function getReviews(movie){
                 starsContainer.append(star);
 
                 if(i < givenGrade){
-                    // console.log("gul")
                     star.firstChild.classList.add("fill")
                 }
               }
@@ -220,7 +217,6 @@ async function getReviews(movie){
 
             let reviewText = document.createElement("div")
             reviewText.innerHTML =  review.reviewText
-
 
             reviewItem.append(reviewName, reviewText, reviewTime)
 
@@ -270,28 +266,6 @@ async function getSimilarMovies(movie){
 
     return similar
 }
-
-// async function getVideo(movie){
-//     let rqst = new Request(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${key}&language=en-US`)
-//     let response = await fetch(rqst)
-//     let videosResource = await response.json()
-
-//     let video = videosResource.results.find(video => video.type == "Teaser")
-//     console.log(video)
-
-//     let div = document.createElement("div")
-//     // let tag = document.createElement("script")
-//     // tag.src = `https://www.youtube.com/watch?v=${video.key}`
-//     X-Frame
-//     div.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/watch?v=${video.key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
-
-//     // div.innerHTML= `<source src="https://www.youtube.com/watch?v=${video.key}">`
-//     // div.style.backgroundClip = `https://www.youtube.com/watch?v=${video.key}`
-
-//     return div
-    
-// }
-
 
 async function getWhereToWatch(movie){
     let rqst = new Request(`https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=${key}&language=en-US`)

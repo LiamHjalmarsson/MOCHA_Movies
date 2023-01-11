@@ -9,6 +9,7 @@ export async function renderNotification (user){
     let response = await fetch(notificationRequest)
     let notificationArray = await response.json()
     arrayOfNotifictions = notificationArray
+    arrayOfNotifictions.sort((a,b)=> new Date(a.date) - new Date(b.date))
 
     return arrayOfNotifictions
 }
@@ -55,7 +56,7 @@ export function createNotificationItem(array){
     
             if(notification.movieID == ""){
                 // här om vi vill att man ska kunna ta sig till profil ta reda på användaren
-                notificationItem.innerHTML = `<div>${userImg}</div><div>${notification.message}</div>`
+                notificationItem.innerHTML = `<div>${userImg}</div><div>${notification.message}<div>${notification.date}</div></div>`
                 notificationItem.addEventListener("click", function(){
                     otherUser(notification.senderID)
                 })
@@ -69,7 +70,7 @@ export function createNotificationItem(array){
                 notificationItem.innerHTML = `
                     <div>${userImg}</div>
                     <div>
-                        <div>${senderName} left a review on movie "${movieTitle}": <span>${notification.message}</span></div>
+                        <div>${senderName} left a review on ${movieTitle}: <span>"${notification.message}"</span></div>
                         <div>${notification.date}</div>
                     </div>
                     <img src=${imgSrc}></img>`
