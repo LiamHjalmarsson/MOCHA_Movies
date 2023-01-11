@@ -16,7 +16,7 @@ height: 82px;
   left: 10px;
 }
 
-#navigationBack > div:nth-child(2){
+#navigationBack > .nameInNav{
   width: 60%;
   text-align: center;
   font-size: 12pt;
