@@ -228,7 +228,7 @@ function makeGradeStars () {
     starsContainer.append(star)
   }
 
-  slideInput.addEventListener('mousemove', () => {
+  slidecontainer.addEventListener('click', () => {
     let stars = Array.from(document.querySelectorAll('.gradeStar'))
     let thisIndex = parseInt(document.getElementById('myRange').value)
 
