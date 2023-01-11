@@ -27,7 +27,7 @@ export async function showAllMovies (moviegenre, counter) {
   allMovieWrapper.appendChild(allMovieContainer)
 
   let rqstMovies = new Request(
-    `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-UShttps://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&with_genres=${moviegenre}page=${counter}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-UShttps://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&include_adult=false&with_genres=${moviegenre}&page=${counter}`
   )
   let moviesResponse = await fetch(rqstMovies)
   let moviesArray = await moviesResponse.json()
@@ -83,13 +83,14 @@ function createFilter (arrayOfGenres) {
 
 async function getMoviesAndSortAfterGenre (genreID, counter) {
   let requestGenreMovies = new Request(
-    `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&with_genres=${genreID}&page=${counter}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&include_adult=false&with_genres=${genreID}&page=${counter}`
   )
   // console.log(requestGenreMovies)
   let allMovieContainer = document.querySelector('.allMoviesContainer')
   allMovieContainer.innerHTML = ''
   let response = await fetch(requestGenreMovies)
   let movieObject = await response.json()
+  console.log(movieObject)
   let movieArray = movieObject.results
   createMovie(movieArray, counter)
 }
@@ -114,12 +115,13 @@ async function createShowMore (genreID, counter) {
       if (!btnEntrie.isIntersecting) return
       counter++
       let rqst = new Request(
-        `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&with_genres=${genreID}&page=${counter}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=e666c096bb904490508ada0b495d2d90&include_adult=false&language=en-US&with_genres=${genreID}&page=${counter}`
       )
 
       
       let response = await fetch(rqst)
       let moviesObject = await response.json()
+      console.log(moviesObject)
       createMovie(moviesObject.results)
     },
     {

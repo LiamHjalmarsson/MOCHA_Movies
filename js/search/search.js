@@ -86,12 +86,13 @@ function searchMovies (searchWord) {
 
   if (buttonSearchMovie.classList.contains('active')) {
     if (searchWord == '') {
+      document.querySelector('.search-result-wrapper').innerHTML = ``
       document.querySelectorAll('#btnBox').forEach(btn => btn.remove())
       getMoviesToShow(0)
     } else {
       document.querySelector('.search-result-wrapper').innerHTML = ``
       let rqst = new Request(
-        `https://api.themoviedb.org/3/search/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&query=${searchWord}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&include_adult=false&query=${searchWord}&page=1&include_adult=false`
       )
       fetch(rqst)
         .then(r => r.json())
@@ -155,8 +156,6 @@ function createUser (array, searchWord) {
 }
 
 function getMoviesToShow (counter) {
-  document.querySelector('.search-result-wrapper').innerHTML = ``
-
   let btnBox = document.createElement('div')
   btnBox.id = 'btnBox'
   let btn = document.createElement('div')
@@ -170,9 +169,10 @@ function getMoviesToShow (counter) {
       if (!btnEntrie.isIntersecting) return
       counter++
       let moviesResponse = await fetch(
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&page=${counter}`
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&include_adult=false&page=${counter}`
       )
       let moviesResource = await moviesResponse.json()
+      console.log(moviesResource)
 
       createMovies(moviesResource.results)
     },
