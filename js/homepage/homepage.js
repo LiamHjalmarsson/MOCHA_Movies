@@ -5,7 +5,7 @@ import { createNav } from '../header/header.js'
 import { otherUser } from '../otherProfile/otherProfile.js'
 import { renderAddFreind } from '../fellows/fellows.js'
 import { following } from '../fellows/fellows.js'
-import { logIn } from '../StartUp/start-up.js'
+import { logIn } from '../startUp/start-up.js'
 
 export async function renderFirstPage (user) {
   createNav(user.userID)
@@ -116,7 +116,7 @@ export async function createPersonDivs (followingID, personBox, addFriendDiv) {
   let nameDiv = createElementWithClassOrID('nameDiv')
 
   if (personIFollowResource.imageLink != '') {
-    imgDiv.style.backgroundImage = `url(../../php/image/${personIFollowResource.imageLink})`
+    imgDiv.style.backgroundImage = `url(../php/image/${personIFollowResource.imageLink})`
     imgDiv.style.backgroundSize = 'contain'
     imgDiv.style.backgroundPosition = 'center'
   } else {
