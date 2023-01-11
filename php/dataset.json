@@ -12,13 +12,18 @@
                 2,
                 6,
                 7,
-                11
+                11,
+                126
             ],
             "following": [
                 4,
                 5,
                 17,
-                8
+                8,
+                2,
+                2,
+                3,
+                22
             ],
             "moviesToSee": [
                 9841,
@@ -28,7 +33,9 @@
                 25018,
                 23966,
                 9612,
-                480042
+                480042,
+                278,
+                800815
             ],
             "watchedMovies": [
                 37430,
@@ -44,11 +51,10 @@
                 417830,
                 9731,
                 9876,
-                661374
+                661374,
+                315162
             ],
             "subscribedMovies": [
-                38579,
-                30178,
                 9731,
                 9711,
                 305943,
@@ -60,7 +66,8 @@
                 555604,
                 436270,
                 238,
-                76600
+                76600,
+                25853
             ]
         },
         {
@@ -873,7 +880,7 @@
             "firstName": "Svante",
             "lastName": "Eriksson",
             "password": "123456",
-            "imageLink": "uploades\/1673365651-man(1).png",
+            "imageLink": "uploades\/1673365651-man1.png",
             "reviewID": [
                 92,
                 93,
@@ -960,7 +967,7 @@
             "firstName": "Carl",
             "lastName": "Melin",
             "password": "123456",
-            "imageLink": "uploades\/1673366177-man(3).png",
+            "imageLink": "uploades\/1673366177-man3.png",
             "reviewID": [
                 110,
                 111,
@@ -2003,6 +2010,14 @@
             "grade": 4,
             "reviewText": "The nostaliga, so fun to see him again!",
             "date": "2023-01-10 18:36:08"
+        },
+        {
+            "reviewID": 126,
+            "movieID": 315162,
+            "userID": 1,
+            "grade": 5,
+            "reviewText": "My cat loved it :D",
+            "date": "2023-01-10 23:02:53"
         }
     ],
     "notifications": [
@@ -4119,6 +4134,96 @@
             "sendToUser": 27,
             "seen": false,
             "date": "2023-01-10 18:36:08"
+        },
+        {
+            "notificationID": 236,
+            "senderID": 1,
+            "movieID": 315162,
+            "message": "My cat loved it :D",
+            "sendToUser": 14,
+            "seen": false,
+            "date": "2023-01-10 23:02:53"
+        },
+        {
+            "notificationID": 237,
+            "senderID": 1,
+            "movieID": 315162,
+            "message": "My cat loved it :D",
+            "sendToUser": 23,
+            "seen": false,
+            "date": "2023-01-10 23:02:53"
+        },
+        {
+            "notificationID": 238,
+            "senderID": 1,
+            "movieID": 315162,
+            "message": "My cat loved it :D",
+            "sendToUser": 25,
+            "seen": false,
+            "date": "2023-01-10 23:02:53"
+        },
+        {
+            "notificationID": 239,
+            "senderID": 1,
+            "movieID": 315162,
+            "message": "My cat loved it :D",
+            "sendToUser": 26,
+            "seen": false,
+            "date": "2023-01-10 23:02:53"
+        },
+        {
+            "notificationID": 240,
+            "senderID": 1,
+            "movieID": 315162,
+            "message": "My cat loved it :D",
+            "sendToUser": 27,
+            "seen": false,
+            "date": "2023-01-10 23:02:53"
+        },
+        {
+            "notificationID": 241,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false,
+            "date": "2023-01-11 00:49:42"
+        },
+        {
+            "notificationID": 242,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 2,
+            "seen": false,
+            "date": "2023-01-11 00:50:48"
+        },
+        {
+            "notificationID": 243,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 3,
+            "seen": false,
+            "date": "2023-01-11 00:54:51"
+        },
+        {
+            "notificationID": 244,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 22,
+            "seen": false,
+            "date": "2023-01-11 00:57:52"
+        },
+        {
+            "notificationID": 245,
+            "senderID": 1,
+            "movieID": "",
+            "message": "Sophie started to follow you",
+            "sendToUser": 22,
+            "seen": false,
+            "date": "2023-01-11 00:58:46"
         }
     ]
 }
