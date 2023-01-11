@@ -81,51 +81,51 @@
                 3,
                 5,
                 8,
-                9
+                9,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132
             ],
             "following": [
                 1,
-                3
+                3,
+                25,
+                26,
+                6
             ],
             "moviesToSee": [
-                240,
-                851644,
-                424,
-                19404,
-                129,
-                555604,
-                389,
-                372058,
-                496243,
-                899112,
-                769
+                77877,
+                447362,
+                1029354,
+                762975,
+                200727,
+                527641,
+                833097,
+                821881,
+                52505,
+                736918,
+                76600
             ],
             "watchedMovies": [
-                372754,
-                497,
-                155,
-                667257,
-                696374,
-                724089,
-                680,
-                429,
-                13,
-                122,
-                238,
-                769
+                43347,
+                6023,
+                38167,
+                549053,
+                22971,
+                72570,
+                19995
             ],
             "subscribedMovies": [
-                761053,
-                11216,
-                637,
-                346,
-                12477,
-                311,
-                539,
-                704264,
-                899112,
-                769,
-                769
+                736918,
+                52505,
+                833097,
+                527641,
+                447362,
+                762975,
+                1029354
             ]
         },
         {
@@ -2018,6 +2018,54 @@
             "grade": 5,
             "reviewText": "My cat loved it :D",
             "date": "2023-01-10 23:02:53"
+        },
+        {
+            "reviewID": 127,
+            "movieID": 43347,
+            "userID": 2,
+            "grade": 5,
+            "reviewText": "Omg, my new favorite movie! ",
+            "date": "2023-01-11 08:23:11"
+        },
+        {
+            "reviewID": 128,
+            "movieID": 50646,
+            "userID": 2,
+            "grade": 4,
+            "reviewText": "Love this movie!",
+            "date": "2023-01-11 08:23:29"
+        },
+        {
+            "reviewID": 129,
+            "movieID": 6023,
+            "userID": 2,
+            "grade": 5,
+            "reviewText": "Can watch this movie over and over again, it's so beautiful",
+            "date": "2023-01-11 08:25:49"
+        },
+        {
+            "reviewID": 130,
+            "movieID": 549053,
+            "userID": 2,
+            "grade": 5,
+            "reviewText": "  Cozy Christmas movie",
+            "date": "2023-01-11 08:29:00"
+        },
+        {
+            "reviewID": 131,
+            "movieID": 22971,
+            "userID": 2,
+            "grade": 5,
+            "reviewText": "My absolute favorite movie",
+            "date": "2023-01-11 08:30:44"
+        },
+        {
+            "reviewID": 132,
+            "movieID": 72570,
+            "userID": 2,
+            "grade": 5,
+            "reviewText": "<3",
+            "date": "2023-01-11 08:32:25"
         }
     ],
     "notifications": [
@@ -2306,7 +2354,8 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "date": "2023-01-03 17:30:35"
+            "date": "2023-01-03 17:30:35",
+            "seen": true
         },
         {
             "notificationID": 33,
@@ -2665,7 +2714,7 @@
             "movieID": "",
             "message": "Liam started to follow you",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-09 15:23:18"
         },
         {
@@ -2764,7 +2813,7 @@
             "movieID": "",
             "message": "Liam started to follow you",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:06:05"
         },
         {
@@ -2899,7 +2948,7 @@
             "movieID": 899112,
             "message": "Fun new action move to watch during christmas ",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:17:46"
         },
         {
@@ -3079,7 +3128,7 @@
             "movieID": 899112,
             "message": "Good fun ",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:30:45"
         },
         {
@@ -3340,7 +3389,7 @@
             "movieID": 899112,
             "message": "Its a must to see this movie",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:39:13"
         },
         {
@@ -3664,7 +3713,7 @@
             "movieID": 899112,
             "message": "What a movie just wow",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-10 16:46:50"
         },
         {
@@ -4186,7 +4235,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-11 00:49:42"
         },
         {
@@ -4195,7 +4244,7 @@
             "movieID": "",
             "message": "Sophie started to follow you",
             "sendToUser": 2,
-            "seen": false,
+            "seen": true,
             "date": "2023-01-11 00:50:48"
         },
         {
@@ -4224,6 +4273,33 @@
             "sendToUser": 22,
             "seen": false,
             "date": "2023-01-11 00:58:46"
+        },
+        {
+            "notificationID": 246,
+            "senderID": 2,
+            "movieID": "",
+            "message": "Tanja started to follow you",
+            "sendToUser": 25,
+            "seen": false,
+            "date": "2023-01-11 08:47:17"
+        },
+        {
+            "notificationID": 247,
+            "senderID": 2,
+            "movieID": "",
+            "message": "Tanja started to follow you",
+            "sendToUser": 26,
+            "seen": false,
+            "date": "2023-01-11 08:47:30"
+        },
+        {
+            "notificationID": 248,
+            "senderID": 2,
+            "movieID": "",
+            "message": "Tanja started to follow you",
+            "sendToUser": 6,
+            "seen": false,
+            "date": "2023-01-11 08:47:35"
         }
     ]
 }
