@@ -2,7 +2,7 @@ import { navigationBackNoUser } from '../navigationBack/navigationBack.js'
 import { following, userFollowers } from '../fellows/fellows.js'
 
 import { renderMyMovies } from '../showmovies/showmovies.js'
-import { logIn } from '../StartUp/start-up.js'
+import { logIn } from '../startUp/start-up.js'
 import { renderAddFreind } from '../fellows/fellows.js'
 
 export function userProfile () {
@@ -42,7 +42,7 @@ function informationUserProfile () {
     profileImg.innerHTML =
       '<span class="material-symbols-outlined">person</span>'
   } else {
-    profileImg.style.backgroundImage = `url(../../php/image/${user.imageLink})`
+    profileImg.style.backgroundImage = `url(../php/image/${user.imageLink})`
   }
 
   textDiv.textContent = `${user.firstName} ${user.lastName}`
@@ -76,7 +76,7 @@ function changeProfileInformation () {
     profileImg.innerHTML =
       '<span class="material-symbols-outlined">person</span>'
   } else {
-    profileImg.style.backgroundImage = `url(../../php/image/${user.imageLink})`
+    profileImg.style.backgroundImage = `url(../php/image/${user.imageLink})`
   }
 
   textDiv.textContent = `${user.firstName} ${user.lastName}`
@@ -117,7 +117,7 @@ function usernameUpdate (user) {
       body: JSON.stringify({ userID: user.userID, newName: input.value })
     }
 
-    let response = await fetch('../../php/patch/change-user.php', options)
+    let response = await fetch('../php/patch/change-user.php', options)
     if (response.ok) {
       let resource = await response.json()
       localStorage.setItem('user', JSON.stringify(resource))
@@ -180,7 +180,7 @@ function passwordUpdate (user, error) {
       })
     }
 
-    let response = await fetch('../../php/patch/change-user.php', options)
+    let response = await fetch('../php/patch/change-user.php', options)
     if (response.ok) {
       let resource = await response.json()
       localStorage.setItem('user', JSON.stringify(resource))
@@ -227,12 +227,12 @@ function changeImage (user) {
     profileImg.innerHTML =
       '<span class="material-symbols-outlined">person</span>'
   } else {
-    profileImg.style.backgroundImage = `url(../../php/image/${user.imageLink})`
+    profileImg.style.backgroundImage = `url(../php/image/${user.imageLink})`
   }
   popUp.append(textDiv, profileImg)
 
   let form = document.createElement('form')
-  form.action = '../../php/image/update-image.php'
+  form.action = '../php/image/update-image.php'
   form.method = 'POST'
   form.enctype = 'multipart/form-data'
 
@@ -261,7 +261,7 @@ function changeImage (user) {
       let formDATA = new FormData(form)
       formDATA.append('userID', user.userID)
 
-      let req = new Request('../../php/image/update-image.php', {
+      let req = new Request('../php/image/update-image.php', {
         method: 'POST',
         body: formDATA
       })
@@ -289,7 +289,7 @@ function changeImage (user) {
 
         setTimeout(async () => {
           let new_response = await fetch(
-            `../../php/get/get.php?users=${user.userID}`
+            `../php/get/get.php?users=${user.userID}`
           )
           let new_recourse = await new_response.json()
 
