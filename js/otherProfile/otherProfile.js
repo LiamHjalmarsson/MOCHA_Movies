@@ -4,7 +4,7 @@ import { createElementWithClassOrID } from '../homepage/homepage.js'
 
 export async function otherUser (otherUserID) {
   let otherUserResponse = await fetch(
-    `../../php/get/get.php/?users=${otherUserID}`
+    `../php/get/get.php/?users=${otherUserID}`
   )
   let otherUserResource = await otherUserResponse.json()
 
@@ -20,7 +20,7 @@ export async function otherUser (otherUserID) {
 
   let otherProfileImg = createElementWithClassOrID(false, 'otherProfileImg')
   if (otherUserResource.imageLink != '') {
-    otherProfileImg.style.backgroundImage = `url(../../php/image/${otherUserResource.imageLink})`
+    otherProfileImg.style.backgroundImage = `url(../php/image/${otherUserResource.imageLink})`
     otherProfileImg.style.backgroundSize = 'contain'
     otherProfileImg.style.backgroundPosition = 'center'
   } else {
@@ -41,7 +41,7 @@ export async function otherUser (otherUserID) {
   startFollow.innerHTML = `Follow<i class="fa-solid fa-plus"></i>`
 
   startFollow.addEventListener('click', async () => {
-    let responseAdd = await fetch(`../../php/post/following.php`, {
+    let responseAdd = await fetch(`../php/post/following.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -214,7 +214,7 @@ function createMovieBox (movieArray, otherUserResource) {
 
     // ----- get review-grade and add stars --------------
 
-    fetch(`../../php/get/get.php?movieReviews=${movie.id}`)
+    fetch(`../php/get/get.php?movieReviews=${movie.id}`)
       .then(r => r.json())
       .then(movieResource => {
         movieResource.forEach(review => {
