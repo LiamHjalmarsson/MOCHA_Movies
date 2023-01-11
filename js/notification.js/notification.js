@@ -5,7 +5,7 @@ export async function renderNotification (user) {
   let arrayOfNotifictions = []
 
   let notificationRequest = new Request(
-    `../php/get/get.php?notification=${user.userID}`
+    `../../php/get/get.php?notification=${user.userID}`
   )
   let response = await fetch(notificationRequest)
   let notificationArray = await response.json()
@@ -49,7 +49,7 @@ export function createNotificationItem (array) {
       if (senderUser.imageLink == '') {
         notiUserImg = `<span class="material-symbols-outlined">person</span>`
       } else {
-        notiUserImg = `<div class="notiUserImg notImg" style="background-image:url(../php/image/${senderUser.imageLink})"> </div>`
+        notiUserImg = `<div class="notiUserImg notImg" style="background-image:url(../../php/image/${senderUser.imageLink})"> </div>`
       }
 
       if (notification.movieID == '') {
@@ -105,7 +105,7 @@ export function createIcon (array) {
 }
 
 export async function sendPatchRequestNotification (user) {
-  let rqst = new Request('../php/patch/change-notification.php')
+  let rqst = new Request('../../php/patch/change-notification.php')
   let option = {
     method: 'PATCH',
     body: JSON.stringify({ userID: user.userID }),
@@ -128,7 +128,7 @@ async function getMovie (movieID) {
 }
 
 async function getUser (senderID) {
-  let rqst = new Request(`../php/get/get.php?users=${senderID}`)
+  let rqst = new Request(`../../php/get/get.php?users=${senderID}`)
   let response = await fetch(rqst)
   let resource = await response.json()
 

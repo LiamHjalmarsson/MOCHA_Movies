@@ -8,7 +8,7 @@ import {
 let updateFreindList
 
 async function fetchUsers () {
-  let rqst = new Request('../php/get/get.php?users')
+  let rqst = new Request('../../php/get/get.php?users')
 
   let response = await fetch(rqst)
   let recourse = await response.json()
@@ -98,7 +98,7 @@ function getFollows (follow, user) {
     icon.innerHTML = `<i class="fa-solid fa-minus"></i>`
     icon.addEventListener('click', async () => {
       let responseDelete = await fetch(
-        `../php/delete/delete-following.php`,
+        `../../php/delete/delete-following.php`,
         {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
@@ -124,7 +124,7 @@ function getFollows (follow, user) {
   } else {
     icon.innerHTML = `<i class="fa-solid fa-plus"></i>`
     icon.addEventListener('click', async () => {
-      let responseAdd = await fetch(`../php/post/following.php`, {
+      let responseAdd = await fetch(`../../php/post/following.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -225,7 +225,7 @@ function getFollowings (follow, user) {
   let icon = document.createElement('div')
   icon.innerHTML = `<i class="fa-solid fa-minus"></i>`
   icon.addEventListener('click', async () => {
-    let responseDelete = await fetch(`../php/delete/delete-following.php`, {
+    let responseDelete = await fetch(`../../php/delete/delete-following.php`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -344,7 +344,7 @@ function getAddFriend (user, arrayNotFollowing) {
   followDiv.append(icon)
 
   icon.addEventListener('click', async () => {
-    let responseAdd = await fetch(`../php/post/following.php`, {
+    let responseAdd = await fetch(`../../php/post/following.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -409,7 +409,7 @@ function createFollow (recoursFollow, followingDiv) {
   if (recoursFollow.imageLink === '') {
     img.innerHTML = `<span class="material-symbols-outlined">person</span>`
   } else {
-    img.style.backgroundImage = `url(../php/image/${recoursFollow.imageLink})`
+    img.style.backgroundImage = `url(../../php/image/${recoursFollow.imageLink})`
     img.style.backgroundSize = 'contain'
     img.style.backgroundPosition = 'center'
   }

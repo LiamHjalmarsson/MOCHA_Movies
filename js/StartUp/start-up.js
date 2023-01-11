@@ -9,7 +9,7 @@ export function logIn () {
   videoDiv.innerHTML = `
   <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
   <video autoplay muted loop id="myVideo">
-  <source src="../videos/video.mp4" type="video/mp4">
+  <source src="../../videos/video.mp4" type="video/mp4">
   </video>
   </div>`
 
@@ -210,7 +210,7 @@ function signUp () {
 
     responseDiv.textContent = ''
 
-    fetch(`../php/post/new-user.php/`, options)
+    fetch(`../../php/post/new-user.php/`, options)
       .then(r => r.json())
       .then(r => {
         if (r.userID == undefined) {

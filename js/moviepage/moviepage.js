@@ -19,7 +19,7 @@ export async function renderMovie (movie) {
   let releaseyear = document.createElement('p')
   titleContainer.append(releaseyear)
   let img = document.createElement('img')
-  img.src = '../images/imdb.png'
+  img.src = '../../images/imdb.png'
   let rating = Number(voterating(movie)).toFixed(1)
   releaseyear.append(img, rating)
 
@@ -138,7 +138,7 @@ async function getReviews (movie) {
   let reviewBox = document.createElement('div')
   reviewBox.classList.add('review-box')
 
-  let rqst = new Request(`../php/get/get.php?movieReviews=${movie.id}`)
+  let rqst = new Request(`../../php/get/get.php?movieReviews=${movie.id}`)
   let response = await fetch(rqst)
   let resource = await response.json()
 
@@ -156,7 +156,7 @@ async function getReviews (movie) {
       reviewItem.classList.add('review-item')
 
       let rqstReviewPerson = new Request(
-        `../php/get/get.php?users=${review.userID}`
+        `../../php/get/get.php?users=${review.userID}`
       )
       let userResponse = await fetch(rqstReviewPerson)
       let userResource = await userResponse.json()
@@ -165,7 +165,7 @@ async function getReviews (movie) {
       if (userResource.imageLink == '') {
         personImg.innerHTML = `<span class="material-symbols-outlined">person</span>`
       } else {
-        personImg.style.backgroundImage = `url(../php/image/${userResource.imageLink})`
+        personImg.style.backgroundImage = `url(../../php/image/${userResource.imageLink})`
       }
 
       let givenGrade = review.grade

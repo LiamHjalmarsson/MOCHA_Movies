@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../js/search/search.css">
     <link rel="stylesheet" href="../js/otherProfile/otherProfile.css">
     <link rel="stylesheet" href="../js/fellows/fellows.css">
-    <link rel="stylesheet" href="../js/startUp/logIn.css">
+    <link rel="stylesheet" href="../js/startup/logIn.css">
     <link rel="stylesheet" href="../js/allMovies/allMovies.css">
     <link rel="stylesheet" href="../js/user/user-profile.css">
     <link rel="stylesheet" href="../js/about/about.css">
@@ -41,7 +41,7 @@
     <script type="module" src="../js/homepage/homepage.js"></script>
     <script type="module" src="../js/user/user.js"></script>
     <script type="module" src="../js/about/about.js"></script>
-    
+
 
 </body>
 

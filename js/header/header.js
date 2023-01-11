@@ -9,9 +9,9 @@ import { createSearch } from '../search/search.js'
 import { logOut, userProfile } from '../user/user.js'
 import { showAllMovies } from '../allMovies/allMovies.js'
 import { createAbout } from '../about/about.js'
-// this is to et user from DB should be from localStorage later?
+
 async function getUser (userID) {
-  let rqstUser = new Request(`../php/get/get.php?users=${userID}`)
+  let rqstUser = new Request(`../../php/get/get.php?users=${userID}`)
 
   let response = await fetch(rqstUser)
   let user = await response.json()
@@ -79,8 +79,6 @@ export async function createNav (userID) {
 }
 
 function createBurger (navContainer) {
-  // need to add functions to each element in this array
-
   let arrayOfItems = [
     {
       title: 'Search',
@@ -144,7 +142,7 @@ function createBurger (navContainer) {
     },
     {
       title:
-        '<p>Log out </p> <span class="material-symbols-outlined">logout</span>',
+        '<p>Log out  </p> <span class="material-symbols-outlined">logout</span>',
       function: () => {
         logOut()
       }
@@ -216,7 +214,7 @@ export function createProfile (user) {
     profileIcon.innerHTML = `<span class="material-symbols-outlined">person</span>`
   } else {
     profileIcon.classList.add('userImg')
-    profileIcon.style.backgroundImage = `url(../php/image/${user.imageLink})`
+    profileIcon.style.backgroundImage = `url(../../php/image/${user.imageLink})`
   }
 
   profileIcon.addEventListener('click', function () {
@@ -229,7 +227,7 @@ export function createProfile (user) {
   return profileIcon
 }
 
-function hej () {
+function headerTransition () {
   let w = window
   let doc = document.documentElement
   // doc html filen
@@ -285,4 +283,4 @@ function hej () {
   })
 }
 
-hej()
+headerTransition()

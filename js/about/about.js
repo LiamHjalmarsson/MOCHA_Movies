@@ -23,7 +23,7 @@ export function createAbout () {
     let developerDiv = createElementWithClassOrID('developerDiv')
 
     let pictureDiv = createElementWithClassOrID('pictureDiv')
-    pictureDiv.style.backgroundImage = `url(../images/${developer.imgLink}.jpg)`
+    pictureDiv.style.backgroundImage = `url(../../images/${developer.imgLink}.jpg)`
     pictureDiv.style.backgroundSize = 'cover'
 
     let nameDiv = createElementWithClassOrID('nameDiv')

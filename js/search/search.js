@@ -101,7 +101,7 @@ function searchMovies (searchWord) {
       document.querySelectorAll('#btnBox').forEach(btn => btn.remove())
       getUsersToShow()
     } else {
-      let rqst = new Request('../php/get/get.php?users')
+      let rqst = new Request('../../php/get/get.php?users')
       fetch(rqst)
         .then(r => r.json())
         .then(recourse => createUser(recourse, searchWord))
@@ -135,7 +135,7 @@ function createUser (array, searchWord) {
       if (user.imageLink == '') {
         userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
       } else {
-        userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../php/image/${user.imageLink})"></div>`
+        userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../../php/image/${user.imageLink})"></div>`
       }
       userDiv.innerHTML += user.username
 
@@ -186,7 +186,7 @@ function getUsersToShow (counter = -1) {
   userWrapper.innerHTML = ''
   let singdIn = JSON.parse(localStorage.getItem('user'))
 
-  let rqst = new Request('../php/get/get.php?users')
+  let rqst = new Request('../../php/get/get.php?users')
   fetch(rqst)
     .then(r => r.json())
     .then(recourse => {
@@ -223,7 +223,7 @@ function getUsersToShow (counter = -1) {
                   if (recourse[counter].imageLink == '') {
                     userDiv.innerHTML = `<div class="searchPersonDiv"><span class="material-symbols-outlined">person</span></div>`
                   } else {
-                    userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../php/image/${recourse[counter].imageLink})"></div>`
+                    userDiv.innerHTML = `<div class="searchPersonDiv" style="background-image: url(../../php/image/${recourse[counter].imageLink})"></div>`
                   }
 
                   userDiv.innerHTML += `<p>${recourse[counter].username}</p>`

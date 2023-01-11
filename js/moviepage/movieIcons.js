@@ -75,7 +75,7 @@ export function createMovieIcons (movie) {
 }
 
 function fetchAddMovie (user, movie, phpFile, movieForm) {
-  let rqst = new Request(`../php/post/${phpFile}.php`)
+  let rqst = new Request(`../../php/post/${phpFile}.php`)
   let body = {
     userID: user.userID,
     [`${movieForm}`]: movie.id
@@ -100,7 +100,7 @@ function fetchAddMovie (user, movie, phpFile, movieForm) {
 }
 
 function fetchDeleteMovie (user, movie, phpFile, movieForm) {
-  let rqst = new Request(`../php/delete/${phpFile}.php`)
+  let rqst = new Request(`../../php/delete/${phpFile}.php`)
   let body = {
     userID: user.userID,
     [`${movieForm}`]: movie.id
@@ -186,7 +186,7 @@ function popUpReview (user, movie) {
 }
 
 function fetchReview (user, movie, inputGrade, inputText) {
-  let rqst = new Request('../php/post/new-review.php')
+  let rqst = new Request('../../php/post/new-review.php')
   let options = {
     method: 'POST',
     body: JSON.stringify({
