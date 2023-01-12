@@ -48,6 +48,7 @@
 
 .search-result-wrapper > div {
   background-size: cover;
+  background-position: center;
   height: 190px;
   display: flex;
   justify-content: center;
