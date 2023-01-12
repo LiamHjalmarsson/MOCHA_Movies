@@ -79,6 +79,7 @@ nav {
   position: fixed;
   font-size: 16pt;
   right: 0px;
+  top: 0px;
   transition: 0.5s;
   z-index: 2;
   background-color: rgb(15, 15, 15);
