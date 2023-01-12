@@ -149,6 +149,9 @@ function createUser (array, searchWord) {
 }
 
 function getMoviesToShow (counter) {
+  let movieWrapper = document.querySelector('.search-result-wrapper')
+  movieWrapper.innerHTML = ''
+  
   let btnBox = document.createElement('div')
   btnBox.id = 'btnBox'
   let btn = document.createElement('div')
