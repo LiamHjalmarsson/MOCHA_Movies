@@ -168,7 +168,6 @@ function getMoviesToShow (counter) {
         `https://api.themoviedb.org/3/movie/top_rated?api_key=e666c096bb904490508ada0b495d2d90&language=en-US&include_adult=false&page=${counter}`
       )
       let moviesResource = await moviesResponse.json()
-      console.log(moviesResource)
 
       createMovies(moviesResource.results)
     },
