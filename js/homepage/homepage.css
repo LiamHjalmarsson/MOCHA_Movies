@@ -1,6 +1,11 @@
 body {
   margin: 0;
 }
+
+html {
+  scrollbar-width: none;
+}
+
 main {
   width: 100vw;
   background-color: rgb(15, 15, 15);
