@@ -8,7 +8,7 @@ import { following } from '../fellows/fellows.js'
 import { logIn } from '../startUp/start-up.js'
 
 export async function renderFirstPage (user) {
-  createNav(user.userID)
+  await createNav(user.userID)
 
   // ---------- popular-movie-section ---------------
   let popularMoviesResponse = await fetch(
